@@ -1,4 +1,11 @@
-Trabajo-de-fin-de-ciclo
+<!-- Title -->
+Trabajo de fin de ciclo
 =======================
 
- This is a program of end-cycle Degree in development of cross-platform applications, to manage a vehicle insurer.
+<!-- Description -->
+This is a program of end-cycle Degree in development of cross-platform applications, to manage a vehicle insurer.
+
+<!-- Requirements -->
+- <b>Requirements:</b>
+<blockquote>
+MySQL, external software (<a href="http://dev.mysql.com/downloads/">download</a>).
