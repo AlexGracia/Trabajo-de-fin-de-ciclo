@@ -221,7 +221,7 @@ public class Main extends JFrame {
 				case 2:
 					toolbarSearch = Constantes.TEXTO_EXTRAS[Constantes.TEXTO_EXTRAS.length - 1];
 					break;
-				case 3:
+				case 6:
 					toolbarSearch = Constantes.TEXTO_POLIZAS[Constantes.TEXTO_POLIZAS.length - 1];
 					break;
 				// TODO Piezas, Proveedores, Talleres, Siniestros.
@@ -368,7 +368,7 @@ public class Main extends JFrame {
 			if (tabExtras.mGuardar())
 				barraEstado.accionRealizada();
 			break;
-		case 3:
+		case 6:
 			if (tabPolizas.mGuardar())
 				barraEstado.accionRealizada();
 			break;
@@ -388,7 +388,7 @@ public class Main extends JFrame {
 		case 2:
 			tabExtras.mCancelar();
 			break;
-		case 3:
+		case 6:
 			tabPolizas.mCancelar();
 			break;
 		default:
@@ -409,7 +409,7 @@ public class Main extends JFrame {
 		case 2:
 			tabExtras.mEditar();
 			break;
-		case 3:
+		case 6:
 			tabPolizas.mEditar();
 			break;
 		default:
@@ -432,7 +432,7 @@ public class Main extends JFrame {
 			if (tabExtras.mEliminar())
 				barraEstado.accionRealizada();
 			break;
-		case 3:
+		case 6:
 			if (tabPolizas.mEliminar())
 				barraEstado.accionRealizada();
 			break;

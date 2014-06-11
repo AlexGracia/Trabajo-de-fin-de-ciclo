@@ -1,9 +1,11 @@
 package org.alex.accesodatos.util;
 
+import org.alex.libs.Util;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
@@ -72,5 +74,55 @@ public class HibernateUtil {
 	 */
 	public static Query getQuery(String consulta) {
 		return getCurrentSession().createQuery(consulta);
+	}
+
+	/**
+	 * guardar, actualizar, borrar.
+	 * 
+	 * @param opcion
+	 * @param obj
+	 * @param mensaje
+	 */
+	public static void setData(String opcion, Object obj, String mensaje) {
+		Session sesion = beginTransaction();
+		switch (opcion) {
+		case "guardar":
+			sesion.save(obj);
+			break;
+		case "actualizar":
+			sesion.update(obj);
+			break;
+		case "borrar":
+			sesion.delete(obj);
+			break;
+		default:
+		}
+		closeTransaction(sesion, mensaje);
+	}
+
+	/**
+	 * Empieza una transaccion.
+	 * 
+	 * @return sesion
+	 */
+	public static Session beginTransaction() {
+		Session sesion = getCurrentSession();
+		sesion.beginTransaction();
+		return sesion;
+	}
+
+	/**
+	 * Cierra una transaccion.
+	 * 
+	 * @param sesion
+	 * @param mensaje
+	 */
+	public static void closeTransaction(Session sesion, String mensaje) {
+		try {
+			sesion.getTransaction().commit();
+		} catch (ConstraintViolationException cve) {
+			Util.setMensajeError(mensaje);
+		}
+		sesion.close();
 	}
 }
