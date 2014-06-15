@@ -20,7 +20,6 @@ import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.RestrictedSimple;
 import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
-import org.hibernate.Session;
 
 /**
  * Maneja la interfaz de las polizas.
@@ -174,11 +173,7 @@ public class TabPolizas extends JPanel {
 
 		Polizas poliza = tablaPolizas.getPolizaSeleccionada();
 
-		Session sesion = HibernateUtil.getCurrentSession();
-		sesion.beginTransaction();
-		sesion.delete(poliza);
-		sesion.getTransaction().commit();
-		sesion.close();
+		HibernateUtil.setData("borrar", poliza, "");
 
 		tablaPolizas.listar();
 		mVaciarPoliza();
@@ -232,25 +227,17 @@ public class TabPolizas extends JPanel {
 		poliza.setClientes(cliente);
 		poliza.setVehiculos(vehiculo);
 
-		Session sesion = HibernateUtil.getCurrentSession();
-		sesion.beginTransaction();
-
 		if (esNuevo)
-			sesion.save(poliza);
+			HibernateUtil.setData("guardar", poliza, "");
 
 		else {
-			sesion.update(poliza);
+			HibernateUtil.setData("actualizar", poliza, "");
 
 			esNuevo = true;
 		}
 
-		sesion.getTransaction().commit();
-		sesion.close();
-
 		tablaPolizas.listar();
-
 		mVaciarPoliza();
-
 		return true;
 	}
 

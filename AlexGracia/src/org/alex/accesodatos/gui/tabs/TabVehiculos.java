@@ -17,8 +17,6 @@ import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.RestrictedSimple;
 import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
-import org.hibernate.Session;
-import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.hql.internal.ast.QuerySyntaxException;
 
 /**
@@ -162,15 +160,8 @@ public class TabVehiculos extends JPanel {
 
 		Vehiculos vehiculo = tablaVehiculo.getVehiculoSeleccionado();
 
-		Session sesion = HibernateUtil.getCurrentSession();
-		sesion.beginTransaction();
-		sesion.delete(vehiculo);
-		try {
-			sesion.getTransaction().commit();
-		} catch (ConstraintViolationException cve) {
-			Util.setMensajeError("Debe borrar antes la póliza correspondiente.");
-		}
-		sesion.close();
+		HibernateUtil.setData("borrar", vehiculo,
+				"Debe borrar antes la póliza correspondiente.");
 
 		tablaVehiculo.listar();
 		mVaciarVehiculo();
@@ -224,26 +215,18 @@ public class TabVehiculos extends JPanel {
 		vehiculo.setColor(cbColor.getSelectedString());
 		vehiculo.setKilometros(Integer.parseInt(kilometros));
 
-		Session sesion = HibernateUtil.getCurrentSession();
-		sesion.beginTransaction();
-
 		if (esNuevo)
-			sesion.save(vehiculo);
+			HibernateUtil.setData("guardar", vehiculo, "");
 
 		else {
-			sesion.update(vehiculo);
+			HibernateUtil.setData("actualizar", vehiculo, "");
 
 			esNuevo = true;
 			tfMatricula.setEnabled(true);
 		}
 
-		sesion.getTransaction().commit();
-		sesion.close();
-
 		tablaVehiculo.listar();
-
 		mVaciarVehiculo();
-
 		return true;
 	}
 
@@ -258,8 +241,7 @@ public class TabVehiculos extends JPanel {
 
 	public void mCancelar() {
 		mVaciarVehiculo();
-		if (!tfMatricula.isEnabled())
-			tfMatricula.setEnabled(true);
+		tfMatricula.setEnabled(true);
 	}
 
 	private void mVaciarVehiculo() {

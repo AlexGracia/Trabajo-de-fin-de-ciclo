@@ -12,7 +12,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 /**
  * Clase que facilita el trabajo con Hibernate
  * 
- * @author Santiago Faci and Alex Gracia
+ * @author Alex Gracia
  * @version 1.0
  * 
  */
@@ -52,18 +52,6 @@ public class HibernateUtil {
 			openSession();
 
 		return session;
-	}
-
-	/**
-	 * Cierra Hibernate
-	 */
-	public static void closeSessionFactory() {
-
-		if (session != null)
-			session.close();
-
-		if (sessionFactory != null)
-			sessionFactory.close();
 	}
 
 	/**

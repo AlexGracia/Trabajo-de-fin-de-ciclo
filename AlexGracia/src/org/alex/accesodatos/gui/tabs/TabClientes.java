@@ -220,8 +220,7 @@ public class TabClientes extends JPanel {
 
 	public void mCancelar() {
 		mVaciarCliente();
-		if (!tfNombre.isEnabled())
-			tfNombre.setEnabled(true);
+		tfNombre.setEnabled(true);
 	}
 
 	private void mVaciarCliente() {

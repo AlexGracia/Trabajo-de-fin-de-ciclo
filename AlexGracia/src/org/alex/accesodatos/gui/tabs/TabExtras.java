@@ -15,7 +15,6 @@ import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
-import org.hibernate.Session;
 
 /**
  * Maneja la interfaz de los extras.
@@ -149,11 +148,8 @@ public class TabExtras extends JPanel {
 
 		Extras extra = tablaExtras.getExtraSeleccionado();
 
-		Session sesion = HibernateUtil.getCurrentSession();
-		sesion.beginTransaction();
-		sesion.delete(extra);
-		sesion.getTransaction().commit();
-		sesion.close();
+		HibernateUtil.setData("borrar", extra,
+				"Debes borrar lo referente a este extra.");
 
 		tablaExtras.listar();
 		mVaciarExtra();
@@ -187,26 +183,18 @@ public class TabExtras extends JPanel {
 		extra.setDimensiones(dimensiones);
 		extra.setFabricante(tfFabricante.getText());
 
-		Session sesion = HibernateUtil.getCurrentSession();
-		sesion.beginTransaction();
-
 		if (esNuevo)
-			sesion.save(extra);
+			HibernateUtil.setData("guardar", extra, "");
 
 		else {
-			sesion.update(extra);
+			HibernateUtil.setData("actualizar", extra, "");
 
 			esNuevo = true;
 			tfNombre.setEnabled(true);
 		}
 
-		sesion.getTransaction().commit();
-		sesion.close();
-
 		tablaExtras.listar();
-
 		mVaciarExtra();
-
 		return true;
 	}
 
@@ -221,8 +209,7 @@ public class TabExtras extends JPanel {
 
 	public void mCancelar() {
 		mVaciarExtra();
-		if (!tfNombre.isEnabled())
-			tfNombre.setEnabled(true);
+		tfNombre.setEnabled(true);
 	}
 
 	private void mVaciarExtra() {

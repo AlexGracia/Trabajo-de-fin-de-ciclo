@@ -6,6 +6,7 @@ import java.awt.Font;
  * Clase con variables globales.
  * 
  * @author Alex Gracia
+ * @Por_hacer TODO Piezas, Proveedores, Talleres, Siniestros.
  * 
  */
 public class Constantes {

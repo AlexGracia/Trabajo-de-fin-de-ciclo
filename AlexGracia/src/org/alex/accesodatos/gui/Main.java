@@ -307,7 +307,7 @@ public class Main extends JFrame {
 
 	private boolean hacerLogin(JConecta conecta) {
 
-		if (conecta.mostrarDialogo() == JConecta.Accion.CANCELAR)
+		if (conecta.mostrarDialogo() != JConecta.Accion.ACEPTAR)
 			System.exit(0);
 
 		String user = conecta.getUser();
