@@ -27,10 +27,14 @@ public class Constantes {
 	public final static String[] TEXTO_EXTRAS = { "Extras", "Año-fabricación",
 			"Marca", "Nombre *", "Modelo *", "Descripción", "Lugar de origen",
 			"Dimensiones *", "Fabricante", "Nombre, Modelo" };
+	public final static String[] TEXTO_PIEZAS = { "" };
+	public final static String[] TEXTO_PROVEEDORES = { "" };
+	public final static String[] TEXTO_TALLERES = { "" };
 	public final static String[] TEXTO_POLIZAS = { "Pólizas", "Tipo",
 			"Importe", "Estado ", "F. Inicio", "Conductores", "Antigüedad",
 			"F. Fin", "id (cliente) *", "id (vehículo) *",
 			"id (cliente), id (vehículo)" };
+	public final static String[] TEXTO_SINIESTROS = { "" };
 
 	public final static String[] COLUMNAS_CLIENTE = { "Id", "Código", "Nombre",
 			"Apellidos", "DNI", "Teléfono", "Nacimiento", "Carnet", "Dirección" };
@@ -40,8 +44,19 @@ public class Constantes {
 	public final static String[] COLUMNAS_EXTRA = { "Id", "Fabricación",
 			"Marca", "Nombre", "Modelo", "Descripción", "Origen",
 			"Dimensiones", "Fabricante" };
+	public final static String[] COLUMNAS_PIEZAS = { "Id", "Código", "Nombre",
+			"Descripción", "Cantidad", "Precio", "Origen", "Solicitud", "Marca" };
+	public final static String[] COLUMNAS_PROVEEDORES = { "Id", "Nombre",
+			"Teléfono", "Correo", "Nacimiento", "Dirección", "Pago", "Empresa",
+			"DNI" };
+	public final static String[] COLUMNAS_TALLERES = { "Id", "Nombre",
+			"Dirección", "Teléfono", "Inicio", "Jefe", "CIF", "Trabajadores",
+			"Reparaciones" };
 	public final static String[] COLUMNAS_POLIZA = { "Id", "Número", "Tipo",
 			"Importe", "Estado", "Inicio", "Conductores",
 			"Antiguedad de conducción", "Fin", "Id (cliente)", "Id (vehiculo)" };
-
+	public final static String[] COLUMNAS_SINIESTROS = { "Id", "Datos poliza",
+			"Reparación", "Datos cliente", "Reparación", "Datos taller",
+			"Siniestro", "Vehículos implicados", "Id (cliente)", "Id (taller)",
+			"Clientes heridos" };
 }
