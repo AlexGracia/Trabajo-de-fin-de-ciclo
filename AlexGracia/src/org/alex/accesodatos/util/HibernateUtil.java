@@ -72,7 +72,9 @@ public class HibernateUtil {
 	 * @param mensaje
 	 */
 	public static void setData(String opcion, Object obj, String mensaje) {
-		Session sesion = beginTransaction();
+		// Empieza una transaccion.
+		Session sesion = getCurrentSession();
+		sesion.beginTransaction();
 		switch (opcion) {
 		case "guardar":
 			sesion.save(obj);
@@ -85,27 +87,7 @@ public class HibernateUtil {
 			break;
 		default:
 		}
-		closeTransaction(sesion, mensaje);
-	}
-
-	/**
-	 * Empieza una transaccion.
-	 * 
-	 * @return sesion
-	 */
-	public static Session beginTransaction() {
-		Session sesion = getCurrentSession();
-		sesion.beginTransaction();
-		return sesion;
-	}
-
-	/**
-	 * Cierra una transaccion.
-	 * 
-	 * @param sesion
-	 * @param mensaje
-	 */
-	public static void closeTransaction(Session sesion, String mensaje) {
+		// Cerrar transaccion.
 		try {
 			sesion.getTransaction().commit();
 		} catch (ConstraintViolationException cve) {
@@ -113,4 +95,5 @@ public class HibernateUtil {
 		}
 		sesion.close();
 	}
+
 }
