@@ -29,13 +29,8 @@ public class TabExtras extends JPanel {
 
 	// Variables graficas
 	private JCalendarCombo yearFabricacion;
-	private TextPropio tfMarca;
-	private TextPropio tfNombre;
-	private TextPropio tfModelo;
-	private TextPropio tfDescripcion;
-	private TextPropio tfOrigen;
-	private TextPropio tfDimensiones;
-	private TextPropio tfFabricante;
+	private TextPropio tfMarca, tfNombre, tfModelo, tfDescripcion, tfOrigen,
+			tfDimensiones, tfFabricante;
 	private TablaExtras tablaExtras;
 
 	/**
@@ -209,6 +204,7 @@ public class TabExtras extends JPanel {
 	}
 
 	public void mCancelar() {
+		esNuevo = true;
 		mVaciarExtra();
 		tfNombre.setEnabled(true);
 	}

@@ -26,15 +26,9 @@ public class TablaPolizas extends Tabla {
 	private DefaultTableModel modelo;
 
 	// Variables graficas
-	private ComboPropio cbTipo;
-	private TextPropio tfImporte;
-	private ComboPropio cbEstado;
-	private JCalendarCombo dateInicio;
-	private TextPropio tfConductores;
-	private JCalendarCombo dateConduccion;
-	private JCalendarCombo dateFin;
-	private TextPropio tfCliente;
-	private TextPropio tfVehiculo;
+	private ComboPropio cbTipo, cbEstado;
+	private TextPropio tfImporte, tfConductores, tfCliente, tfVehiculo;
+	private JCalendarCombo dateInicio, dateConduccion, dateFin;
 
 	public TablaPolizas(ComboPropio cbTipo, TextPropio tfImporte,
 			ComboPropio cbEstado, JCalendarCombo dateInicio,

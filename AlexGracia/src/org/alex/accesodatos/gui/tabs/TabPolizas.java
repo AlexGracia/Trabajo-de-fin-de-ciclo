@@ -33,15 +33,9 @@ public class TabPolizas extends JPanel {
 	private boolean esNuevo = true;
 
 	// Variables graficas
-	private ComboPropio cbTipo;
-	private TextPropio tfImporte;
-	private ComboPropio cbEstado;
-	private JCalendarCombo dateInicio;
-	private TextPropio tfConductores;
-	private JCalendarCombo dateConduccion;
-	private JCalendarCombo dateFin;
-	private TextPropio tfCliente;
-	private TextPropio tfVehiculo;
+	private ComboPropio cbTipo, cbEstado;
+	private TextPropio tfImporte, tfConductores, tfCliente, tfVehiculo;
+	private JCalendarCombo dateInicio, dateConduccion, dateFin;
 	private TablaPolizas tablaPolizas;
 
 	/**
@@ -250,6 +244,7 @@ public class TabPolizas extends JPanel {
 	}
 
 	public void mCancelar() {
+		esNuevo = true;
 		mVaciarPoliza();
 	}
 

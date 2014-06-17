@@ -26,13 +26,8 @@ public class TablaClientes extends Tabla {
 	private DefaultTableModel modelo;
 
 	// Variables graficas
-	private TextPropio tfNombre;
-	private TextPropio tfApellidos;
-	private TextPropio tfDni;
-	private TextPropio tfTelefono;
-	private JCalendarCombo calendarNacimiento;
-	private JCalendarCombo calendarCarnet;
-	private TextPropio tfDireccion;
+	private TextPropio tfNombre, tfApellidos, tfDni, tfTelefono, tfDireccion;
+	private JCalendarCombo calendarNacimiento, calendarCarnet;
 
 	public TablaClientes(TextPropio tfNombre, TextPropio tfApellidos,
 			TextPropio tfDni, TextPropio tfTelefono,
@@ -102,10 +97,8 @@ public class TablaClientes extends Tabla {
 		tfApellidos.setText(clienteSeleccionado.getApellidos());
 		tfDni.setText(clienteSeleccionado.getDni());
 		tfTelefono.setText(String.valueOf(clienteSeleccionado.getTelefono()));
-		calendarNacimiento.setDate(clienteSeleccionado
-				.getFechaNacimiento());
-		calendarCarnet.setDate(clienteSeleccionado
-				.getFechaCarnet());
+		calendarNacimiento.setDate(clienteSeleccionado.getFechaNacimiento());
+		calendarCarnet.setDate(clienteSeleccionado.getFechaCarnet());
 		tfDireccion.setText(clienteSeleccionado.getDireccion());
 	}
 

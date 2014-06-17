@@ -11,6 +11,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -112,6 +114,13 @@ public class Main extends JFrame {
 	 */
 	private void interfaz() {
 		// Ventana
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent we) {
+				if (new JConfirmacion().isAceptar())
+					System.exit(EXIT_ON_CLOSE);
+			}
+		});
 		setTitle(Constantes.TITULO_VENTANA);
 		setIconImage(Toolkit
 				.getDefaultToolkit()
@@ -121,7 +130,7 @@ public class Main extends JFrame {
 		setSize(new Dimension(1000, 550));
 		Util.estiloPorDefecto(this);
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		barraEstado = new BarraEstado();
 		barraEstado.setFont(Constantes.FUENTE_NEGRITA);
 		barraEstado.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
@@ -130,41 +139,25 @@ public class Main extends JFrame {
 
 		// Toolbar
 		JButton btnGuardar = new JButton();
-		btnGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				aceptar();
-			}
-		});
+		btnGuardar.addActionListener(ActionListener(0));
 		btnGuardar.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/ok.png")));
 		toolBar.add(btnGuardar);
 
 		JButton btnCancelar = new JButton();
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cancelar();
-			}
-		});
+		btnCancelar.addActionListener(ActionListener(1));
 		btnCancelar.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/cancelar.png")));
 		toolBar.add(btnCancelar);
 
 		btnEditar = new JButton();
-		btnEditar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				editar();
-			}
-		});
+		btnEditar.addActionListener(ActionListener(2));
 		btnEditar.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/editar.png")));
 		toolBar.add(btnEditar);
 
 		btnBorrar = new JButton();
-		btnBorrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				borrar();
-			}
-		});
+		btnBorrar.addActionListener(ActionListener(3));
 		btnBorrar.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/borrar.png")));
 		toolBar.add(btnBorrar);
@@ -200,11 +193,7 @@ public class Main extends JFrame {
 		tfBusqueda.setColumns(10);
 
 		btnCancelarbusqueda = new JButton();
-		btnCancelarbusqueda.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cancelarBusqueda();
-			}
-		});
+		btnCancelarbusqueda.addActionListener(ActionListener(4));
 		btnCancelarbusqueda.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/cancelar.png")));
 		toolBar.add(btnCancelarbusqueda);
@@ -356,7 +345,6 @@ public class Main extends JFrame {
 
 	// Metodos de botones
 	private void aceptar() {
-		barraEstado.vaciarTexto();
 		switch (tabbedPane.getSelectedIndex()) {
 		case 0:
 			if (tabClientes.mGuardar())
@@ -376,7 +364,6 @@ public class Main extends JFrame {
 			break;
 		default:
 		}
-		resetTextSearch(toolbarSearch);
 		setEnable(true);
 	}
 
@@ -396,13 +383,11 @@ public class Main extends JFrame {
 			break;
 		default:
 		}
-		resetTextSearch(toolbarSearch);
 		barraEstado.accionCancelada();
 		setEnable(true);
 	}
 
 	private void editar() {
-		barraEstado.vaciarTexto();
 		switch (tabbedPane.getSelectedIndex()) {
 		case 0:
 			if (tabClientes.mEditar())
@@ -422,11 +407,9 @@ public class Main extends JFrame {
 			break;
 		default:
 		}
-		resetTextSearch(toolbarSearch);
 	}
 
 	private void borrar() {
-		barraEstado.vaciarTexto();
 		switch (tabbedPane.getSelectedIndex()) {
 		case 0:
 			if (tabClientes.mEliminar())
@@ -446,7 +429,6 @@ public class Main extends JFrame {
 			break;
 		default:
 		}
-		resetTextSearch(toolbarSearch);
 	}
 
 	private void buscar(String filtro) {
@@ -469,7 +451,6 @@ public class Main extends JFrame {
 	}
 
 	private void cancelarBusqueda() {
-		barraEstado.vaciarTexto();
 		switch (tabbedPane.getSelectedIndex()) {
 		case 0:
 			tablaClientes.listar();
@@ -485,7 +466,6 @@ public class Main extends JFrame {
 			break;
 		default:
 		}
-		resetTextSearch(toolbarSearch);
 		barraEstado.accionCancelada();
 	}
 
@@ -514,5 +494,32 @@ public class Main extends JFrame {
 		btnCancelarbusqueda.setEnabled(estado);
 		tabbedPane.setEnabled(estado);
 		mnHerramientas.setEnabled(estado);
+	}
+
+	private ActionListener ActionListener(final int opcion) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				barraEstado.vaciarTexto();
+				resetTextSearch(toolbarSearch);
+				switch (opcion) {
+				case 0:
+					aceptar();
+					break;
+				case 1:
+					cancelar();
+					break;
+				case 2:
+					editar();
+					break;
+				case 3:
+					borrar();
+					break;
+				case 4:
+					cancelarBusqueda();
+					break;
+				default:
+				}
+			}
+		};
 	}
 }

@@ -26,13 +26,8 @@ public class TablaExtras extends Tabla {
 
 	// Variables graficas
 	private JCalendarCombo yearFabricacion;
-	private TextPropio tfMarca;
-	private TextPropio tfNombre;
-	private TextPropio tfModelo;
-	private TextPropio tfDescripcion;
-	private TextPropio tfOrigen;
-	private TextPropio tfDimensiones;
-	private TextPropio tfFabricante;
+	private TextPropio tfMarca, tfNombre, tfModelo, tfDescripcion, tfOrigen,
+			tfDimensiones, tfFabricante;
 
 	public TablaExtras(JCalendarCombo yearFabricacion, TextPropio tfMarca,
 			TextPropio tfNombre, TextPropio tfModelo, TextPropio tfDescripcion,

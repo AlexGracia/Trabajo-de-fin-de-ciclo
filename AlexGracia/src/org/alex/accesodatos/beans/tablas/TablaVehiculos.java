@@ -27,14 +27,10 @@ public class TablaVehiculos extends Tabla {
 	private DefaultTableModel modelo;
 
 	// Variables graficas
-	private TextPropio tfMatricula;
-	private TextPropio tfMarca;
-	private TextPropio tfModelo;
-	private TextPropio tfPotencia;
+	private TextPropio tfMatricula, tfMarca, tfModelo, tfPotencia, tfPuertas,
+			tfKilometros;
 	private JCalendarCombo yearFabricacion;
 	private ComboPropio cbColor;
-	private TextPropio tfPuertas;
-	private TextPropio tfKilometros;
 
 	public TablaVehiculos(TextPropio tfMatricula, TextPropio tfMarca,
 			TextPropio tfModelo, TextPropio tfPotencia,

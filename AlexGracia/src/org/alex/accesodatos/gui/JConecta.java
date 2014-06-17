@@ -1,23 +1,16 @@
 package org.alex.accesodatos.gui;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
-import javax.swing.border.EmptyBorder;
 
 import org.alex.accesodatos.beans.ComboPropio;
+import org.alex.accesodatos.beans.DialogPropio;
 import org.alex.accesodatos.util.Constantes;
 
 /**
@@ -25,7 +18,7 @@ import org.alex.accesodatos.util.Constantes;
  * 
  * @author Alex Gracia
  */
-public class JConecta extends JDialog {
+public class JConecta extends DialogPropio {
 
 	private static final long serialVersionUID = 1L;
 	private JPasswordField txtPass;
@@ -40,17 +33,20 @@ public class JConecta extends JDialog {
 	private Accion accion;
 	private ComboPropio comboPropio;
 
-	/**
-	 * El usuario ha pulsado aceptar. Se recogen los datos del formulario como
-	 * atributos de la clase y se esconde el formulario.
-	 */
-	private void aceptar() {
+	private ActionListener aceptar(final boolean aceptar) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 
-		user = comboPropio.getSelectedString();
-		pass = String.valueOf(txtPass.getPassword());
+				if (aceptar) {
+					user = comboPropio.getSelectedString();
+					pass = String.valueOf(txtPass.getPassword());
+					accion = Accion.ACEPTAR;
+				} else
+					accion = Accion.CANCELAR;
 
-		accion = Accion.ACEPTAR;
-		setVisible(false);
+				setVisible(false);
+			}
+		};
 	}
 
 	/*
@@ -86,18 +82,11 @@ public class JConecta extends JDialog {
 				accion = Accion.CANCELAR;
 			}
 		});
-		setIconImage(Toolkit
-				.getDefaultToolkit()
-				.getImage(
-						JConecta.class
-								.getResource("/org/alex/accesodatos/iconos/IconoAplicacion.png")));
-		setModal(true);
+
 		setTitle("Login");
 		setSize(new Dimension(250, 175));
-		getContentPane().setLayout(new BorderLayout());
-		JPanel contentPanel = new JPanel();
-		contentPanel.setBorder(new EmptyBorder(0, 0, 0, 0));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		setLocationRelativeTo(this);
+
 		contentPanel.setLayout(null);
 
 		JLabel lbUsuario = new JLabel("Usuario:");
@@ -123,39 +112,11 @@ public class JConecta extends JDialog {
 		contentPanel.add(txtPass);
 		txtPass.setColumns(10);
 		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton();
-				okButton.setIcon(new ImageIcon(JConecta.class
-						.getResource("/org/alex/accesodatos/iconos/ok.png")));
-				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent arg0) {
-						aceptar();
-					}
-				});
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("");
-				cancelButton
-						.setIcon(new ImageIcon(
-								JConecta.class
-										.getResource("/org/alex/accesodatos/iconos/cancelar.png")));
-				cancelButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						accion = Accion.CANCELAR;
-						setVisible(false);
-					}
-				});
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
+
+			okButton.addActionListener(aceptar(true));
+
+			cancelButton.addActionListener(aceptar(false));
 		}
 
-		setLocationRelativeTo(this);
 	}
 }

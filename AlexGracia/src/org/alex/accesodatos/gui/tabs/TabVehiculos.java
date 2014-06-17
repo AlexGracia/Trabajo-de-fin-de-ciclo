@@ -31,14 +31,10 @@ public class TabVehiculos extends JPanel {
 	private boolean esNuevo = true;
 
 	// Variables graficas
-	private TextPropio tfMatricula;
-	private TextPropio tfMarca;
-	private TextPropio tfModelo;
-	private TextPropio tfPotencia;
+	private TextPropio tfMatricula, tfMarca, tfModelo, tfPotencia, tfPuertas,
+			tfKilometros;
 	private JCalendarCombo yearFabricacion;
 	private ComboPropio cbColor;
-	private TextPropio tfPuertas;
-	private TextPropio tfKilometros;
 	private TablaVehiculos tablaVehiculo;
 
 	/**
@@ -241,6 +237,7 @@ public class TabVehiculos extends JPanel {
 	}
 
 	public void mCancelar() {
+		esNuevo = true;
 		mVaciarVehiculo();
 		tfMatricula.setEnabled(true);
 	}

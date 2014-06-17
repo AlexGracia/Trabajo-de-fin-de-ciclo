@@ -30,14 +30,9 @@ public class TabClientes extends JPanel {
 	private boolean esNuevo = true;
 
 	// Variables graficas
-	private TextPropio tfNombre;
-	private TextPropio tfDni;
-	private TextPropio tfTelefono;
-	private TextPropio tfDireccion;
-	private JCalendarCombo calendarNacimiento;
+	private TextPropio tfNombre, tfDni, tfTelefono, tfDireccion, tfApellidos;
+	private JCalendarCombo calendarNacimiento, calendarCarnet;
 	private TablaClientes tablaCliente;
-	private TextPropio tfApellidos;
-	private JCalendarCombo calendarCarnet;
 
 	/**
 	 * Constructor que prepara el interfaz.
@@ -220,6 +215,7 @@ public class TabClientes extends JPanel {
 	}
 
 	public void mCancelar() {
+		esNuevo = true;
 		mVaciarCliente();
 		tfNombre.setEnabled(true);
 	}
