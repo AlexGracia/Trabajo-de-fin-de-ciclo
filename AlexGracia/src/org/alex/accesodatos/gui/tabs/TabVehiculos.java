@@ -230,13 +230,14 @@ public class TabVehiculos extends JPanel {
 		return true;
 	}
 
-	public void mEditar() {
+	public boolean mEditar() {
 		if (!vehiculoSeleccionado())
-			return;
+			return false;
 
 		tfMatricula.setEnabled(false);
 
 		esNuevo = false;
+		return true;
 	}
 
 	public void mCancelar() {

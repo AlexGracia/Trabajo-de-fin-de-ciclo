@@ -241,11 +241,12 @@ public class TabPolizas extends JPanel {
 		return true;
 	}
 
-	public void mEditar() {
+	public boolean mEditar() {
 		if (!polizaSeleccionada())
-			return;
+			return false;
 
 		esNuevo = false;
+		return true;
 	}
 
 	public void mCancelar() {

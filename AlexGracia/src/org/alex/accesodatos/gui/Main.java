@@ -74,10 +74,12 @@ public class Main extends JFrame {
 	private TablaPolizas tablaPolizas;
 	private TabSiniestros tabSiniestros;
 	private JMenuBar menuBar;
+	private JMenu mnHerramientas;
 	private JTabbedPane tabbedPane;
 	private JTextField tfBusqueda;
 	private BarraEstado barraEstado;
 	private JToolBar toolBar;
+	private JButton btnEditar, btnBorrar, btnCancelarbusqueda;
 
 	/**
 	 * Launch the application.
@@ -147,7 +149,7 @@ public class Main extends JFrame {
 				.getResource("/org/alex/accesodatos/iconos/cancelar.png")));
 		toolBar.add(btnCancelar);
 
-		JButton btnEditar = new JButton();
+		btnEditar = new JButton();
 		btnEditar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				editar();
@@ -157,7 +159,7 @@ public class Main extends JFrame {
 				.getResource("/org/alex/accesodatos/iconos/editar.png")));
 		toolBar.add(btnEditar);
 
-		JButton btnBorrar = new JButton();
+		btnBorrar = new JButton();
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				borrar();
@@ -197,7 +199,7 @@ public class Main extends JFrame {
 		toolBar.add(tfBusqueda);
 		tfBusqueda.setColumns(10);
 
-		JButton btnCancelarbusqueda = new JButton();
+		btnCancelarbusqueda = new JButton();
 		btnCancelarbusqueda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				cancelarBusqueda();
@@ -237,7 +239,7 @@ public class Main extends JFrame {
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 
-		JMenu mnHerramientas = new JMenu("Herramientas");
+		mnHerramientas = new JMenu("Herramientas");
 		menuBar.add(mnHerramientas);
 
 		JMenuItem mntmPreferencias = new JMenuItem("Preferencias");
@@ -375,6 +377,7 @@ public class Main extends JFrame {
 		default:
 		}
 		resetTextSearch(toolbarSearch);
+		setEnable(true);
 	}
 
 	private void cancelar() {
@@ -395,22 +398,27 @@ public class Main extends JFrame {
 		}
 		resetTextSearch(toolbarSearch);
 		barraEstado.accionCancelada();
+		setEnable(true);
 	}
 
 	private void editar() {
 		barraEstado.vaciarTexto();
 		switch (tabbedPane.getSelectedIndex()) {
 		case 0:
-			tabClientes.mEditar();
+			if (tabClientes.mEditar())
+				setEnable(false);
 			break;
 		case 1:
-			tabVehiculos.mEditar();
+			if (tabVehiculos.mEditar())
+				setEnable(false);
 			break;
 		case 2:
-			tabExtras.mEditar();
+			if (tabExtras.mEditar())
+				setEnable(false);
 			break;
 		case 6:
-			tabPolizas.mEditar();
+			if (tabPolizas.mEditar())
+				setEnable(false);
 			break;
 		default:
 		}
@@ -497,5 +505,14 @@ public class Main extends JFrame {
 	private void controlErrorGrave(String mensaje) {
 		Util.setMensajeError(mensaje);
 		System.exit(ERROR);
+	}
+
+	private void setEnable(boolean estado) {
+		btnEditar.setEnabled(estado);
+		btnBorrar.setEnabled(estado);
+		tfBusqueda.setEditable(estado);
+		btnCancelarbusqueda.setEnabled(estado);
+		tabbedPane.setEnabled(estado);
+		mnHerramientas.setEnabled(estado);
 	}
 }

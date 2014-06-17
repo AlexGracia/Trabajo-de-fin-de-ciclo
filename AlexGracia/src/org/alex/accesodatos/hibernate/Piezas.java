@@ -1,6 +1,6 @@
 package org.alex.accesodatos.hibernate;
 
-// Generated 09-jun-2014 18:35:01 by Hibernate Tools 4.0.0
+// Generated 17-jun-2014 12:41:48 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -24,8 +24,8 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "piezas", catalog = "alex_gracia")
 public class Piezas implements java.io.Serializable {
-
 	private static final long serialVersionUID = 1L;
+
 	private Integer idPiezas;
 	private Integer codigoPiezas;
 	private String nombre;
@@ -41,10 +41,9 @@ public class Piezas implements java.io.Serializable {
 	public Piezas() {
 	}
 
-	public Piezas(String nombre, String lugarOrigen, Date fechaSolicitud) {
+	public Piezas(String nombre, String lugarOrigen) {
 		this.nombre = nombre;
 		this.lugarOrigen = lugarOrigen;
-		this.fechaSolicitud = fechaSolicitud;
 	}
 
 	public Piezas(Integer codigoPiezas, String nombre, String descripcion,
@@ -129,7 +128,7 @@ public class Piezas implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "FECHA_SOLICITUD", nullable = false, length = 10)
+	@Column(name = "FECHA_SOLICITUD", length = 10)
 	public Date getFechaSolicitud() {
 		return this.fechaSolicitud;
 	}

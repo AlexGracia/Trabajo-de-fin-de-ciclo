@@ -1,6 +1,6 @@
 package org.alex.accesodatos.hibernate;
 
-// Generated 09-jun-2014 18:35:01 by Hibernate Tools 4.0.0
+// Generated 17-jun-2014 12:41:48 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -26,12 +26,12 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "talleres", catalog = "alex_gracia", uniqueConstraints = @UniqueConstraint(columnNames = "CIF_EMPRESA"))
 public class Talleres implements java.io.Serializable {
-
 	private static final long serialVersionUID = 1L;
+
 	private Integer idTalleres;
 	private String nombre;
 	private String direccion;
-	private String telefono;
+	private Integer telefono;
 	private Date fechaInicio;
 	private String nombreJefe;
 	private String cifEmpresa;
@@ -43,16 +43,13 @@ public class Talleres implements java.io.Serializable {
 	public Talleres() {
 	}
 
-	public Talleres(String nombre, String direccion, String telefono,
-			String nombreJefe, String cifEmpresa) {
+	public Talleres(String nombre, String direccion, String cifEmpresa) {
 		this.nombre = nombre;
 		this.direccion = direccion;
-		this.telefono = telefono;
-		this.nombreJefe = nombreJefe;
 		this.cifEmpresa = cifEmpresa;
 	}
 
-	public Talleres(String nombre, String direccion, String telefono,
+	public Talleres(String nombre, String direccion, Integer telefono,
 			Date fechaInicio, String nombreJefe, String cifEmpresa,
 			Integer numeroTrabajadores, Integer cantidadReparaciones,
 			Set<Piezas> piezases, Set<Siniestros> siniestroses) {
@@ -97,12 +94,12 @@ public class Talleres implements java.io.Serializable {
 		this.direccion = direccion;
 	}
 
-	@Column(name = "TELEFONO", nullable = false, length = 200)
-	public String getTelefono() {
+	@Column(name = "TELEFONO")
+	public Integer getTelefono() {
 		return this.telefono;
 	}
 
-	public void setTelefono(String telefono) {
+	public void setTelefono(Integer telefono) {
 		this.telefono = telefono;
 	}
 
@@ -116,7 +113,7 @@ public class Talleres implements java.io.Serializable {
 		this.fechaInicio = fechaInicio;
 	}
 
-	@Column(name = "NOMBRE_JEFE", nullable = false, length = 100)
+	@Column(name = "NOMBRE_JEFE", length = 100)
 	public String getNombreJefe() {
 		return this.nombreJefe;
 	}

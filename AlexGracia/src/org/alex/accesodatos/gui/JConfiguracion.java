@@ -2,13 +2,13 @@ package org.alex.accesodatos.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Insets;
 import java.awt.Toolkit;
 
 import javax.swing.JDialog;
 import javax.swing.JTextArea;
 
 import org.alex.accesodatos.util.Constantes;
-import java.awt.Insets;
 
 /**
  * Dialogo con el que se puede configurar la conexion a la base de datos.

@@ -1,6 +1,6 @@
 package org.alex.accesodatos.hibernate;
 
-// Generated 09-jun-2014 18:35:01 by Hibernate Tools 4.0.0
+// Generated 17-jun-2014 12:41:48 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,8 +21,8 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "siniestros", catalog = "alex_gracia")
 public class Siniestros implements java.io.Serializable {
-
 	private static final long serialVersionUID = 1L;
+
 	private Integer idSiniestros;
 	private Clientes clientes;
 	private Talleres talleres;
@@ -38,16 +38,9 @@ public class Siniestros implements java.io.Serializable {
 	public Siniestros() {
 	}
 
-	public Siniestros(Clientes clientes, Talleres talleres, String datosPoliza,
-			String datosCliente, Date fechaReparacion, String datosTaller,
-			Date fechaSiniestro) {
+	public Siniestros(Clientes clientes, Talleres talleres) {
 		this.clientes = clientes;
 		this.talleres = talleres;
-		this.datosPoliza = datosPoliza;
-		this.datosCliente = datosCliente;
-		this.fechaReparacion = fechaReparacion;
-		this.datosTaller = datosTaller;
-		this.fechaSiniestro = fechaSiniestro;
 	}
 
 	public Siniestros(Clientes clientes, Talleres talleres, String datosPoliza,
@@ -97,7 +90,7 @@ public class Siniestros implements java.io.Serializable {
 		this.talleres = talleres;
 	}
 
-	@Column(name = "DATOS_POLIZA", nullable = false, length = 200)
+	@Column(name = "DATOS_POLIZA", length = 200)
 	public String getDatosPoliza() {
 		return this.datosPoliza;
 	}
@@ -115,7 +108,7 @@ public class Siniestros implements java.io.Serializable {
 		this.importeReparacion = importeReparacion;
 	}
 
-	@Column(name = "DATOS_CLIENTE", nullable = false, length = 200)
+	@Column(name = "DATOS_CLIENTE", length = 200)
 	public String getDatosCliente() {
 		return this.datosCliente;
 	}
@@ -125,7 +118,7 @@ public class Siniestros implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "FECHA_REPARACION", nullable = false, length = 10)
+	@Column(name = "FECHA_REPARACION", length = 10)
 	public Date getFechaReparacion() {
 		return this.fechaReparacion;
 	}
@@ -134,7 +127,7 @@ public class Siniestros implements java.io.Serializable {
 		this.fechaReparacion = fechaReparacion;
 	}
 
-	@Column(name = "DATOS_TALLER", nullable = false, length = 200)
+	@Column(name = "DATOS_TALLER", length = 200)
 	public String getDatosTaller() {
 		return this.datosTaller;
 	}
@@ -144,7 +137,7 @@ public class Siniestros implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "FECHA_SINIESTRO", nullable = false, length = 19)
+	@Column(name = "FECHA_SINIESTRO", length = 19)
 	public Date getFechaSiniestro() {
 		return this.fechaSiniestro;
 	}

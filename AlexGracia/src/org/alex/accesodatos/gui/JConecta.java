@@ -6,6 +6,8 @@ import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,8 +19,6 @@ import javax.swing.border.EmptyBorder;
 
 import org.alex.accesodatos.beans.ComboPropio;
 import org.alex.accesodatos.util.Constantes;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 /**
  * Diálogo para recoger los datos de conexión con un SGBD
@@ -86,7 +86,6 @@ public class JConecta extends JDialog {
 				accion = Accion.CANCELAR;
 			}
 		});
-
 		setIconImage(Toolkit
 				.getDefaultToolkit()
 				.getImage(

@@ -198,13 +198,14 @@ public class TabExtras extends JPanel {
 		return true;
 	}
 
-	public void mEditar() {
+	public boolean mEditar() {
 		if (!extraSeleccionado())
-			return;
+			return false;
 
 		tfNombre.setEnabled(false);
 
 		esNuevo = false;
+		return true;
 	}
 
 	public void mCancelar() {

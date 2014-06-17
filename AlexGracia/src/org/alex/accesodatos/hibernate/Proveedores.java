@@ -1,6 +1,6 @@
 package org.alex.accesodatos.hibernate;
 
-// Generated 09-jun-2014 18:35:01 by Hibernate Tools 4.0.0
+// Generated 17-jun-2014 12:41:48 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -25,8 +25,8 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "proveedores", catalog = "alex_gracia", uniqueConstraints = @UniqueConstraint(columnNames = "DNI"))
 public class Proveedores implements java.io.Serializable {
-
 	private static final long serialVersionUID = 1L;
+
 	private Integer idProveedores;
 	private String nombre;
 	private String telefono;
@@ -41,13 +41,12 @@ public class Proveedores implements java.io.Serializable {
 	public Proveedores() {
 	}
 
-	public Proveedores(String nombre, String telefono,
-			String correoElectronico, String facilidadPago, String nombreEmpresa) {
+	public Proveedores(String nombre, String telefono, String nombreEmpresa,
+			String dni) {
 		this.nombre = nombre;
 		this.telefono = telefono;
-		this.correoElectronico = correoElectronico;
-		this.facilidadPago = facilidadPago;
 		this.nombreEmpresa = nombreEmpresa;
+		this.dni = dni;
 	}
 
 	public Proveedores(String nombre, String telefono,
@@ -94,7 +93,7 @@ public class Proveedores implements java.io.Serializable {
 		this.telefono = telefono;
 	}
 
-	@Column(name = "CORREO_ELECTRONICO", nullable = false, length = 150)
+	@Column(name = "CORREO_ELECTRONICO", length = 100)
 	public String getCorreoElectronico() {
 		return this.correoElectronico;
 	}
@@ -122,7 +121,7 @@ public class Proveedores implements java.io.Serializable {
 		this.direccion = direccion;
 	}
 
-	@Column(name = "FACILIDAD_PAGO", nullable = false, length = 200)
+	@Column(name = "FACILIDAD_PAGO", length = 10)
 	public String getFacilidadPago() {
 		return this.facilidadPago;
 	}
@@ -140,7 +139,7 @@ public class Proveedores implements java.io.Serializable {
 		this.nombreEmpresa = nombreEmpresa;
 	}
 
-	@Column(name = "DNI", unique = true, length = 20)
+	@Column(name = "DNI", unique = true, nullable = false, length = 9)
 	public String getDni() {
 		return this.dni;
 	}

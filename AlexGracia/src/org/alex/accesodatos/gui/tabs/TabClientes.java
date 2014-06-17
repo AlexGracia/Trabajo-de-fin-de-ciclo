@@ -209,13 +209,14 @@ public class TabClientes extends JPanel {
 		return true;
 	}
 
-	public void mEditar() {
+	public boolean mEditar() {
 		if (!clienteSeleccionado())
-			return;
+			return false;
 
 		tfNombre.setEnabled(false);
 
 		esNuevo = false;
+		return true;
 	}
 
 	public void mCancelar() {
