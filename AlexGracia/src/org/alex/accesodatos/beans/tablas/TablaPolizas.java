@@ -47,12 +47,8 @@ public class TablaPolizas extends Tabla {
 
 		addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				try {
-					pintarDatos();
-				} catch (NullPointerException npe) {
-					npe.printStackTrace();
-				}
+			public void mouseClicked(MouseEvent me) {
+				pintarDatos();
 			}
 		});
 
@@ -91,20 +87,22 @@ public class TablaPolizas extends Tabla {
 	}
 
 	private void pintarDatos() {
-		Polizas PolizaSeleccionada = getPolizaSeleccionada();
+		if (getPolizaSeleccionada() == null)
+			return;
 
-		cbTipo.setSelectedItem(PolizaSeleccionada.getTipo());
-		tfImporte.setText(String.valueOf(PolizaSeleccionada.getImporte()));
-		cbEstado.setSelectedItem(PolizaSeleccionada.getEstado());
-		dateInicio.setDate(PolizaSeleccionada.getFechaInicio());
-		tfConductores.setText(String.valueOf(PolizaSeleccionada
+		cbTipo.setSelectedItem(getPolizaSeleccionada().getTipo());
+		tfImporte.setText(String.valueOf(getPolizaSeleccionada().getImporte()));
+		cbEstado.setSelectedItem(getPolizaSeleccionada().getEstado());
+		dateInicio.setDate(getPolizaSeleccionada().getFechaInicio());
+		tfConductores.setText(String.valueOf(getPolizaSeleccionada()
 				.getCantidadConductores()));
-		dateConduccion.setDate(PolizaSeleccionada.getAntiguedadConduccion());
-		dateFin.setDate(PolizaSeleccionada.getFechaFin());
-		tfCliente.setText(String.valueOf(PolizaSeleccionada.getClientes()
+		dateConduccion.setDate(getPolizaSeleccionada()
+				.getAntiguedadConduccion());
+		dateFin.setDate(getPolizaSeleccionada().getFechaFin());
+		tfCliente.setText(String.valueOf(getPolizaSeleccionada().getClientes()
 				.getIdClientes()));
-		tfVehiculo.setText(String.valueOf(PolizaSeleccionada.getVehiculos()
-				.getIdVehiculos()));
+		tfVehiculo.setText(String.valueOf(getPolizaSeleccionada()
+				.getVehiculos().getIdVehiculos()));
 
 	}
 

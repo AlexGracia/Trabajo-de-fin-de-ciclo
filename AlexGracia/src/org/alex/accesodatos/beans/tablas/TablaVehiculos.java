@@ -48,12 +48,8 @@ public class TablaVehiculos extends Tabla {
 
 		addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				try {
-					pintarDatos();
-				} catch (NullPointerException npe) {
-					npe.printStackTrace();
-				}
+			public void mouseClicked(MouseEvent me) {
+				pintarDatos();
 			}
 		});
 
@@ -92,17 +88,19 @@ public class TablaVehiculos extends Tabla {
 	}
 
 	private void pintarDatos() {
-		Vehiculos VehiculoSeleccionado = getVehiculoSeleccionado();
+		if (getVehiculoSeleccionado() == null)
+			return;
 
-		tfMatricula.setText(VehiculoSeleccionado.getMatricula());
-		tfMarca.setText(VehiculoSeleccionado.getMarca());
-		tfModelo.setText(VehiculoSeleccionado.getModelo());
-		tfPotencia.setText(String.valueOf(VehiculoSeleccionado.getPotencia()));
-		yearFabricacion.setDate(VehiculoSeleccionado.getAnoFabricacion());
-		cbColor.setSelectedItem(VehiculoSeleccionado.getColor());
-		tfPuertas.setText(String.valueOf(VehiculoSeleccionado
+		tfMatricula.setText(getVehiculoSeleccionado().getMatricula());
+		tfMarca.setText(getVehiculoSeleccionado().getMarca());
+		tfModelo.setText(getVehiculoSeleccionado().getModelo());
+		tfPotencia.setText(String.valueOf(getVehiculoSeleccionado()
+				.getPotencia()));
+		yearFabricacion.setDate(getVehiculoSeleccionado().getAnoFabricacion());
+		cbColor.setSelectedItem(getVehiculoSeleccionado().getColor());
+		tfPuertas.setText(String.valueOf(getVehiculoSeleccionado()
 				.getNumeroPuertas()));
-		tfKilometros.setText(String.valueOf(VehiculoSeleccionado
+		tfKilometros.setText(String.valueOf(getVehiculoSeleccionado()
 				.getKilometros()));
 	}
 

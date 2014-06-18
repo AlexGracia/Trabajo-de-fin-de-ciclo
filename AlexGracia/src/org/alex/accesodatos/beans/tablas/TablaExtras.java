@@ -45,12 +45,8 @@ public class TablaExtras extends Tabla {
 
 		addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				try {
-					pintarDatos();
-				} catch (NullPointerException npe) {
-					npe.printStackTrace();
-				}
+			public void mouseClicked(MouseEvent me) {
+				pintarDatos();
 			}
 		});
 
@@ -84,16 +80,17 @@ public class TablaExtras extends Tabla {
 	}
 
 	private void pintarDatos() {
-		Extras ExtraSeleccionado = getExtraSeleccionado();
+		if (getExtraSeleccionado() == null)
+			return;
 
-		yearFabricacion.setDate(ExtraSeleccionado.getAnoFabricacion());
-		tfMarca.setText(ExtraSeleccionado.getMarca());
-		tfNombre.setText(ExtraSeleccionado.getNombre());
-		tfModelo.setText(ExtraSeleccionado.getModelo());
-		tfDescripcion.setText(ExtraSeleccionado.getDescripcion());
-		tfOrigen.setText(ExtraSeleccionado.getLugarOrigen());
-		tfDimensiones.setText(ExtraSeleccionado.getDimensiones());
-		tfFabricante.setText(ExtraSeleccionado.getFabricante());
+		yearFabricacion.setDate(getExtraSeleccionado().getAnoFabricacion());
+		tfMarca.setText(getExtraSeleccionado().getMarca());
+		tfNombre.setText(getExtraSeleccionado().getNombre());
+		tfModelo.setText(getExtraSeleccionado().getModelo());
+		tfDescripcion.setText(getExtraSeleccionado().getDescripcion());
+		tfOrigen.setText(getExtraSeleccionado().getLugarOrigen());
+		tfDimensiones.setText(getExtraSeleccionado().getDimensiones());
+		tfFabricante.setText(getExtraSeleccionado().getFabricante());
 	}
 
 	public Extras getExtraSeleccionado() {

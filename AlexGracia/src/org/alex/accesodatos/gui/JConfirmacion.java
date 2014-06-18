@@ -18,7 +18,7 @@ public class JConfirmacion extends DialogPropio {
 	/**
 	 * Create the dialog.
 	 */
-	public JConfirmacion() {
+	public JConfirmacion(String titulo) {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent we) {
@@ -26,7 +26,7 @@ public class JConfirmacion extends DialogPropio {
 			}
 		});
 
-		setTitle("Salir");
+		setTitle(titulo);
 		setSize(new Dimension(180, 120));
 		setLocationRelativeTo(this);
 

@@ -10,6 +10,7 @@ import javax.swing.JTabbedPane;
 import org.alex.accesodatos.beans.LabelPropio;
 import org.alex.accesodatos.beans.TextPropio;
 import org.alex.accesodatos.beans.tablas.TablaExtras;
+import org.alex.accesodatos.gui.JConfirmacion;
 import org.alex.accesodatos.hibernate.Extras;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
@@ -138,7 +139,7 @@ public class TabExtras extends JPanel {
 
 	public boolean mEliminar() {
 
-		if (!extraSeleccionado())
+		if (!extraSeleccionado() || !new JConfirmacion("Borrar").isAceptar())
 			return false;
 
 		Extras extra = tablaExtras.getExtraSeleccionado();

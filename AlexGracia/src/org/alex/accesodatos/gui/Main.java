@@ -117,7 +117,7 @@ public class Main extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent we) {
-				if (new JConfirmacion().isAceptar())
+				if (new JConfirmacion("Salir").isAceptar())
 					System.exit(EXIT_ON_CLOSE);
 			}
 		});

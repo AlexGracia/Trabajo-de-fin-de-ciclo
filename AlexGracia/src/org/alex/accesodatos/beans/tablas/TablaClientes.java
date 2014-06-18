@@ -44,12 +44,8 @@ public class TablaClientes extends Tabla {
 
 		addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				try {
-					pintarDatos();
-				} catch (NullPointerException npe) {
-					npe.printStackTrace();
-				}
+			public void mouseClicked(MouseEvent me) {
+				pintarDatos();
 			}
 		});
 
@@ -91,19 +87,21 @@ public class TablaClientes extends Tabla {
 	}
 
 	private void pintarDatos() {
-		Clientes clienteSeleccionado = getClienteSeleccionado();
+		if (getClienteSeleccionado() == null)
+			return;
 
-		tfNombre.setText(clienteSeleccionado.getNombre());
-		tfApellidos.setText(clienteSeleccionado.getApellidos());
-		tfDni.setText(clienteSeleccionado.getDni());
-		tfTelefono.setText(String.valueOf(clienteSeleccionado.getTelefono()));
-		calendarNacimiento.setDate(clienteSeleccionado.getFechaNacimiento());
-		calendarCarnet.setDate(clienteSeleccionado.getFechaCarnet());
-		tfDireccion.setText(clienteSeleccionado.getDireccion());
+		tfNombre.setText(getClienteSeleccionado().getNombre());
+		tfApellidos.setText(getClienteSeleccionado().getApellidos());
+		tfDni.setText(getClienteSeleccionado().getDni());
+		tfTelefono.setText(String.valueOf(getClienteSeleccionado()
+				.getTelefono()));
+		calendarNacimiento.setDate(getClienteSeleccionado()
+				.getFechaNacimiento());
+		calendarCarnet.setDate(getClienteSeleccionado().getFechaCarnet());
+		tfDireccion.setText(getClienteSeleccionado().getDireccion());
 	}
 
 	public Clientes getClienteSeleccionado() {
-
 		int fila = getSelectedRow();
 		if (fila == -1)
 			return null;
@@ -112,7 +110,6 @@ public class TablaClientes extends Tabla {
 
 		return (Clientes) HibernateUtil.getCurrentSession().get(Clientes.class,
 				id);
-
 	}
 
 }

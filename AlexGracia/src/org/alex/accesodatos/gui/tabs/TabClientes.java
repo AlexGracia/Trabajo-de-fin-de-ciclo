@@ -11,6 +11,7 @@ import javax.swing.JTabbedPane;
 import org.alex.accesodatos.beans.LabelPropio;
 import org.alex.accesodatos.beans.TextPropio;
 import org.alex.accesodatos.beans.tablas.TablaClientes;
+import org.alex.accesodatos.gui.JConfirmacion;
 import org.alex.accesodatos.hibernate.Clientes;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
@@ -135,7 +136,7 @@ public class TabClientes extends JPanel {
 
 	public boolean mEliminar() {
 
-		if (!clienteSeleccionado())
+		if (!clienteSeleccionado() || !new JConfirmacion("Borrar").isAceptar())
 			return false;
 
 		Clientes cliente = tablaCliente.getClienteSeleccionado();
