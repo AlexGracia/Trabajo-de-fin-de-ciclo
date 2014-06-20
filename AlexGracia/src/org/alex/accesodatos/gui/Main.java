@@ -95,7 +95,8 @@ public class Main extends JFrame {
 					window = new Main();
 					window.setVisible(true);
 				} catch (Exception e) {
-					window.controlErrorGrave("Error de la muerte.");
+					e.printStackTrace();
+					controlErrorGrave("Error de la muerte.");
 				}
 			}
 		});
@@ -105,8 +106,9 @@ public class Main extends JFrame {
 	 * Create the application.
 	 */
 	public Main() {
+		conectar();
 		interfaz();
-		baseDeDatos();
+		finalizandoCarga();
 	}
 
 	/**
@@ -254,27 +256,7 @@ public class Main extends JFrame {
 		tabSiniestros = new TabSiniestros(tabbedPane);
 	}
 
-	private void baseDeDatos() {
-		conectar();
-
-		// Probar que MySQL está bien
-		try {
-			HibernateUtil.getQuery(
-					"select u.rango from Users u where rango = 'user'")
-					.uniqueResult();
-		} catch (GenericJDBCException ge) {
-			controlErrorConexion("User o password de MySQL no válidos.\n"
-					+ "Valores por defecto:\n" + "User: root\n"
-					+ "Password: \n"
-					+ "\nModifique si quiere el archivo 'hibernate.cfg',\n"
-					+ "apartado 'connection.password'");
-		} catch (JDBCConnectionException ce) {
-			controlErrorConexion("Posibles causas:\n"
-					+ "1. Programa MySQL no instalado.\n"
-					+ "2. Servicio MySQL inoperativo.");
-		} catch (SQLGrammarException sqe) {
-			controlErrorConexion("Base de datos, alex_gracia, no encontrada.");
-		}
+	private void finalizandoCarga() {
 
 		if (!start.esLento())
 			try {
@@ -337,6 +319,22 @@ public class Main extends JFrame {
 		try {
 			HibernateUtil.buildSessionFactory();
 			HibernateUtil.openSession();
+			// Probar que MySQL está bien
+			HibernateUtil.getQuery(
+					"select u.rango from Users u where rango = 'user'")
+					.uniqueResult();
+		} catch (GenericJDBCException ge) {
+			controlErrorConexion("User o password de MySQL no válidos.\n"
+					+ "Valores por defecto:\n" + "User: root\n"
+					+ "Password: \n"
+					+ "\nModifique si quiere el archivo 'hibernate.cfg',\n"
+					+ "apartado 'connection.password'");
+		} catch (JDBCConnectionException ce) {
+			controlErrorConexion("Posibles causas:\n"
+					+ "1. Programa MySQL no instalado.\n"
+					+ "2. Servicio MySQL inoperativo.");
+		} catch (SQLGrammarException sqe) {
+			controlErrorConexion("Base de datos, alex_gracia, no encontrada.");
 
 		} catch (HibernateException he) {
 			controlErrorGrave("Error de la muerte, Hibernate.");
@@ -347,12 +345,16 @@ public class Main extends JFrame {
 	private void aceptar() {
 		switch (tabbedPane.getSelectedIndex()) {
 		case 0:
-			if (tabClientes.mGuardar())
+			if (tabClientes.mGuardar()) {
+				tabPolizas.resetComboClientes();
 				barraEstado.accionRealizada();
+			}
 			break;
 		case 1:
-			if (tabVehiculos.mGuardar())
+			if (tabVehiculos.mGuardar()) {
+				tabPolizas.resetComboVehiculos();
 				barraEstado.accionRealizada();
+			}
 			break;
 		case 2:
 			if (tabExtras.mGuardar())
@@ -412,12 +414,16 @@ public class Main extends JFrame {
 	private void borrar() {
 		switch (tabbedPane.getSelectedIndex()) {
 		case 0:
-			if (tabClientes.mEliminar())
+			if (tabClientes.mEliminar()) {
+				tabPolizas.resetComboClientes();
 				barraEstado.accionRealizada();
+			}
 			break;
 		case 1:
-			if (tabVehiculos.mEliminar())
+			if (tabVehiculos.mEliminar()) {
+				tabPolizas.resetComboVehiculos();
 				barraEstado.accionRealizada();
+			}
 			break;
 		case 2:
 			if (tabExtras.mEliminar())
@@ -482,7 +488,7 @@ public class Main extends JFrame {
 		controlErrorGrave(mensaje);
 	}
 
-	private void controlErrorGrave(String mensaje) {
+	private static void controlErrorGrave(String mensaje) {
 		Util.setMensajeError(mensaje);
 		System.exit(ERROR);
 	}

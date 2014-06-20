@@ -26,14 +26,15 @@ public class TablaPolizas extends Tabla {
 	private DefaultTableModel modelo;
 
 	// Variables graficas
-	private ComboPropio cbTipo, cbEstado;
-	private TextPropio tfImporte, tfConductores, tfCliente, tfVehiculo;
+	private ComboPropio cbTipo, cbEstado, cbCliente, cbVehiculo;
+	private TextPropio tfImporte, tfConductores;
 	private JCalendarCombo dateInicio, dateConduccion, dateFin;
 
 	public TablaPolizas(ComboPropio cbTipo, TextPropio tfImporte,
 			ComboPropio cbEstado, JCalendarCombo dateInicio,
 			TextPropio tfConductores, JCalendarCombo dateConduccion,
-			JCalendarCombo dateFin, TextPropio tfCliente, TextPropio tfVehiculo) {
+			JCalendarCombo dateFin, ComboPropio cbCliente,
+			ComboPropio cbVehiculo) {
 
 		this.cbTipo = cbTipo;
 		this.tfImporte = tfImporte;
@@ -42,8 +43,8 @@ public class TablaPolizas extends Tabla {
 		this.tfConductores = tfConductores;
 		this.dateConduccion = dateConduccion;
 		this.dateFin = dateFin;
-		this.tfCliente = tfCliente;
-		this.tfVehiculo = tfVehiculo;
+		this.cbCliente = cbCliente;
+		this.cbVehiculo = cbVehiculo;
 
 		addMouseListener(new MouseAdapter() {
 			@Override
@@ -99,10 +100,10 @@ public class TablaPolizas extends Tabla {
 		dateConduccion.setDate(getPolizaSeleccionada()
 				.getAntiguedadConduccion());
 		dateFin.setDate(getPolizaSeleccionada().getFechaFin());
-		tfCliente.setText(String.valueOf(getPolizaSeleccionada().getClientes()
-				.getIdClientes()));
-		tfVehiculo.setText(String.valueOf(getPolizaSeleccionada()
-				.getVehiculos().getIdVehiculos()));
+		cbCliente.setSelectedItem(getPolizaSeleccionada().getClientes()
+				.getIdClientes());
+		cbVehiculo.setSelectedItem(getPolizaSeleccionada().getVehiculos()
+				.getIdVehiculos());
 
 	}
 

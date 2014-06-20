@@ -1,5 +1,6 @@
 package org.alex.accesodatos.gui.tabs;
 
+import java.util.List;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -34,8 +35,8 @@ public class TabPolizas extends JPanel {
 	private boolean esNuevo = true;
 
 	// Variables graficas
-	private ComboPropio cbTipo, cbEstado;
-	private TextPropio tfImporte, tfConductores, tfCliente, tfVehiculo;
+	private ComboPropio cbTipo, cbEstado, cbCliente, cbVehiculo;
+	private TextPropio tfImporte, tfConductores;
 	private JCalendarCombo dateInicio, dateConduccion, dateFin;
 	private TablaPolizas tablaPolizas;
 
@@ -129,27 +130,24 @@ public class TabPolizas extends JPanel {
 		dateFin.setBounds(181, 309, 120, 26);
 		add(dateFin);
 
-		tfCliente = new TextPropio();
-		RestrictedSimple.soloNumeros(tfCliente);
-		tfCliente.setBounds(525, 307, 120, 26);
-		add(tfCliente);
-		tfCliente.setColumns(10);
+		cbCliente = new ComboPropio();
+		resetComboClientes();
+		cbCliente.setBounds(490, 307, 120, 26);
+		add(cbCliente);
 
-		tfVehiculo = new TextPropio();
-		RestrictedSimple.soloNumeros(tfVehiculo);
-		tfVehiculo.setBounds(525, 355, 120, 26);
-		add(tfVehiculo);
-		tfVehiculo.setColumns(10);
+		cbVehiculo = new ComboPropio();
+		resetComboVehiculos();
+		cbVehiculo.setBounds(490, 357, 120, 26);
+		add(cbVehiculo);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(355, 18, 625, 269);
 		add(scrollPane);
 
 		tablaPolizas = new TablaPolizas(cbTipo, tfImporte, cbEstado,
-				dateInicio, tfConductores, dateConduccion, dateFin, tfCliente,
-				tfVehiculo);
+				dateInicio, tfConductores, dateConduccion, dateFin, cbCliente,
+				cbVehiculo);
 		scrollPane.setViewportView(tablaPolizas);
-
 	}
 
 	public void mBuscarPoliza(String filtro) {
@@ -178,8 +176,8 @@ public class TabPolizas extends JPanel {
 
 	public boolean mGuardar() {
 		// Variables
-		String id_cliente = tfCliente.getText();
-		String id_vehiculo = tfVehiculo.getText();
+		String id_cliente = cbCliente.getSelectedString();
+		String id_vehiculo = cbVehiculo.getSelectedString();
 
 		if (id_cliente.equals("") || id_vehiculo.equals("")) {
 			Util.setMensajeInformacion("Rellene los campos obligatorios (*)");
@@ -190,12 +188,6 @@ public class TabPolizas extends JPanel {
 				Clientes.class, Integer.parseInt(id_cliente));
 		Vehiculos vehiculo = (Vehiculos) HibernateUtil.getCurrentSession().get(
 				Vehiculos.class, Integer.parseInt(id_vehiculo));
-		if (cliente == null || vehiculo == null) {
-			Util.setMensajeError("Introduzca referencias existentes.");
-			tfCliente.setText("");
-			tfVehiculo.setText("");
-			return false;
-		}
 
 		Polizas poliza;
 		if (esNuevo)
@@ -259,8 +251,8 @@ public class TabPolizas extends JPanel {
 		tfConductores.setText("");
 		dateConduccion.setDate(date);
 		dateFin.setDate(date);
-		tfCliente.setText("");
-		tfVehiculo.setText("");
+		cbCliente.setSelectedIndex(0);
+		cbVehiculo.setSelectedIndex(0);
 
 	}
 
@@ -275,5 +267,32 @@ public class TabPolizas extends JPanel {
 		}
 
 		return true;
+	}
+
+	// TODO ordenar combos.
+	/**
+	 * Resetea el combo cbCliente.
+	 */
+	@SuppressWarnings("unchecked")
+	public void resetComboClientes() {
+		cbCliente.removeAllItems();
+		cbCliente.addItem("");
+		List<String> listaClientes = HibernateUtil.getQuery(
+				"select c.idClientes from Clientes c").list();
+		for (int i = 0; i < listaClientes.size(); i++)
+			cbCliente.addItem(String.valueOf(listaClientes.get(i)));
+	}
+
+	/**
+	 * Resetea el combo cbVehiculo.
+	 */
+	@SuppressWarnings("unchecked")
+	public void resetComboVehiculos() {
+		cbVehiculo.removeAllItems();
+		cbVehiculo.addItem("");
+		List<String> listaVehiculos = HibernateUtil.getQuery(
+				"select v.idVehiculos from Vehiculos v").list();
+		for (int i = 0; i < listaVehiculos.size(); i++)
+			cbVehiculo.addItem(String.valueOf(listaVehiculos.get(i)));
 	}
 }
