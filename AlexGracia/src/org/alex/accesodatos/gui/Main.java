@@ -106,7 +106,6 @@ public class Main extends JFrame {
 	 * Create the application.
 	 */
 	public Main() {
-		conectar();
 		interfaz();
 		finalizandoCarga();
 	}
@@ -133,6 +132,9 @@ public class Main extends JFrame {
 		Util.estiloPorDefecto(this);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
+		conectar();
+
 		barraEstado = new BarraEstado();
 		barraEstado.setFont(Constantes.FUENTE_NEGRITA);
 		barraEstado.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);

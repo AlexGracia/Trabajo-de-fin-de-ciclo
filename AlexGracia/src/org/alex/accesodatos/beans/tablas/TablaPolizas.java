@@ -100,10 +100,10 @@ public class TablaPolizas extends Tabla {
 		dateConduccion.setDate(getPolizaSeleccionada()
 				.getAntiguedadConduccion());
 		dateFin.setDate(getPolizaSeleccionada().getFechaFin());
-		cbCliente.setSelectedItem(getPolizaSeleccionada().getClientes()
-				.getIdClientes());
-		cbVehiculo.setSelectedItem(getPolizaSeleccionada().getVehiculos()
-				.getIdVehiculos());
+		cbCliente.setSelectedItem(String.valueOf(getPolizaSeleccionada()
+				.getClientes().getIdClientes()));
+		cbVehiculo.setSelectedItem(String.valueOf(getPolizaSeleccionada()
+				.getVehiculos().getIdVehiculos()));
 
 	}
 
