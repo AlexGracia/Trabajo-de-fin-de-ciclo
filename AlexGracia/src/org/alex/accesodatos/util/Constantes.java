@@ -6,8 +6,6 @@ import java.awt.Font;
  * Clase con variables globales.
  * 
  * @author Alex Gracia
- * @Por_hacer TODO Piezas, Proveedores, Talleres, Siniestros.
- * 
  */
 public class Constantes {
 	public final static String[] rangos = { "user", "admin", "tecnic" };
@@ -27,14 +25,27 @@ public class Constantes {
 	public final static String[] TEXTO_EXTRAS = { "Extras", "Año-fabricación",
 			"Marca", "Nombre *", "Modelo *", "Descripción", "Lugar de origen",
 			"Dimensiones *", "Fabricante", "Nombre, Modelo" };
-	public final static String[] TEXTO_PIEZAS = { "" };
-	public final static String[] TEXTO_PROVEEDORES = { "" };
-	public final static String[] TEXTO_TALLERES = { "" };
+	// TODO add search bar text
+	public final static String[] TEXTO_PIEZAS = { "Piezas", "Nombre *",
+			"Descripción", "Cantidad", "Precio", "Origen *", "F. Solicitud",
+			"Marca", "" };
+	public final static String[] TEXTO_PROVEEDORES = { "Proveedores",
+			"Nombre *", "Teléfono *", "Correo", "F. Nacimiento", "Dirección",
+			"Pago", "Nombre-Empresa *", "DNI *", "" };
+	public final static String[] TEXTO_TALLERES = { "Talleres", "Nombre *",
+			"Dirección *", "Teléfono", "F. Inicio", "Nombre-Jefe",
+			"CIF-Empresa *", "Trabajadores", "Reparaciones", "" };
+
 	public final static String[] TEXTO_POLIZAS = { "Pólizas", "Tipo",
 			"Importe", "Estado ", "F. Inicio", "Conductores", "Antigüedad",
-			"F. Fin", "id (cliente) *", "id (vehículo) *",
-			"id (cliente), id (vehículo)" };
-	public final static String[] TEXTO_SINIESTROS = { "" };
+			"F. Fin", "Id (cliente) *", "Id (vehículo) *",
+			"Id (cliente), Id (vehículo)" };
+	// TODO add search bar text
+	public final static String[] TEXTO_SINIESTROS = { "Siniestros",
+			"Datos-Póliza", "Importe-Reparación", "Datos-Cliente",
+			"F. Reparación", "Datos-Taller", "F. Siniestro",
+			"Vehiculos-Implicados", "Id (cliente) *", "Id (taller) *",
+			"Clientes heridos", "" };
 
 	public final static String[] COLUMNAS_CLIENTE = { "Id", "Código", "Nombre",
 			"Apellidos", "DNI", "Teléfono", "Nacimiento", "Carnet", "Dirección" };
