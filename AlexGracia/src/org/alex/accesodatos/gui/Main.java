@@ -273,6 +273,7 @@ public class Main extends JFrame {
 			;
 		conecta.dispose();
 
+		// TODO resto de tablas
 		tablaClientes.listar();
 		tablaVehiculos.listar();
 		tablaExtras.listar();
@@ -285,31 +286,27 @@ public class Main extends JFrame {
 		if (conecta.mostrarDialogo() != JConecta.Accion.ACEPTAR)
 			System.exit(0);
 
-		String user = conecta.getUser();
-		String pass = conecta.getPass();
-
 		String query = (String) HibernateUtil.getQuery(
-				"select u.rango from Users u where login = '" + user
-						+ "' and password = '" + pass + "'").uniqueResult();
+				"select u.rango from Users u where login = '"
+						+ conecta.getUser() + "' and password = '"
+						+ conecta.getPass() + "'").uniqueResult();
 
-		try {
-
-			byte i = 0;
-			// Amoldar la interfaz segun el usuario introducido
-			if (query.equals(Constantes.rangos[i++])) {
-				menuBar.setVisible(false);
-				setTitle("Eres usuario =)");
-			} else if (query.equals(Constantes.rangos[i++]))
-				setTitle("Eres admin, haz lo que quieras :)");
-			else {
-				tabbedPane.setVisible(false);
-				toolBar.setVisible(false);
-				setTitle("Eres tecnico, a currar :p");
-			}
-			return true;
-		} catch (NullPointerException npe) {
+		if (query == null)
 			return false;
+
+		byte i = 0;
+		// Amoldar la interfaz segun el usuario introducido
+		if (query.equals(Constantes.rangos[i++])) {
+			menuBar.setVisible(false);
+			setTitle("Eres usuario =)");
+		} else if (query.equals(Constantes.rangos[i]))
+			setTitle("Eres admin, haz lo que quieras :)");
+		else {
+			tabbedPane.setVisible(false);
+			toolBar.setVisible(false);
+			setTitle("Eres tecnico, a currar :p");
 		}
+		return true;
 
 	}
 
@@ -451,7 +448,7 @@ public class Main extends JFrame {
 		case 2:
 			tabExtras.mBuscarExtra(filtro);
 			break;
-		case 3:
+		case 6:
 			tabPolizas.mBuscarPoliza(filtro);
 			break;
 		default:
@@ -469,7 +466,7 @@ public class Main extends JFrame {
 		case 2:
 			tablaExtras.listar();
 			break;
-		case 3:
+		case 6:
 			tablaPolizas.listar();
 			break;
 		default:

@@ -157,8 +157,12 @@ public class TabVehiculos extends JPanel {
 
 		Vehiculos vehiculo = tablaVehiculo.getVehiculoSeleccionado();
 
+		int query = (int) HibernateUtil.getQuery(
+				"select p.idPolizas from Polizas p where p.vehiculos.idVehiculos = '"
+						+ vehiculo.getIdVehiculos() + "'").uniqueResult();
+
 		HibernateUtil.setData("borrar", vehiculo,
-				"Debe borrar antes la póliza correspondiente.");
+				"Debe borrar antes la póliza nº " + query + ".");
 
 		tablaVehiculo.listar();
 		mVaciarVehiculo();

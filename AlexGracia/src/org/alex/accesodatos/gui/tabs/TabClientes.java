@@ -141,8 +141,12 @@ public class TabClientes extends JPanel {
 
 		Clientes cliente = tablaCliente.getClienteSeleccionado();
 
+		int query = (int) HibernateUtil.getQuery(
+				"select p.idPolizas from Polizas p where p.clientes.idClientes = '"
+						+ cliente.getIdClientes() + "'").uniqueResult();
+
 		HibernateUtil.setData("borrar", cliente,
-				"Debe borrar antes la póliza correspondiente.");
+				"Debe borrar antes la póliza nº " + query + ".");
 
 		tablaCliente.listar();
 		mVaciarCliente();
