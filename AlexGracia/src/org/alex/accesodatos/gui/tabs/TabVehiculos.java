@@ -1,6 +1,7 @@
 package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,6 +19,8 @@ import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.RestrictedSimple;
 import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
+import org.hibernate.Session;
+import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.hql.internal.ast.QuerySyntaxException;
 
 /**
@@ -157,12 +160,19 @@ public class TabVehiculos extends JPanel {
 
 		Vehiculos vehiculo = tablaVehiculo.getVehiculoSeleccionado();
 
-		int query = (int) HibernateUtil.getQuery(
-				"select p.idPolizas from Polizas p where p.vehiculos.idVehiculos = '"
-						+ vehiculo.getIdVehiculos() + "'").uniqueResult();
-
-		HibernateUtil.setData("borrar", vehiculo,
-				"Debe borrar antes la póliza nº " + query + ".");
+		Session sesion = HibernateUtil.getCurrentSession();
+		sesion.beginTransaction();
+		sesion.delete(vehiculo);
+		try {
+			sesion.getTransaction().commit();
+		} catch (ConstraintViolationException cve) {
+			List<?> query = HibernateUtil.getQuery(
+					"select p.idPolizas from Polizas p where p.vehiculos.idVehiculos = '"
+							+ vehiculo.getIdVehiculos() + "'").list();
+			Util.setMensajeError("Debe borrar antes la/s póliza/s nº " + query
+					+ ".");
+		}
+		sesion.close();
 
 		tablaVehiculo.listar();
 		mVaciarVehiculo();

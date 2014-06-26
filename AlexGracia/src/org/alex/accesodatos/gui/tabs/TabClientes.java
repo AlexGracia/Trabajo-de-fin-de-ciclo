@@ -2,6 +2,7 @@ package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,6 +19,8 @@ import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.RestrictedSimple;
 import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
+import org.hibernate.Session;
+import org.hibernate.exception.ConstraintViolationException;
 
 /**
  * Maneja la interfaz de los clientes.
@@ -141,12 +144,19 @@ public class TabClientes extends JPanel {
 
 		Clientes cliente = tablaCliente.getClienteSeleccionado();
 
-		int query = (int) HibernateUtil.getQuery(
-				"select p.idPolizas from Polizas p where p.clientes.idClientes = '"
-						+ cliente.getIdClientes() + "'").uniqueResult();
-
-		HibernateUtil.setData("borrar", cliente,
-				"Debe borrar antes la póliza nº " + query + ".");
+		Session sesion = HibernateUtil.getCurrentSession();
+		sesion.beginTransaction();
+		sesion.delete(cliente);
+		try {
+			sesion.getTransaction().commit();
+		} catch (ConstraintViolationException cve) {
+			List<?> query = HibernateUtil.getQuery(
+					"select p.idPolizas from Polizas p where p.clientes.idClientes = '"
+							+ cliente.getIdClientes() + "'").list();
+			Util.setMensajeError("Debe borrar antes la/s póliza/s nº " + query
+					+ ".");
+		}
+		sesion.close();
 
 		tablaCliente.listar();
 		mVaciarCliente();
