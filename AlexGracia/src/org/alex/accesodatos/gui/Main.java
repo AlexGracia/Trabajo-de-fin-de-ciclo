@@ -457,7 +457,8 @@ public class Main extends JFrame {
 			tabExtras.mBuscarExtra(filtro);
 			break;
 		case 6:
-			tabPolizas.mBuscarPoliza(filtro);
+			if (Util.esNumero(filtro))
+				tabPolizas.mBuscarPoliza(filtro);
 			break;
 		default:
 		}
