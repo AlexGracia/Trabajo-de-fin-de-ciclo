@@ -166,7 +166,7 @@ public class TabPolizas extends JPanel {
 
 		Polizas poliza = tablaPolizas.getPolizaSeleccionada();
 
-		HibernateUtil.setData("borrar", poliza, "");
+		HibernateUtil.setData("borrar", poliza);
 
 		tablaPolizas.listar();
 		mVaciarPoliza();
@@ -215,10 +215,10 @@ public class TabPolizas extends JPanel {
 		poliza.setVehiculos(vehiculo);
 
 		if (esNuevo)
-			HibernateUtil.setData("guardar", poliza, "");
+			HibernateUtil.setData("guardar", poliza);
 
 		else {
-			HibernateUtil.setData("actualizar", poliza, "");
+			HibernateUtil.setData("actualizar", poliza);
 
 			esNuevo = true;
 		}

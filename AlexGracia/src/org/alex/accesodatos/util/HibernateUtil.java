@@ -1,6 +1,5 @@
 package org.alex.accesodatos.util;
 
-import org.alex.libs.Util;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -69,9 +68,8 @@ public class HibernateUtil {
 	 * 
 	 * @param opcion
 	 * @param obj
-	 * @param mensaje
 	 */
-	public static void setData(String opcion, Object obj, String mensaje) {
+	public static boolean setData(String opcion, Object obj) {
 		// Empieza una transaccion.
 		Session sesion = getCurrentSession();
 		sesion.beginTransaction();
@@ -91,9 +89,11 @@ public class HibernateUtil {
 		try {
 			sesion.getTransaction().commit();
 		} catch (ConstraintViolationException cve) {
-			Util.setMensajeError(mensaje);
+			return false;
+		} finally {
+			sesion.close();
 		}
-		sesion.close();
+		return true;
 	}
 
 }

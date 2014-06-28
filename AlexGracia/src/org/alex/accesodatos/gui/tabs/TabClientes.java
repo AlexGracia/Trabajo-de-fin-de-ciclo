@@ -19,8 +19,6 @@ import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.RestrictedSimple;
 import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
-import org.hibernate.Session;
-import org.hibernate.exception.ConstraintViolationException;
 
 /**
  * Maneja la interfaz de los clientes.
@@ -144,19 +142,13 @@ public class TabClientes extends JPanel {
 
 		Clientes cliente = tablaCliente.getClienteSeleccionado();
 
-		Session sesion = HibernateUtil.getCurrentSession();
-		sesion.beginTransaction();
-		sesion.delete(cliente);
-		try {
-			sesion.getTransaction().commit();
-		} catch (ConstraintViolationException cve) {
+		if (!HibernateUtil.setData("borrar", cliente)) {
 			List<?> query = HibernateUtil.getQuery(
 					"select p.idPolizas from Polizas p where p.clientes.idClientes = '"
 							+ cliente.getIdClientes() + "'").list();
 			Util.setMensajeError("Debe borrar antes la/s póliza/s nº " + query
 					+ ".");
 		}
-		sesion.close();
 
 		tablaCliente.listar();
 		mVaciarCliente();
@@ -205,10 +197,10 @@ public class TabClientes extends JPanel {
 		cliente.setDireccion(tfDireccion.getText());
 
 		if (esNuevo)
-			HibernateUtil.setData("guardar", cliente, "");
+			HibernateUtil.setData("guardar", cliente);
 
 		else {
-			HibernateUtil.setData("actualizar", cliente, "");
+			HibernateUtil.setData("actualizar", cliente);
 
 			esNuevo = true;
 			tfNombre.setEnabled(true);

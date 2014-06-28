@@ -19,8 +19,6 @@ import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.RestrictedSimple;
 import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
-import org.hibernate.Session;
-import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.hql.internal.ast.QuerySyntaxException;
 
 /**
@@ -160,19 +158,13 @@ public class TabVehiculos extends JPanel {
 
 		Vehiculos vehiculo = tablaVehiculo.getVehiculoSeleccionado();
 
-		Session sesion = HibernateUtil.getCurrentSession();
-		sesion.beginTransaction();
-		sesion.delete(vehiculo);
-		try {
-			sesion.getTransaction().commit();
-		} catch (ConstraintViolationException cve) {
+		if (!HibernateUtil.setData("borrar", vehiculo)) {
 			List<?> query = HibernateUtil.getQuery(
 					"select p.idPolizas from Polizas p where p.vehiculos.idVehiculos = '"
 							+ vehiculo.getIdVehiculos() + "'").list();
 			Util.setMensajeError("Debe borrar antes la/s póliza/s nº " + query
 					+ ".");
 		}
-		sesion.close();
 
 		tablaVehiculo.listar();
 		mVaciarVehiculo();
@@ -227,10 +219,10 @@ public class TabVehiculos extends JPanel {
 		vehiculo.setKilometros(Integer.parseInt(kilometros));
 
 		if (esNuevo)
-			HibernateUtil.setData("guardar", vehiculo, "");
+			HibernateUtil.setData("guardar", vehiculo);
 
 		else {
-			HibernateUtil.setData("actualizar", vehiculo, "");
+			HibernateUtil.setData("actualizar", vehiculo);
 
 			esNuevo = true;
 			tfMatricula.setEnabled(true);

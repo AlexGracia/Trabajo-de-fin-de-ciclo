@@ -144,8 +144,7 @@ public class TabExtras extends JPanel {
 
 		Extras extra = tablaExtras.getExtraSeleccionado();
 
-		HibernateUtil.setData("borrar", extra,
-				"Debes borrar lo referente a este extra.");
+		HibernateUtil.setData("borrar", extra);
 
 		tablaExtras.listar();
 		mVaciarExtra();
@@ -180,10 +179,10 @@ public class TabExtras extends JPanel {
 		extra.setFabricante(tfFabricante.getText());
 
 		if (esNuevo)
-			HibernateUtil.setData("guardar", extra, "");
+			HibernateUtil.setData("guardar", extra);
 
 		else {
-			HibernateUtil.setData("actualizar", extra, "");
+			HibernateUtil.setData("actualizar", extra);
 
 			esNuevo = true;
 			tfNombre.setEnabled(true);
