@@ -152,7 +152,7 @@ public class TabPolizas extends JPanel {
 
 	public void mBuscarPoliza(String filtro) {
 
-		if (filtro.length() <= 0 && filtro.equals(""))
+		if (filtro.equals(""))
 			tablaPolizas.listar();
 		else
 			tablaPolizas.listar(filtro);

@@ -63,11 +63,8 @@ public class TablaPolizas extends Tabla {
 
 	public void listar(String filtro) {
 
-		listarComodin("select p from Polizas p where p.clientes.idClientes like '%"
-				+ filtro
-				+ "%' or p.vehiculos.idVehiculos like '%"
-				+ filtro
-				+ "%'");
+		listarComodin("select p from Polizas p where p.clientes.idClientes = "
+				+ filtro + " or p.vehiculos.idVehiculos = " + filtro);
 	}
 
 	@SuppressWarnings("unchecked")

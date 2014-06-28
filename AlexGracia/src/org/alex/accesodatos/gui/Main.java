@@ -29,7 +29,11 @@ import javax.swing.event.ChangeListener;
 
 import org.alex.accesodatos.beans.tablas.TablaClientes;
 import org.alex.accesodatos.beans.tablas.TablaExtras;
+import org.alex.accesodatos.beans.tablas.TablaPiezas;
 import org.alex.accesodatos.beans.tablas.TablaPolizas;
+import org.alex.accesodatos.beans.tablas.TablaProveedores;
+import org.alex.accesodatos.beans.tablas.TablaSiniestros;
+import org.alex.accesodatos.beans.tablas.TablaTalleres;
 import org.alex.accesodatos.beans.tablas.TablaVehiculos;
 import org.alex.accesodatos.gui.tabs.TabClientes;
 import org.alex.accesodatos.gui.tabs.TabExtras;
@@ -70,11 +74,15 @@ public class Main extends JFrame {
 	private TabExtras tabExtras;
 	private TablaExtras tablaExtras;
 	private TabPiezas tabPiezas;
+	private TablaPiezas tablaPiezas;
 	private TabProveedores tabProveedores;
+	private TablaProveedores tablaProveedores;
 	private TabTalleres tabTalleres;
+	private TablaTalleres tablaTalleres;
 	private TabPolizas tabPolizas;
 	private TablaPolizas tablaPolizas;
 	private TabSiniestros tabSiniestros;
+	private TablaSiniestros tablaSiniestros;
 	private JMenuBar menuBar;
 	private JMenu mnHerramientas;
 	private JTabbedPane tabbedPane;
@@ -175,7 +183,7 @@ public class Main extends JFrame {
 				Constantes.TEXTO_CLIENTES[Constantes.TEXTO_CLIENTES.length - 1]);
 		tfBusqueda.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyPressed(KeyEvent arg0) {
+			public void keyReleased(KeyEvent ke) {
 				buscar(tfBusqueda.getText());
 			}
 		});

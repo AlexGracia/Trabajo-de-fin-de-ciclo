@@ -63,12 +63,12 @@ public class TablaVehiculos extends Tabla {
 
 	public void listar(String filtro) throws QuerySyntaxException {
 
-		if (filtro.startsWith("*id"))
+		if (filtro.startsWith("*id") && !filtro.substring(3).equals(""))
 			listarComodin("select p.vehiculos from Polizas p where p.idPolizas = "
 					+ filtro.substring(3));
 		else
 			listarComodin("select v from Vehiculos v where v.matricula like '%"
-					+ filtro + "%' or v.kilometros like '%" + filtro + "%'");
+					+ filtro + "%' or v.kilometros like '" + filtro + "'");
 	}
 
 	@SuppressWarnings("unchecked")

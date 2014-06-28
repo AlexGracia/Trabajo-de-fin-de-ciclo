@@ -128,7 +128,7 @@ public class TabClientes extends JPanel {
 
 	public void mBuscarCliente(String filtro) {
 
-		if (filtro.length() <= 0 && filtro.equals(""))
+		if (filtro.equals(""))
 			tablaCliente.listar();
 		else
 			tablaCliente.listar(filtro);

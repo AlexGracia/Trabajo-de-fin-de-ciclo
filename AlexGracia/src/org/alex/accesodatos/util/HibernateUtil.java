@@ -34,16 +34,16 @@ public class HibernateUtil {
 	}
 
 	/**
-	 * Abre una nueva sesi—n
+	 * Abre una nueva sesion
 	 */
 	public static void openSession() {
 		session = sessionFactory.openSession();
 	}
 
 	/**
-	 * Devuelve la sesi—n actual
+	 * Devuelve la sesion actual
 	 * 
-	 * @return
+	 * @return session
 	 */
 	public static Session getCurrentSession() {
 
@@ -68,6 +68,7 @@ public class HibernateUtil {
 	 * 
 	 * @param opcion
 	 * @param obj
+	 * @return boolean
 	 */
 	public static boolean setData(String opcion, Object obj) {
 		// Empieza una transaccion.

@@ -141,14 +141,11 @@ public class TabVehiculos extends JPanel {
 
 	public void mBuscarVehiculo(String filtro) {
 
-		if (filtro.length() <= 0 && filtro.equals(""))
+		if (filtro.equals(""))
 			tablaVehiculo.listar();
 		else
-			try {
-				tablaVehiculo.listar(filtro);
-			} catch (QuerySyntaxException qse) {
-				qse.printStackTrace();
-			}
+			tablaVehiculo.listar(filtro);
+
 	}
 
 	public boolean mEliminar() {

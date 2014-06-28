@@ -130,7 +130,7 @@ public class TabExtras extends JPanel {
 
 	public void mBuscarExtra(String filtro) {
 
-		if (filtro.length() <= 0 && filtro.equals(""))
+		if (filtro.equals(""))
 			tablaExtras.listar();
 		else
 			tablaExtras.listar(filtro);
