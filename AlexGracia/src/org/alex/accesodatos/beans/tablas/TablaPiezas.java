@@ -49,7 +49,7 @@ public class TablaPiezas extends Tabla {
 			}
 		});
 
-		modelo = getModelo(Constantes.COLUMNAS_PIEZAS);
+		modelo = getModelo(Constantes.COLUMNAS_PIEZA);
 		setModel(modelo);
 
 	}

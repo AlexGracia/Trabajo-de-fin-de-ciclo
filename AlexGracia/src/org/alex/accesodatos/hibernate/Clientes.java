@@ -1,6 +1,6 @@
 package org.alex.accesodatos.hibernate;
 
-// Generated 17-jun-2014 12:41:48 by Hibernate Tools 4.0.0
+// Generated 28-jun-2014 19:43:06 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -23,17 +23,11 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "clientes", catalog = "alex_gracia", uniqueConstraints = @UniqueConstraint(columnNames = "DNI"))
 public class Clientes implements java.io.Serializable {
-	private static final long serialVersionUID = 1L;
 
-	private Integer idClientes;
-	private String codigoClientes;
-	private String nombre;
-	private String apellidos;
-	private String dni;
-	private Integer telefono;
-	private Date fechaNacimiento;
-	private Date fechaCarnet;
-	private String direccion;
+	private static final long serialVersionUID = 1L;
+	private Integer idClientes, telefono;
+	private String codigoClientes, nombre, apellidos, dni, direccion;
+	private Date fechaNacimiento, fechaCarnet;
 	private Set<Siniestros> siniestroses = new HashSet<Siniestros>(0);
 	private Set<Polizas> polizases = new HashSet<Polizas>(0);
 

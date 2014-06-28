@@ -55,18 +55,18 @@ public class Constantes {
 	public final static String[] COLUMNAS_EXTRA = { "Id", "Fabricación",
 			"Marca", "Nombre", "Modelo", "Descripción", "Origen",
 			"Dimensiones", "Fabricante" };
-	public final static String[] COLUMNAS_PIEZAS = { "Id", "Código", "Nombre",
+	public final static String[] COLUMNAS_PIEZA = { "Id", "Código", "Nombre",
 			"Descripción", "Cantidad", "Precio", "Origen", "Solicitud", "Marca" };
-	public final static String[] COLUMNAS_PROVEEDORES = { "Id", "Nombre",
+	public final static String[] COLUMNAS_PROVEEDOR = { "Id", "Nombre",
 			"Teléfono", "Correo", "Nacimiento", "Dirección", "Pago", "Empresa",
 			"DNI" };
-	public final static String[] COLUMNAS_TALLERES = { "Id", "Nombre",
+	public final static String[] COLUMNAS_TALLERE = { "Id", "Nombre",
 			"Dirección", "Teléfono", "Inicio", "Jefe", "CIF", "Trabajadores",
 			"Reparaciones" };
 	public final static String[] COLUMNAS_POLIZA = { "Id", "Número", "Tipo",
 			"Importe", "Estado", "Inicio", "Conductores",
 			"Antiguedad de conducción", "Fin", "Id (cliente)", "Id (vehiculo)" };
-	public final static String[] COLUMNAS_SINIESTROS = { "Id", "Datos poliza",
+	public final static String[] COLUMNAS_SINIESTRO = { "Id", "Datos poliza",
 			"Reparación", "Datos cliente", "Reparación", "Datos taller",
 			"Siniestro", "Vehículos implicados", "Id (cliente)", "Id (taller)",
 			"Clientes heridos" };

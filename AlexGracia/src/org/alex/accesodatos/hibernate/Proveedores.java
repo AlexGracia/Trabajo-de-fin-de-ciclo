@@ -1,6 +1,6 @@
 package org.alex.accesodatos.hibernate;
 
-// Generated 17-jun-2014 12:41:48 by Hibernate Tools 4.0.0
+// Generated 28-jun-2014 19:43:06 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -25,31 +25,24 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "proveedores", catalog = "alex_gracia", uniqueConstraints = @UniqueConstraint(columnNames = "DNI"))
 public class Proveedores implements java.io.Serializable {
-	private static final long serialVersionUID = 1L;
 
-	private Integer idProveedores;
-	private String nombre;
-	private String telefono;
-	private String correoElectronico;
+	private static final long serialVersionUID = 1L;
+	private Integer idProveedores, telefono;
+	private String nombre, correoElectronico, direccion, facilidadPago,
+			nombreEmpresa, dni;
 	private Date fechaNacimiento;
-	private String direccion;
-	private String facilidadPago;
-	private String nombreEmpresa;
-	private String dni;
 	private Set<Piezas> piezases = new HashSet<Piezas>(0);
 
 	public Proveedores() {
 	}
 
-	public Proveedores(String nombre, String telefono, String nombreEmpresa,
-			String dni) {
+	public Proveedores(String nombre, String nombreEmpresa, String dni) {
 		this.nombre = nombre;
-		this.telefono = telefono;
 		this.nombreEmpresa = nombreEmpresa;
 		this.dni = dni;
 	}
 
-	public Proveedores(String nombre, String telefono,
+	public Proveedores(String nombre, Integer telefono,
 			String correoElectronico, Date fechaNacimiento, String direccion,
 			String facilidadPago, String nombreEmpresa, String dni,
 			Set<Piezas> piezases) {
@@ -84,12 +77,12 @@ public class Proveedores implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
-	@Column(name = "TELEFONO", nullable = false, length = 200)
-	public String getTelefono() {
+	@Column(name = "TELEFONO")
+	public Integer getTelefono() {
 		return this.telefono;
 	}
 
-	public void setTelefono(String telefono) {
+	public void setTelefono(Integer telefono) {
 		this.telefono = telefono;
 	}
 

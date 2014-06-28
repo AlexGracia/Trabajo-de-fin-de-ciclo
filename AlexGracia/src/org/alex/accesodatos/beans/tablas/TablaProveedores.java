@@ -6,12 +6,12 @@ import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
+import org.alex.accesodatos.beans.ComboPropio;
 import org.alex.accesodatos.beans.TextPropio;
-import org.alex.accesodatos.hibernate.Clientes;
+import org.alex.accesodatos.hibernate.Proveedores;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.Tabla;
-import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
@@ -26,21 +26,24 @@ public class TablaProveedores extends Tabla {
 	private DefaultTableModel modelo;
 
 	// Variables graficas
-	private TextPropio tfNombre, tfApellidos, tfDni, tfTelefono, tfDireccion;
-	private JCalendarCombo calendarNacimiento, calendarCarnet;
+	private ComboPropio cbPago;
+	private TextPropio tfNombre, tfTelefono, tfCorreo, tfDireccion,
+			tfNombreEmpresa, tfDni;
+	private JCalendarCombo dateNacimiento;
 
-	public TablaProveedores(TextPropio tfNombre, TextPropio tfApellidos,
-			TextPropio tfDni, TextPropio tfTelefono,
-			JCalendarCombo calendarNacimiento, JCalendarCombo calendarCarnet,
-			TextPropio tfDireccion) {
+	public TablaProveedores(ComboPropio cbPago, TextPropio tfNombre,
+			JCalendarCombo dateNacimiento, TextPropio tfTelefono,
+			TextPropio tfCorreo, TextPropio tfDireccion,
+			TextPropio tfNombreEmpresa, TextPropio tfDni) {
 
+		this.cbPago = cbPago;
 		this.tfNombre = tfNombre;
-		this.tfApellidos = tfApellidos;
-		this.tfDni = tfDni;
+		this.dateNacimiento = dateNacimiento;
 		this.tfTelefono = tfTelefono;
-		this.calendarNacimiento = calendarNacimiento;
-		this.calendarCarnet = calendarCarnet;
+		this.tfCorreo = tfCorreo;
 		this.tfDireccion = tfDireccion;
+		this.tfNombreEmpresa = tfNombreEmpresa;
+		this.tfDni = tfDni;
 
 		addMouseListener(new MouseAdapter() {
 			@Override
@@ -49,26 +52,20 @@ public class TablaProveedores extends Tabla {
 			}
 		});
 
-		modelo = getModelo(Constantes.COLUMNAS_CLIENTE);
+		modelo = getModelo(Constantes.COLUMNAS_PROVEEDOR);
 		setModel(modelo);
-
 	}
 
 	public void listar() {
-
-		listarComodin("FROM Clientes");
-
+		listarComodin("FROM Proveedores");
 	}
 
 	public void listar(String filtro) {
 
-		if (Util.esNumero(filtro))
-			listarComodin("select p.clientes from Polizas p where p.idPolizas = "
-					+ filtro);
-
-		else
-			listarComodin("select c from Clientes c where c.nombre like '%"
-					+ filtro + "%' or c.dni like '%" + filtro + "%'");
+		listarComodin("select p from Proveedores p where p.nombre like '%"
+				+ filtro + "%' or p.telefono like '%" + filtro
+				+ "%' or p.nombreEmpresa like '%" + filtro
+				+ "%' or p.dni like '%" + filtro + "%'");
 	}
 
 	@SuppressWarnings("unchecked")
@@ -76,40 +73,44 @@ public class TablaProveedores extends Tabla {
 
 		modelo.setNumRows(0);
 
-		for (Clientes cliente : (List<Clientes>) HibernateUtil.getQuery(
-				consulta).list())
-			modelo.addRow(new Object[] { cliente.getIdClientes(),
-					cliente.getCodigoClientes(), cliente.getNombre(),
-					cliente.getApellidos(), cliente.getDni(),
-					cliente.getTelefono(), cliente.getFechaNacimiento(),
-					cliente.getFechaCarnet(), cliente.getDireccion() });
+		for (Proveedores proveedor : (List<Proveedores>) HibernateUtil
+				.getQuery(consulta).list())
+			modelo.addRow(new Object[] { proveedor.getIdProveedores(),
+					proveedor.getNombre(), proveedor.getTelefono(),
+					proveedor.getCorreoElectronico(),
+					proveedor.getFechaNacimiento(), proveedor.getDireccion(),
+					proveedor.getFacilidadPago(), proveedor.getNombreEmpresa(),
+					proveedor.getDni() });
 
 	}
 
 	private void pintarDatos() {
-		if (getClienteSeleccionado() == null)
+		if (getProveedorSeleccionado() == null)
 			return;
 
-		tfNombre.setText(getClienteSeleccionado().getNombre());
-		tfApellidos.setText(getClienteSeleccionado().getApellidos());
-		tfDni.setText(getClienteSeleccionado().getDni());
-		tfTelefono.setText(String.valueOf(getClienteSeleccionado()
+		cbPago.setSelectedItem(getProveedorSeleccionado().getFacilidadPago());
+		tfNombre.setText(getProveedorSeleccionado().getNombre());
+		dateNacimiento.setDate(getProveedorSeleccionado().getFechaNacimiento());
+		tfTelefono.setText(String.valueOf(getProveedorSeleccionado()
 				.getTelefono()));
-		calendarNacimiento.setDate(getClienteSeleccionado()
-				.getFechaNacimiento());
-		calendarCarnet.setDate(getClienteSeleccionado().getFechaCarnet());
-		tfDireccion.setText(getClienteSeleccionado().getDireccion());
+		tfCorreo.setText(getProveedorSeleccionado().getCorreoElectronico());
+		tfDireccion.setText(getProveedorSeleccionado().getDireccion());
+		tfNombreEmpresa.setText(getProveedorSeleccionado().getNombreEmpresa());
+		tfDni.setText(getProveedorSeleccionado().getDni());
+
 	}
 
-	public Clientes getClienteSeleccionado() {
+	public Proveedores getProveedorSeleccionado() {
+
 		int fila = getSelectedRow();
 		if (fila == -1)
 			return null;
 
 		int id = (Integer) modelo.getValueAt(fila, 0);
 
-		return (Clientes) HibernateUtil.getCurrentSession().get(Clientes.class,
-				id);
+		return (Proveedores) HibernateUtil.getCurrentSession().get(
+				Proveedores.class, id);
+
 	}
 
 }

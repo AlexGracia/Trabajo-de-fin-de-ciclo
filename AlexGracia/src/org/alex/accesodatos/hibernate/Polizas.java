@@ -1,6 +1,6 @@
 package org.alex.accesodatos.hibernate;
 
-// Generated 17-jun-2014 12:41:48 by Hibernate Tools 4.0.0
+// Generated 28-jun-2014 19:43:06 by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -21,19 +21,13 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "polizas", catalog = "alex_gracia")
 public class Polizas implements java.io.Serializable {
-	private static final long serialVersionUID = 1L;
 
-	private Integer idPolizas;
+	private static final long serialVersionUID = 1L;
+	private Integer idPolizas, numero, importe, cantidadConductores;
 	private Vehiculos vehiculos;
 	private Clientes clientes;
-	private Integer numero;
-	private String tipo;
-	private Integer importe;
-	private String estado;
-	private Date fechaInicio;
-	private Integer cantidadConductores;
-	private Date antiguedadConduccion;
-	private Date fechaFin;
+	private String tipo, estado;
+	private Date fechaInicio, antiguedadConduccion, fechaFin;
 
 	public Polizas() {
 	}

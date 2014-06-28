@@ -1,6 +1,6 @@
 package org.alex.accesodatos.hibernate;
 
-// Generated 17-jun-2014 12:41:48 by Hibernate Tools 4.0.0
+// Generated 28-jun-2014 19:43:06 by Hibernate Tools 4.0.0
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,12 +16,10 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "users", catalog = "alex_gracia", uniqueConstraints = @UniqueConstraint(columnNames = "login"))
 public class Users implements java.io.Serializable {
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private String login;
-	private String password;
-	private String rango;
+	private String login, password, rango;
 
 	public Users() {
 	}
