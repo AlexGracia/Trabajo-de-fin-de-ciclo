@@ -19,7 +19,6 @@ import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.RestrictedSimple;
 import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
-import org.hibernate.hql.internal.ast.QuerySyntaxException;
 
 /**
  * Maneja la interfaz de los vehiculos.

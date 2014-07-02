@@ -6,12 +6,12 @@ import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
+import org.alex.accesodatos.beans.ComboPropio;
 import org.alex.accesodatos.beans.TextPropio;
-import org.alex.accesodatos.hibernate.Clientes;
+import org.alex.accesodatos.hibernate.Siniestros;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.Tabla;
-import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
@@ -26,21 +26,28 @@ public class TablaSiniestros extends Tabla {
 	private DefaultTableModel modelo;
 
 	// Variables graficas
-	private TextPropio tfNombre, tfApellidos, tfDni, tfTelefono, tfDireccion;
-	private JCalendarCombo calendarNacimiento, calendarCarnet;
+	private TextPropio tfDatosPoliza, tfImporteReparacion, tfDatosCliente,
+			tfDatosTaller, tfVehiculosImplicados, tfClientesHeridos;
+	private JCalendarCombo calendarReparacion, calendarSiniestro;
+	private ComboPropio cbIdCliente, cbIdTaller;
 
-	public TablaSiniestros(TextPropio tfNombre, TextPropio tfApellidos,
-			TextPropio tfDni, TextPropio tfTelefono,
-			JCalendarCombo calendarNacimiento, JCalendarCombo calendarCarnet,
-			TextPropio tfDireccion) {
+	public TablaSiniestros(TextPropio tfDatosPoliza,
+			TextPropio tfImporteReparacion, TextPropio tfDatosCliente,
+			JCalendarCombo calendarReparacion, TextPropio tfDatosTaller,
+			JCalendarCombo calendarSiniestro, TextPropio tfVehiculosImplicados,
+			ComboPropio cbIdCliente, ComboPropio cbIdTaller,
+			TextPropio tfClientesHeridos) {
 
-		this.tfNombre = tfNombre;
-		this.tfApellidos = tfApellidos;
-		this.tfDni = tfDni;
-		this.tfTelefono = tfTelefono;
-		this.calendarNacimiento = calendarNacimiento;
-		this.calendarCarnet = calendarCarnet;
-		this.tfDireccion = tfDireccion;
+		this.tfDatosPoliza = tfDatosPoliza;
+		this.tfImporteReparacion = tfImporteReparacion;
+		this.tfDatosCliente = tfDatosCliente;
+		this.calendarReparacion = calendarReparacion;
+		this.tfDatosTaller = tfDatosTaller;
+		this.calendarSiniestro = calendarSiniestro;
+		this.tfVehiculosImplicados = tfVehiculosImplicados;
+		this.cbIdCliente = cbIdCliente;
+		this.cbIdTaller = cbIdTaller;
+		this.tfClientesHeridos = tfClientesHeridos;
 
 		addMouseListener(new MouseAdapter() {
 			@Override
@@ -56,19 +63,15 @@ public class TablaSiniestros extends Tabla {
 
 	public void listar() {
 
-		listarComodin("FROM Clientes");
+		listarComodin("FROM Siniestros");
 
 	}
 
 	public void listar(String filtro) {
 
-		if (Util.esNumero(filtro))
-			listarComodin("select p.clientes from Polizas p where p.idPolizas = "
-					+ filtro);
+		listarComodin("select s from Siniestros s where s.clientes.idClientes = "
+				+ filtro + " or s.talleres.idTalleres = " + filtro);
 
-		else
-			listarComodin("select c from Clientes c where c.nombre like '%"
-					+ filtro + "%' or c.dni like '%" + filtro + "%'");
 	}
 
 	@SuppressWarnings("unchecked")
@@ -76,40 +79,54 @@ public class TablaSiniestros extends Tabla {
 
 		modelo.setNumRows(0);
 
-		for (Clientes cliente : (List<Clientes>) HibernateUtil.getQuery(
+		for (Siniestros siniestro : (List<Siniestros>) HibernateUtil.getQuery(
 				consulta).list())
-			modelo.addRow(new Object[] { cliente.getIdClientes(),
-					cliente.getCodigoClientes(), cliente.getNombre(),
-					cliente.getApellidos(), cliente.getDni(),
-					cliente.getTelefono(), cliente.getFechaNacimiento(),
-					cliente.getFechaCarnet(), cliente.getDireccion() });
+			modelo.addRow(new Object[] { siniestro.getIdSiniestros(),
+					siniestro.getDatosPoliza(),
+					siniestro.getImporteReparacion(),
+					siniestro.getDatosCliente(),
+					siniestro.getFechaReparacion(), siniestro.getDatosTaller(),
+					siniestro.getFechaSiniestro(),
+					siniestro.getCantidadVehiculosImplicados(),
+					siniestro.getClientes().getIdClientes(),
+					siniestro.getTalleres().getIdTalleres(),
+					siniestro.getClientesHeridos() });
 
 	}
 
 	private void pintarDatos() {
-		if (getClienteSeleccionado() == null)
+		if (getSiniestrosSeleccionado() == null)
 			return;
 
-		tfNombre.setText(getClienteSeleccionado().getNombre());
-		tfApellidos.setText(getClienteSeleccionado().getApellidos());
-		tfDni.setText(getClienteSeleccionado().getDni());
-		tfTelefono.setText(String.valueOf(getClienteSeleccionado()
-				.getTelefono()));
-		calendarNacimiento.setDate(getClienteSeleccionado()
-				.getFechaNacimiento());
-		calendarCarnet.setDate(getClienteSeleccionado().getFechaCarnet());
-		tfDireccion.setText(getClienteSeleccionado().getDireccion());
+		tfDatosPoliza.setText(getSiniestrosSeleccionado().getDatosPoliza());
+		tfImporteReparacion.setText(String.valueOf(getSiniestrosSeleccionado()
+				.getImporteReparacion()));
+		tfDatosCliente.setText(getSiniestrosSeleccionado().getDatosCliente());
+		calendarReparacion.setDate(getSiniestrosSeleccionado()
+				.getFechaReparacion());
+		tfDatosTaller.setText(getSiniestrosSeleccionado().getDatosTaller());
+		calendarSiniestro.setDate(getSiniestrosSeleccionado()
+				.getFechaSiniestro());
+		tfVehiculosImplicados.setText(String
+				.valueOf(getSiniestrosSeleccionado()
+						.getCantidadVehiculosImplicados()));
+		cbIdCliente.setSelectedItem(String.valueOf(getSiniestrosSeleccionado()
+				.getClientes().getIdClientes()));
+		cbIdTaller.setSelectedItem(String.valueOf(getSiniestrosSeleccionado()
+				.getTalleres().getIdTalleres()));
+		tfClientesHeridos.setText(String.valueOf(getSiniestrosSeleccionado()
+				.getClientesHeridos()));
 	}
 
-	public Clientes getClienteSeleccionado() {
+	public Siniestros getSiniestrosSeleccionado() {
 		int fila = getSelectedRow();
 		if (fila == -1)
 			return null;
 
 		int id = (Integer) modelo.getValueAt(fila, 0);
 
-		return (Clientes) HibernateUtil.getCurrentSession().get(Clientes.class,
-				id);
+		return (Siniestros) HibernateUtil.getCurrentSession().get(
+				Siniestros.class, id);
 	}
 
 }
