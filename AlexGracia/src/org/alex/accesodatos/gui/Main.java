@@ -224,6 +224,9 @@ public class Main extends JFrame {
 				case 2:
 					toolbarSearch = Constantes.TEXTO_EXTRAS[Constantes.TEXTO_EXTRAS.length - 1];
 					break;
+				case 3:
+					toolbarSearch = Constantes.TEXTO_PIEZAS[Constantes.TEXTO_PIEZAS.length - 1];
+					break;
 				case 6:
 					toolbarSearch = Constantes.TEXTO_POLIZAS[Constantes.TEXTO_POLIZAS.length - 1];
 					break;
@@ -473,6 +476,9 @@ public class Main extends JFrame {
 			break;
 		case 2:
 			tabExtras.mBuscarExtra(filtro);
+			break;
+		case 3:
+			tabPiezas.mBuscarExtra(filtro);
 			break;
 		case 6:
 			if (Util.esNumero(filtro))
