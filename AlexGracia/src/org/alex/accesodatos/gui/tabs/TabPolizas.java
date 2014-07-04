@@ -24,7 +24,8 @@ import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
- * Maneja la interfaz de las polizas.
+ * JPanel con los componentes necesarios para guardar, editar, borrar y buscar
+ * polizas.
  * 
  * @author Alex Gracia
  * 

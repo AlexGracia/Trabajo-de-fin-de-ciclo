@@ -21,7 +21,8 @@ import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
- * Maneja la interfaz de los vehiculos.
+ * JPanel con los componentes necesarios para guardar, editar, borrar y buscar
+ * vehiculos.
  * 
  * @author Alex Gracia
  * 

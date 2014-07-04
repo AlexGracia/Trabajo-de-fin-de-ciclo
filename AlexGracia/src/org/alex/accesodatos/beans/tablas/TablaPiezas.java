@@ -30,16 +30,15 @@ public class TablaPiezas extends Tabla {
 	private JCalendarCombo calendarSolicitud;
 
 	public TablaPiezas(TextPropio tfNombre, TextPropio tfDescripcion,
-			TextPropio tfCantidad, TextPropio tfPrecio,
-			JCalendarCombo calendarSolicitud, TextPropio tfOrigen,
-			TextPropio tfMarca) {
+			TextPropio tfCantidad, TextPropio tfPrecio, TextPropio tfOrigen,
+			JCalendarCombo calendarSolicitud, TextPropio tfMarca) {
 
 		this.tfNombre = tfNombre;
 		this.tfDescripcion = tfDescripcion;
 		this.tfCantidad = tfCantidad;
 		this.tfPrecio = tfPrecio;
-		this.calendarSolicitud = calendarSolicitud;
 		this.tfOrigen = tfOrigen;
+		this.calendarSolicitud = calendarSolicitud;
 		this.tfMarca = tfMarca;
 
 		addMouseListener(new MouseAdapter() {
@@ -90,8 +89,8 @@ public class TablaPiezas extends Tabla {
 		tfCantidad
 				.setText(String.valueOf(getPiezaSeleccionada().getCantidad()));
 		tfPrecio.setText(String.valueOf(getPiezaSeleccionada().getPrecio()));
-		calendarSolicitud.setDate(getPiezaSeleccionada().getFechaSolicitud());
 		tfOrigen.setText(getPiezaSeleccionada().getLugarOrigen());
+		calendarSolicitud.setDate(getPiezaSeleccionada().getFechaSolicitud());
 		tfMarca.setText(getPiezaSeleccionada().getMarca());
 
 	}

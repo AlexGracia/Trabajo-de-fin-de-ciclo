@@ -14,11 +14,13 @@ import org.alex.accesodatos.gui.JConfirmacion;
 import org.alex.accesodatos.hibernate.Extras;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
+import org.alex.libs.RestrictedSimple;
 import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
- * Maneja la interfaz de los extras.
+ * JPanel con los componentes necesarios para guardar, editar, borrar y buscar
+ * extras.
  * 
  * @author Alex Gracia
  * 
@@ -107,6 +109,7 @@ public class TabExtras extends JPanel {
 		tfDescripcion.setColumns(10);
 
 		tfOrigen = new TextPropio();
+		RestrictedSimple.soloTexto(tfOrigen);
 		tfOrigen.setBounds(181, 261, 120, 26);
 		add(tfOrigen);
 
@@ -115,6 +118,7 @@ public class TabExtras extends JPanel {
 		add(tfDimensiones);
 
 		tfFabricante = new TextPropio();
+		RestrictedSimple.soloTexto(tfFabricante);
 		tfFabricante.setBounds(525, 307, 120, 26);
 		add(tfFabricante);
 

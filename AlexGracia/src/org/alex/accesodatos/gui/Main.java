@@ -259,6 +259,7 @@ public class Main extends JFrame {
 		tablaExtras = tabExtras.getTablaExtras();
 		// TODO Piezas, Proveedores, Talleres, Siniestros.
 		tabPiezas = new TabPiezas(tabbedPane);
+		tablaPiezas = tabPiezas.getTablaPiezas();
 		tabProveedores = new TabProveedores(tabbedPane);
 		tabTalleres = new TabTalleres(tabbedPane);
 		tabPolizas = new TabPolizas(tabbedPane);
@@ -285,6 +286,8 @@ public class Main extends JFrame {
 		tablaClientes.listar();
 		tablaVehiculos.listar();
 		tablaExtras.listar();
+		tablaPiezas.listar();
+
 		tablaPolizas.listar();
 
 	}
@@ -367,6 +370,10 @@ public class Main extends JFrame {
 			if (tabExtras.mGuardar())
 				barraEstado.accionRealizada();
 			break;
+		case 3:
+			if (tabPiezas.mGuardar())
+				barraEstado.accionRealizada();
+			break;
 		case 6:
 			if (tabPolizas.mGuardar())
 				barraEstado.accionRealizada();
@@ -386,6 +393,9 @@ public class Main extends JFrame {
 			break;
 		case 2:
 			tabExtras.mCancelar();
+			break;
+		case 3:
+			tabPiezas.mCancelar();
 			break;
 		case 6:
 			tabPolizas.mCancelar();
@@ -408,6 +418,10 @@ public class Main extends JFrame {
 			break;
 		case 2:
 			if (tabExtras.mEditar())
+				setEnable(false);
+			break;
+		case 3:
+			if (tabPiezas.mEditar())
 				setEnable(false);
 			break;
 		case 6:
@@ -434,6 +448,10 @@ public class Main extends JFrame {
 			break;
 		case 2:
 			if (tabExtras.mEliminar())
+				barraEstado.accionRealizada();
+			break;
+		case 3:
+			if (tabPiezas.mEliminar())
 				barraEstado.accionRealizada();
 			break;
 		case 6:
@@ -474,6 +492,9 @@ public class Main extends JFrame {
 			break;
 		case 2:
 			tablaExtras.listar();
+			break;
+		case 3:
+			tablaPiezas.listar();
 			break;
 		case 6:
 			tablaPolizas.listar();
