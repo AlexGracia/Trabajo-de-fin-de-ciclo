@@ -198,13 +198,10 @@ public class TabClientes extends JPanel {
 		cliente.setFechaCarnet(calendarCarnet.getDate());
 		cliente.setDireccion(tfDireccion.getText());
 
-		if (esNuevo) {
-			if (!HibernateUtil.setData("guardar", cliente))
-				Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto.");
-		} else {
-			if (!HibernateUtil.setData("actualizar", cliente))
-				Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto.");
-
+		if (esNuevo)
+			HibernateUtil.setData("guardar", cliente);
+		else {
+			HibernateUtil.setData("actualizar", cliente);
 			esNuevo = true;
 			tfNombre.setEnabled(true);
 		}

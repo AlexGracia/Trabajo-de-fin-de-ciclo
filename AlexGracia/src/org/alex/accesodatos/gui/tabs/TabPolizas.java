@@ -215,12 +215,10 @@ public class TabPolizas extends JPanel {
 		poliza.setClientes(cliente);
 		poliza.setVehiculos(vehiculo);
 
-		if (esNuevo) {
-			if (!HibernateUtil.setData("guardar", poliza))
-				Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto.");
-		} else {
-			if (!HibernateUtil.setData("actualizar", poliza))
-				Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto.");
+		if (esNuevo)
+			HibernateUtil.setData("guardar", poliza);
+		else {
+			HibernateUtil.setData("actualizar", poliza);
 
 			esNuevo = true;
 		}

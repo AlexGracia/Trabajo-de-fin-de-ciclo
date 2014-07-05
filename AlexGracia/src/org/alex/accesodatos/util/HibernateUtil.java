@@ -1,10 +1,12 @@
 package org.alex.accesodatos.util;
 
+import org.alex.libs.Util;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.exception.DataException;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
@@ -88,6 +90,10 @@ public class HibernateUtil {
 			default:
 			}
 			sesion.getTransaction().commit();
+		} catch (DataException de) {
+			Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto."
+					+ "\n\n" + de.getSQLException().getMessage());
+			return false;
 		} catch (HibernateException he) {
 			return false;
 		} finally {

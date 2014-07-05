@@ -187,12 +187,11 @@ public class TabExtras extends JPanel {
 		extra.setDimensiones(dimensiones);
 		extra.setFabricante(tfFabricante.getText());
 
-		if (esNuevo) {
-			if (!HibernateUtil.setData("guardar", extra))
-				Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto.");
-		} else {
-			if (!HibernateUtil.setData("actualizar", extra))
-				Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto.");
+		if (esNuevo)
+			HibernateUtil.setData("guardar", extra);
+
+		else {
+			HibernateUtil.setData("actualizar", extra);
 
 			esNuevo = true;
 			tfNombre.setEnabled(true);
