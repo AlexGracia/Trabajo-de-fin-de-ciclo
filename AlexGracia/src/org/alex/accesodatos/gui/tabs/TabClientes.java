@@ -82,13 +82,13 @@ public class TabClientes extends JPanel {
 		add(lblDireccion);
 
 		tfNombre = new TextPropio();
-		RestrictedSimple.soloTexto(tfNombre);
+		RestrictedSimple.soloTextoConLimite(tfNombre, 50);
 		tfNombre.setBounds(181, 18, 120, 26);
 		add(tfNombre);
 		tfNombre.setColumns(10);
 
 		tfApellidos = new TextPropio();
-		RestrictedSimple.soloTextoConLimite(tfApellidos, 20);
+		RestrictedSimple.soloTextoConLimite(tfApellidos, 100);
 		tfApellidos.setBounds(181, 65, 120, 26);
 		add(tfApellidos);
 
@@ -113,6 +113,7 @@ public class TabClientes extends JPanel {
 		add(calendarCarnet);
 
 		tfDireccion = new TextPropio();
+		RestrictedSimple.setLimite(tfDireccion, 200);
 		tfDireccion.setBounds(181, 307, 120, 26);
 		add(tfDireccion);
 		tfDireccion.setColumns(10);
@@ -197,11 +198,12 @@ public class TabClientes extends JPanel {
 		cliente.setFechaCarnet(calendarCarnet.getDate());
 		cliente.setDireccion(tfDireccion.getText());
 
-		if (esNuevo)
-			HibernateUtil.setData("guardar", cliente);
-
-		else {
-			HibernateUtil.setData("actualizar", cliente);
+		if (esNuevo) {
+			if (!HibernateUtil.setData("guardar", cliente))
+				Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto.");
+		} else {
+			if (!HibernateUtil.setData("actualizar", cliente))
+				Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto.");
 
 			esNuevo = true;
 			tfNombre.setEnabled(true);

@@ -88,16 +88,19 @@ public class TabVehiculos extends JPanel {
 		add(lblKilometros);
 
 		tfMatricula = new TextPropio();
+		RestrictedSimple.setLimite(tfMatricula, 100);
 		tfMatricula.setBounds(181, 18, 120, 26);
 		add(tfMatricula);
 		tfMatricula.setColumns(10);
 
 		tfMarca = new TextPropio();
+		RestrictedSimple.setLimite(tfMarca, 100);
 		tfMarca.setBounds(181, 67, 120, 26);
 		add(tfMarca);
 		tfMarca.setColumns(10);
 
 		tfModelo = new TextPropio();
+		RestrictedSimple.setLimite(tfModelo, 100);
 		tfModelo.setBounds(181, 119, 120, 26);
 		add(tfModelo);
 		tfModelo.setColumns(10);
@@ -215,11 +218,12 @@ public class TabVehiculos extends JPanel {
 		vehiculo.setColor(cbColor.getSelectedString());
 		vehiculo.setKilometros(Integer.parseInt(kilometros));
 
-		if (esNuevo)
-			HibernateUtil.setData("guardar", vehiculo);
-
-		else {
-			HibernateUtil.setData("actualizar", vehiculo);
+		if (esNuevo) {
+			if (!HibernateUtil.setData("guardar", vehiculo))
+				Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto.");
+		} else {
+			if (!HibernateUtil.setData("actualizar", vehiculo))
+				Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto.");
 
 			esNuevo = true;
 			tfMatricula.setEnabled(true);

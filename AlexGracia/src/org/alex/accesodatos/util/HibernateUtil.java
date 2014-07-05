@@ -1,10 +1,10 @@
 package org.alex.accesodatos.util;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
@@ -74,22 +74,21 @@ public class HibernateUtil {
 		// Empieza una transaccion.
 		Session sesion = getCurrentSession();
 		sesion.beginTransaction();
-		switch (opcion) {
-		case "guardar":
-			sesion.save(obj);
-			break;
-		case "actualizar":
-			sesion.update(obj);
-			break;
-		case "borrar":
-			sesion.delete(obj);
-			break;
-		default:
-		}
-		// Cerrar transaccion.
 		try {
+			switch (opcion) {
+			case "guardar":
+				sesion.save(obj);
+				break;
+			case "actualizar":
+				sesion.update(obj);
+				break;
+			case "borrar":
+				sesion.delete(obj);
+				break;
+			default:
+			}
 			sesion.getTransaction().commit();
-		} catch (ConstraintViolationException cve) {
+		} catch (HibernateException he) {
 			return false;
 		} finally {
 			sesion.close();

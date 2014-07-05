@@ -13,7 +13,6 @@ public class TextPropio extends JTextField {
 
 		// Fuente
 		setFont(Constantes.FUENTE);
-
 	}
 
 }

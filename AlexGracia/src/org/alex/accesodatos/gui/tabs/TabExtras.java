@@ -89,36 +89,41 @@ public class TabExtras extends JPanel {
 		add(yearFabricacion);
 
 		tfMarca = new TextPropio();
+		RestrictedSimple.setLimite(tfMarca, 100);
 		tfMarca.setBounds(181, 67, 120, 26);
 		add(tfMarca);
 		tfMarca.setColumns(10);
 
 		tfNombre = new TextPropio();
+		RestrictedSimple.setLimite(tfNombre, 100);
 		tfNombre.setBounds(181, 119, 120, 26);
 		add(tfNombre);
 		tfNombre.setColumns(10);
 
 		tfModelo = new TextPropio();
+		RestrictedSimple.setLimite(tfModelo, 100);
 		tfModelo.setBounds(181, 168, 120, 26);
 		add(tfModelo);
 		tfModelo.setColumns(10);
 
 		tfDescripcion = new TextPropio();
+		RestrictedSimple.setLimite(tfDescripcion, 250);
 		tfDescripcion.setBounds(181, 217, 120, 26);
 		add(tfDescripcion);
 		tfDescripcion.setColumns(10);
 
 		tfOrigen = new TextPropio();
-		RestrictedSimple.soloTexto(tfOrigen);
+		RestrictedSimple.soloTextoConLimite(tfOrigen, 100);
 		tfOrigen.setBounds(181, 261, 120, 26);
 		add(tfOrigen);
 
 		tfDimensiones = new TextPropio();
+		RestrictedSimple.setLimite(tfDimensiones, 100);
 		tfDimensiones.setBounds(181, 306, 120, 26);
 		add(tfDimensiones);
 
 		tfFabricante = new TextPropio();
-		RestrictedSimple.soloTexto(tfFabricante);
+		RestrictedSimple.soloTextoConLimite(tfFabricante, 100);
 		tfFabricante.setBounds(525, 307, 120, 26);
 		add(tfFabricante);
 
@@ -182,11 +187,12 @@ public class TabExtras extends JPanel {
 		extra.setDimensiones(dimensiones);
 		extra.setFabricante(tfFabricante.getText());
 
-		if (esNuevo)
-			HibernateUtil.setData("guardar", extra);
-
-		else {
-			HibernateUtil.setData("actualizar", extra);
+		if (esNuevo) {
+			if (!HibernateUtil.setData("guardar", extra))
+				Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto.");
+		} else {
+			if (!HibernateUtil.setData("actualizar", extra))
+				Util.setMensajeError("Probablemente ha superado el límite permitido \nde carácteres en alguna caja de texto.");
 
 			esNuevo = true;
 			tfNombre.setEnabled(true);
