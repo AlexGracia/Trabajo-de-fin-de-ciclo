@@ -175,7 +175,7 @@ public class Main extends JFrame {
 		toolBar.add(btnBorrar);
 
 		JLabel label = new JLabel("");
-		label.setMaximumSize(new Dimension(600, 0));
+		label.setMaximumSize(new Dimension(400, 0));
 		toolBar.add(label);
 
 		// Busqueda
@@ -200,7 +200,7 @@ public class Main extends JFrame {
 			}
 		});
 		tfBusqueda.setFont(Constantes.FUENTE);
-		tfBusqueda.setMaximumSize(new Dimension(300, 26));
+		tfBusqueda.setMaximumSize(new Dimension(400, 26));
 		toolBar.add(tfBusqueda);
 		tfBusqueda.setColumns(10);
 
@@ -230,10 +230,15 @@ public class Main extends JFrame {
 				case 4:
 					toolbarSearch = Constantes.TEXTO_PROVEEDORES[Constantes.TEXTO_PROVEEDORES.length - 1];
 					break;
+				case 5:
+					toolbarSearch = Constantes.TEXTO_TALLERES[Constantes.TEXTO_TALLERES.length - 1];
+					break;
 				case 6:
 					toolbarSearch = Constantes.TEXTO_POLIZAS[Constantes.TEXTO_POLIZAS.length - 1];
 					break;
-				// TODO Talleres, Siniestros.
+				case 7:
+					toolbarSearch = Constantes.TEXTO_SINIESTROS[Constantes.TEXTO_SINIESTROS.length - 1];
+					break;
 				default:
 				}
 				resetTextSearch(toolbarSearch);
@@ -267,11 +272,13 @@ public class Main extends JFrame {
 		tablaPiezas = tabPiezas.getTablaPiezas();
 		tabProveedores = new TabProveedores(tabbedPane);
 		tablaProveedores = tabProveedores.getTablaProveedores();
-		// TODO Talleres, Siniestros.
+		// TODO Siniestros.
 		tabTalleres = new TabTalleres(tabbedPane);
+		tablaTalleres = tabTalleres.getTablaTalleres();
 		tabPolizas = new TabPolizas(tabbedPane);
 		tablaPolizas = tabPolizas.getTablaPolizas();
 		tabSiniestros = new TabSiniestros(tabbedPane);
+
 	}
 
 	private void finalizandoCarga() {
@@ -295,7 +302,7 @@ public class Main extends JFrame {
 		tablaExtras.listar();
 		tablaPiezas.listar();
 		tablaProveedores.listar();
-
+		tablaTalleres.listar();
 		tablaPolizas.listar();
 
 	}
@@ -386,6 +393,10 @@ public class Main extends JFrame {
 			if (tabProveedores.mGuardar())
 				barraEstado.accionRealizada();
 			break;
+		case 5:
+			if (tabTalleres.mGuardar())
+				barraEstado.accionRealizada();
+			break;
 		case 6:
 			if (tabPolizas.mGuardar())
 				barraEstado.accionRealizada();
@@ -411,6 +422,9 @@ public class Main extends JFrame {
 			break;
 		case 4:
 			tabProveedores.mCancelar();
+			break;
+		case 5:
+			tabTalleres.mCancelar();
 			break;
 		case 6:
 			tabPolizas.mCancelar();
@@ -441,6 +455,10 @@ public class Main extends JFrame {
 			break;
 		case 4:
 			if (tabProveedores.mEditar())
+				setEnable(false);
+			break;
+		case 5:
+			if (tabTalleres.mEditar())
 				setEnable(false);
 			break;
 		case 6:
@@ -477,6 +495,10 @@ public class Main extends JFrame {
 			if (tabProveedores.mEliminar())
 				barraEstado.accionRealizada();
 			break;
+		case 5:
+			if (tabTalleres.mEliminar())
+				barraEstado.accionRealizada();
+			break;
 		case 6:
 			if (tabPolizas.mEliminar())
 				barraEstado.accionRealizada();
@@ -503,9 +525,11 @@ public class Main extends JFrame {
 		case 4:
 			tabProveedores.mBuscarProveedor(filtro);
 			break;
+		case 5:
+			tabTalleres.mBuscarProveedor(filtro);
+			break;
 		case 6:
-			if (Util.esNumero(filtro))
-				tabPolizas.mBuscarPoliza(filtro);
+			tabPolizas.mBuscarPoliza(filtro);
 			break;
 		default:
 		}
@@ -527,6 +551,9 @@ public class Main extends JFrame {
 			break;
 		case 4:
 			tablaProveedores.listar();
+			break;
+		case 5:
+			tablaTalleres.listar();
 			break;
 		case 6:
 			tablaPolizas.listar();

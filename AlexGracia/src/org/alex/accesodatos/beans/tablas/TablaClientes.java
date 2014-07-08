@@ -59,6 +59,7 @@ public class TablaClientes extends Tabla {
 
 	}
 
+	// TODO tabla Siniestros
 	public void listar(String filtro) {
 
 		if (filtro.startsWith("*id") && !filtro.substring(3).equals(""))

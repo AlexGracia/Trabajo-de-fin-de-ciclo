@@ -17,7 +17,7 @@ public class Constantes {
 
 	public final static String[] TEXTO_CLIENTES = { "Clientes", "Nombre *",
 			"Apellidos", "DNI *", "Teléfono", "F. Nacimiento", "F. Carnet",
-			"Dirección", "Nombre, DNI, *Id (póliza)" };
+			"Dirección", "Nombre, DNI, *Id (póliza), *Id (siniestro)" };
 	public final static String[] TEXTO_VEHICULOS = { "Vehículos",
 			"Matrícula *", "Marca", "Modelo", "Potencia", "Año-fabricación",
 			"Color", "Puertas", "Kilómetros *",
@@ -32,21 +32,19 @@ public class Constantes {
 			"Nombre *", "Teléfono *", "Correo", "F. Nacimiento", "Dirección",
 			"Pago", "Nombre-Empresa *", "DNI *",
 			"Nombre, Teléfono, Nombre-Empresa, DNI" };
-	// TODO add search bar text
 	public final static String[] TEXTO_TALLERES = { "Talleres", "Nombre *",
 			"Dirección *", "Teléfono", "F. Inicio", "Nombre-Jefe",
-			"CIF-Empresa *", "Trabajadores", "Reparaciones", "" };
-
+			"CIF-Empresa *", "Trabajadores", "Reparaciones",
+			"Nombre, Dirección, CIF-Empresa, *Id (siniestro)" };
 	public final static String[] TEXTO_POLIZAS = { "Pólizas", "Tipo",
 			"Importe", "Estado ", "F. Inicio", "Conductores", "Antigüedad",
 			"F. Fin", "Id (cliente) *", "Id (vehículo) *",
 			"Id (cliente), Id (vehículo)" };
-	// TODO add search bar text
 	public final static String[] TEXTO_SINIESTROS = { "Siniestros",
 			"Datos-Póliza", "Importe-Reparación", "Datos-Cliente",
 			"F. Reparación", "Datos-Taller", "F. Siniestro",
 			"Vehiculos-Implicados", "Id (cliente) *", "Id (taller) *",
-			"Clientes heridos", "" };
+			"Clientes heridos", "Id (cliente), Id (taller)" };
 
 	public final static String[] COLUMNAS_CLIENTE = { "Id", "Código", "Nombre",
 			"Apellidos", "DNI", "Teléfono", "Nacimiento", "Carnet", "Dirección" };
@@ -61,7 +59,7 @@ public class Constantes {
 	public final static String[] COLUMNAS_PROVEEDOR = { "Id", "Nombre",
 			"Teléfono", "Correo", "Nacimiento", "Dirección", "Pago", "Empresa",
 			"DNI" };
-	public final static String[] COLUMNAS_TALLERE = { "Id", "Nombre",
+	public final static String[] COLUMNAS_TALLER = { "Id", "Nombre",
 			"Dirección", "Teléfono", "Inicio", "Jefe", "CIF", "Trabajadores",
 			"Reparaciones" };
 	public final static String[] COLUMNAS_POLIZA = { "Id", "Número", "Tipo",

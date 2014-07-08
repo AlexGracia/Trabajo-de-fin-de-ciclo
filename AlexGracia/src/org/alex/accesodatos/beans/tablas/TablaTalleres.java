@@ -11,7 +11,6 @@ import org.alex.accesodatos.hibernate.Talleres;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.Tabla;
-import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
@@ -51,7 +50,7 @@ public class TablaTalleres extends Tabla {
 			}
 		});
 
-		modelo = getModelo(Constantes.COLUMNAS_CLIENTE);
+		modelo = getModelo(Constantes.COLUMNAS_TALLER);
 		setModel(modelo);
 
 	}
@@ -64,9 +63,9 @@ public class TablaTalleres extends Tabla {
 
 	public void listar(String filtro) {
 
-		if (Util.esNumero(filtro))
+		if (filtro.startsWith("*id") && !filtro.substring(3).equals(""))
 			listarComodin("select s.talleres from Siniestros s where s.idSiniestros = "
-					+ filtro);
+					+ filtro.substring(3));
 
 		else
 			listarComodin("select t from Talleres t where t.nombre like '%"

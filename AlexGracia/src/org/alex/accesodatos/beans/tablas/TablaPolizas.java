@@ -61,6 +61,7 @@ public class TablaPolizas extends Tabla {
 		listarComodin("FROM Polizas");
 	}
 
+	// TODO
 	public void listar(String filtro) {
 
 		listarComodin("select p from Polizas p where p.clientes.idClientes = "

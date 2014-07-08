@@ -56,7 +56,7 @@ public class TablaSiniestros extends Tabla {
 			}
 		});
 
-		modelo = getModelo(Constantes.COLUMNAS_CLIENTE);
+		modelo = getModelo(Constantes.COLUMNAS_SINIESTRO);
 		setModel(modelo);
 
 	}
