@@ -17,7 +17,7 @@ public class Constantes {
 
 	public final static String[] TEXTO_CLIENTES = { "Clientes", "Nombre *",
 			"Apellidos", "DNI *", "Teléfono", "F. Nacimiento", "F. Carnet",
-			"Dirección", "Nombre, DNI, Id (póliza)" };
+			"Dirección", "Nombre, DNI, *Id (póliza)" };
 	public final static String[] TEXTO_VEHICULOS = { "Vehículos",
 			"Matrícula *", "Marca", "Modelo", "Potencia", "Año-fabricación",
 			"Color", "Puertas", "Kilómetros *",
@@ -25,13 +25,14 @@ public class Constantes {
 	public final static String[] TEXTO_EXTRAS = { "Extras", "Año-fabricación",
 			"Marca", "Nombre *", "Modelo *", "Descripción", "Lugar de origen",
 			"Dimensiones *", "Fabricante", "Nombre, Modelo" };
-	// TODO add search bar text
 	public final static String[] TEXTO_PIEZAS = { "Piezas", "Nombre *",
 			"Descripción", "Cantidad", "Precio", "Origen *", "F. Solicitud",
 			"Marca", "Nombre, Origen" };
 	public final static String[] TEXTO_PROVEEDORES = { "Proveedores",
 			"Nombre *", "Teléfono *", "Correo", "F. Nacimiento", "Dirección",
-			"Pago", "Nombre-Empresa *", "DNI *", "" };
+			"Pago", "Nombre-Empresa *", "DNI *",
+			"Nombre, Teléfono, Nombre-Empresa, DNI" };
+	// TODO add search bar text
 	public final static String[] TEXTO_TALLERES = { "Talleres", "Nombre *",
 			"Dirección *", "Teléfono", "F. Inicio", "Nombre-Jefe",
 			"CIF-Empresa *", "Trabajadores", "Reparaciones", "" };

@@ -227,10 +227,13 @@ public class Main extends JFrame {
 				case 3:
 					toolbarSearch = Constantes.TEXTO_PIEZAS[Constantes.TEXTO_PIEZAS.length - 1];
 					break;
+				case 4:
+					toolbarSearch = Constantes.TEXTO_PROVEEDORES[Constantes.TEXTO_PROVEEDORES.length - 1];
+					break;
 				case 6:
 					toolbarSearch = Constantes.TEXTO_POLIZAS[Constantes.TEXTO_POLIZAS.length - 1];
 					break;
-				// TODO Piezas, Proveedores, Talleres, Siniestros.
+				// TODO Talleres, Siniestros.
 				default:
 				}
 				resetTextSearch(toolbarSearch);
@@ -260,10 +263,11 @@ public class Main extends JFrame {
 		tablaVehiculos = tabVehiculos.getTablaVehiculos();
 		tabExtras = new TabExtras(tabbedPane);
 		tablaExtras = tabExtras.getTablaExtras();
-		// TODO Piezas, Proveedores, Talleres, Siniestros.
 		tabPiezas = new TabPiezas(tabbedPane);
 		tablaPiezas = tabPiezas.getTablaPiezas();
 		tabProveedores = new TabProveedores(tabbedPane);
+		tablaProveedores = tabProveedores.getTablaProveedores();
+		// TODO Talleres, Siniestros.
 		tabTalleres = new TabTalleres(tabbedPane);
 		tabPolizas = new TabPolizas(tabbedPane);
 		tablaPolizas = tabPolizas.getTablaPolizas();
@@ -290,6 +294,7 @@ public class Main extends JFrame {
 		tablaVehiculos.listar();
 		tablaExtras.listar();
 		tablaPiezas.listar();
+		tablaProveedores.listar();
 
 		tablaPolizas.listar();
 
@@ -377,6 +382,10 @@ public class Main extends JFrame {
 			if (tabPiezas.mGuardar())
 				barraEstado.accionRealizada();
 			break;
+		case 4:
+			if (tabProveedores.mGuardar())
+				barraEstado.accionRealizada();
+			break;
 		case 6:
 			if (tabPolizas.mGuardar())
 				barraEstado.accionRealizada();
@@ -399,6 +408,9 @@ public class Main extends JFrame {
 			break;
 		case 3:
 			tabPiezas.mCancelar();
+			break;
+		case 4:
+			tabProveedores.mCancelar();
 			break;
 		case 6:
 			tabPolizas.mCancelar();
@@ -425,6 +437,10 @@ public class Main extends JFrame {
 			break;
 		case 3:
 			if (tabPiezas.mEditar())
+				setEnable(false);
+			break;
+		case 4:
+			if (tabProveedores.mEditar())
 				setEnable(false);
 			break;
 		case 6:
@@ -457,6 +473,10 @@ public class Main extends JFrame {
 			if (tabPiezas.mEliminar())
 				barraEstado.accionRealizada();
 			break;
+		case 4:
+			if (tabProveedores.mEliminar())
+				barraEstado.accionRealizada();
+			break;
 		case 6:
 			if (tabPolizas.mEliminar())
 				barraEstado.accionRealizada();
@@ -478,7 +498,10 @@ public class Main extends JFrame {
 			tabExtras.mBuscarExtra(filtro);
 			break;
 		case 3:
-			tabPiezas.mBuscarExtra(filtro);
+			tabPiezas.mBuscarPieza(filtro);
+			break;
+		case 4:
+			tabProveedores.mBuscarProveedor(filtro);
 			break;
 		case 6:
 			if (Util.esNumero(filtro))
@@ -501,6 +524,9 @@ public class Main extends JFrame {
 			break;
 		case 3:
 			tablaPiezas.listar();
+			break;
+		case 4:
+			tablaProveedores.listar();
 			break;
 		case 6:
 			tablaPolizas.listar();

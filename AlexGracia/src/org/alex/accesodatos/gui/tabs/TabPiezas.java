@@ -127,28 +127,22 @@ public class TabPiezas extends JPanel {
 
 	}
 
-	public void mBuscarExtra(String filtro) {
-
+	public void mBuscarPieza(String filtro) {
 		if (filtro.equals(""))
 			tablaPiezas.listar();
 		else
 			tablaPiezas.listar(filtro);
-
 	}
 
 	public boolean mEliminar() {
-
 		if (!piezaSeleccionada() || !new JConfirmacion("Borrar").isAceptar())
 			return false;
 
-		Piezas pieza = tablaPiezas.getPiezaSeleccionada();
-
-		HibernateUtil.setData("borrar", pieza);
+		HibernateUtil.setData("borrar", tablaPiezas.getPiezaSeleccionada());
 
 		tablaPiezas.listar();
 		mVaciarPieza();
 		return true;
-
 	}
 
 	public boolean mGuardar() {

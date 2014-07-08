@@ -143,16 +143,13 @@ public class TabVehiculos extends JPanel {
 	}
 
 	public void mBuscarVehiculo(String filtro) {
-
 		if (filtro.equals(""))
 			tablaVehiculo.listar();
 		else
 			tablaVehiculo.listar(filtro);
-
 	}
 
 	public boolean mEliminar() {
-
 		if (!vehiculoSeleccionado() || !new JConfirmacion("Borrar").isAceptar())
 			return false;
 
@@ -169,7 +166,6 @@ public class TabVehiculos extends JPanel {
 		tablaVehiculo.listar();
 		mVaciarVehiculo();
 		return true;
-
 	}
 
 	public boolean mGuardar() {
@@ -191,7 +187,7 @@ public class TabVehiculos extends JPanel {
 									+ matricula + "'").uniqueResult();
 
 			if (matricula.equals(matriculaSQL)) {
-				Util.setMensajeInformacion("Matricula ya existente, cámbiela");
+				Util.setMensajeInformacion("Matricula ya existente, cámbiela.");
 				tfMatricula.setText("");
 				return false;
 			}
@@ -203,16 +199,16 @@ public class TabVehiculos extends JPanel {
 		vehiculo.setMarca(tfMarca.getText());
 		vehiculo.setModelo(tfModelo.getText());
 
-		String potencia = tfPotencia.getText();
-		String puertas = tfPuertas.getText();
-		if (potencia.equals(""))
+		String texto = tfPotencia.getText();
+		if (texto.equals(""))
 			vehiculo.setPotencia(0);
 		else
-			vehiculo.setPotencia(Integer.parseInt(potencia));
-		if (puertas.equals(""))
+			vehiculo.setPotencia(Integer.parseInt(texto));
+		texto = tfPuertas.getText();
+		if (texto.equals(""))
 			vehiculo.setNumeroPuertas(0);
 		else
-			vehiculo.setNumeroPuertas(Integer.parseInt(puertas));
+			vehiculo.setNumeroPuertas(Integer.parseInt(texto));
 
 		vehiculo.setAnoFabricacion(yearFabricacion.getDate());
 		vehiculo.setColor(cbColor.getSelectedString());

@@ -152,27 +152,21 @@ public class TabPolizas extends JPanel {
 	}
 
 	public void mBuscarPoliza(String filtro) {
-
 		if (filtro.equals(""))
 			tablaPolizas.listar();
 		else
 			tablaPolizas.listar(filtro);
-
 	}
 
 	public boolean mEliminar() {
-
 		if (!polizaSeleccionada() || !new JConfirmacion("Borrar").isAceptar())
 			return false;
 
-		Polizas poliza = tablaPolizas.getPolizaSeleccionada();
-
-		HibernateUtil.setData("borrar", poliza);
+		HibernateUtil.setData("borrar", tablaPolizas.getPolizaSeleccionada());
 
 		tablaPolizas.listar();
 		mVaciarPoliza();
 		return true;
-
 	}
 
 	public boolean mGuardar() {
@@ -196,20 +190,20 @@ public class TabPolizas extends JPanel {
 		else
 			poliza = tablaPolizas.getPolizaSeleccionada();
 
-		String importe = tfImporte.getText();
-		String conductores = tfConductores.getText();
+		String texto = tfImporte.getText();
 
 		poliza.setTipo(cbTipo.getSelectedString());
-		if (importe.equals(""))
+		if (texto.equals(""))
 			poliza.setImporte(0);
 		else
-			poliza.setImporte(Integer.parseInt(importe));
+			poliza.setImporte(Integer.parseInt(texto));
 		poliza.setEstado(cbEstado.getSelectedString());
 		poliza.setFechaInicio(dateInicio.getDate());
-		if (conductores.equals(""))
+		texto = tfConductores.getText();
+		if (texto.equals(""))
 			poliza.setCantidadConductores(0);
 		else
-			poliza.setCantidadConductores(Integer.parseInt(conductores));
+			poliza.setCantidadConductores(Integer.parseInt(texto));
 		poliza.setAntiguedadConduccion(dateConduccion.getDate());
 		poliza.setFechaFin(dateFin.getDate());
 		poliza.setClientes(cliente);

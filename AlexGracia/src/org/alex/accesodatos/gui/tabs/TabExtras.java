@@ -138,27 +138,21 @@ public class TabExtras extends JPanel {
 	}
 
 	public void mBuscarExtra(String filtro) {
-
 		if (filtro.equals(""))
 			tablaExtras.listar();
 		else
 			tablaExtras.listar(filtro);
-
 	}
 
 	public boolean mEliminar() {
-
 		if (!extraSeleccionado() || !new JConfirmacion("Borrar").isAceptar())
 			return false;
 
-		Extras extra = tablaExtras.getExtraSeleccionado();
-
-		HibernateUtil.setData("borrar", extra);
+		HibernateUtil.setData("borrar", tablaExtras.getExtraSeleccionado());
 
 		tablaExtras.listar();
 		mVaciarExtra();
 		return true;
-
 	}
 
 	public boolean mGuardar() {

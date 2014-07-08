@@ -1,7 +1,6 @@
 package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
-import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,9 +10,9 @@ import javax.swing.JTabbedPane;
 import org.alex.accesodatos.beans.ComboPropio;
 import org.alex.accesodatos.beans.LabelPropio;
 import org.alex.accesodatos.beans.TextPropio;
-import org.alex.accesodatos.beans.tablas.TablaVehiculos;
+import org.alex.accesodatos.beans.tablas.TablaProveedores;
 import org.alex.accesodatos.gui.JConfirmacion;
-import org.alex.accesodatos.hibernate.Vehiculos;
+import org.alex.accesodatos.hibernate.Proveedores;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.RestrictedSimple;
@@ -32,211 +31,197 @@ public class TabProveedores extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private boolean esNuevo = true;
 
-	// TODO Variables graficas
-	private TextPropio tfMatricula, tfMarca, tfModelo, tfPotencia, tfPuertas,
-			tfKilometros;
+	// Variables graficas
+	private TextPropio tfNombre, tfTelefono, tfCorreo, tfDireccion,
+			tfNombreEmpresa, tfDni;
 	private JCalendarCombo dateNacimiento;
 	private ComboPropio cbPago;
-	private TablaVehiculos tablaVehiculo;
+	private TablaProveedores tablaProveedores;
 
 	/**
-	 * Constructor que prepara el interfaz.
+	 * TODO Constructor que prepara el interfaz.
 	 * 
 	 * @param tabbedPane
 	 */
 	public TabProveedores(JTabbedPane tabbedPane) {
 
 		byte i = 0;
-		tabbedPane.addTab(Constantes.TEXTO_VEHICULOS[i++], this);
+		tabbedPane.addTab(Constantes.TEXTO_PROVEEDORES[i++], this);
 		setLayout(null);
 
-		JLabel lblMatricula = new JLabel(Constantes.TEXTO_VEHICULOS[i++]);
-		lblMatricula.setFont(Constantes.FUENTE_NEGRITA);
-		lblMatricula.setBounds(11, 24, 99, 14);
-		add(lblMatricula);
+		JLabel lblNombre = new JLabel(Constantes.TEXTO_PROVEEDORES[i++]);
+		lblNombre.setFont(Constantes.FUENTE_NEGRITA);
+		lblNombre.setBounds(11, 24, 99, 14);
+		add(lblNombre);
 
-		LabelPropio lblMarca = new LabelPropio(Constantes.TEXTO_VEHICULOS[i++]);
-		lblMarca.setBounds(11, 70, 99, 20);
-		add(lblMarca);
+		JLabel lblTelefono = new JLabel(Constantes.TEXTO_PROVEEDORES[i++]);
+		lblTelefono.setFont(Constantes.FUENTE_NEGRITA);
+		lblTelefono.setBounds(11, 70, 99, 20);
+		add(lblTelefono);
 
-		LabelPropio lblModelo = new LabelPropio(Constantes.TEXTO_VEHICULOS[i++]);
-		lblModelo.setBounds(11, 125, 99, 14);
-		add(lblModelo);
+		LabelPropio lblCorreo = new LabelPropio(
+				Constantes.TEXTO_PROVEEDORES[i++]);
+		lblCorreo.setBounds(11, 125, 99, 14);
+		add(lblCorreo);
 
-		LabelPropio lblPotencia = new LabelPropio(
-				Constantes.TEXTO_VEHICULOS[i++]);
-		lblPotencia.setBounds(11, 174, 99, 14);
-		add(lblPotencia);
+		LabelPropio lblFecha = new LabelPropio(
+				Constantes.TEXTO_PROVEEDORES[i++]);
+		lblFecha.setBounds(11, 174, 99, 14);
+		add(lblFecha);
 
-		LabelPropio lblFabricacion = new LabelPropio(
-				Constantes.TEXTO_VEHICULOS[i++]);
-		lblFabricacion.setBounds(11, 223, 135, 14);
-		add(lblFabricacion);
+		LabelPropio lblDireccion = new LabelPropio(
+				Constantes.TEXTO_PROVEEDORES[i++]);
+		lblDireccion.setBounds(11, 223, 135, 14);
+		add(lblDireccion);
 
-		LabelPropio lblColor = new LabelPropio(Constantes.TEXTO_VEHICULOS[i++]);
-		lblColor.setBounds(11, 267, 135, 14);
-		add(lblColor);
+		LabelPropio lblPago = new LabelPropio(Constantes.TEXTO_PROVEEDORES[i++]);
+		lblPago.setBounds(11, 267, 135, 20);
+		add(lblPago);
 
-		LabelPropio lblPuertas = new LabelPropio(
-				Constantes.TEXTO_VEHICULOS[i++]);
-		lblPuertas.setBounds(11, 313, 99, 14);
-		add(lblPuertas);
+		JLabel lblEmpresa = new JLabel(Constantes.TEXTO_PROVEEDORES[i++]);
+		lblEmpresa.setFont(Constantes.FUENTE_NEGRITA);
+		lblEmpresa.setBounds(11, 313, 160, 20);
+		add(lblEmpresa);
 
-		JLabel lblKilometros = new JLabel(Constantes.TEXTO_VEHICULOS[i]);
-		lblKilometros.setFont(Constantes.FUENTE_NEGRITA);
-		lblKilometros.setBounds(355, 313, 135, 14);
-		add(lblKilometros);
+		JLabel lblDni = new JLabel(Constantes.TEXTO_PROVEEDORES[i]);
+		lblDni.setFont(Constantes.FUENTE_NEGRITA);
+		lblDni.setBounds(355, 313, 135, 14);
+		add(lblDni);
 
-		tfMatricula = new TextPropio();
-		RestrictedSimple.setLimite(tfMatricula, 200);
-		tfMatricula.setBounds(181, 18, 120, 26);
-		add(tfMatricula);
-		tfMatricula.setColumns(10);
+		tfNombre = new TextPropio();
+		RestrictedSimple.soloTextoConLimite(tfNombre, 100);
+		tfNombre.setBounds(181, 18, 120, 26);
+		add(tfNombre);
+		tfNombre.setColumns(10);
 
-		tfMarca = new TextPropio();
-		RestrictedSimple.setLimite(tfMarca, 200);
-		tfMarca.setBounds(181, 67, 120, 26);
-		add(tfMarca);
-		tfMarca.setColumns(10);
+		tfTelefono = new TextPropio();
+		RestrictedSimple.soloNumeros(tfTelefono);
+		tfTelefono.setBounds(181, 67, 120, 26);
+		add(tfTelefono);
+		tfTelefono.setColumns(10);
 
-		tfModelo = new TextPropio();
-		RestrictedSimple.setLimite(tfModelo, 200);
-		tfModelo.setBounds(181, 119, 120, 26);
-		add(tfModelo);
-		tfModelo.setColumns(10);
-
-		tfPotencia = new TextPropio();
-		RestrictedSimple.soloNumeros(tfPotencia);
-		tfPotencia.setBounds(181, 168, 120, 26);
-		add(tfPotencia);
-		tfPotencia.setColumns(10);
+		tfCorreo = new TextPropio();
+		RestrictedSimple.setLimite(tfCorreo, 100);
+		tfCorreo.setBounds(181, 119, 120, 26);
+		add(tfCorreo);
+		tfCorreo.setColumns(10);
 
 		dateNacimiento = new JCalendarCombo();
-		dateNacimiento.setBounds(181, 213, 120, 26);
+		dateNacimiento.setBounds(181, 170, 120, 26);
 		add(dateNacimiento);
+
+		tfDireccion = new TextPropio();
+		RestrictedSimple.setLimite(tfDireccion, 200);
+		tfDireccion.setBounds(181, 217, 120, 26);
+		add(tfDireccion);
+		tfDireccion.setColumns(10);
 
 		cbPago = new ComboPropio();
 		cbPago.addItem("");
-		cbPago.addItem("Metalizado");
-		cbPago.addItem("Mate");
+		cbPago.addItem("Con_plazos");
+		cbPago.addItem("Sin_plazos");
 		cbPago.setBounds(181, 261, 120, 26);
 		add(cbPago);
 
-		tfPuertas = new TextPropio();
-		RestrictedSimple.soloNumerosConLimite(tfPuertas, 1);
-		tfPuertas.setBounds(181, 307, 120, 26);
-		add(tfPuertas);
+		tfNombreEmpresa = new TextPropio();
+		RestrictedSimple.setLimite(tfNombreEmpresa, 100);
+		tfNombreEmpresa.setBounds(181, 307, 120, 26);
+		add(tfNombreEmpresa);
 
-		tfKilometros = new TextPropio();
-		RestrictedSimple.soloNumeros(tfKilometros);
-		tfKilometros.setBounds(525, 307, 120, 26);
-		add(tfKilometros);
+		tfDni = new TextPropio();
+		RestrictedSimple.setLimite(tfDni, 9);
+		tfDni.setBounds(525, 307, 120, 26);
+		add(tfDni);
+
+		tablaProveedores = new TablaProveedores(cbPago, tfNombre,
+				dateNacimiento, tfTelefono, tfCorreo, tfDireccion,
+				tfNombreEmpresa, tfDni);
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(355, 18, 625, 269);
 		add(scrollPane);
-
-		tablaVehiculo = new TablaVehiculos(tfMatricula, tfMarca, tfModelo,
-				tfPotencia, dateNacimiento, cbPago, tfPuertas, tfKilometros);
-		scrollPane.setViewportView(tablaVehiculo);
+		scrollPane.setViewportView(tablaProveedores);
 
 	}
 
-	public void mBuscarVehiculo(String filtro) {
-
+	public void mBuscarProveedor(String filtro) {
 		if (filtro.equals(""))
-			tablaVehiculo.listar();
+			tablaProveedores.listar();
 		else
-			tablaVehiculo.listar(filtro);
-
+			tablaProveedores.listar(filtro);
 	}
 
 	public boolean mEliminar() {
-
-		if (!vehiculoSeleccionado() || !new JConfirmacion("Borrar").isAceptar())
+		if (!proveedorSeleccionado()
+				|| !new JConfirmacion("Borrar").isAceptar())
 			return false;
 
-		Vehiculos vehiculo = tablaVehiculo.getVehiculoSeleccionado();
+		HibernateUtil.setData("borrar",
+				tablaProveedores.getProveedorSeleccionado());
 
-		if (!HibernateUtil.setData("borrar", vehiculo)) {
-			List<?> query = HibernateUtil.getQuery(
-					"select p.idPolizas from Polizas p where p.vehiculos.idVehiculos = '"
-							+ vehiculo.getIdVehiculos() + "'").list();
-			Util.setMensajeError("Debe borrar antes la/s póliza/s nº " + query
-					+ ".");
-		}
-
-		tablaVehiculo.listar();
-		mVaciarVehiculo();
+		tablaProveedores.listar();
+		mVaciarProveedor();
 		return true;
-
 	}
 
 	public boolean mGuardar() {
 		// Variables
-		String matricula = tfMatricula.getText();
-		String kilometros = tfKilometros.getText();
+		String nombre = tfNombre.getText();
+		String telefono = tfTelefono.getText();
+		String nombreEmpresa = tfNombreEmpresa.getText();
+		String dni = tfDni.getText();
 
-		if (matricula.equals("") || kilometros.equals("")) {
+		if (nombre.equals("") || telefono.equals("")
+				|| nombreEmpresa.equals("") || dni.equals("")) {
 			Util.setMensajeInformacion("Rellene los campos obligatorios (*)");
 			return false;
 		}
 
-		Vehiculos vehiculo;
+		Proveedores proveedor;
 		if (esNuevo) {
-			String matriculaSQL = (String) HibernateUtil
+			String dniSQL = (String) HibernateUtil
 					.getCurrentSession()
 					.createQuery(
-							"select v.matricula from Vehiculos v where v.matricula = '"
-									+ matricula + "'").uniqueResult();
+							"select p.dni from Proveedores p where p.dni = '"
+									+ dni + "'").uniqueResult();
 
-			if (matricula.equals(matriculaSQL)) {
-				Util.setMensajeInformacion("Matricula ya existente, cámbiela");
-				tfMatricula.setText("");
+			if (dni.equals(dniSQL)) {
+				Util.setMensajeInformacion("DNI ya existente, cámbielo.");
+				tfDni.setText("");
 				return false;
 			}
-			vehiculo = new Vehiculos();
+			proveedor = new Proveedores();
 		} else
-			vehiculo = tablaVehiculo.getVehiculoSeleccionado();
+			proveedor = tablaProveedores.getProveedorSeleccionado();
 
-		vehiculo.setMatricula(matricula);
-		vehiculo.setMarca(tfMarca.getText());
-		vehiculo.setModelo(tfModelo.getText());
-
-		String potencia = tfPotencia.getText();
-		String puertas = tfPuertas.getText();
-		if (potencia.equals(""))
-			vehiculo.setPotencia(0);
-		else
-			vehiculo.setPotencia(Integer.parseInt(potencia));
-		if (puertas.equals(""))
-			vehiculo.setNumeroPuertas(0);
-		else
-			vehiculo.setNumeroPuertas(Integer.parseInt(puertas));
-
-		vehiculo.setAnoFabricacion(dateNacimiento.getDate());
-		vehiculo.setColor(cbPago.getSelectedString());
-		vehiculo.setKilometros(Integer.parseInt(kilometros));
+		proveedor.setNombre(nombre);
+		proveedor.setTelefono(Integer.parseInt(telefono));
+		proveedor.setCorreoElectronico(tfCorreo.getText());
+		proveedor.setFechaNacimiento(dateNacimiento.getDate());
+		proveedor.setDireccion(tfDireccion.getText());
+		proveedor.setFacilidadPago(cbPago.getSelectedString());
+		proveedor.setNombreEmpresa(nombreEmpresa);
+		proveedor.setDni(dni);
 
 		if (esNuevo)
-			HibernateUtil.setData("guardar", vehiculo);
+			HibernateUtil.setData("guardar", proveedor);
 		else {
-			HibernateUtil.setData("actualizar", vehiculo);
+			HibernateUtil.setData("actualizar", proveedor);
 
 			esNuevo = true;
-			tfMatricula.setEnabled(true);
+			tfNombre.setEnabled(true);
 		}
 
-		tablaVehiculo.listar();
-		mVaciarVehiculo();
+		tablaProveedores.listar();
+		mVaciarProveedor();
 		return true;
 	}
 
 	public boolean mEditar() {
-		if (!vehiculoSeleccionado())
+		if (!proveedorSeleccionado())
 			return false;
 
-		tfMatricula.setEnabled(false);
+		tfNombre.setEnabled(false);
 
 		esNuevo = false;
 		return true;
@@ -244,29 +229,29 @@ public class TabProveedores extends JPanel {
 
 	public void mCancelar() {
 		esNuevo = true;
-		mVaciarVehiculo();
-		tfMatricula.setEnabled(true);
+		mVaciarProveedor();
+		tfNombre.setEnabled(true);
 	}
 
-	private void mVaciarVehiculo() {
+	private void mVaciarProveedor() {
 
-		tfMatricula.setText("");
-		tfMarca.setText("");
-		tfModelo.setText("");
-		tfPotencia.setText("");
+		tfNombre.setText("");
+		tfTelefono.setText("");
+		tfCorreo.setText("");
 		dateNacimiento.setDate(Calendar.getInstance().getTime());
+		tfDireccion.setText("");
 		cbPago.setSelectedIndex(0);
-		tfPuertas.setText("");
-		tfKilometros.setText("");
+		tfNombreEmpresa.setText("");
+		tfDni.setText("");
 
 	}
 
-	public TablaVehiculos getTablaVehiculos() {
-		return tablaVehiculo;
+	public TablaProveedores getTablaProveedores() {
+		return tablaProveedores;
 	}
 
-	private boolean vehiculoSeleccionado() {
-		if (tablaVehiculo.getVehiculoSeleccionado() == null) {
+	private boolean proveedorSeleccionado() {
+		if (tablaProveedores.getProveedorSeleccionado() == null) {
 			Util.setMensajeInformacion("Seleccione una fila.");
 			return false;
 		}

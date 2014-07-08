@@ -129,16 +129,13 @@ public class TabClientes extends JPanel {
 	}
 
 	public void mBuscarCliente(String filtro) {
-
 		if (filtro.equals(""))
 			tablaCliente.listar();
 		else
 			tablaCliente.listar(filtro);
-
 	}
 
 	public boolean mEliminar() {
-
 		if (!clienteSeleccionado() || !new JConfirmacion("Borrar").isAceptar())
 			return false;
 
@@ -155,7 +152,6 @@ public class TabClientes extends JPanel {
 		tablaCliente.listar();
 		mVaciarCliente();
 		return true;
-
 	}
 
 	public boolean mGuardar() {
