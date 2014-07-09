@@ -58,15 +58,13 @@ public class TablaSiniestros extends Tabla {
 
 		modelo = getModelo(Constantes.COLUMNAS_SINIESTRO);
 		setModel(modelo);
-
 	}
 
 	public void listar() {
-
 		listarComodin("FROM Siniestros");
-
 	}
 
+	// TODO
 	public void listar(String filtro) {
 
 		listarComodin("select s from Siniestros s where s.clientes.idClientes = "

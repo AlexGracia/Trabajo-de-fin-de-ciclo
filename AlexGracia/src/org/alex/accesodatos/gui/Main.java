@@ -272,12 +272,12 @@ public class Main extends JFrame {
 		tablaPiezas = tabPiezas.getTablaPiezas();
 		tabProveedores = new TabProveedores(tabbedPane);
 		tablaProveedores = tabProveedores.getTablaProveedores();
-		// TODO Siniestros.
 		tabTalleres = new TabTalleres(tabbedPane);
 		tablaTalleres = tabTalleres.getTablaTalleres();
 		tabPolizas = new TabPolizas(tabbedPane);
 		tablaPolizas = tabPolizas.getTablaPolizas();
 		tabSiniestros = new TabSiniestros(tabbedPane);
+		tablaSiniestros = tabSiniestros.getTablaSiniestros();
 
 	}
 
@@ -296,7 +296,6 @@ public class Main extends JFrame {
 			;
 		conecta.dispose();
 
-		// TODO resto de tablas
 		tablaClientes.listar();
 		tablaVehiculos.listar();
 		tablaExtras.listar();
@@ -304,6 +303,7 @@ public class Main extends JFrame {
 		tablaProveedores.listar();
 		tablaTalleres.listar();
 		tablaPolizas.listar();
+		tablaSiniestros.listar();
 
 	}
 
@@ -372,6 +372,7 @@ public class Main extends JFrame {
 		case 0:
 			if (tabClientes.mGuardar()) {
 				tabPolizas.resetComboClientes();
+				tabSiniestros.resetComboClientes();
 				barraEstado.accionRealizada();
 			}
 			break;
@@ -394,11 +395,17 @@ public class Main extends JFrame {
 				barraEstado.accionRealizada();
 			break;
 		case 5:
-			if (tabTalleres.mGuardar())
+			if (tabTalleres.mGuardar()) {
+				tabSiniestros.resetComboTalleres();
 				barraEstado.accionRealizada();
+			}
 			break;
 		case 6:
 			if (tabPolizas.mGuardar())
+				barraEstado.accionRealizada();
+			break;
+		case 7:
+			if (tabSiniestros.mGuardar())
 				barraEstado.accionRealizada();
 			break;
 		default:
@@ -428,6 +435,9 @@ public class Main extends JFrame {
 			break;
 		case 6:
 			tabPolizas.mCancelar();
+			break;
+		case 7:
+			tabSiniestros.mCancelar();
 			break;
 		default:
 		}
@@ -465,6 +475,10 @@ public class Main extends JFrame {
 			if (tabPolizas.mEditar())
 				setEnable(false);
 			break;
+		case 7:
+			if (tabSiniestros.mEditar())
+				setEnable(false);
+			break;
 		default:
 		}
 	}
@@ -474,6 +488,7 @@ public class Main extends JFrame {
 		case 0:
 			if (tabClientes.mEliminar()) {
 				tabPolizas.resetComboClientes();
+				tabSiniestros.resetComboClientes();
 				barraEstado.accionRealizada();
 			}
 			break;
@@ -496,11 +511,17 @@ public class Main extends JFrame {
 				barraEstado.accionRealizada();
 			break;
 		case 5:
-			if (tabTalleres.mEliminar())
+			if (tabTalleres.mEliminar()) {
+				tabSiniestros.resetComboTalleres();
 				barraEstado.accionRealizada();
+			}
 			break;
 		case 6:
 			if (tabPolizas.mEliminar())
+				barraEstado.accionRealizada();
+			break;
+		case 7:
+			if (tabSiniestros.mEliminar())
 				barraEstado.accionRealizada();
 			break;
 		default:
@@ -531,6 +552,9 @@ public class Main extends JFrame {
 		case 6:
 			tabPolizas.mBuscarPoliza(filtro);
 			break;
+		case 7:
+			tabSiniestros.mBuscarSiniestro(filtro);
+			break;
 		default:
 		}
 	}
@@ -557,6 +581,9 @@ public class Main extends JFrame {
 			break;
 		case 6:
 			tablaPolizas.listar();
+			break;
+		case 7:
+			tablaSiniestros.listar();
 			break;
 		default:
 		}

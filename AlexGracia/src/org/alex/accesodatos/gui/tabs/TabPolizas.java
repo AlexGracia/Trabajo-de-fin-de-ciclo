@@ -267,11 +267,10 @@ public class TabPolizas extends JPanel {
 	/**
 	 * Resetea el combo cbCliente.
 	 */
-	@SuppressWarnings("unchecked")
 	public void resetComboClientes() {
 		cbCliente.removeAllItems();
 		cbCliente.addItem("");
-		List<String> listaClientes = HibernateUtil.getQuery(
+		List<?> listaClientes = HibernateUtil.getQuery(
 				"select c.idClientes from Clientes c").list();
 		for (int i = 0; i < listaClientes.size(); i++)
 			cbCliente.addItem(String.valueOf(listaClientes.get(i)));
@@ -280,11 +279,10 @@ public class TabPolizas extends JPanel {
 	/**
 	 * Resetea el combo cbVehiculo.
 	 */
-	@SuppressWarnings("unchecked")
 	public void resetComboVehiculos() {
 		cbVehiculo.removeAllItems();
 		cbVehiculo.addItem("");
-		List<String> listaVehiculos = HibernateUtil.getQuery(
+		List<?> listaVehiculos = HibernateUtil.getQuery(
 				"select v.idVehiculos from Vehiculos v").list();
 		for (int i = 0; i < listaVehiculos.size(); i++)
 			cbVehiculo.addItem(String.valueOf(listaVehiculos.get(i)));
