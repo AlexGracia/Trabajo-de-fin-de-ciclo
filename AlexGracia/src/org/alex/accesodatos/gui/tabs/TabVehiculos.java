@@ -157,8 +157,8 @@ public class TabVehiculos extends JPanel {
 
 		if (!HibernateUtil.setData("borrar", vehiculo)) {
 			List<?> query = HibernateUtil.getQuery(
-					"select p.idPolizas from Polizas p where p.vehiculos.idVehiculos = '"
-							+ vehiculo.getIdVehiculos() + "'").list();
+					"select p.idPolizas from Polizas p where p.vehiculos.idVehiculos = "
+							+ vehiculo.getIdVehiculos()).list();
 			Util.setMensajeError("Debe borrar antes la/s póliza/s nº " + query
 					+ ".");
 		}

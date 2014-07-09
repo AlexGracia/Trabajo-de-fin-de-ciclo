@@ -1,6 +1,7 @@
 package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -37,7 +38,7 @@ public class TabTalleres extends JPanel {
 	private TablaTalleres tablaTalleres;
 
 	/**
-	 * TODO Constructor que prepara el interfaz.
+	 * Constructor que prepara el interfaz.
 	 * 
 	 * @param tabbedPane
 	 */
@@ -109,23 +110,23 @@ public class TabTalleres extends JPanel {
 		add(calendarInicio);
 
 		tfNombreJefe = new TextPropio();
-		RestrictedSimple.setLimite(tfNombreJefe, 100);
+		RestrictedSimple.soloTextoConLimite(tfNombreJefe, 100);
 		tfNombreJefe.setBounds(181, 217, 120, 26);
 		add(tfNombreJefe);
 		tfNombreJefe.setColumns(10);
 
 		tfCifEmpresa = new TextPropio();
-		RestrictedSimple.setLimite(tfCifEmpresa, 9);
+		RestrictedSimple.setLimite(tfCifEmpresa, 20);
 		tfCifEmpresa.setBounds(181, 264, 120, 26);
 		add(tfCifEmpresa);
 
 		tfNumeroTrabajadores = new TextPropio();
-		RestrictedSimple.setLimite(tfNumeroTrabajadores, 100);
+		RestrictedSimple.soloNumeros(tfNumeroTrabajadores);
 		tfNumeroTrabajadores.setBounds(181, 307, 120, 26);
 		add(tfNumeroTrabajadores);
-		
+
 		tfCantidadReparaciones = new TextPropio();
-		RestrictedSimple.setLimite(tfCantidadReparaciones, 100);
+		RestrictedSimple.soloNumeros(tfCantidadReparaciones);
 		tfCantidadReparaciones.setBounds(510, 307, 120, 26);
 		add(tfCantidadReparaciones);
 
@@ -147,42 +148,46 @@ public class TabTalleres extends JPanel {
 			tablaTalleres.listar(filtro);
 	}
 
-	// TODO
 	public boolean mEliminar() {
 		if (!tallerSeleccionado() || !new JConfirmacion("Borrar").isAceptar())
 			return false;
 
-		HibernateUtil.setData("borrar", tablaTalleres.getTallerSeleccionado());
+		Talleres taller = tablaTalleres.getTallerSeleccionado();
+
+		if (!HibernateUtil.setData("borrar", taller)) {
+			List<?> query = HibernateUtil.getQuery(
+					"select s.idSiniestros from Siniestros s where s.talleres.idTalleres = "
+							+ taller.getIdTalleres()).list();
+			Util.setMensajeError("Debe borrar antes el/los siniestro/s nº "
+					+ query + ".");
+		}
 
 		tablaTalleres.listar();
 		mVaciarTaller();
 		return true;
 	}
 
-	// TODO
 	public boolean mGuardar() {
 		// Variables
 		String nombre = tfNombre.getText();
-		String telefono = tfTelefono.getText();
-		String nombreEmpresa = tfNumeroTrabajadores.getText();
-		String dni = tfCifEmpresa.getText();
+		String direccion = tfDireccion.getText();
+		String cifEmpresa = tfCifEmpresa.getText();
 
-		if (nombre.equals("") || telefono.equals("")
-				|| nombreEmpresa.equals("") || dni.equals("")) {
+		if (nombre.equals("") || direccion.equals("") || cifEmpresa.equals("")) {
 			Util.setMensajeInformacion("Rellene los campos obligatorios (*)");
 			return false;
 		}
 
 		Talleres taller;
 		if (esNuevo) {
-			String dniSQL = (String) HibernateUtil
+			String cifEmpresaSQL = (String) HibernateUtil
 					.getCurrentSession()
 					.createQuery(
-							"select p.dni from Proveedores p where p.dni = '"
-									+ dni + "'").uniqueResult();
+							"select t.cifEmpresa from Talleres t where t.cifEmpresa = '"
+									+ cifEmpresa + "'").uniqueResult();
 
-			if (dni.equals(dniSQL)) {
-				Util.setMensajeInformacion("DNI ya existente, cámbielo.");
+			if (cifEmpresa.equals(cifEmpresaSQL)) {
+				Util.setMensajeInformacion("CIF ya existente, cámbielo.");
 				tfCifEmpresa.setText("");
 				return false;
 			}
@@ -191,9 +196,25 @@ public class TabTalleres extends JPanel {
 			taller = tablaTalleres.getTallerSeleccionado();
 
 		taller.setNombre(nombre);
-		taller.setTelefono(Integer.parseInt(telefono));
+		taller.setDireccion(direccion);
+		String texto = tfTelefono.getText();
+		if (texto.equals(""))
+			taller.setTelefono(0);
+		else
+			taller.setTelefono(Integer.parseInt(tfTelefono.getText()));
 		taller.setFechaInicio(calendarInicio.getDate());
-		taller.setDireccion(tfDireccion.getText());
+		taller.setNombreJefe(tfNombreJefe.getText());
+		taller.setCifEmpresa(cifEmpresa);
+		texto = tfNumeroTrabajadores.getText();
+		if (texto.equals(""))
+			taller.setNumeroTrabajadores(0);
+		else
+			taller.setNumeroTrabajadores(Integer.parseInt(texto));
+		texto = tfCantidadReparaciones.getText();
+		if (texto.equals(""))
+			taller.setCantidadReparaciones(0);
+		else
+			taller.setCantidadReparaciones(Integer.parseInt(texto));
 
 		if (esNuevo)
 			HibernateUtil.setData("guardar", taller);
