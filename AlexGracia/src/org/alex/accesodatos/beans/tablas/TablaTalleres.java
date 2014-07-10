@@ -61,6 +61,7 @@ public class TablaTalleres extends Tabla {
 
 	}
 
+	// TODO
 	public void listar(String filtro) {
 
 		if (filtro.startsWith("*id") && !filtro.substring(3).equals(""))

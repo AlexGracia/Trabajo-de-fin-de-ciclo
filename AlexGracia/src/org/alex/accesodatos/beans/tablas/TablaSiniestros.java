@@ -12,6 +12,7 @@ import org.alex.accesodatos.hibernate.Siniestros;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.Tabla;
+import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
@@ -64,11 +65,18 @@ public class TablaSiniestros extends Tabla {
 		listarComodin("FROM Siniestros");
 	}
 
-	// TODO
 	public void listar(String filtro) {
-
-		listarComodin("select s from Siniestros s where s.clientes.idClientes = "
-				+ filtro + " or s.talleres.idTalleres = " + filtro);
+		if (filtro.startsWith("c") || filtro.startsWith("t")) {
+			String id = filtro.substring(1);
+			if (id.equals("") || !Util.esNumero(id))
+				return;
+			if (filtro.substring(0, 1).equals("c"))
+				listarComodin("select s from Siniestros s where s.clientes.idClientes = "
+						+ id);
+			else
+				listarComodin("select s from Siniestros s where s.talleres.idTalleres = "
+						+ id);
+		}
 
 	}
 

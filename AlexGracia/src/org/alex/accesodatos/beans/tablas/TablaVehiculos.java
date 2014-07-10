@@ -61,6 +61,7 @@ public class TablaVehiculos extends Tabla {
 		listarComodin("FROM Vehiculos");
 	}
 
+	// TODO
 	public void listar(String filtro) throws QuerySyntaxException {
 
 		if (filtro.startsWith("*id") && !filtro.substring(3).equals(""))

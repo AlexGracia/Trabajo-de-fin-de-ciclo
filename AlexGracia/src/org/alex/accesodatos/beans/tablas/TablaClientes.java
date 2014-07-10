@@ -11,6 +11,7 @@ import org.alex.accesodatos.hibernate.Clientes;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.Tabla;
+import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
@@ -59,12 +60,20 @@ public class TablaClientes extends Tabla {
 
 	}
 
-	// TODO tabla Siniestros
 	public void listar(String filtro) {
 
-		if (filtro.startsWith("*id") && !filtro.substring(3).equals(""))
-			listarComodin("select p.clientes from Polizas p where p.idPolizas = "
-					+ filtro.substring(3));
+		if (filtro.startsWith("p") || filtro.startsWith("s")) {
+			String id = filtro.substring(1);
+			if (id.equals("") || !Util.esNumero(id))
+				return;
+			if (filtro.substring(0, 1).equals("p"))
+				listarComodin("select p.clientes from Polizas p where p.idPolizas = "
+						+ id);
+			else
+				listarComodin("select s.clientes from Siniestros s where s.idSiniestros = "
+						+ id);
+		}
+
 		else
 			listarComodin("select c from Clientes c where c.nombre like '%"
 					+ filtro + "%' or c.dni like '%" + filtro + "%'");

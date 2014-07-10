@@ -17,11 +17,11 @@ public class Constantes {
 
 	public final static String[] TEXTO_CLIENTES = { "Clientes", "Nombre *",
 			"Apellidos", "DNI *", "Teléfono", "F. Nacimiento", "F. Carnet",
-			"Dirección", "Nombre, DNI, *Id (póliza), *Id (siniestro)" };
+			"Dirección", "Nombre, DNI, Id (póliza), Id (siniestro)" };
 	public final static String[] TEXTO_VEHICULOS = { "Vehículos",
 			"Matrícula *", "Marca", "Modelo", "Potencia", "Año-fabricación",
 			"Color", "Puertas", "Kilómetros *",
-			"Matrícula, Kilómetros, *Id (póliza)" };
+			"Matrícula, Kilómetros, Id (póliza)" };
 	public final static String[] TEXTO_EXTRAS = { "Extras", "Año-fabricación",
 			"Marca", "Nombre *", "Modelo *", "Descripción", "Lugar de origen",
 			"Dimensiones *", "Fabricante", "Nombre, Modelo" };
@@ -35,7 +35,7 @@ public class Constantes {
 	public final static String[] TEXTO_TALLERES = { "Talleres", "Nombre *",
 			"Dirección *", "Teléfono", "F. Inicio", "Nombre-Jefe",
 			"CIF-Empresa *", "Trabajadores", "Reparaciones",
-			"Nombre, Dirección, CIF-Empresa, *Id (siniestro)" };
+			"Nombre, Dirección, CIF-Empresa, Id (siniestro)" };
 	public final static String[] TEXTO_POLIZAS = { "Pólizas", "Tipo",
 			"Importe", "Estado ", "F. Inicio", "Conductores", "Antigüedad",
 			"F. Fin", "Id (cliente) *", "Id (vehículo) *",
