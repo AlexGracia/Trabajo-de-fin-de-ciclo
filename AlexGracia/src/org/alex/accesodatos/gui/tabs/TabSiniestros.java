@@ -60,7 +60,7 @@ public class TabSiniestros extends JPanel {
 
 		LabelPropio lblImporteReparacion = new LabelPropio(
 				Constantes.TEXTO_SINIESTROS[i++]);
-		lblImporteReparacion.setBounds(11, 70, 99, 20);
+		lblImporteReparacion.setBounds(11, 70, 160, 20);
 		add(lblImporteReparacion);
 
 		LabelPropio lblDatosCliente = new LabelPropio(
@@ -85,7 +85,7 @@ public class TabSiniestros extends JPanel {
 
 		LabelPropio lblVehiculosImplicados = new LabelPropio(
 				Constantes.TEXTO_SINIESTROS[i++]);
-		lblVehiculosImplicados.setBounds(11, 319, 135, 14);
+		lblVehiculosImplicados.setBounds(11, 312, 160, 20);
 		add(lblVehiculosImplicados);
 
 		JLabel lblIdCliente = new JLabel(Constantes.TEXTO_SINIESTROS[i++]);

@@ -12,8 +12,8 @@ import org.alex.accesodatos.hibernate.Vehiculos;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.Tabla;
+import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
-import org.hibernate.hql.internal.ast.QuerySyntaxException;
 
 /**
  * Clase que implementa una tabla para manejar los Vehiculos.
@@ -61,12 +61,12 @@ public class TablaVehiculos extends Tabla {
 		listarComodin("FROM Vehiculos");
 	}
 
-	// TODO
-	public void listar(String filtro) throws QuerySyntaxException {
+	public void listar(String filtro) {
 
-		if (filtro.startsWith("*id") && !filtro.substring(3).equals(""))
+		if (filtro.startsWith("p") && !filtro.substring(1).equals("")
+				&& Util.esNumero(filtro.substring(1)))
 			listarComodin("select p.vehiculos from Polizas p where p.idPolizas = "
-					+ filtro.substring(3));
+					+ filtro.substring(1));
 		else
 			listarComodin("select v from Vehiculos v where v.matricula like '%"
 					+ filtro + "%' or v.kilometros like '" + filtro + "'");

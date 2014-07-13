@@ -62,10 +62,10 @@ public class TablaClientes extends Tabla {
 
 	public void listar(String filtro) {
 
-		if (filtro.startsWith("p") || filtro.startsWith("s")) {
+		if (filtro.startsWith("p") || filtro.startsWith("s")
+				&& !filtro.substring(1).equals("")
+				&& Util.esNumero(filtro.substring(1))) {
 			String id = filtro.substring(1);
-			if (id.equals("") || !Util.esNumero(id))
-				return;
 			if (filtro.substring(0, 1).equals("p"))
 				listarComodin("select p.clientes from Polizas p where p.idPolizas = "
 						+ id);
