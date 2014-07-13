@@ -28,6 +28,7 @@ import org.freixas.jcalendar.JCalendarCombo;
  * siniestros.
  * 
  * @author Alex Gracia
+ * @version 1.0
  * 
  */
 public class TabSiniestros extends JPanel {

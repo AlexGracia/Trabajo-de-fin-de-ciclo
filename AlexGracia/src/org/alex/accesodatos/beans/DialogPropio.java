@@ -10,6 +10,13 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * JDialog personalizado.
+ * 
+ * @author Alex Gracia
+ * @version 1.0
+ * 
+ */
 public class DialogPropio extends JDialog {
 	private static final long serialVersionUID = 1L;
 	protected JButton okButton, cancelButton;

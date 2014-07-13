@@ -23,6 +23,7 @@ import org.freixas.jcalendar.JCalendarCombo;
  * extras.
  * 
  * @author Alex Gracia
+ * @version 1.0
  * 
  */
 public class TabExtras extends JPanel {

@@ -28,6 +28,7 @@ import org.freixas.jcalendar.JCalendarCombo;
  * polizas.
  * 
  * @author Alex Gracia
+ * @version 1.0
  * 
  */
 public class TabPolizas extends JPanel {

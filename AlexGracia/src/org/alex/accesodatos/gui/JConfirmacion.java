@@ -11,6 +11,13 @@ import javax.swing.JLabel;
 import org.alex.accesodatos.beans.DialogPropio;
 import org.alex.accesodatos.util.Constantes;
 
+/**
+ * Clase que implementa un dialogo para confirmar acciones del usuario.
+ * 
+ * @author Alex Gracia
+ * @version 1.0
+ * 
+ */
 public class JConfirmacion extends DialogPropio {
 	private static final long serialVersionUID = 1L;
 	private boolean aceptar;

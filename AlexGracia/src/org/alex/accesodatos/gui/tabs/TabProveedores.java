@@ -24,6 +24,7 @@ import org.freixas.jcalendar.JCalendarCombo;
  * proveedores.
  * 
  * @author Alex Gracia
+ * @version 1.0
  * 
  */
 public class TabProveedores extends JPanel {

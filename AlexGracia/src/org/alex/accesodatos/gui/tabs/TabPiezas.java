@@ -23,6 +23,7 @@ import org.freixas.jcalendar.JCalendarCombo;
  * piezas.
  * 
  * @author Alex Gracia
+* @version 1.0
  * 
  */
 public class TabPiezas extends JPanel {

@@ -16,9 +16,10 @@ import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
- * Clase que implementa una tabla para manejar las Polizas.
+ * Clase que implementa una tabla para manejar las polizas.
  * 
  * @author Alex Gracia
+ * @version 1.0
  * 
  */
 public class TablaPolizas extends Tabla {

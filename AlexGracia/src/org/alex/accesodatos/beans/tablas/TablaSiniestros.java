@@ -16,9 +16,10 @@ import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
- * Clase que implementa una tabla para manejar los clientes.
+ * Clase que implementa una tabla para manejar los siniestros.
  * 
  * @author Alex Gracia
+ * @version 1.0
  * 
  */
 public class TablaSiniestros extends Tabla {

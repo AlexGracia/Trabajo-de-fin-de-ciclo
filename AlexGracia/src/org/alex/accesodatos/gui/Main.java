@@ -54,7 +54,17 @@ import org.hibernate.exception.SQLGrammarException;
 
 /**
  * Clase principal desde la que se maneja la ventana y se cargan los demas
- * componentes graficos.
+ * componentes graficos. <h1>Tabs:</h1>
+ * <ol>
+ * <li>CLIENTES
+ * <li>VEHICULOS
+ * <li>EXTRAS
+ * <li>PIEZAS
+ * <li>PROVEEDORES
+ * <li>TALLERES
+ * <li>POLIZAS
+ * <li>SINIESTROS
+ * </ol>
  * 
  * @author Alex Gracia
  * @version 1.0

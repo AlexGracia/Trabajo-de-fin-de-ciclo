@@ -14,9 +14,10 @@ import org.alex.libs.Tabla;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
- * Clase que implementa una tabla para manejar los clientes.
+ * Clase que implementa una tabla para manejar las piezas.
  * 
  * @author Alex Gracia
+ * @version 1.0
  * 
  */
 public class TablaPiezas extends Tabla {

@@ -25,6 +25,7 @@ import org.freixas.jcalendar.JCalendarCombo;
  * vehiculos.
  * 
  * @author Alex Gracia
+ * @version 1.0
  * 
  */
 public class TabVehiculos extends JPanel {

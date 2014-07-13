@@ -1,0 +1,6 @@
+org.alex.accesodatos.beans
+org.alex.accesodatos.beans.tablas
+org.alex.accesodatos.gui
+org.alex.accesodatos.gui.tabs
+org.alex.accesodatos.hibernate
+org.alex.accesodatos.util

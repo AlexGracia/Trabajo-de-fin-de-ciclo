@@ -10,6 +10,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+/**
+ * Clase encargada de mostrar una imagen mientras la aplicación se inicia.
+ * 
+ * @author Alex Gracia
+ * @version 1.0
+ * 
+ */
 public class Start extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private boolean parar = false;

@@ -11,7 +11,7 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 /**
- * Clase que facilita el trabajo con Hibernate
+ * Clase que facilita el trabajo con Hibernate.
  * 
  * @author Alex Gracia
  * @version 1.0
@@ -66,7 +66,9 @@ public class HibernateUtil {
 	}
 
 	/**
-	 * guardar, actualizar, borrar.
+	 * Metodo para modificar la base de datos.
+	 * <h1>Opciones:</h1>
+	 * <ol><li>guardar<li>actualizar<li>borrar</ol>
 	 * 
 	 * @param opcion
 	 * @param obj

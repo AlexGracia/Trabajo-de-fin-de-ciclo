@@ -24,6 +24,7 @@ import org.freixas.jcalendar.JCalendarCombo;
  * talleres.
  * 
  * @author Alex Gracia
+ * @version 1.0
  * 
  */
 public class TabTalleres extends JPanel {

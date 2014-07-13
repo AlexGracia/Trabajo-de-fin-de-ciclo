@@ -16,9 +16,10 @@ import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
- * Clase que implementa una tabla para manejar los Vehiculos.
+ * Clase que implementa una tabla para manejar los vehiculos.
  * 
  * @author Alex Gracia
+* @version 1.0
  * 
  */
 public class TablaVehiculos extends Tabla {

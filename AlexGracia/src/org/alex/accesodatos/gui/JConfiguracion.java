@@ -11,10 +11,10 @@ import javax.swing.JTextArea;
 import org.alex.accesodatos.util.Constantes;
 
 /**
- * Dialogo con el que se puede configurar la conexion a la base de datos.
+ * Dialogo con poca importancia en estos momentos.
  * 
  * @author Alex Gracia
- * 
+ * @version 1.0
  */
 public class JConfiguracion extends JDialog {
 

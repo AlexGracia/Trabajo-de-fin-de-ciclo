@@ -14,9 +14,10 @@ import org.alex.libs.Tabla;
 import org.freixas.jcalendar.JCalendarCombo;
 
 /**
- * Clase que implementa una tabla para manejar los Extras.
+ * Clase que implementa una tabla para manejar los extras.
  * 
  * @author Alex Gracia
+ * @version 1.0
  * 
  */
 public class TablaExtras extends Tabla {

@@ -14,9 +14,10 @@ import org.alex.accesodatos.beans.DialogPropio;
 import org.alex.accesodatos.util.Constantes;
 
 /**
- * Diálogo para recoger los datos de conexión con un SGBD
+ * Dialogo de login.
  * 
  * @author Alex Gracia
+ * @version 1.0
  */
 public class JConecta extends DialogPropio {
 

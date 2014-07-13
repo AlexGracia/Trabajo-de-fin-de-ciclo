@@ -25,6 +25,7 @@ import org.freixas.jcalendar.JCalendarCombo;
  * clientes.
  * 
  * @author Alex Gracia
+ * @version 1.0
  * 
  */
 public class TabClientes extends JPanel {

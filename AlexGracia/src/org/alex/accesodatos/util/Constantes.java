@@ -6,6 +6,7 @@ import java.awt.Font;
  * Clase con variables globales.
  * 
  * @author Alex Gracia
+ * @version 1.0
  */
 public class Constantes {
 	public final static String[] rangos = { "user", "admin", "tecnic" };
