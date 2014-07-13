@@ -142,11 +142,16 @@ public class TabClientes extends JPanel {
 		Clientes cliente = tablaCliente.getClienteSeleccionado();
 
 		if (!HibernateUtil.setData("borrar", cliente)) {
-			List<?> query = HibernateUtil.getQuery(
+			int idCliente = cliente.getIdClientes();
+			List<?> queryPolizas = HibernateUtil.getQuery(
 					"select p.idPolizas from Polizas p where p.clientes.idClientes = "
-							+ cliente.getIdClientes()).list();
-			Util.setMensajeError("Debe borrar antes la/s póliza/s nº " + query
-					+ ".");
+							+ idCliente).list();
+			List<?> querySiniestros = HibernateUtil.getQuery(
+					"select s.idSiniestros from Siniestros s where s.clientes.idClientes = "
+							+ idCliente).list();
+			Util.setMensajeError("Debe borrar antes la/s póliza/s nº "
+					+ queryPolizas + "," + "\n y el/los siniestro/s nº "
+					+ querySiniestros + ".");
 		}
 
 		tablaCliente.listar();
