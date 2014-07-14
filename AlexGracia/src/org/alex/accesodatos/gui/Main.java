@@ -56,14 +56,14 @@ import org.hibernate.exception.SQLGrammarException;
  * Clase principal desde la que se maneja la ventana y se cargan los demas
  * componentes graficos. <h1>Tabs:</h1>
  * <ol>
- * <li>CLIENTES
- * <li>VEHICULOS
- * <li>EXTRAS
- * <li>PIEZAS
- * <li>PROVEEDORES
- * <li>TALLERES
- * <li>POLIZAS
- * <li>SINIESTROS
+ * <li><a href="tabs/TabClientes.html">CLIENTES</a>
+ * <li><a href="tabs/TabVehiculos.html">VEHICULOS</a>
+ * <li><a href="tabs/TabExtras.html">EXTRAS</a>
+ * <li><a href="tabs/TabPiezas.html">PIEZAS</a>
+ * <li><a href="tabs/TabProveedores.html">PROVEEDORES</a>
+ * <li><a href="tabs/TabTalleres.html">TALLERES</a>
+ * <li><a href="tabs/TabPolizas.html">POLIZAS</a>
+ * <li><a href="tabs/TabSiniestros.html">SINIESTROS</a>
  * </ol>
  * 
  * @author Alex Gracia
@@ -103,6 +103,7 @@ public class Main extends JFrame {
 
 	/**
 	 * Launch the application.
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
