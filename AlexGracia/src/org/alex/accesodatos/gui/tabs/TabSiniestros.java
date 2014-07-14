@@ -2,7 +2,6 @@ package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -285,28 +284,19 @@ public class TabSiniestros extends JPanel {
 		return true;
 	}
 
-	// TODO ordenar combos.
 	/**
-	 * Resetea el combo cbIdCliente.
+	 * Refresca el combo cbIdCliente.
 	 */
 	public void resetComboClientes() {
-		cbIdCliente.removeAllItems();
-		cbIdCliente.addItem("");
-		List<?> listaClientes = HibernateUtil.getQuery(
-				"select c.idClientes from Clientes c").list();
-		for (int i = 0; i < listaClientes.size(); i++)
-			cbIdCliente.addItem(String.valueOf(listaClientes.get(i)));
+		HibernateUtil.resetCombo(cbIdCliente,
+				"select c.idClientes from Clientes c");
 	}
 
 	/**
-	 * Resetea el combo cbIdTaller.
+	 * Refresca el combo cbIdTaller.
 	 */
 	public void resetComboTalleres() {
-		cbIdTaller.removeAllItems();
-		cbIdTaller.addItem("");
-		List<?> listaTalleres = HibernateUtil.getQuery(
-				"select t.idTalleres from Talleres t").list();
-		for (int i = 0; i < listaTalleres.size(); i++)
-			cbIdTaller.addItem(String.valueOf(listaTalleres.get(i)));
+		HibernateUtil.resetCombo(cbIdTaller,
+				"select t.idTalleres from Talleres t");
 	}
 }

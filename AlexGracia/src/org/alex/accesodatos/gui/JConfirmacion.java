@@ -24,6 +24,7 @@ public class JConfirmacion extends DialogPropio {
 
 	/**
 	 * Create the dialog.
+	 * @param titulo
 	 */
 	public JConfirmacion(String titulo) {
 		addWindowListener(new WindowAdapter() {

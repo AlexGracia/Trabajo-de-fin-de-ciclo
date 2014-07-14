@@ -1,5 +1,8 @@
 package org.alex.accesodatos.util;
 
+import java.util.Arrays;
+
+import org.alex.accesodatos.beans.ComboPropio;
 import org.alex.libs.Util;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -66,9 +69,12 @@ public class HibernateUtil {
 	}
 
 	/**
-	 * Metodo para modificar la base de datos.
-	 * <h1>Opciones:</h1>
-	 * <ol><li>guardar<li>actualizar<li>borrar</ol>
+	 * Metodo para modificar la base de datos. <h1>Opciones:</h1>
+	 * <ol>
+	 * <li>guardar
+	 * <li>actualizar
+	 * <li>borrar
+	 * </ol>
 	 * 
 	 * @param opcion
 	 * @param obj
@@ -102,6 +108,21 @@ public class HibernateUtil {
 			sesion.close();
 		}
 		return true;
+	}
+
+	/**
+	 * Refresca el contenido de un combo a partir de una consulta sql.
+	 * 
+	 * @param combo
+	 * @param consulta
+	 */
+	public static void resetCombo(ComboPropio combo, String consulta) {
+		combo.removeAllItems();
+		combo.addItem("");
+		Object[] lista = getQuery(consulta).list().toArray();
+		Arrays.sort(lista);
+		for (Object obj : lista)
+			combo.addItem(obj.toString());
 	}
 
 }

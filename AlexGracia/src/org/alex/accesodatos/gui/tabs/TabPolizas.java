@@ -2,7 +2,6 @@ package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -264,28 +263,19 @@ public class TabPolizas extends JPanel {
 		return true;
 	}
 
-	// TODO ordenar combos.
 	/**
-	 * Resetea el combo cbCliente.
+	 * Refresca el combo cbCliente.
 	 */
 	public void resetComboClientes() {
-		cbCliente.removeAllItems();
-		cbCliente.addItem("");
-		List<?> listaClientes = HibernateUtil.getQuery(
-				"select c.idClientes from Clientes c").list();
-		for (int i = 0; i < listaClientes.size(); i++)
-			cbCliente.addItem(String.valueOf(listaClientes.get(i)));
+		HibernateUtil.resetCombo(cbCliente,
+				"select c.idClientes from Clientes c");
 	}
 
 	/**
-	 * Resetea el combo cbVehiculo.
+	 * Refresca el combo cbVehiculo.
 	 */
 	public void resetComboVehiculos() {
-		cbVehiculo.removeAllItems();
-		cbVehiculo.addItem("");
-		List<?> listaVehiculos = HibernateUtil.getQuery(
-				"select v.idVehiculos from Vehiculos v").list();
-		for (int i = 0; i < listaVehiculos.size(); i++)
-			cbVehiculo.addItem(String.valueOf(listaVehiculos.get(i)));
+		HibernateUtil.resetCombo(cbVehiculo,
+				"select v.idVehiculos from Vehiculos v");
 	}
 }
