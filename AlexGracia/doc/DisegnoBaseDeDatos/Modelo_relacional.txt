@@ -1,0 +1,21 @@
+Clientes: #id_clientes, código, nombre, apellidos, dni, teléfono, fecha_nacimiento, fecha_carnet, dirección.
+
+Extras: #id_extras, año_fabricación, marca, nombre, modelo, descripción, lugar_origen, dimensiones, fabricante.
+
+Vehículos: #id_vehiculos, número_chasis, matrícula, marca, modelo, potencia, año_fabricación, color, numero_puertas, kilometros.
+
+Talleres: #id_talleres, nombre, dirección, teléfono, fecha_inicio, nombre_jefe, CIF_empresa, numero_trabajadores, cantidad_reparaciones.
+
+Piezas: #id_piezas, código, nombre, descripción, cantidad, precio, lugar_origen, fecha_solicitud, marca.
+
+Proveedores: #id_proveedores, nombre, telefono, correo_electronico, fecha_nacimiento, direccion, facilidad_pago, nombre_empresa, dni.
+
+Pólizas: #id_polizas, número, tipo, importe, estado, -id_clientes, -id_vehiculos, fecha_inicio, cantidad_conductores, antigüedad_conduccion, fecha_fin.
+
+Siniestros: #id_siniestros, datos_póliza, importe_reparación, datos_cliente, fecha_reparación, datos_taller, fecha_siniestro, cantidad_vehiculos_implicados, clientes_heridos, -id_clientes, -id_talleres.
+
+Extras_vehículos: #(-id_extras, -id_vehiculos).
+
+Piezas_talleres: #(-id_piezas, -id_talleres).
+
+Piezas_proveedores: #(-id_piezas, -id_proveedores).

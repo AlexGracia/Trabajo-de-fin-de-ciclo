@@ -1,0 +1,5 @@
+Está en primera forma normal porque los valores que componen sus registros son atómicos.
+
+Está en segunda forma normal porque todo atributo secundario (que no pertenezca a la clave principal) tiene una dependencia funcional total de la clave principal, y no de una parte de ella.
+
+Está en tercera forma normal porque no existen atributos no primarios (que no pertenezcan a la clave) que son transitivamente dependientes de cada posible clave de la tabla. Es decir, un atributo secundario sólo puede ser conocido a través de la clave principal y no por medio de un atributo no primario.
