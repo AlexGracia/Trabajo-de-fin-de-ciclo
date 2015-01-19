@@ -43,6 +43,7 @@ import org.alex.accesodatos.gui.tabs.TabProveedores;
 import org.alex.accesodatos.gui.tabs.TabSiniestros;
 import org.alex.accesodatos.gui.tabs.TabTalleres;
 import org.alex.accesodatos.gui.tabs.TabVehiculos;
+import org.alex.accesodatos.informes.ReportUtil;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.BarraEstado;
@@ -100,6 +101,7 @@ public class Main extends JFrame {
 	private BarraEstado barraEstado;
 	private JToolBar toolBar;
 	private JButton btnEditar, btnBorrar, btnCancelarbusqueda;
+	private JButton btnPdf;
 
 	/**
 	 * Launch the application.
@@ -163,36 +165,49 @@ public class Main extends JFrame {
 
 		// Toolbar
 		JButton btnGuardar = new JButton();
+		btnGuardar.setToolTipText("Aceptar");
 		btnGuardar.addActionListener(ActionListener(0));
 		btnGuardar.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/ok.png")));
 		toolBar.add(btnGuardar);
 
 		JButton btnCancelar = new JButton();
+		btnCancelar.setToolTipText("Cancelar");
 		btnCancelar.addActionListener(ActionListener(1));
 		btnCancelar.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/cancelar.png")));
 		toolBar.add(btnCancelar);
 
 		btnEditar = new JButton();
+		btnEditar.setToolTipText("Editar");
 		btnEditar.addActionListener(ActionListener(2));
 		btnEditar.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/editar.png")));
 		toolBar.add(btnEditar);
 
 		btnBorrar = new JButton();
+		btnBorrar.setToolTipText("Borrar");
 		btnBorrar.addActionListener(ActionListener(3));
 		btnBorrar.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/borrar.png")));
 		toolBar.add(btnBorrar);
 
-		JLabel label = new JLabel("");
-		label.setMaximumSize(new Dimension(400, 0));
+		// TODO revisar
+		btnPdf = new JButton();
+		btnPdf.setToolTipText("Exportar a PDF");
+		btnPdf.addActionListener(ActionListener(4));
+		btnPdf.setIcon(new ImageIcon(Main.class
+				.getResource("/org/alex/accesodatos/iconos/pdf.png")));
+		toolBar.add(btnPdf);
+
+		JLabel label = new JLabel();
+		label.setMaximumSize(new Dimension(300, 0));
 		toolBar.add(label);
 
 		// Busqueda
 		tfBusqueda = new JTextField(
 				Constantes.TEXTO_CLIENTES[Constantes.TEXTO_CLIENTES.length - 1]);
+		tfBusqueda.setToolTipText("Buscar");
 		tfBusqueda.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent ke) {
@@ -217,7 +232,8 @@ public class Main extends JFrame {
 		tfBusqueda.setColumns(10);
 
 		btnCancelarbusqueda = new JButton();
-		btnCancelarbusqueda.addActionListener(ActionListener(4));
+		btnCancelarbusqueda.setToolTipText("Cancelar b\u00FAsqueda");
+		btnCancelarbusqueda.addActionListener(ActionListener(5));
 		btnCancelarbusqueda.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/cancelar.png")));
 		toolBar.add(btnCancelarbusqueda);
@@ -295,12 +311,13 @@ public class Main extends JFrame {
 
 	private void finalizandoCarga() {
 
-		if (!start.esLento())
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e1) {
-				e1.printStackTrace();
-			}
+		// TODO fin
+		// if (!start.esLento())
+		// try {
+		// Thread.sleep(2000);
+		// } catch (InterruptedException e1) {
+		// e1.printStackTrace();
+		// }
 		start.setParar(true);
 
 		JConecta conecta = new JConecta();
@@ -540,6 +557,42 @@ public class Main extends JFrame {
 		}
 	}
 
+	// TODO
+	private void exportar() {
+		if(!new JConfirmacion("Exportar").isAceptar())
+			return;
+
+		switch (tabbedPane.getSelectedIndex()) {
+		case 0:
+			new ReportUtil("report_clientes.jasper").ExportToPDF();
+			break;
+		case 1:
+			new ReportUtil("report_vehiculos.jasper").ExportToPDF();
+			break;
+		case 2:
+			new ReportUtil("report_extras.jasper").ExportToPDF();
+			break;
+		case 3:
+			new ReportUtil("report_piezas.jasper").ExportToPDF();
+			break;
+		case 4:
+			new ReportUtil("report_proveedores.jasper").ExportToPDF();
+			break;
+		case 5:
+			new ReportUtil("report_talleres.jasper").ExportToPDF();
+			break;
+		case 6:
+			new ReportUtil("report_polizas.jasper").ExportToPDF();
+			break;
+		case 7:
+			new ReportUtil("report_siniestros.jasper").ExportToPDF();
+			break;
+		default:
+		}
+
+		barraEstado.accionRealizada();
+	}
+
 	private void buscar(String filtro) {
 		barraEstado.vaciarTexto();
 		switch (tabbedPane.getSelectedIndex()) {
@@ -623,10 +676,22 @@ public class Main extends JFrame {
 	private void setEnable(boolean estado) {
 		btnEditar.setEnabled(estado);
 		btnBorrar.setEnabled(estado);
+		btnPdf.setEnabled(estado);
 		tfBusqueda.setEditable(estado);
 		btnCancelarbusqueda.setEnabled(estado);
 		tabbedPane.setEnabled(estado);
 		mnHerramientas.setEnabled(estado);
+
+		// Tablas
+		tablaClientes.setEnabled(estado);
+		tablaVehiculos.setEnabled(estado);
+		tablaExtras.setEnabled(estado);
+		tablaPiezas.setEnabled(estado);
+		tablaProveedores.setEnabled(estado);
+		tablaTalleres.setEnabled(estado);
+		tablaPolizas.setEnabled(estado);
+		tablaSiniestros.setEnabled(estado);
+
 	}
 
 	private ActionListener ActionListener(final int opcion) {
@@ -648,6 +713,9 @@ public class Main extends JFrame {
 					borrar();
 					break;
 				case 4:
+					exportar();
+					break;
+				case 5:
 					cancelarBusqueda();
 					break;
 				default:

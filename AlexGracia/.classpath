@@ -16,5 +16,14 @@
 	<classpathentry kind="lib" path="libs/hibernate/jboss-logging-3.1.0.GA.jar"/>
 	<classpathentry kind="lib" path="libs/hibernate/javassist-3.18.1-GA.jar"/>
 	<classpathentry kind="lib" path="libs/hibernate/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="libs/jasperReport/apache-commons-logging.jar"/>
+	<classpathentry kind="lib" path="libs/jasperReport/commons-beanutils.jar"/>
+	<classpathentry kind="lib" path="libs/jasperReport/commons-collections-3.2.1-1.0.0.jar"/>
+	<classpathentry kind="lib" path="libs/jasperReport/commons-digester.jar"/>
+	<classpathentry kind="lib" path="libs/jasperReport/commons-javaflow.jar"/>
+	<classpathentry kind="lib" path="libs/jasperReport/iText-2.1.7.jar"/>
+	<classpathentry kind="lib" path="libs/jasperReport/jasperreports-5.1.0.jar"/>
+	<classpathentry kind="lib" path="libs/jasperReport/jasperreports-fonts-5.1.0.jar"/>
+	<classpathentry kind="lib" path="libs/jasperReport/jasperreports-javaflow-5.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
