@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.util.HashMap;
 
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import net.sf.jasperreports.engine.JRException;
@@ -46,23 +47,25 @@ public class ReportUtil {
 
 	}
 
-	public void ExportToPDF() {
+	public void ExportToPDF(JFrame parent) {
 		// JFileChooser
 		File ficheroSeleccionado;
-		File ficheroDefault = new File("Informe.pdf");
 
+		File ficheroDefault = new File("Informe.pdf");
 		fc.setSelectedFile(ficheroDefault);
 
-		if (fc.showSaveDialog(null) != JFileChooser.APPROVE_OPTION)
+		fc.setDialogTitle("Guardar informe");
+
+		if (fc.showSaveDialog(parent) != JFileChooser.APPROVE_OPTION)
 			return;
 
 		ficheroSeleccionado = fc.getSelectedFile();
 
+		// Exportar a PDF
 		try {
 			JasperExportManager.exportReportToPdfFile(print,
 					ficheroSeleccionado.getAbsolutePath());
 		} catch (JRException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return;

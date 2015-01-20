@@ -557,31 +557,32 @@ public class Main extends JFrame {
 
 	// TODO
 	private void exportar() {
+		barraEstado.setText("Exportando informe a PDF...");
 
 		switch (tabbedPane.getSelectedIndex()) {
 		case 0:
-			new ReportUtil("report_clientes.jasper").ExportToPDF();
+			new ReportUtil("report_clientes.jasper").ExportToPDF(this);
 			break;
 		case 1:
-			new ReportUtil("report_vehiculos.jasper").ExportToPDF();
+			new ReportUtil("report_vehiculos.jasper").ExportToPDF(this);
 			break;
 		case 2:
-			new ReportUtil("report_extras.jasper").ExportToPDF();
+			new ReportUtil("report_extras.jasper").ExportToPDF(this);
 			break;
 		case 3:
-			new ReportUtil("report_piezas.jasper").ExportToPDF();
+			new ReportUtil("report_piezas.jasper").ExportToPDF(this);
 			break;
 		case 4:
-			new ReportUtil("report_proveedores.jasper").ExportToPDF();
+			new ReportUtil("report_proveedores.jasper").ExportToPDF(this);
 			break;
 		case 5:
-			new ReportUtil("report_talleres.jasper").ExportToPDF();
+			new ReportUtil("report_talleres.jasper").ExportToPDF(this);
 			break;
 		case 6:
-			new ReportUtil("report_polizas.jasper").ExportToPDF();
+			new ReportUtil("report_polizas.jasper").ExportToPDF(this);
 			break;
 		case 7:
-			new ReportUtil("report_siniestros.jasper").ExportToPDF();
+			new ReportUtil("report_siniestros.jasper").ExportToPDF(this);
 			break;
 		default:
 		}
