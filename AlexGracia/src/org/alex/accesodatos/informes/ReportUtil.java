@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
 
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -15,10 +18,11 @@ import net.sf.jasperreports.engine.util.JRLoader;
 public class ReportUtil {
 
 	// Variables
-	String connectionUrl = "jdbc:mysql://localhost:3306/alex_gracia";
-	String user = "root";
-	String pass, jasper;
-	JasperPrint print;
+	private String connectionUrl = "jdbc:mysql://localhost:3306/alex_gracia";
+	private String user = "root", pass;
+	private JasperPrint print;
+	private JFileChooser fc;
+	private FileNameExtensionFilter filtro;
 
 	public ReportUtil(String jasper) {
 		try {
@@ -30,21 +34,37 @@ public class ReportUtil {
 
 			print = JasperFillManager.fillReport(report,
 					new HashMap<String, Object>(), conexion);
+
+			// JFileChooser
+			fc = new JFileChooser();
+			filtro = new FileNameExtensionFilter("Archivos PDF", "pdf");
+			fc.setFileFilter(filtro);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
 
-	// TODO Ventana para exportar el pdf
-	public String ExportToPDF() {
-		String ruta = "Informe.pdf";
+	public void ExportToPDF() {
+		// JFileChooser
+		File ficheroSeleccionado;
+		File ficheroDefault = new File("Informe.pdf");
+
+		fc.setSelectedFile(ficheroDefault);
+
+		if (fc.showSaveDialog(null) != JFileChooser.APPROVE_OPTION)
+			return;
+
+		ficheroSeleccionado = fc.getSelectedFile();
+
 		try {
-			JasperExportManager.exportReportToPdfFile(print, ruta);
+			JasperExportManager.exportReportToPdfFile(print,
+					ficheroSeleccionado.getAbsolutePath());
 		} catch (JRException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return ruta;
+		return;
 	}
 }

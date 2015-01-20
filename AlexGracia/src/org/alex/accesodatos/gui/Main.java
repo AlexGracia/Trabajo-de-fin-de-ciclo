@@ -192,7 +192,6 @@ public class Main extends JFrame {
 				.getResource("/org/alex/accesodatos/iconos/borrar.png")));
 		toolBar.add(btnBorrar);
 
-		// TODO revisar
 		btnPdf = new JButton();
 		btnPdf.setToolTipText("Exportar a PDF");
 		btnPdf.addActionListener(ActionListener(4));
@@ -311,13 +310,12 @@ public class Main extends JFrame {
 
 	private void finalizandoCarga() {
 
-		// TODO fin
-		// if (!start.esLento())
-		// try {
-		// Thread.sleep(2000);
-		// } catch (InterruptedException e1) {
-		// e1.printStackTrace();
-		// }
+		if (!start.esLento())
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
 		start.setParar(true);
 
 		JConecta conecta = new JConecta();
@@ -559,8 +557,6 @@ public class Main extends JFrame {
 
 	// TODO
 	private void exportar() {
-		if(!new JConfirmacion("Exportar").isAceptar())
-			return;
 
 		switch (tabbedPane.getSelectedIndex()) {
 		case 0:
