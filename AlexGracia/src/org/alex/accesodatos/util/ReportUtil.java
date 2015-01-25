@@ -35,10 +35,10 @@ public class ReportUtil {
 	public ReportUtil(JFrame parent, String jasper,
 			HashMap<String, Object> parametro) {
 
-		if (!_FileChooser(parent)) {
-			cancelar = true;
+		_FileChooser(parent);
+
+		if (cancelar)
 			return;
-		}
 
 		try {
 			Connection conexion = DriverManager.getConnection(connectionUrl,
@@ -78,7 +78,7 @@ public class ReportUtil {
 	 *            (este parámetro es necesario para que el JFileChooser tenga el
 	 *            icono de la aplicación).
 	 */
-	private boolean _FileChooser(JFrame parent) {
+	private void _FileChooser(JFrame parent) {
 		JFileChooser fc = new JFileChooser();
 		FileNameExtensionFilter filtro = new FileNameExtensionFilter(
 				"Archivos PDF", "pdf");
@@ -90,9 +90,9 @@ public class ReportUtil {
 		fc.setDialogTitle("Guardar informe");
 
 		if (fc.showSaveDialog(parent) != JFileChooser.APPROVE_OPTION)
-			return false;
+			cancelar = true;
 
-		ficheroSeleccionado = fc.getSelectedFile();
-		return true;
+		else
+			ficheroSeleccionado = fc.getSelectedFile();
 	}
 }
