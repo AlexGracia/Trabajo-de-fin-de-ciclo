@@ -236,7 +236,7 @@ public class TabClientes extends JPanel {
 
 		switch (opcion) {
 		case 1:
-			new ReportUtil("report_clientes.jasper", parent, parametro)
+			new ReportUtil(parent, "report_clientes.jasper", parametro)
 					.ExportToPDF();
 			break;
 		case 2:
@@ -246,7 +246,7 @@ public class TabClientes extends JPanel {
 
 				parametro.put("id", cliente.getIdClientes());
 
-				new ReportUtil("report_clientes2.jasper", parent, parametro)
+				new ReportUtil(parent, "report_clientes2.jasper", parametro)
 						.ExportToPDF();
 			}
 

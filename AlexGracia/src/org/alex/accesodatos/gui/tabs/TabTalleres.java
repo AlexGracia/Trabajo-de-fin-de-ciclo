@@ -1,8 +1,10 @@
 package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -15,6 +17,7 @@ import org.alex.accesodatos.gui.JConfirmacion;
 import org.alex.accesodatos.hibernate.Talleres;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
+import org.alex.accesodatos.util.ReportUtil;
 import org.alex.libs.RestrictedSimple;
 import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
@@ -229,6 +232,39 @@ public class TabTalleres extends JPanel {
 		tablaTalleres.listar();
 		mVaciarTaller();
 		return true;
+	}
+
+	/**
+	 * <b>Tipos:</b> <br>
+	 * 1. General <br>
+	 * 2. Detallado
+	 * 
+	 * @param parent
+	 * @param opcion
+	 */
+	public void mExportar(JFrame parent, int opcion) {
+		HashMap<String, Object> parametro = new HashMap<String, Object>();
+
+		switch (opcion) {
+		case 1:
+			new ReportUtil(parent, "report_talleres.jasper", parametro)
+					.ExportToPDF();
+			break;
+		case 2:
+
+			if (tallerSeleccionado()) {
+				Talleres taller = tablaTalleres.getTallerSeleccionado();
+
+				parametro.put("id", taller.getIdTalleres());
+
+				new ReportUtil(parent, "report_talleres2.jasper", parametro)
+						.ExportToPDF();
+			}
+
+			break;
+		default:
+		}
+
 	}
 
 	public boolean mEditar() {

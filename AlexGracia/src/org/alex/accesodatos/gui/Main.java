@@ -99,8 +99,7 @@ public class Main extends JFrame {
 	private JTextField tfBusqueda;
 	private BarraEstado barraEstado;
 	private JToolBar toolBar;
-	private JButton btnEditar, btnBorrar, btnCancelarbusqueda;
-	private JButton btnPdf;
+	private JButton btnEditar, btnBorrar, btnCancelarbusqueda, btnPdf;
 
 	/**
 	 * Launch the application.
@@ -556,47 +555,51 @@ public class Main extends JFrame {
 
 	// TODO
 	private void exportar() {
-		barraEstado.setText("Exportando informe a PDF...");
 
 		JOpcionInforme dialogoOpcion = new JOpcionInforme();
 
-		if (!dialogoOpcion.isAceptar())
+		if (!dialogoOpcion.isAceptar()) {
+			barraEstado.accionCancelada();
 			return;
+		}
 
 		int opcion = dialogoOpcion.comboPropio.getSelectedIndex();
+
+		if (opcion == 0) {
+			Util.setMensajeInformacion("Seleccione un tipo");
+			exportar();
+		}
 
 		switch (tabbedPane.getSelectedIndex()) {
 		case 0:
 			tabClientes.mExportar(this, opcion);
 			break;
-		// case 1:
-		// new ReportUtil("report_vehiculos.jasper", this, null).ExportToPDF();
-		// break;
-		// case 2:
-		// new ReportUtil("report_extras.jasper", this, null).ExportToPDF();
-		// break;
-		// case 3:
-		// new ReportUtil("report_piezas.jasper", this, null).ExportToPDF();
-		// break;
-		// case 4:
-		// new ReportUtil("report_proveedores.jasper", this, null)
-		// .ExportToPDF();
-		// break;
-		// case 5:
-		// new ReportUtil("report_talleres.jasper", this, null).ExportToPDF();
-		// break;
-		// case 6:
-		// new ReportUtil("report_polizas.jasper", this, null).ExportToPDF();
-		// break;
-		// case 7:
-		// new ReportUtil("report_siniestros.jasper", this, null)
-		// .ExportToPDF();
-		// break;
+		case 1:
+			tabVehiculos.mExportar(this, opcion);
+			break;
+		case 2:
+			tabExtras.mExportar(this, opcion);
+			break;
+		case 3:
+			tabPiezas.mExportar(this, opcion);
+			break;
+		case 4:
+			tabProveedores.mExportar(this, opcion);
+			break;
+		case 5:
+			tabTalleres.mExportar(this, opcion);
+			break;
+		case 6:
+			tabPolizas.mExportar(this, opcion);
+			break;
+		case 7:
+			tabSiniestros.mExportar(this, opcion);
+			break;
 		default:
-			Util.setMensajeInformacion("Por hacer.");
 		}
 
 		barraEstado.accionRealizada();
+
 	}
 
 	private void buscar(String filtro) {

@@ -30,9 +30,16 @@ public class ReportUtil {
 	private String user = "root", pass;
 	private JasperPrint print;
 	private File ficheroSeleccionado;
+	private boolean cancelar = false;
 
-	public ReportUtil(String jasper, JFrame parent,
+	public ReportUtil(JFrame parent, String jasper,
 			HashMap<String, Object> parametro) {
+
+		if (!_FileChooser(parent)) {
+			cancelar = true;
+			return;
+		}
+
 		try {
 			Connection conexion = DriverManager.getConnection(connectionUrl,
 					user, pass);
@@ -46,8 +53,6 @@ public class ReportUtil {
 			e.printStackTrace();
 		}
 
-		_FileChooser(parent);
-
 	}
 
 	/**
@@ -55,24 +60,25 @@ public class ReportUtil {
 	 */
 	public void ExportToPDF() {
 
+		if (cancelar)
+			return;
+
 		try {
 			JasperExportManager.exportReportToPdfFile(print,
 					ficheroSeleccionado.getAbsolutePath());
 		} catch (JRException e) {
 			e.printStackTrace();
 		}
-		return;
 	}
 
 	/**
-	 * Método privado encargado de crear un JFileChooser para guardar ficheros
-	 * PDF.
+	 * Método encargado de crear un JFileChooser para guardar ficheros PDF.
 	 * 
 	 * @param parent
 	 *            (este parámetro es necesario para que el JFileChooser tenga el
 	 *            icono de la aplicación).
 	 */
-	private void _FileChooser(JFrame parent) {
+	private boolean _FileChooser(JFrame parent) {
 		JFileChooser fc = new JFileChooser();
 		FileNameExtensionFilter filtro = new FileNameExtensionFilter(
 				"Archivos PDF", "pdf");
@@ -84,8 +90,9 @@ public class ReportUtil {
 		fc.setDialogTitle("Guardar informe");
 
 		if (fc.showSaveDialog(parent) != JFileChooser.APPROVE_OPTION)
-			return;
+			return false;
 
 		ficheroSeleccionado = fc.getSelectedFile();
+		return true;
 	}
 }

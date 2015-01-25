@@ -2,7 +2,9 @@ package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,6 +20,7 @@ import org.alex.accesodatos.hibernate.Siniestros;
 import org.alex.accesodatos.hibernate.Talleres;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
+import org.alex.accesodatos.util.ReportUtil;
 import org.alex.libs.RestrictedSimple;
 import org.alex.libs.Util;
 import org.freixas.jcalendar.JCalendarCombo;
@@ -241,6 +244,40 @@ public class TabSiniestros extends JPanel {
 		tablaSiniestros.listar();
 		mVaciarSiniestro();
 		return true;
+	}
+
+	/**
+	 * <b>Tipos:</b> <br>
+	 * 1. General <br>
+	 * 2. Detallado
+	 * 
+	 * @param parent
+	 * @param opcion
+	 */
+	public void mExportar(JFrame parent, int opcion) {
+		HashMap<String, Object> parametro = new HashMap<String, Object>();
+
+		switch (opcion) {
+		case 1:
+			new ReportUtil(parent, "report_siniestros.jasper", parametro)
+					.ExportToPDF();
+			break;
+		case 2:
+
+			if (siniestroSeleccionado()) {
+				Siniestros siniestro = tablaSiniestros
+						.getSiniestrosSeleccionado();
+
+				parametro.put("id", siniestro.getIdSiniestros());
+
+				new ReportUtil(parent, "report_siniestros2.jasper", parametro)
+						.ExportToPDF();
+			}
+
+			break;
+		default:
+		}
+
 	}
 
 	public boolean mEditar() {
