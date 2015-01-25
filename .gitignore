@@ -9,6 +9,7 @@ bin
 *.avi
 *.docx
 *.ucls
+*.jrxml
 
 # Versions #
 AlexGracia_v1.0.jar

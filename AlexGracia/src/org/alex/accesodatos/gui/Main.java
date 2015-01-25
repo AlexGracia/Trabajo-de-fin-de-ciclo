@@ -45,7 +45,6 @@ import org.alex.accesodatos.gui.tabs.TabTalleres;
 import org.alex.accesodatos.gui.tabs.TabVehiculos;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
-import org.alex.accesodatos.util.ReportUtil;
 import org.alex.libs.BarraEstado;
 import org.alex.libs.Util;
 import org.hibernate.HibernateException;
@@ -559,32 +558,42 @@ public class Main extends JFrame {
 	private void exportar() {
 		barraEstado.setText("Exportando informe a PDF...");
 
+		JOpcionInforme dialogoOpcion = new JOpcionInforme();
+
+		if (!dialogoOpcion.isAceptar())
+			return;
+
+		int opcion = dialogoOpcion.comboPropio.getSelectedIndex();
+
 		switch (tabbedPane.getSelectedIndex()) {
 		case 0:
-			new ReportUtil("report_clientes.jasper").ExportToPDF(this);
+			tabClientes.mExportar(this, opcion);
 			break;
-		case 1:
-			new ReportUtil("report_vehiculos.jasper").ExportToPDF(this);
-			break;
-		case 2:
-			new ReportUtil("report_extras.jasper").ExportToPDF(this);
-			break;
-		case 3:
-			new ReportUtil("report_piezas.jasper").ExportToPDF(this);
-			break;
-		case 4:
-			new ReportUtil("report_proveedores.jasper").ExportToPDF(this);
-			break;
-		case 5:
-			new ReportUtil("report_talleres.jasper").ExportToPDF(this);
-			break;
-		case 6:
-			new ReportUtil("report_polizas.jasper").ExportToPDF(this);
-			break;
-		case 7:
-			new ReportUtil("report_siniestros.jasper").ExportToPDF(this);
-			break;
+		// case 1:
+		// new ReportUtil("report_vehiculos.jasper", this, null).ExportToPDF();
+		// break;
+		// case 2:
+		// new ReportUtil("report_extras.jasper", this, null).ExportToPDF();
+		// break;
+		// case 3:
+		// new ReportUtil("report_piezas.jasper", this, null).ExportToPDF();
+		// break;
+		// case 4:
+		// new ReportUtil("report_proveedores.jasper", this, null)
+		// .ExportToPDF();
+		// break;
+		// case 5:
+		// new ReportUtil("report_talleres.jasper", this, null).ExportToPDF();
+		// break;
+		// case 6:
+		// new ReportUtil("report_polizas.jasper", this, null).ExportToPDF();
+		// break;
+		// case 7:
+		// new ReportUtil("report_siniestros.jasper", this, null)
+		// .ExportToPDF();
+		// break;
 		default:
+			Util.setMensajeInformacion("Por hacer.");
 		}
 
 		barraEstado.accionRealizada();

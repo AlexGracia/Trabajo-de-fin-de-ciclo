@@ -29,10 +29,10 @@ public class ReportUtil {
 	private String connectionUrl = "jdbc:mysql://localhost:3306/alex_gracia";
 	private String user = "root", pass;
 	private JasperPrint print;
-	private JFileChooser fc;
-	private FileNameExtensionFilter filtro;
+	private File ficheroSeleccionado;
 
-	public ReportUtil(String jasper) {
+	public ReportUtil(String jasper, JFrame parent,
+			HashMap<String, Object> parametro) {
 		try {
 			Connection conexion = DriverManager.getConnection(connectionUrl,
 					user, pass);
@@ -40,23 +40,43 @@ public class ReportUtil {
 			JasperReport report = (JasperReport) JRLoader.loadObject(new File(
 					jasper));
 
-			print = JasperFillManager.fillReport(report,
-					new HashMap<String, Object>(), conexion);
-
-			// JFileChooser
-			fc = new JFileChooser();
-			filtro = new FileNameExtensionFilter("Archivos PDF", "pdf");
-			fc.setFileFilter(filtro);
+			print = JasperFillManager.fillReport(report, parametro, conexion);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+		_FileChooser(parent);
+
 	}
 
-	public void ExportToPDF(JFrame parent) {
-		// JFileChooser
-		File ficheroSeleccionado;
+	/**
+	 * Método encargado de exportar el informe en formato PDF.
+	 */
+	public void ExportToPDF() {
+
+		try {
+			JasperExportManager.exportReportToPdfFile(print,
+					ficheroSeleccionado.getAbsolutePath());
+		} catch (JRException e) {
+			e.printStackTrace();
+		}
+		return;
+	}
+
+	/**
+	 * Método privado encargado de crear un JFileChooser para guardar ficheros
+	 * PDF.
+	 * 
+	 * @param parent
+	 *            (este parámetro es necesario para que el JFileChooser tenga el
+	 *            icono de la aplicación).
+	 */
+	private void _FileChooser(JFrame parent) {
+		JFileChooser fc = new JFileChooser();
+		FileNameExtensionFilter filtro = new FileNameExtensionFilter(
+				"Archivos PDF", "pdf");
+		fc.setFileFilter(filtro);
 
 		File ficheroDefault = new File("Informe.pdf");
 		fc.setSelectedFile(ficheroDefault);
@@ -67,14 +87,5 @@ public class ReportUtil {
 			return;
 
 		ficheroSeleccionado = fc.getSelectedFile();
-
-		// Exportar a PDF
-		try {
-			JasperExportManager.exportReportToPdfFile(print,
-					ficheroSeleccionado.getAbsolutePath());
-		} catch (JRException e) {
-			e.printStackTrace();
-		}
-		return;
 	}
 }

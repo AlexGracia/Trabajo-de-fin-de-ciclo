@@ -3,6 +3,10 @@ package org.alex.accesodatos.beans;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,13 +25,19 @@ public class DialogPropio extends JDialog {
 	private static final long serialVersionUID = 1L;
 	protected JButton okButton, cancelButton;
 	protected JPanel buttonPane, contentPanel;
+	private boolean aceptar;
 
 	/**
 	 * Create the dialog.
 	 */
 	public DialogPropio() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				aceptar(false);
+			}
+		});
 		setModal(true);
-		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setIconImage(Toolkit
 				.getDefaultToolkit()
 				.getImage(
@@ -45,6 +55,7 @@ public class DialogPropio extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				okButton = new JButton("");
+				okButton.addActionListener(aceptar(true));
 				okButton.setIcon(new ImageIcon(DialogPropio.class
 						.getResource("/org/alex/accesodatos/iconos/ok.png")));
 				okButton.setActionCommand("OK");
@@ -53,6 +64,7 @@ public class DialogPropio extends JDialog {
 			}
 			{
 				cancelButton = new JButton("");
+				cancelButton.addActionListener(aceptar(false));
 				cancelButton
 						.setIcon(new ImageIcon(
 								DialogPropio.class
@@ -61,6 +73,20 @@ public class DialogPropio extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+
+	}
+
+	public boolean isAceptar() {
+		return aceptar;
+	}
+
+	private ActionListener aceptar(final boolean valor) {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				aceptar = valor;
+				dispose();
+			}
+		};
 	}
 
 }

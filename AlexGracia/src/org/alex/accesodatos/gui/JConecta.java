@@ -86,7 +86,7 @@ public class JConecta extends DialogPropio {
 
 		setTitle("Login");
 		setSize(new Dimension(250, 175));
-		setLocationRelativeTo(this);
+		setLocationRelativeTo(null);
 
 		contentPanel.setLayout(null);
 
