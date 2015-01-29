@@ -45,6 +45,7 @@ import org.alex.accesodatos.gui.tabs.TabTalleres;
 import org.alex.accesodatos.gui.tabs.TabVehiculos;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
+import org.alex.accesodatos.util.ReportUtil;
 import org.alex.libs.BarraEstado;
 import org.alex.libs.Util;
 import org.hibernate.HibernateException;
@@ -568,6 +569,13 @@ public class Main extends JFrame {
 		if (opcion == 0) {
 			Util.setMensajeInformacion("Seleccione un tipo");
 			exportar();
+		}
+
+		// Volumen de negocio
+		if (opcion == 3) {
+			new ReportUtil(this, "report_negocio3.jasper", null).ExportToPDF();
+			barraEstado.accionRealizada();
+			return;
 		}
 
 		switch (tabbedPane.getSelectedIndex()) {
