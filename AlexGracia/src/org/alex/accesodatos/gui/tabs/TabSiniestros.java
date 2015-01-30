@@ -201,6 +201,14 @@ public class TabSiniestros extends JPanel {
 		Talleres taller = (Talleres) HibernateUtil.getCurrentSession().get(
 				Talleres.class, Integer.parseInt(idTaller));
 
+		// Comprobar que las fechas no sean posteriores a la actual.
+		Date fechaReparacion = calendarReparacion.getDate();
+		Date fechaSiniestro = calendarSiniestro.getDate();
+
+		if (Util.esFechaFuturista(fechaReparacion, "de reparación")
+				|| Util.esFechaFuturista(fechaSiniestro, "de siniestro"))
+			return false;
+
 		Siniestros siniestro;
 		if (esNuevo)
 			siniestro = new Siniestros();
@@ -215,9 +223,9 @@ public class TabSiniestros extends JPanel {
 			siniestro.setImporteReparacion(Double
 					.parseDouble(tfImporteReparacion.getText()));
 		siniestro.setDatosCliente(tfDatosCliente.getText());
-		siniestro.setFechaReparacion(calendarReparacion.getDate());
+		siniestro.setFechaReparacion(fechaReparacion);
 		siniestro.setDatosTaller(tfDatosTaller.getText());
-		siniestro.setFechaSiniestro(calendarSiniestro.getDate());
+		siniestro.setFechaSiniestro(fechaSiniestro);
 		texto = tfVehiculosImplicados.getText();
 		if (texto.equals(""))
 			siniestro.setCantidadVehiculosImplicados(1);

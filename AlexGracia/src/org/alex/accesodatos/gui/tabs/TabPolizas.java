@@ -187,6 +187,16 @@ public class TabPolizas extends JPanel {
 		Vehiculos vehiculo = (Vehiculos) HibernateUtil.getCurrentSession().get(
 				Vehiculos.class, Integer.parseInt(id_vehiculo));
 
+		// Comprobar que las fechas no sean posteriores a la actual.
+		Date fechaInicio = dateInicio.getDate();
+		Date fechaConduccion = dateConduccion.getDate();
+		Date fechaFin = dateFin.getDate();
+
+		if (Util.esFechaFuturista(fechaInicio, "de inicio")
+				|| Util.esFechaFuturista(fechaConduccion, "de conducción")
+				|| Util.esFechaFuturista(fechaFin, "de fin"))
+			return false;
+
 		Polizas poliza;
 		if (esNuevo)
 			poliza = new Polizas();
@@ -201,14 +211,14 @@ public class TabPolizas extends JPanel {
 		else
 			poliza.setImporte(Integer.parseInt(texto));
 		poliza.setEstado(cbEstado.getSelectedString());
-		poliza.setFechaInicio(dateInicio.getDate());
+		poliza.setFechaInicio(fechaInicio);
 		texto = tfConductores.getText();
 		if (texto.equals(""))
 			poliza.setCantidadConductores(0);
 		else
 			poliza.setCantidadConductores(Integer.parseInt(texto));
-		poliza.setAntiguedadConduccion(dateConduccion.getDate());
-		poliza.setFechaFin(dateFin.getDate());
+		poliza.setAntiguedadConduccion(fechaConduccion);
+		poliza.setFechaFin(fechaFin);
 		poliza.setClientes(cliente);
 		poliza.setVehiculos(vehiculo);
 

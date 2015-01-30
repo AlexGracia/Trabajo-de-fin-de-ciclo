@@ -109,6 +109,8 @@ public class TabClientes extends JPanel {
 		tfTelefono.setColumns(10);
 
 		calendarNacimiento = new JCalendarCombo();
+		// TODO Mirar de poner un tope al calendario.
+		// calendarNacimiento.getCalendar().
 		calendarNacimiento.setBounds(181, 213, 120, 26);
 		add(calendarNacimiento);
 
@@ -180,6 +182,14 @@ public class TabClientes extends JPanel {
 			return false;
 		}
 
+		// Comprobar que las fechas no sean posteriores a la actual.
+		Date fechaNacimiento = calendarNacimiento.getDate();
+		Date fechaCarnet = calendarCarnet.getDate();
+
+		if (Util.esMenorDeEdad(fechaNacimiento)
+				|| Util.esFechaFuturista(fechaCarnet, "del carnet de conducir"))
+			return false;
+
 		Clientes cliente;
 		if (esNuevo) {
 			String dniSQL = (String) HibernateUtil
@@ -206,8 +216,8 @@ public class TabClientes extends JPanel {
 		else
 			cliente.setTelefono(Integer.parseInt(telefono));
 
-		cliente.setFechaNacimiento(calendarNacimiento.getDate());
-		cliente.setFechaCarnet(calendarCarnet.getDate());
+		cliente.setFechaNacimiento(fechaNacimiento);
+		cliente.setFechaCarnet(fechaCarnet);
 		cliente.setDireccion(tfDireccion.getText());
 
 		if (esNuevo)

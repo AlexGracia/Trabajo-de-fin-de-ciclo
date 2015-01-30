@@ -1,6 +1,7 @@
 package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
@@ -159,6 +160,12 @@ public class TabPiezas extends JPanel {
 			return false;
 		}
 
+		// Comprobar que la fecha no sea posterior a la actual.
+		Date fechaSolicitud = calendarSolicitud.getDate();
+
+		if (Util.esFechaFuturista(fechaSolicitud, "de solicitud"))
+			return false;
+
 		Piezas pieza;
 		if (esNuevo)
 			pieza = new Piezas();
@@ -178,7 +185,7 @@ public class TabPiezas extends JPanel {
 		else
 			pieza.setPrecio(Integer.parseInt(tfPrecio.getText()));
 		pieza.setLugarOrigen(tfOrigen.getText());
-		pieza.setFechaSolicitud(calendarSolicitud.getDate());
+		pieza.setFechaSolicitud(fechaSolicitud);
 		pieza.setMarca(tfMarca.getText());
 
 		if (esNuevo)

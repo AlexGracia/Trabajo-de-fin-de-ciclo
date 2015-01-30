@@ -1,6 +1,7 @@
 package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
@@ -170,13 +171,19 @@ public class TabExtras extends JPanel {
 			return false;
 		}
 
+		// Comprobar que la fecha no sea posterior a la actual.
+		Date fechaFabricacion = yearFabricacion.getDate();
+
+		if (Util.esFechaFuturista(fechaFabricacion, "de fabricación"))
+			return false;
+
 		Extras extra;
 		if (esNuevo)
 			extra = new Extras();
 		else
 			extra = tablaExtras.getExtraSeleccionado();
 
-		extra.setAnoFabricacion(yearFabricacion.getDate());
+		extra.setAnoFabricacion(fechaFabricacion);
 		extra.setMarca(tfMarca.getText());
 		extra.setNombre(nombre);
 		extra.setModelo(tfModelo.getText());

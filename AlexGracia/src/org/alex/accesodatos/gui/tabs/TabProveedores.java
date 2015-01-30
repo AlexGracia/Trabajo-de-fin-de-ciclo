@@ -1,6 +1,7 @@
 package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
@@ -181,6 +182,12 @@ public class TabProveedores extends JPanel {
 			return false;
 		}
 
+		// Comprobar que la fecha no sea posterior a la actual.
+		Date fechaNacimiento = dateNacimiento.getDate();
+
+		if (Util.esMenorDeEdad(fechaNacimiento))
+			return false;
+
 		Proveedores proveedor;
 		if (esNuevo) {
 			String dniSQL = (String) HibernateUtil
@@ -201,7 +208,7 @@ public class TabProveedores extends JPanel {
 		proveedor.setNombre(nombre);
 		proveedor.setTelefono(Integer.parseInt(telefono));
 		proveedor.setCorreoElectronico(tfCorreo.getText());
-		proveedor.setFechaNacimiento(dateNacimiento.getDate());
+		proveedor.setFechaNacimiento(fechaNacimiento);
 		proveedor.setDireccion(tfDireccion.getText());
 		proveedor.setFacilidadPago(cbPago.getSelectedString());
 		proveedor.setNombreEmpresa(nombreEmpresa);

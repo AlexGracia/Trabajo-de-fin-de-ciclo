@@ -151,6 +151,7 @@ public class Main extends JFrame {
 								.getResource("/org/alex/accesodatos/iconos/IconoAplicacion.png")));
 		setSize(new Dimension(1000, 550));
 		Util.estiloPorDefecto(this);
+		setLocation((int) getLocation().getX(), 0);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
@@ -400,43 +401,55 @@ public class Main extends JFrame {
 				tabPolizas.resetComboClientes();
 				tabSiniestros.resetComboClientes();
 				barraEstado.accionRealizada();
+				setEnable(true);
 			}
 			break;
 		case 1:
 			if (tabVehiculos.mGuardar()) {
 				tabPolizas.resetComboVehiculos();
 				barraEstado.accionRealizada();
+				setEnable(true);
 			}
 			break;
 		case 2:
-			if (tabExtras.mGuardar())
+			if (tabExtras.mGuardar()) {
 				barraEstado.accionRealizada();
+				setEnable(true);
+			}
 			break;
 		case 3:
-			if (tabPiezas.mGuardar())
+			if (tabPiezas.mGuardar()) {
 				barraEstado.accionRealizada();
+				setEnable(true);
+			}
 			break;
 		case 4:
-			if (tabProveedores.mGuardar())
+			if (tabProveedores.mGuardar()) {
 				barraEstado.accionRealizada();
+				setEnable(true);
+			}
 			break;
 		case 5:
 			if (tabTalleres.mGuardar()) {
 				tabSiniestros.resetComboTalleres();
 				barraEstado.accionRealizada();
+				setEnable(true);
 			}
 			break;
 		case 6:
-			if (tabPolizas.mGuardar())
+			if (tabPolizas.mGuardar()) {
 				barraEstado.accionRealizada();
+				setEnable(true);
+			}
 			break;
 		case 7:
-			if (tabSiniestros.mGuardar())
+			if (tabSiniestros.mGuardar()) {
 				barraEstado.accionRealizada();
+				setEnable(true);
+			}
 			break;
 		default:
 		}
-		setEnable(true);
 	}
 
 	private void cancelar() {

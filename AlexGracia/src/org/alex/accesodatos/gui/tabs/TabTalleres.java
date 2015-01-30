@@ -1,6 +1,7 @@
 package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -182,6 +183,12 @@ public class TabTalleres extends JPanel {
 			return false;
 		}
 
+		// Comprobar que la fecha no sea posterior a la actual.
+		Date fechaInicio = calendarInicio.getDate();
+
+		if (Util.esFechaFuturista(fechaInicio, "de inicio"))
+			return false;
+
 		Talleres taller;
 		if (esNuevo) {
 			String cifEmpresaSQL = (String) HibernateUtil
@@ -206,7 +213,7 @@ public class TabTalleres extends JPanel {
 			taller.setTelefono(0);
 		else
 			taller.setTelefono(Integer.parseInt(tfTelefono.getText()));
-		taller.setFechaInicio(calendarInicio.getDate());
+		taller.setFechaInicio(fechaInicio);
 		taller.setNombreJefe(tfNombreJefe.getText());
 		taller.setCifEmpresa(cifEmpresa);
 		texto = tfNumeroTrabajadores.getText();

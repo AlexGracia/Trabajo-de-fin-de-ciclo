@@ -1,6 +1,7 @@
 package org.alex.accesodatos.gui.tabs;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -182,6 +183,12 @@ public class TabVehiculos extends JPanel {
 			return false;
 		}
 
+		// Comprobar que la fecha no sea posterior a la actual.
+		Date fechaFabricacion = yearFabricacion.getDate();
+
+		if (Util.esFechaFuturista(fechaFabricacion, "de fabricación"))
+			return false;
+
 		Vehiculos vehiculo;
 		if (esNuevo) {
 			String matriculaSQL = (String) HibernateUtil
@@ -214,7 +221,7 @@ public class TabVehiculos extends JPanel {
 		else
 			vehiculo.setNumeroPuertas(Integer.parseInt(texto));
 
-		vehiculo.setAnoFabricacion(yearFabricacion.getDate());
+		vehiculo.setAnoFabricacion(fechaFabricacion);
 		vehiculo.setColor(cbColor.getSelectedString());
 		vehiculo.setKilometros(Integer.parseInt(kilometros));
 
