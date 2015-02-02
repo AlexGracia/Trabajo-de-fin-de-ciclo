@@ -25,5 +25,7 @@
 	<classpathentry kind="lib" path="libs/jasperReport/jasperreports-fonts-5.1.0.jar"/>
 	<classpathentry kind="lib" path="libs/jasperReport/jasperreports-javaflow-5.1.0.jar"/>
 	<classpathentry kind="lib" path="libs/Util.jar"/>
+	<classpathentry kind="lib" path="libs/jasperReport/chart/jcommon-1.0.21.jar"/>
+	<classpathentry kind="lib" path="libs/jasperReport/chart/jfreechart-1.0.16.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

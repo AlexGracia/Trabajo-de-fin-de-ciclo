@@ -69,6 +69,7 @@ public class ReportUtil {
 			_cancelar();
 		} catch (Exception e) {
 			e.printStackTrace();
+			Util.setMensajeError("Exportando, más detalles:\n" + e.getMessage());
 			_cancelar();
 		}
 

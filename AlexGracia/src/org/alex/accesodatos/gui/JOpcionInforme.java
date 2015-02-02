@@ -29,6 +29,7 @@ public class JOpcionInforme extends DialogPropio {
 		comboPropio.addItem("General");
 		comboPropio.addItem("Detallado");
 		comboPropio.addItem("De empresa");
+		comboPropio.addItem("Gráfico");
 		contentPanel.add(comboPropio);
 
 		setVisible(true);

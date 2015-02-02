@@ -13,6 +13,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -127,6 +129,7 @@ public class Main extends JFrame {
 	 * Create the application.
 	 */
 	public Main() {
+		Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		interfaz();
 		finalizandoCarga();
 	}
@@ -580,8 +583,9 @@ public class Main extends JFrame {
 		int opcion = dialogoOpcion.comboPropio.getSelectedIndex();
 
 		if (opcion == 0) {
-			Util.setMensajeInformacion("Seleccione un tipo");
+			Util.setMensajeInformacion("Seleccione un tipo.");
 			exportar();
+			return;
 		}
 
 		// Volumen de negocio

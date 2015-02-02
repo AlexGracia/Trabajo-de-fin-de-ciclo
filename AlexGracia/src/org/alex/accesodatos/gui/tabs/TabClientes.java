@@ -244,25 +244,16 @@ public class TabClientes extends JPanel {
 	public void mExportar(JFrame parent, int opcion) {
 		HashMap<String, Object> parametro = new HashMap<String, Object>();
 
-		switch (opcion) {
-		case 1:
-			new ReportUtil(parent, "report_clientes.jasper", parametro)
-					.ExportToPDF();
-			break;
-		case 2:
-
+		if (opcion == 2)
 			if (clienteSeleccionado()) {
 				Clientes cliente = tablaCliente.getClienteSeleccionado();
 
 				parametro.put("id", cliente.getIdClientes());
+			} else
+				return;
 
-				new ReportUtil(parent, "report_clientes2.jasper", parametro)
-						.ExportToPDF();
-			}
-
-			break;
-		default:
-		}
+		new ReportUtil(parent, "report_clientes" + opcion + ".jasper",
+				parametro).ExportToPDF();
 
 	}
 
