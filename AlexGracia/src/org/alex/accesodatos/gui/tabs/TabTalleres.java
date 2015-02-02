@@ -140,7 +140,7 @@ public class TabTalleres extends JPanel {
 				tfNumeroTrabajadores, tfCantidadReparaciones);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(355, 18, 625, 269);
+		scrollPane.setBounds(355, 18, 635, 270);
 		add(scrollPane);
 		scrollPane.setViewportView(tablaTalleres);
 
@@ -252,25 +252,18 @@ public class TabTalleres extends JPanel {
 	public void mExportar(JFrame parent, int opcion) {
 		HashMap<String, Object> parametro = new HashMap<String, Object>();
 
-		switch (opcion) {
-		case 1:
-			new ReportUtil(parent, "report_talleres.jasper", parametro)
-					.ExportToPDF();
-			break;
-		case 2:
+		if (opcion == 2)
 
 			if (tallerSeleccionado()) {
 				Talleres taller = tablaTalleres.getTallerSeleccionado();
 
 				parametro.put("id", taller.getIdTalleres());
 
-				new ReportUtil(parent, "report_talleres2.jasper", parametro)
-						.ExportToPDF();
-			}
+			} else
+				return;
 
-			break;
-		default:
-		}
+		new ReportUtil(parent, "report_talleres" + opcion + ".jasper",
+				parametro).ExportToPDF();
 
 	}
 

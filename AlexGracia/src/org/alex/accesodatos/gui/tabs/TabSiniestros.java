@@ -156,7 +156,7 @@ public class TabSiniestros extends JPanel {
 		add(cbIdTaller);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(355, 18, 625, 269);
+		scrollPane.setBounds(355, 18, 635, 270);
 		add(scrollPane);
 
 		tablaSiniestros = new TablaSiniestros(tfDatosPoliza,
@@ -265,12 +265,7 @@ public class TabSiniestros extends JPanel {
 	public void mExportar(JFrame parent, int opcion) {
 		HashMap<String, Object> parametro = new HashMap<String, Object>();
 
-		switch (opcion) {
-		case 1:
-			new ReportUtil(parent, "report_siniestros.jasper", parametro)
-					.ExportToPDF();
-			break;
-		case 2:
+		if (opcion == 2)
 
 			if (siniestroSeleccionado()) {
 				Siniestros siniestro = tablaSiniestros
@@ -278,13 +273,11 @@ public class TabSiniestros extends JPanel {
 
 				parametro.put("id", siniestro.getIdSiniestros());
 
-				new ReportUtil(parent, "report_siniestros2.jasper", parametro)
-						.ExportToPDF();
-			}
+			} else
+				return;
 
-			break;
-		default:
-		}
+		new ReportUtil(parent, "report_siniestros" + opcion + ".jasper",
+				parametro).ExportToPDF();
 
 	}
 

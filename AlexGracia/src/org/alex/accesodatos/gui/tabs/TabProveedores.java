@@ -143,7 +143,7 @@ public class TabProveedores extends JPanel {
 				tfNombreEmpresa, tfDni);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(355, 18, 625, 269);
+		scrollPane.setBounds(355, 18, 635, 270);
 		add(scrollPane);
 		scrollPane.setViewportView(tablaProveedores);
 
@@ -239,12 +239,7 @@ public class TabProveedores extends JPanel {
 	public void mExportar(JFrame parent, int opcion) {
 		HashMap<String, Object> parametro = new HashMap<String, Object>();
 
-		switch (opcion) {
-		case 1:
-			new ReportUtil(parent, "report_proveedores.jasper", parametro)
-					.ExportToPDF();
-			break;
-		case 2:
+		if (opcion == 2)
 
 			if (proveedorSeleccionado()) {
 				Proveedores proveedor = tablaProveedores
@@ -252,13 +247,11 @@ public class TabProveedores extends JPanel {
 
 				parametro.put("id", proveedor.getIdProveedores());
 
-				new ReportUtil(parent, "report_proveedores2.jasper", parametro)
-						.ExportToPDF();
-			}
+			} else
+				return;
 
-			break;
-		default:
-		}
+		new ReportUtil(parent, "report_proveedores" + opcion + ".jasper",
+				parametro).ExportToPDF();
 
 	}
 

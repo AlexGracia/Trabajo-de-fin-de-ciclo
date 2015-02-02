@@ -152,7 +152,7 @@ public class Main extends JFrame {
 				.getImage(
 						Main.class
 								.getResource("/org/alex/accesodatos/iconos/IconoAplicacion.png")));
-		setSize(new Dimension(1000, 550));
+		setSize(new Dimension(1020, 555));
 		Util.estiloPorDefecto(this);
 		setLocation((int) getLocation().getX(), 0);
 		setResizable(false);

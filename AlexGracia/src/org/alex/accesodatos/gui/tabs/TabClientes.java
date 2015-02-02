@@ -125,7 +125,7 @@ public class TabClientes extends JPanel {
 		tfDireccion.setColumns(10);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(355, 18, 625, 271);
+		scrollPane.setBounds(355, 18, 635, 270);
 		add(scrollPane);
 
 		tablaCliente = new TablaClientes(tfNombre, tfApellidos, tfDni,
@@ -245,10 +245,12 @@ public class TabClientes extends JPanel {
 		HashMap<String, Object> parametro = new HashMap<String, Object>();
 
 		if (opcion == 2)
+
 			if (clienteSeleccionado()) {
 				Clientes cliente = tablaCliente.getClienteSeleccionado();
 
 				parametro.put("id", cliente.getIdClientes());
+
 			} else
 				return;
 

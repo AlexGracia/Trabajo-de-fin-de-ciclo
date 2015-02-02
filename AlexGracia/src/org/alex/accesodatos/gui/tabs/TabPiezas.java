@@ -126,7 +126,7 @@ public class TabPiezas extends JPanel {
 				tfPrecio, tfOrigen, calendarSolicitud, tfMarca);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(355, 18, 625, 269);
+		scrollPane.setBounds(355, 18, 635, 270);
 		add(scrollPane);
 		scrollPane.setViewportView(tablaPiezas);
 
@@ -213,25 +213,18 @@ public class TabPiezas extends JPanel {
 	public void mExportar(JFrame parent, int opcion) {
 		HashMap<String, Object> parametro = new HashMap<String, Object>();
 
-		switch (opcion) {
-		case 1:
-			new ReportUtil(parent, "report_piezas.jasper", parametro)
-					.ExportToPDF();
-			break;
-		case 2:
+		if (opcion == 2)
 
 			if (piezaSeleccionada()) {
 				Piezas pieza = tablaPiezas.getPiezaSeleccionada();
 
 				parametro.put("id", pieza.getIdPiezas());
 
-				new ReportUtil(parent, "report_piezas2.jasper", parametro)
-						.ExportToPDF();
-			}
+			} else
+				return;
 
-			break;
-		default:
-		}
+		new ReportUtil(parent, "report_piezas" + opcion + ".jasper", parametro)
+				.ExportToPDF();
 
 	}
 

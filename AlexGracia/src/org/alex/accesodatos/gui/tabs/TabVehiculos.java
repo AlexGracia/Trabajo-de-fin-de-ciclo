@@ -138,7 +138,7 @@ public class TabVehiculos extends JPanel {
 		add(tfKilometros);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(355, 18, 625, 269);
+		scrollPane.setBounds(355, 18, 635, 270);
 		add(scrollPane);
 
 		tablaVehiculo = new TablaVehiculos(tfMatricula, tfMarca, tfModelo,
@@ -250,25 +250,18 @@ public class TabVehiculos extends JPanel {
 	public void mExportar(JFrame parent, int opcion) {
 		HashMap<String, Object> parametro = new HashMap<String, Object>();
 
-		switch (opcion) {
-		case 1:
-			new ReportUtil(parent, "report_vehiculos.jasper", parametro)
-					.ExportToPDF();
-			break;
-		case 2:
+		if (opcion == 2)
 
 			if (vehiculoSeleccionado()) {
 				Vehiculos vehiculo = tablaVehiculo.getVehiculoSeleccionado();
 
 				parametro.put("id", vehiculo.getIdVehiculos());
 
-				new ReportUtil(parent, "report_vehiculos2.jasper", parametro)
-						.ExportToPDF();
-			}
+			} else
+				return;
 
-			break;
-		default:
-		}
+		new ReportUtil(parent, "report_vehiculos" + opcion + ".jasper",
+				parametro).ExportToPDF();
 
 	}
 
