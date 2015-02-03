@@ -18,7 +18,7 @@ public class JOpcionInforme extends DialogPropio {
 
 	public JOpcionInforme() {
 		setTitle("Exportar informe");
-		setSize(new Dimension(400, 200));
+		setSize(new Dimension(300, 200));
 		setLocationRelativeTo(null);
 
 		LabelPropio lblSeleccioneUnTipo = new LabelPropio("Seleccione un tipo:");

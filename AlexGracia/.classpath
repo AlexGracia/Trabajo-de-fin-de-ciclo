@@ -27,5 +27,6 @@
 	<classpathentry kind="lib" path="libs/Util.jar"/>
 	<classpathentry kind="lib" path="libs/jasperReport/chart/jcommon-1.0.21.jar"/>
 	<classpathentry kind="lib" path="libs/jasperReport/chart/jfreechart-1.0.16.jar"/>
+	<classpathentry kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

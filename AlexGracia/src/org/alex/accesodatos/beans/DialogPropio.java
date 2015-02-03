@@ -31,6 +31,7 @@ public class DialogPropio extends JDialog {
 	 * Create the dialog.
 	 */
 	public DialogPropio() {
+		setResizable(false);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {

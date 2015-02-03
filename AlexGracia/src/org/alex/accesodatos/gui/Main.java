@@ -242,6 +242,7 @@ public class Main extends JFrame {
 
 		getContentPane().add(barraEstado, BorderLayout.SOUTH);
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setFont(Constantes.FUENTE);
 		tabbedPane.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				switch (tabbedPane.getSelectedIndex()) {
@@ -291,6 +292,18 @@ public class Main extends JFrame {
 			}
 		});
 		mnHerramientas.add(mntmPreferencias);
+
+		JMenu menu = new JMenu("?");
+		menu.setToolTipText("Ayuda");
+		menuBar.add(menu);
+		// TODO ayuda
+		JMenuItem mntmAcercaDeAlexgracia = new JMenuItem("Acerca de AlexGracia");
+		mntmAcercaDeAlexgracia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new JAcercaDe();
+			}
+		});
+		menu.add(mntmAcercaDeAlexgracia);
 
 		tabClientes = new TabClientes(tabbedPane);
 		tablaClientes = tabClientes.getTablaClientes();
@@ -353,7 +366,7 @@ public class Main extends JFrame {
 		byte i = 0;
 		// Amoldar la interfaz segun el usuario introducido
 		if (query.equals(Constantes.rangos[i++])) {
-			menuBar.setVisible(false);
+			mnHerramientas.setEnabled(false);
 			setTitle("Eres usuario =)");
 		} else if (query.equals(Constantes.rangos[i]))
 			setTitle("Eres admin, haz lo que quieras :)");
