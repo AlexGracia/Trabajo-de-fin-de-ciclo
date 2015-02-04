@@ -25,8 +25,17 @@ import net.miginfocom.swing.MigLayout;
 import org.alex.accesodatos.beans.DialogPropio;
 import org.alex.accesodatos.beans.LabelPropio;
 
+/**
+ * JDialog encargado de mostrar información referente al programa (autor,
+ * versión, ...).
+ * 
+ * @author Alex Gracia
+ * @version 1.0
+ * 
+ */
 public class JAcercaDe extends DialogPropio {
 	private static final long serialVersionUID = 1L;
+	private final String url = "https://github.com/AlexGracia/Trabajo-de-fin-de-ciclo";
 
 	public JAcercaDe() {
 		setTitle("Acerca de AlexGracia");
@@ -63,7 +72,7 @@ public class JAcercaDe extends DialogPropio {
 
 		final LabelPropio lblUrl = new LabelPropio(
 				"<html><u>visitar</u></html>");
-		final String url = "https://github.com/AlexGracia/Trabajo-de-fin-de-ciclo";
+
 		lblUrl.setToolTipText(url);
 		lblUrl.setForeground(new Color(0, 0, 128));
 		lblUrl.addMouseListener(new MouseAdapter() {
@@ -95,7 +104,10 @@ public class JAcercaDe extends DialogPropio {
 		JPanel paneLicencia = new JPanel();
 		contentPanel.add(paneLicencia, BorderLayout.SOUTH);
 
-		JTextArea textArea = new JTextArea();
+		JTextArea textArea = new JTextArea(
+				"This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version."
+						+ "\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details."
+						+ "\n\nYou should have received a copy of the GNU General Public License along with this program.  If not, see http://www.gnu.org/licenses/.");
 		textArea.setWrapStyleWord(true);
 		textArea.addMouseListener(new MouseAdapter() {
 			@Override
@@ -112,9 +124,6 @@ public class JAcercaDe extends DialogPropio {
 		textArea.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textArea.setOpaque(false);
 		textArea.setLineWrap(true);
-		textArea.setText("This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version."
-				+ "\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details."
-				+ "\n\nYou should have received a copy of the GNU General Public License along with this program.  If not, see http://www.gnu.org/licenses/.");
 
 		JScrollPane scrollPane = new JScrollPane(textArea);
 		scrollPane.setBorder(new TitledBorder(null,

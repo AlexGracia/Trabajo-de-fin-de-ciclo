@@ -296,7 +296,7 @@ public class Main extends JFrame {
 		JMenu menu = new JMenu("?");
 		menu.setToolTipText("Ayuda");
 		menuBar.add(menu);
-		// TODO ayuda
+
 		JMenuItem mntmAcercaDeAlexgracia = new JMenuItem("Acerca de AlexGracia");
 		mntmAcercaDeAlexgracia.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -583,8 +583,7 @@ public class Main extends JFrame {
 		}
 	}
 
-	// TODO
-	private void exportar() {
+	private void _exportar() {
 
 		JOpcionInforme dialogoOpcion = new JOpcionInforme();
 
@@ -597,7 +596,7 @@ public class Main extends JFrame {
 
 		if (opcion == 0) {
 			Util.setMensajeInformacion("Seleccione un tipo.");
-			exportar();
+			_exportar();
 			return;
 		}
 
@@ -760,7 +759,7 @@ public class Main extends JFrame {
 					borrar();
 					break;
 				case 4:
-					exportar();
+					_exportar();
 					break;
 				case 5:
 					cancelarBusqueda();

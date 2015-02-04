@@ -27,6 +27,10 @@ public class Start extends JFrame {
 	 */
 	public Start() {
 		setTitle("Cargando . . .");
+		setSize(new Dimension(250, 250));
+		setLocationRelativeTo(this);
+		setUndecorated(true);
+		setBackground(new Color(0, 0, 0, 0));
 		setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 		setIconImage(Toolkit
 				.getDefaultToolkit()
@@ -41,11 +45,7 @@ public class Start extends JFrame {
 								.getResource("/org/alex/accesodatos/iconos/StartIcon.png")));
 		getContentPane().add(label, BorderLayout.CENTER);
 
-		setSize(new Dimension(250, 250));
-		setLocationRelativeTo(this);
-		setUndecorated(true);
 		setVisible(true);
-		setBackground(new Color(0, 0, 0, 0));
 		comprobarTiempoArranque();
 	}
 
@@ -74,9 +74,9 @@ public class Start extends JFrame {
 	}
 
 	public boolean esLento() {
-		if (segundos > 2) {
+		if (segundos > 2)
 			return true;
-		}
+
 		return false;
 	}
 
