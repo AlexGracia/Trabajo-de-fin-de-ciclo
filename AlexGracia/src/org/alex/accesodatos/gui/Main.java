@@ -23,9 +23,11 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -75,7 +77,8 @@ import org.hibernate.exception.SQLGrammarException;
 public class Main extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private boolean primeraBusqueda = true;
+	private JPanel contentPane;
+	private boolean primeraBusqueda = true, noEsUsuario = true;
 	private String toolbarSearch = "";
 	private static Start start;
 
@@ -158,13 +161,15 @@ public class Main extends JFrame {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+
 		conectar();
 
-		barraEstado = new BarraEstado();
-		barraEstado.setFont(Constantes.FUENTE_NEGRITA);
-		barraEstado.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		toolBar = new JToolBar();
-		getContentPane().add(toolBar, BorderLayout.NORTH);
+		contentPane.add(toolBar, BorderLayout.NORTH);
 
 		// Toolbar
 		JButton btnGuardar = new JButton();
@@ -206,6 +211,12 @@ public class Main extends JFrame {
 		label.setMaximumSize(new Dimension(300, 0));
 		toolBar.add(label);
 
+		// Barra de estado
+		barraEstado = new BarraEstado();
+		barraEstado.setFont(Constantes.FUENTE_NEGRITA);
+		barraEstado.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		contentPane.add(barraEstado, BorderLayout.SOUTH);
+
 		// Busqueda
 		tfBusqueda = new JTextField(
 				Constantes.TEXTO_CLIENTES[Constantes.TEXTO_CLIENTES.length - 1]);
@@ -240,7 +251,6 @@ public class Main extends JFrame {
 				.getResource("/org/alex/accesodatos/iconos/cancelar.png")));
 		toolBar.add(btnCancelarbusqueda);
 
-		getContentPane().add(barraEstado, BorderLayout.SOUTH);
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setFont(Constantes.FUENTE);
 		tabbedPane.addChangeListener(new ChangeListener() {
@@ -276,7 +286,40 @@ public class Main extends JFrame {
 				barraEstado.vaciarTexto();
 			}
 		});
-		getContentPane().add(tabbedPane, BorderLayout.CENTER);
+		contentPane.add(tabbedPane, BorderLayout.CENTER);
+
+		// Tabs y tablas
+		tabClientes = new TabClientes();
+		tabbedPane.addTab(Constantes.TEXTO_CLIENTES[0], tabClientes);
+		tablaClientes = tabClientes.getTablaClientes();
+
+		tabVehiculos = new TabVehiculos();
+		tabbedPane.addTab(Constantes.TEXTO_VEHICULOS[0], tabVehiculos);
+		tablaVehiculos = tabVehiculos.getTablaVehiculos();
+
+		tabExtras = new TabExtras();
+		tabbedPane.addTab(Constantes.TEXTO_EXTRAS[0], tabExtras);
+		tablaExtras = tabExtras.getTablaExtras();
+
+		tabPiezas = new TabPiezas();
+		tabbedPane.addTab(Constantes.TEXTO_PIEZAS[0], tabPiezas);
+		tablaPiezas = tabPiezas.getTablaPiezas();
+
+		tabProveedores = new TabProveedores();
+		tabbedPane.addTab(Constantes.TEXTO_PROVEEDORES[0], tabProveedores);
+		tablaProveedores = tabProveedores.getTablaProveedores();
+
+		tabTalleres = new TabTalleres();
+		tabbedPane.addTab(Constantes.TEXTO_TALLERES[0], tabTalleres);
+		tablaTalleres = tabTalleres.getTablaTalleres();
+
+		tabPolizas = new TabPolizas();
+		tabbedPane.addTab(Constantes.TEXTO_POLIZAS[0], tabPolizas);
+		tablaPolizas = tabPolizas.getTablaPolizas();
+
+		tabSiniestros = new TabSiniestros();
+		tabbedPane.addTab(Constantes.TEXTO_SINIESTROS[0], tabSiniestros);
+		tablaSiniestros = tabSiniestros.getTablaSiniestros();
 
 		// Herramientas
 		menuBar = new JMenuBar();
@@ -288,7 +331,8 @@ public class Main extends JFrame {
 		JMenuItem mntmPreferencias = new JMenuItem("Preferencias");
 		mntmPreferencias.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				new JConfiguracion();
+				// TODO
+				new JConfiguracion(tabbedPane, contentPane);
 			}
 		});
 		mnHerramientas.add(mntmPreferencias);
@@ -304,23 +348,6 @@ public class Main extends JFrame {
 			}
 		});
 		menu.add(mntmAcercaDeAlexgracia);
-
-		tabClientes = new TabClientes(tabbedPane);
-		tablaClientes = tabClientes.getTablaClientes();
-		tabVehiculos = new TabVehiculos(tabbedPane);
-		tablaVehiculos = tabVehiculos.getTablaVehiculos();
-		tabExtras = new TabExtras(tabbedPane);
-		tablaExtras = tabExtras.getTablaExtras();
-		tabPiezas = new TabPiezas(tabbedPane);
-		tablaPiezas = tabPiezas.getTablaPiezas();
-		tabProveedores = new TabProveedores(tabbedPane);
-		tablaProveedores = tabProveedores.getTablaProveedores();
-		tabTalleres = new TabTalleres(tabbedPane);
-		tablaTalleres = tabTalleres.getTablaTalleres();
-		tabPolizas = new TabPolizas(tabbedPane);
-		tablaPolizas = tabPolizas.getTablaPolizas();
-		tabSiniestros = new TabSiniestros(tabbedPane);
-		tablaSiniestros = tabSiniestros.getTablaSiniestros();
 
 	}
 
@@ -368,11 +395,12 @@ public class Main extends JFrame {
 		if (query.equals(Constantes.rangos[i++])) {
 			mnHerramientas.setEnabled(false);
 			setTitle("Eres usuario =)");
+			noEsUsuario = false;
 		} else if (query.equals(Constantes.rangos[i]))
 			setTitle("Eres admin, haz lo que quieras :)");
 		else {
-			tabbedPane.setVisible(false);
-			toolBar.setVisible(false);
+			// TODO
+			contentPane.setVisible(false);
 			setTitle("Eres tecnico, a currar :p");
 		}
 		return true;
@@ -726,7 +754,8 @@ public class Main extends JFrame {
 		tfBusqueda.setEditable(estado);
 		btnCancelarbusqueda.setEnabled(estado);
 		tabbedPane.setEnabled(estado);
-		mnHerramientas.setEnabled(estado);
+		if (noEsUsuario)
+			mnHerramientas.setEnabled(estado);
 
 		// Tablas
 		tablaClientes.setEnabled(estado);

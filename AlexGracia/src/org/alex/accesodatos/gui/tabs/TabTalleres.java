@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 
 import org.alex.accesodatos.beans.LabelPropio;
 import org.alex.accesodatos.beans.TextPropio;
@@ -47,10 +46,10 @@ public class TabTalleres extends JPanel {
 	 * 
 	 * @param tabbedPane
 	 */
-	public TabTalleres(JTabbedPane tabbedPane) {
+	public TabTalleres() {
 
-		byte i = 0;
-		tabbedPane.addTab(Constantes.TEXTO_TALLERES[i++], this);
+		byte i = 1;
+
 		setLayout(null);
 
 		JLabel lblNombre = new JLabel(Constantes.TEXTO_TALLERES[i++]);

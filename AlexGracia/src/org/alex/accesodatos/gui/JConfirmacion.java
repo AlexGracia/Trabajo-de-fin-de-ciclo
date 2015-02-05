@@ -25,8 +25,8 @@ public class JConfirmacion extends DialogPropio {
 	public JConfirmacion(String titulo) {
 
 		setTitle(titulo);
-		setLocationRelativeTo(null);
 		setSize(new Dimension(180, 120));
+		setLocationRelativeTo(this);
 
 		{
 			JLabel lblestsSeguro = new JLabel("\u00BFEst\u00E1s seguro?");

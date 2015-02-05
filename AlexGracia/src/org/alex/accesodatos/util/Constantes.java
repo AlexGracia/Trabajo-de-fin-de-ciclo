@@ -12,7 +12,12 @@ public class Constantes {
 	public final static String[] rangos = { "user", "admin", "tecnic" };
 
 	// Componentes graficos
-	public final static Font FUENTE = new Font("Tahoma", Font.PLAIN, 16);
+	public static Font FUENTE = new Font("Tahoma", Font.PLAIN, 16);
+
+	public static void setFuente(int size) {
+		FUENTE = new Font("Tahoma", Font.PLAIN, size);
+	}
+
 	public final static Font FUENTE_NEGRITA = new Font("Tahoma", Font.BOLD, 16);
 	public final static String TITULO_VENTANA = "Aseguradora de vehículos.";
 

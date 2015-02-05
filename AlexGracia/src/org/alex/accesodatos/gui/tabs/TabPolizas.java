@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 
 import org.alex.accesodatos.beans.ComboPropio;
 import org.alex.accesodatos.beans.LabelPropio;
@@ -49,10 +48,10 @@ public class TabPolizas extends JPanel {
 	 * 
 	 * @param tabbedPane
 	 */
-	public TabPolizas(JTabbedPane tabbedPane) {
+	public TabPolizas() {
 
-		byte i = 0;
-		tabbedPane.addTab(Constantes.TEXTO_POLIZAS[i++], this);
+		byte i = 1;
+
 		setLayout(null);
 
 		LabelPropio lblTipo = new LabelPropio(Constantes.TEXTO_POLIZAS[i++]);

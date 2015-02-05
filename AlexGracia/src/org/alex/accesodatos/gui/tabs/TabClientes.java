@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 
 import org.alex.accesodatos.beans.LabelPropio;
 import org.alex.accesodatos.beans.TextPropio;
@@ -46,10 +45,9 @@ public class TabClientes extends JPanel {
 	 * 
 	 * @param tabbedPane
 	 */
-	public TabClientes(JTabbedPane tabbedPane) {
+	public TabClientes() {
+		byte i = 1;
 
-		byte i = 0;
-		tabbedPane.addTab(Constantes.TEXTO_CLIENTES[i++], this);
 		setLayout(null);
 
 		JLabel lblNombre = new JLabel(Constantes.TEXTO_CLIENTES[i++]);
@@ -109,8 +107,6 @@ public class TabClientes extends JPanel {
 		tfTelefono.setColumns(10);
 
 		calendarNacimiento = new JCalendarCombo();
-		// TODO Mirar de poner un tope al calendario.
-		// calendarNacimiento.getCalendar().
 		calendarNacimiento.setBounds(181, 213, 120, 26);
 		add(calendarNacimiento);
 

@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 
 import org.alex.accesodatos.beans.LabelPropio;
 import org.alex.accesodatos.beans.TextPropio;
@@ -46,10 +45,10 @@ public class TabExtras extends JPanel {
 	 * 
 	 * @param tabbedPane
 	 */
-	public TabExtras(JTabbedPane tabbedPane) {
+	public TabExtras() {
 
-		byte i = 0;
-		tabbedPane.addTab(Constantes.TEXTO_EXTRAS[i++], this);
+		byte i = 1;
+
 		setLayout(null);
 
 		LabelPropio lblYearFabricacion = new LabelPropio(

@@ -9,7 +9,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
 
 import org.alex.accesodatos.beans.ComboPropio;
 import org.alex.accesodatos.beans.LabelPropio;
@@ -49,10 +48,9 @@ public class TabVehiculos extends JPanel {
 	 * 
 	 * @param tabbedPane
 	 */
-	public TabVehiculos(JTabbedPane tabbedPane) {
+	public TabVehiculos() {
 
-		byte i = 0;
-		tabbedPane.addTab(Constantes.TEXTO_VEHICULOS[i++], this);
+		byte i = 1;
 		setLayout(null);
 
 		JLabel lblMatricula = new JLabel(Constantes.TEXTO_VEHICULOS[i++]);
