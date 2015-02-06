@@ -40,7 +40,7 @@ public class JAcercaDe extends DialogPropio {
 	public JAcercaDe() {
 		setTitle("Acerca de AlexGracia");
 		setSize(new Dimension(500, 350));
-		setLocationRelativeTo(null);
+		setLocationRelativeTo(this);
 		contentPanel.setLayout(new BorderLayout(0, 0));
 
 		// Logo

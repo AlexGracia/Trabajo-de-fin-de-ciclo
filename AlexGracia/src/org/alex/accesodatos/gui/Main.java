@@ -174,35 +174,35 @@ public class Main extends JFrame {
 		// Toolbar
 		JButton btnGuardar = new JButton();
 		btnGuardar.setToolTipText("Aceptar");
-		btnGuardar.addActionListener(ActionListener(0));
+		btnGuardar.addActionListener(actionListener(0));
 		btnGuardar.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/ok.png")));
 		toolBar.add(btnGuardar);
 
 		JButton btnCancelar = new JButton();
 		btnCancelar.setToolTipText("Cancelar");
-		btnCancelar.addActionListener(ActionListener(1));
+		btnCancelar.addActionListener(actionListener(1));
 		btnCancelar.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/cancelar.png")));
 		toolBar.add(btnCancelar);
 
 		btnEditar = new JButton();
 		btnEditar.setToolTipText("Editar");
-		btnEditar.addActionListener(ActionListener(2));
+		btnEditar.addActionListener(actionListener(2));
 		btnEditar.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/editar.png")));
 		toolBar.add(btnEditar);
 
 		btnBorrar = new JButton();
 		btnBorrar.setToolTipText("Borrar");
-		btnBorrar.addActionListener(ActionListener(3));
+		btnBorrar.addActionListener(actionListener(3));
 		btnBorrar.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/borrar.png")));
 		toolBar.add(btnBorrar);
 
 		btnPdf = new JButton();
 		btnPdf.setToolTipText("Exportar a PDF");
-		btnPdf.addActionListener(ActionListener(4));
+		btnPdf.addActionListener(actionListener(4));
 		btnPdf.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/pdf.png")));
 		toolBar.add(btnPdf);
@@ -246,7 +246,7 @@ public class Main extends JFrame {
 
 		btnCancelarbusqueda = new JButton();
 		btnCancelarbusqueda.setToolTipText("Cancelar b\u00FAsqueda");
-		btnCancelarbusqueda.addActionListener(ActionListener(5));
+		btnCancelarbusqueda.addActionListener(actionListener(5));
 		btnCancelarbusqueda.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/cancelar.png")));
 		toolBar.add(btnCancelarbusqueda);
@@ -329,12 +329,7 @@ public class Main extends JFrame {
 		menuBar.add(mnHerramientas);
 
 		JMenuItem mntmPreferencias = new JMenuItem("Preferencias");
-		mntmPreferencias.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO
-				new JConfiguracion(tabbedPane, contentPane);
-			}
-		});
+		mntmPreferencias.addActionListener(actionPreferencias());
 		mnHerramientas.add(mntmPreferencias);
 
 		JMenu menu = new JMenu("?");
@@ -399,7 +394,6 @@ public class Main extends JFrame {
 		} else if (query.equals(Constantes.rangos[i]))
 			setTitle("Eres admin, haz lo que quieras :)");
 		else {
-			// TODO
 			contentPane.setVisible(false);
 			setTitle("Eres tecnico, a currar :p");
 		}
@@ -769,7 +763,7 @@ public class Main extends JFrame {
 
 	}
 
-	private ActionListener ActionListener(final int opcion) {
+	private ActionListener actionListener(final int opcion) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				barraEstado.vaciarTexto();
@@ -795,6 +789,15 @@ public class Main extends JFrame {
 					break;
 				default:
 				}
+			}
+		};
+	}
+
+	private ActionListener actionPreferencias() {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO
+				new JConfiguracion(tabbedPane, contentPane);
 			}
 		};
 	}

@@ -5,8 +5,6 @@ import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -31,13 +29,8 @@ public class DialogPropio extends JDialog {
 	 * Create the dialog.
 	 */
 	public DialogPropio() {
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setResizable(false);
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent arg0) {
-				aceptar(false);
-			}
-		});
 		setModal(true);
 		setIconImage(Toolkit
 				.getDefaultToolkit()

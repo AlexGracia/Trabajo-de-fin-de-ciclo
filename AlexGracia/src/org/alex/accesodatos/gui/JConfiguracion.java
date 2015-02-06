@@ -92,19 +92,19 @@ public class JConfiguracion extends DialogPropio {
 	 * Método encargado de modificar el tamaño de la fuente.
 	 */
 	private void _setFuente(JPanel contentPane) {
+		int size = 16;
+
 		switch (comboFuente.getSelectedIndex()) {
-		case 0:
-			Constantes.setFuente(16);
-			break;
 		case 1:
-			Constantes.setFuente(14);
+			size = 14;
 			break;
 		case 2:
-			Constantes.setFuente(12);
+			size = 12;
 			break;
 		default:
 		}
 		// TODO
+		Constantes.setFuente(size);
 		contentPane.updateUI();
 		contentPane.repaint();
 		// contentPane.validate();
