@@ -12,7 +12,7 @@ import javax.swing.JScrollPane;
 import org.alex.accesodatos.beans.LabelPropio;
 import org.alex.accesodatos.beans.TextPropio;
 import org.alex.accesodatos.beans.tablas.TablaPiezas;
-import org.alex.accesodatos.gui.JConfirmacion;
+import org.alex.accesodatos.gui.secundarias.JConfirmacion;
 import org.alex.accesodatos.hibernate.Piezas;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;

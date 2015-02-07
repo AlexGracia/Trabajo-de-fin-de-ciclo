@@ -39,6 +39,10 @@ import org.alex.accesodatos.beans.tablas.TablaProveedores;
 import org.alex.accesodatos.beans.tablas.TablaSiniestros;
 import org.alex.accesodatos.beans.tablas.TablaTalleres;
 import org.alex.accesodatos.beans.tablas.TablaVehiculos;
+import org.alex.accesodatos.gui.secundarias.JAcercaDe;
+import org.alex.accesodatos.gui.secundarias.JPreferencias;
+import org.alex.accesodatos.gui.secundarias.JConfirmacion;
+import org.alex.accesodatos.gui.secundarias.JOpcionInforme;
 import org.alex.accesodatos.gui.tabs.TabClientes;
 import org.alex.accesodatos.gui.tabs.TabExtras;
 import org.alex.accesodatos.gui.tabs.TabPiezas;
@@ -207,9 +211,9 @@ public class Main extends JFrame {
 				.getResource("/org/alex/accesodatos/iconos/pdf.png")));
 		toolBar.add(btnPdf);
 
-		JLabel label = new JLabel();
-		label.setMaximumSize(new Dimension(300, 0));
-		toolBar.add(label);
+		JLabel lblBlank = new JLabel();
+		lblBlank.setMaximumSize(new Dimension(300, 0));
+		toolBar.add(lblBlank);
 
 		// Barra de estado
 		barraEstado = new BarraEstado();
@@ -338,7 +342,7 @@ public class Main extends JFrame {
 
 		JMenuItem mntmAcercaDeAlexgracia = new JMenuItem("Acerca de AlexGracia");
 		mntmAcercaDeAlexgracia.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent ae) {
 				new JAcercaDe();
 			}
 		});
@@ -356,10 +360,7 @@ public class Main extends JFrame {
 			}
 		start.setParar(true);
 
-		JConecta conecta = new JConecta();
-		while (!hacerLogin(conecta))
-			;
-		conecta.dispose();
+		_amoldarPrograma();
 
 		tablaClientes.listar();
 		tablaVehiculos.listar();
@@ -372,32 +373,24 @@ public class Main extends JFrame {
 
 	}
 
-	private boolean hacerLogin(JConecta conecta) {
+	/**
+	 * Metodo que amolda el programa segun el usuario introducido.
+	 * 
+	 * @param login
+	 * @return
+	 */
+	private void _amoldarPrograma() {
+		JLogin login = new JLogin();
 
-		if (conecta.mostrarDialogo() != JConecta.Accion.ACEPTAR)
-			System.exit(0);
+		if (!login.isAceptar())
+			System.exit(EXIT_ON_CLOSE);
 
-		String query = (String) HibernateUtil.getQuery(
-				"select u.rango from Users u where login = '"
-						+ conecta.getUser() + "' and password = '"
-						+ conecta.getPass() + "'").uniqueResult();
-
-		if (query == null)
-			return false;
-
-		byte i = 0;
-		// Amoldar la interfaz segun el usuario introducido
-		if (query.equals(Constantes.rangos[i++])) {
+		if (login.isUser()) {
 			mnHerramientas.setEnabled(false);
-			setTitle("Eres usuario =)");
 			noEsUsuario = false;
-		} else if (query.equals(Constantes.rangos[i]))
-			setTitle("Eres admin, haz lo que quieras :)");
-		else {
-			contentPane.setVisible(false);
-			setTitle("Eres tecnico, a currar :p");
-		}
-		return true;
+		} else if (login.isTecnic())
+			// TODO
+			contentPane.removeAll();
 
 	}
 
@@ -614,13 +607,7 @@ public class Main extends JFrame {
 			return;
 		}
 
-		int opcion = dialogoOpcion.comboPropio.getSelectedIndex();
-
-		if (opcion == 0) {
-			Util.setMensajeInformacion("Seleccione un tipo.");
-			_exportar();
-			return;
-		}
+		int opcion = dialogoOpcion.getOpcionSeleccionada();
 
 		// Volumen de negocio
 		if (opcion == 3) {
@@ -795,9 +782,11 @@ public class Main extends JFrame {
 
 	private ActionListener actionPreferencias() {
 		return new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent ae) {
 				// TODO
-				new JConfiguracion(tabbedPane, contentPane);
+				JPreferencias obj = new JPreferencias(tabbedPane, contentPane);
+				if (!obj.isAceptar())
+					barraEstado.accionCancelada();
 			}
 		};
 	}

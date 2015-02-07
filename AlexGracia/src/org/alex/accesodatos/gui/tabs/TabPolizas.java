@@ -13,7 +13,7 @@ import org.alex.accesodatos.beans.ComboPropio;
 import org.alex.accesodatos.beans.LabelPropio;
 import org.alex.accesodatos.beans.TextPropio;
 import org.alex.accesodatos.beans.tablas.TablaPolizas;
-import org.alex.accesodatos.gui.JConfirmacion;
+import org.alex.accesodatos.gui.secundarias.JConfirmacion;
 import org.alex.accesodatos.hibernate.Clientes;
 import org.alex.accesodatos.hibernate.Polizas;
 import org.alex.accesodatos.hibernate.Vehiculos;

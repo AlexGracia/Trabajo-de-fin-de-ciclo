@@ -14,7 +14,7 @@ import org.alex.accesodatos.beans.ComboPropio;
 import org.alex.accesodatos.beans.LabelPropio;
 import org.alex.accesodatos.beans.TextPropio;
 import org.alex.accesodatos.beans.tablas.TablaVehiculos;
-import org.alex.accesodatos.gui.JConfirmacion;
+import org.alex.accesodatos.gui.secundarias.JConfirmacion;
 import org.alex.accesodatos.hibernate.Vehiculos;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;

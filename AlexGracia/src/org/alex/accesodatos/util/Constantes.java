@@ -9,7 +9,7 @@ import java.awt.Font;
  * @version 1.0
  */
 public class Constantes {
-	public final static String[] rangos = { "user", "admin", "tecnic" };
+	public final static String[] rangos = { "user", "tecnic", "admin" };
 
 	// Componentes graficos
 	public static Font FUENTE = new Font("Tahoma", Font.PLAIN, 16);

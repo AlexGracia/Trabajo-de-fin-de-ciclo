@@ -78,9 +78,24 @@ public class DialogPropio extends JDialog {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				aceptar = valor;
-				dispose();
+
+				if (!aceptar)
+					dispose();
 			}
 		};
+	}
+
+	/**
+	 * Cierra el JDialog al pulsar el botón okButton.
+	 * 
+	 * @return
+	 */
+	public void okButtonDispose() {
+		okButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				dispose();
+			}
+		});
 	}
 
 }
