@@ -388,9 +388,11 @@ public class Main extends JFrame {
 		if (login.isUser()) {
 			mnHerramientas.setEnabled(false);
 			noEsUsuario = false;
-		} else if (login.isTecnic())
-			// TODO
-			contentPane.removeAll();
+		} else if (login.isTecnic()) {
+			toolBar.removeAll();
+			tablaClientes.setVisible(false);
+			tabbedPane.setEnabled(false);
+		}
 
 	}
 

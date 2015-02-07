@@ -1,16 +1,11 @@
 package org.alex.accesodatos.gui.secundarias;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -24,6 +19,7 @@ import net.miginfocom.swing.MigLayout;
 
 import org.alex.accesodatos.beans.DialogPropio;
 import org.alex.accesodatos.beans.LabelPropio;
+import org.alex.accesodatos.beans.LabelWeb;
 
 /**
  * JDialog encargado de mostrar información referente al programa (autor,
@@ -35,7 +31,8 @@ import org.alex.accesodatos.beans.LabelPropio;
  */
 public class JAcercaDe extends DialogPropio {
 	private static final long serialVersionUID = 1L;
-	private final String url = "https://github.com/AlexGracia/Trabajo-de-fin-de-ciclo";
+	private String urlHome = "https://github.com/AlexGracia/Trabajo-de-fin-de-ciclo",
+			urlVersion = "https://github.com/AlexGracia/Trabajo-de-fin-de-ciclo/releases/latest";
 
 	public JAcercaDe() {
 		okButtonDispose();
@@ -54,7 +51,7 @@ public class JAcercaDe extends DialogPropio {
 		// Info
 		JPanel panel = new JPanel();
 		contentPanel.add(panel, BorderLayout.CENTER);
-		panel.setLayout(new MigLayout("", "[][]", "[][][]"));
+		panel.setLayout(new MigLayout("", "[][]", "[][][][]"));
 
 		LabelPropio lblprpAutor = new LabelPropio("Autor:");
 		panel.add(lblprpAutor, "cell 0 0");
@@ -65,41 +62,22 @@ public class JAcercaDe extends DialogPropio {
 		LabelPropio lblprpVersin = new LabelPropio("Versi\u00F3n:");
 		panel.add(lblprpVersin, "cell 0 1");
 
-		LabelPropio labelPropio = new LabelPropio("1.0.1");
-		panel.add(labelPropio, "cell 1 1");
+		LabelPropio lblVersion = new LabelPropio("1.0.1");
+		panel.add(lblVersion, "cell 1 1");
 
+		// Enlaces web
 		LabelPropio lblprpPginaWeb = new LabelPropio("P\u00E1gina web:");
 		panel.add(lblprpPginaWeb, "cell 0 2");
 
-		final LabelPropio lblUrl = new LabelPropio(
-				"<html><u>visitar</u></html>");
+		LabelWeb lblUrlHome = new LabelWeb("visitar", urlHome);
+		panel.add(lblUrlHome, "cell 1 2");
 
-		lblUrl.setToolTipText(url);
-		lblUrl.setForeground(new Color(0, 0, 128));
-		lblUrl.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				try {
-					lblUrl.setForeground(new Color(128, 0, 128));
-					Desktop.getDesktop().browse(new URI(url));
-				} catch (IOException e) {
-					e.printStackTrace();
-				} catch (URISyntaxException e) {
-					e.printStackTrace();
-				}
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-			}
-		});
-		panel.add(lblUrl, "cell 1 2");
+		LabelPropio lblprpltimaVersin = new LabelPropio(
+				"\u00DAltima versi\u00F3n:");
+		panel.add(lblprpltimaVersin, "cell 0 3");
+		
+		LabelWeb lblUrlVersion = new LabelWeb("visitar", urlVersion);
+		panel.add(lblUrlVersion, "cell 1 3");
 
 		// Licencia
 		JPanel paneLicencia = new JPanel();
