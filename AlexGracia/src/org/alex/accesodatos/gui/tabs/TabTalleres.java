@@ -261,8 +261,8 @@ public class TabTalleres extends JPanel {
 			} else
 				return;
 
-		new ReportUtil(parent, "report_talleres" + opcion + ".jasper",
-				parametro).ExportToPDF();
+		new ReportUtil(parent, "report/talleres/report_talleres" + opcion
+				+ ".jasper", parametro).ExportToPDF();
 
 	}
 

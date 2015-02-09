@@ -227,8 +227,8 @@ public class TabExtras extends JPanel {
 			} else
 				return;
 
-		new ReportUtil(parent, "report_extras" + opcion + ".jasper", parametro)
-				.ExportToPDF();
+		new ReportUtil(parent, "report/extras/report_extras" + opcion
+				+ ".jasper", parametro).ExportToPDF();
 
 	}
 

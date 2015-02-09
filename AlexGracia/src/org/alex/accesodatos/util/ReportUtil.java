@@ -1,5 +1,6 @@
 package org.alex.accesodatos.util;
 
+import java.awt.Cursor;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -35,6 +36,7 @@ public class ReportUtil {
 	private JasperPrint print;
 	private File ficheroSeleccionado;
 	private boolean cancelar = false;
+	private JFrame parent;
 
 	public ReportUtil(JFrame parent, String jasper,
 			HashMap<String, Object> parametro) {
@@ -43,6 +45,9 @@ public class ReportUtil {
 
 		if (cancelar)
 			return;
+
+		this.parent = parent;
+		parent.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
 		try {
 			Connection conexion = DriverManager.getConnection(connectionUrl,
@@ -86,6 +91,8 @@ public class ReportUtil {
 		try {
 			JasperExportManager.exportReportToPdfFile(print,
 					ficheroSeleccionado.getAbsolutePath());
+			this.parent.setCursor(Cursor
+					.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		} catch (JRException e) {
 			Util.setMensajeError("Exportando informe a PDF.");
 			e.printStackTrace();

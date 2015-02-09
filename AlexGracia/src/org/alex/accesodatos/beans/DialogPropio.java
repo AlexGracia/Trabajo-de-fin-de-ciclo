@@ -29,6 +29,8 @@ public class DialogPropio extends JDialog {
 	 * Create the dialog.
 	 */
 	public DialogPropio() {
+		super();
+
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setModal(true);

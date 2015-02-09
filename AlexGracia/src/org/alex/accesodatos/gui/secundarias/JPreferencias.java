@@ -111,14 +111,16 @@ public class JPreferencias extends DialogPropio {
 		contentPane.updateUI();
 		contentPane.repaint();
 		// contentPane.validate();
+		// contentPane.revalidate();
 	}
 
 	private void _setTabs(JTabbedPane tabbedPane) {
 		// TODO ocultar pestañas
 		tabbedPane.getComponentAt(0).setVisible(false);
 		// tabClientes.setVisible(false);
-		tabbedPane.updateUI();
-		tabbedPane.validate();
+		// tabbedPane.updateUI();
+		// tabbedPane.validate();
+		tabbedPane.revalidate();
 
 	}
 }

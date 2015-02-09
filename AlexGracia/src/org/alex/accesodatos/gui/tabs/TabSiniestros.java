@@ -275,8 +275,8 @@ public class TabSiniestros extends JPanel {
 			} else
 				return;
 
-		new ReportUtil(parent, "report_siniestros" + opcion + ".jasper",
-				parametro).ExportToPDF();
+		new ReportUtil(parent, "report/siniestros/report_siniestros" + opcion
+				+ ".jasper", parametro).ExportToPDF();
 
 	}
 

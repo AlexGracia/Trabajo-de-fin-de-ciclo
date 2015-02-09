@@ -151,6 +151,8 @@ public class Main extends JFrame {
 			public void windowClosing(WindowEvent we) {
 				if (new JConfirmacion("Salir").isAceptar())
 					System.exit(EXIT_ON_CLOSE);
+				else
+					barraEstado.accionCancelada();
 			}
 		});
 		setTitle(Constantes.TITULO_VENTANA);
@@ -613,7 +615,8 @@ public class Main extends JFrame {
 
 		// Volumen de negocio
 		if (opcion == 3) {
-			new ReportUtil(this, "report_negocio3.jasper", null).ExportToPDF();
+			new ReportUtil(this, "report/report_negocio3.jasper", null)
+					.ExportToPDF();
 			barraEstado.accionRealizada();
 			return;
 		}

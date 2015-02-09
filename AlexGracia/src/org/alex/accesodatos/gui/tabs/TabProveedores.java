@@ -249,8 +249,8 @@ public class TabProveedores extends JPanel {
 			} else
 				return;
 
-		new ReportUtil(parent, "report_proveedores" + opcion + ".jasper",
-				parametro).ExportToPDF();
+		new ReportUtil(parent, "report/proveedores/report_proveedores" + opcion
+				+ ".jasper", parametro).ExportToPDF();
 
 	}
 
