@@ -31,7 +31,7 @@ import org.alex.accesodatos.beans.LabelWeb;
  */
 public class JAcercaDe extends DialogPropio {
 	private static final long serialVersionUID = 1L;
-	private String urlHome = "https://github.com/AlexGracia/Trabajo-de-fin-de-ciclo",
+	private String urlHome = "http://alexgracia.github.io/Trabajo-de-fin-de-ciclo",
 			urlVersion = "https://github.com/AlexGracia/Trabajo-de-fin-de-ciclo/releases/latest";
 
 	public JAcercaDe() {
@@ -75,7 +75,7 @@ public class JAcercaDe extends DialogPropio {
 		LabelPropio lblprpltimaVersin = new LabelPropio(
 				"\u00DAltima versi\u00F3n:");
 		panel.add(lblprpltimaVersin, "cell 0 3");
-		
+
 		LabelWeb lblUrlVersion = new LabelWeb("visitar", urlVersion);
 		panel.add(lblUrlVersion, "cell 1 3");
 
