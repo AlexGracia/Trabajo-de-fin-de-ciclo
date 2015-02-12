@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
 
 import net.miginfocom.swing.MigLayout;
@@ -13,7 +14,9 @@ import net.miginfocom.swing.MigLayout;
 import org.alex.accesodatos.beans.ComboPropio;
 import org.alex.accesodatos.beans.DialogPropio;
 import org.alex.accesodatos.beans.LabelPropio;
+import org.alex.accesodatos.hibernate.Users;
 import org.alex.accesodatos.util.Constantes;
+import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.Util;
 
 /**
@@ -27,12 +30,14 @@ public class JPreferencias extends DialogPropio {
 
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane tabbedPane_1;
-	private ComboPropio comboFuente;
+	private ComboPropio comboUsuario;
+	private JPasswordField passwordNew;
+	private JPasswordField passwordOld;
 
 	/**
 	 * Create the dialog.
 	 */
-	public JPreferencias(JTabbedPane tabbedPane, JPanel contentPane) {
+	public JPreferencias(JTabbedPane tabbedPane) {
 
 		setTitle("Configuración");
 		setSize(new Dimension(500, 350));
@@ -43,26 +48,40 @@ public class JPreferencias extends DialogPropio {
 		tabbedPane_1.setFont(Constantes.FUENTE);
 		contentPanel.add(tabbedPane_1, BorderLayout.CENTER);
 
-		okButton.addActionListener(_getActionListener(tabbedPane, contentPane));
+		okButton.addActionListener(_getActionListener(tabbedPane));
 
-		// Fuente
-		JPanel panelFuente = new JPanel();
-		tabbedPane_1.addTab("Fuente", null, panelFuente, null);
-		panelFuente.setLayout(new MigLayout("", "[][grow]", "[]"));
+		// User
+		JPanel panelUser = new JPanel();
+		tabbedPane_1.addTab("Usuario", panelUser);
+		panelUser.setLayout(new MigLayout("", "[][grow]", "[][][]"));
 
-		LabelPropio lblprpTamaoDeLa = new LabelPropio(
-				"Tama\u00F1o de la fuente:");
-		panelFuente.add(lblprpTamaoDeLa, "cell 0 0,alignx trailing");
+		LabelPropio lblprpUsuario = new LabelPropio("Usuario:");
+		panelUser.add(lblprpUsuario, "cell 0 0");
 
-		comboFuente = new ComboPropio();
-		comboFuente.addItem("Grande");
-		comboFuente.addItem("Mediana");
-		comboFuente.addItem("Pequeña");
-		panelFuente.add(comboFuente, "cell 1 0,growx");
+		comboUsuario = new ComboPropio();
+		comboUsuario.addItem("tecnic");
+		comboUsuario.addItem("admin");
+		panelUser.add(comboUsuario, "cell 1 0,growx");
+
+		LabelPropio lblprpContraseaVieja = new LabelPropio(
+				"Contrase\u00F1a vieja:");
+		panelUser.add(lblprpContraseaVieja, "cell 0 1");
+
+		passwordOld = new JPasswordField();
+		passwordOld.setFont(Constantes.FUENTE);
+		panelUser.add(passwordOld, "cell 1 1,growx");
+
+		LabelPropio lblprpContraseaNueva = new LabelPropio(
+				"Contrase\u00F1a nueva:");
+		panelUser.add(lblprpContraseaNueva, "cell 0 2");
+
+		passwordNew = new JPasswordField();
+		passwordNew.setFont(Constantes.FUENTE);
+		panelUser.add(passwordNew, "cell 1 2,growx");
 
 		// Tabs
 		JPanel panelTabs = new JPanel();
-		tabbedPane_1.addTab("Pestañas", null, panelTabs, null);
+		tabbedPane_1.addTab("Pestañas", panelTabs);
 		panelTabs.setLayout(new MigLayout("", "[]", "[]"));
 
 		LabelPropio lblprpelijaLasPestaufas = new LabelPropio(
@@ -72,46 +91,53 @@ public class JPreferencias extends DialogPropio {
 		setVisible(true);
 	}
 
-	private ActionListener _getActionListener(final JTabbedPane tabbedPane,
-			final JPanel contentPane) {
+	private ActionListener _getActionListener(final JTabbedPane tabbedPane) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				Util.setMensajeInformacion("No funciona.");
 				switch (tabbedPane_1.getSelectedIndex()) {
 				case 0:
-					_setFuente(contentPane);
+					_setUser();
 					break;
 				case 1:
+					Util.setMensajeInformacion("No funciona.");
 					_setTabs(tabbedPane);
+					dispose();
 					break;
 				default:
 				}
-				dispose();
+
 			}
 		};
 	}
 
 	/**
-	 * Método encargado de modificar el tamaño de la fuente.
+	 * Metodo encargado de modificar el password de los usuarios tecnic y admin.
 	 */
-	private void _setFuente(JPanel contentPane) {
-		int size = 16;
+	private void _setUser() {
+		// Coger user
+		int id = 0;
+		if (comboUsuario.getSelectedString().equals("admin"))
+			id = 2;
+		else
+			id = 3;
 
-		switch (comboFuente.getSelectedIndex()) {
-		case 1:
-			size = 14;
-			break;
-		case 2:
-			size = 12;
-			break;
-		default:
-		}
-		// TODO
-		Constantes.setFuente(size);
-		contentPane.updateUI();
-		contentPane.repaint();
-		// contentPane.validate();
-		// contentPane.revalidate();
+		Users user = (Users) HibernateUtil.getCurrentSession().get(Users.class,
+				id);
+
+		// Actualizar el password
+		if (String.valueOf(passwordOld.getPassword())
+				.equals(user.getPassword())) {
+
+			JConfirmacion confi = new JConfirmacion("Cambiar pass");
+			if (!confi.isAceptar())
+				return;
+
+			user.setPassword(String.valueOf(passwordNew.getPassword()));
+			HibernateUtil.setData("actualizar", user);
+		} else
+			Util.setMensajeInformacion("La contraseña vieja no es correcta.");
+
+		dispose();
 	}
 
 	private void _setTabs(JTabbedPane tabbedPane) {

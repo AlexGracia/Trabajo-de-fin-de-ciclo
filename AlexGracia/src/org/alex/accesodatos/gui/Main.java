@@ -789,7 +789,7 @@ public class Main extends JFrame {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
 				// TODO
-				JPreferencias obj = new JPreferencias(tabbedPane, contentPane);
+				JPreferencias obj = new JPreferencias(tabbedPane);
 				if (!obj.isAceptar())
 					barraEstado.accionCancelada();
 			}
