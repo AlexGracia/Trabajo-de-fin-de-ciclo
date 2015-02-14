@@ -89,8 +89,6 @@ public class DialogPropio extends JDialog {
 
 	/**
 	 * Cierra el JDialog al pulsar el botón okButton.
-	 * 
-	 * @return
 	 */
 	public void okButtonDispose() {
 		okButton.addActionListener(new ActionListener() {

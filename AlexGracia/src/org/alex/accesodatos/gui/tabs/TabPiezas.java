@@ -42,8 +42,6 @@ public class TabPiezas extends JPanel {
 
 	/**
 	 * Constructor que prepara el interfaz.
-	 * 
-	 * @param tabbedPane
 	 */
 	public TabPiezas() {
 

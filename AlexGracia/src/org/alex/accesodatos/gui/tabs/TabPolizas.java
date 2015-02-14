@@ -45,8 +45,6 @@ public class TabPolizas extends JPanel {
 
 	/**
 	 * Constructor que prepara el interfaz.
-	 * 
-	 * @param tabbedPane
 	 */
 	public TabPolizas() {
 

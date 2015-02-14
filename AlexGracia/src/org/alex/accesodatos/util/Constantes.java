@@ -19,7 +19,7 @@ public class Constantes {
 	}
 
 	public final static Font FUENTE_NEGRITA = new Font("Tahoma", Font.BOLD, 16);
-	public final static String TITULO_VENTANA = "Aseguradora de vehículos.";
+	public final static String TITULO_VENTANA = "AlexGracia - Aseguradora de vehículos.";
 
 	public final static String[] TEXTO_CLIENTES = { "Clientes", "Nombre *",
 			"Apellidos", "DNI *", "Teléfono", "F. Nacimiento", "F. Carnet",

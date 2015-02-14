@@ -42,8 +42,6 @@ public class TabExtras extends JPanel {
 
 	/**
 	 * Constructor que prepara el interfaz.
-	 * 
-	 * @param tabbedPane
 	 */
 	public TabExtras() {
 

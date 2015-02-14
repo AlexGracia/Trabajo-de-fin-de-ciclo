@@ -377,9 +377,6 @@ public class Main extends JFrame {
 
 	/**
 	 * Metodo que amolda el programa segun el usuario introducido.
-	 * 
-	 * @param login
-	 * @return
 	 */
 	private void _amoldarPrograma() {
 		JLogin login = new JLogin();

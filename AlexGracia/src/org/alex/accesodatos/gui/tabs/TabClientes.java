@@ -42,8 +42,6 @@ public class TabClientes extends JPanel {
 
 	/**
 	 * Constructor que prepara el interfaz.
-	 * 
-	 * @param tabbedPane
 	 */
 	public TabClientes() {
 		byte i = 1;

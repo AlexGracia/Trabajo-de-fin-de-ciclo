@@ -44,8 +44,6 @@ public class TabProveedores extends JPanel {
 
 	/**
 	 * Constructor que prepara el interfaz.
-	 * 
-	 * @param tabbedPane
 	 */
 	public TabProveedores() {
 
