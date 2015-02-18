@@ -61,6 +61,8 @@ import org.hibernate.exception.GenericJDBCException;
 import org.hibernate.exception.JDBCConnectionException;
 import org.hibernate.exception.SQLGrammarException;
 
+import javax.swing.JSeparator;
+
 /**
  * Clase principal desde la que se maneja la ventana y se cargan los demas
  * componentes graficos. <h1>Tabs:</h1>
@@ -110,6 +112,8 @@ public class Main extends JFrame {
 	private BarraEstado barraEstado;
 	private JToolBar toolBar;
 	private JButton btnEditar, btnBorrar, btnCancelarbusqueda, btnPdf;
+	private JSeparator separator;
+	private JMenuItem mntmImportar;
 
 	/**
 	 * Launch the application.
@@ -338,9 +342,25 @@ public class Main extends JFrame {
 		mntmPreferencias.addActionListener(actionPreferencias());
 		mnHerramientas.add(mntmPreferencias);
 
-		JMenu menu = new JMenu("?");
-		menu.setToolTipText("Ayuda");
-		menuBar.add(menu);
+		separator = new JSeparator();
+		mnHerramientas.add(separator);
+
+		// Base de datos
+		JMenu mnBaseDeDatos = new JMenu("Base de datos");
+		mnHerramientas.add(mnBaseDeDatos);
+
+		JMenuItem mntmExportar = new JMenuItem("Exportar...");
+		mntmExportar.addActionListener(_exportarBD());
+		mnBaseDeDatos.add(mntmExportar);
+
+		mntmImportar = new JMenuItem("Importar...");
+		mntmImportar.addActionListener(_importarBD());
+		mnBaseDeDatos.add(mntmImportar);
+
+		// Ayuda
+		JMenu mnAyuda = new JMenu("?");
+		mnAyuda.setToolTipText("Ayuda");
+		menuBar.add(mnAyuda);
 
 		JMenuItem mntmAcercaDeAlexgracia = new JMenuItem("Acerca de AlexGracia");
 		mntmAcercaDeAlexgracia.addActionListener(new ActionListener() {
@@ -348,7 +368,7 @@ public class Main extends JFrame {
 				new JAcercaDe();
 			}
 		});
-		menu.add(mntmAcercaDeAlexgracia);
+		mnAyuda.add(mntmAcercaDeAlexgracia);
 
 	}
 
@@ -789,6 +809,43 @@ public class Main extends JFrame {
 				JPreferencias obj = new JPreferencias(tabbedPane);
 				if (!obj.isAceptar())
 					barraEstado.accionCancelada();
+			}
+		};
+	}
+
+	/**
+	 * Exporta la base de datos.
+	 * 
+	 * @return
+	 */
+	private ActionListener _exportarBD() {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				if (!Util.ficheroReal("c:/xampp/mysql/bin/mysqldump.exe"))
+					return;
+
+				if (Util.openFile("database/export_database.bat"))
+					barraEstado.accionRealizada();
+			}
+		};
+	}
+
+	/**
+	 * Importa la base de datos.
+	 * 
+	 * @return
+	 */
+	private ActionListener _importarBD() {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				if (!Util.ficheroReal("c:/xampp/mysql/bin/mysql.exe"))
+					return;
+
+				// TODO
+				Util.setMensajeInformacion("No funciona.");
+
+				if (Util.openFile("database/import_database.bat"))
+					barraEstado.accionRealizada();
 			}
 		};
 	}
