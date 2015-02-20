@@ -1,10 +1,16 @@
 package org.alex.accesodatos.gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JPasswordField;
+import javax.swing.border.LineBorder;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -21,13 +27,19 @@ public class JLogin extends DialogPropio {
 	// Variables
 	private ComboPropio comboUsuario;
 	private JPasswordField passwordField;
-	private byte intentos = 1;
 	private boolean isUser, isTecnic;
+	private byte[] intentos = { 1, 1, 1 };
 
 	/**
 	 * Crea la ventana de login.
 	 */
 	public JLogin() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent we) {
+				System.exit(EXIT_ON_CLOSE);
+			}
+		});
 		// Modificaciones a la ventana madre
 
 		okButton.addActionListener(_comprobarLogin());
@@ -40,7 +52,17 @@ public class JLogin extends DialogPropio {
 		LabelPropio lblprpUsuario = new LabelPropio("Usuario:");
 		contentPanel.add(lblprpUsuario, "cell 0 0");
 
+		passwordField = new JPasswordField();
+
 		comboUsuario = new ComboPropio();
+		comboUsuario.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent ie) {
+				if (intentos[comboUsuario.getSelectedIndex()] == 1)
+					passwordField.setBorder(Constantes.borderDefault);
+				else
+					passwordField.setBorder(new LineBorder(Color.RED, 2));
+			}
+		});
 		comboUsuario.addItem("user");
 		comboUsuario.addItem("tecnic");
 		comboUsuario.addItem("admin");
@@ -49,7 +71,6 @@ public class JLogin extends DialogPropio {
 		LabelPropio lblprpContrasea = new LabelPropio("Contrase\u00F1a:");
 		contentPanel.add(lblprpContrasea, "cell 0 1,alignx trailing");
 
-		passwordField = new JPasswordField();
 		passwordField.setFont(Constantes.FUENTE);
 		contentPanel.add(passwordField, "cell 1 1,growx");
 
@@ -68,21 +89,23 @@ public class JLogin extends DialogPropio {
 								+ "' and password = '" + pass + "'")
 						.uniqueResult();
 
+				byte i = (byte) comboUsuario.getSelectedIndex();
+
 				// No ha acertado
 				if (query == null) {
 					Util.setMensajeInformacion("Contraseña incorrecta,"
-							+ "\nintentos restantes " + (3 - intentos) + ".");
+							+ "\nintentos restantes " + (3 - intentos[i]) + ".");
 					passwordField.setText("");
-					if (intentos++ == 3)
+					passwordField.setBorder(new LineBorder(Color.RED, 2));
+					if (intentos[i]++ == 3)
 						System.exit(EXIT_ON_CLOSE);
 					return;
 				}
 
-				byte i = 0;
 				// Saber que usuario accede al programa.
-				if (query.equals(Constantes.rangos[i++]))
+				if (query.equals(Constantes.rangos[0]))
 					isUser = true;
-				else if (query.equals(Constantes.rangos[i]))
+				else if (query.equals(Constantes.rangos[1]))
 					isTecnic = true;
 
 				dispose();

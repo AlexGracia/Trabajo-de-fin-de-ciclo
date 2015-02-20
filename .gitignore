@@ -10,7 +10,7 @@ bin
 *.docx
 *.ucls
 *.jrxml
-Presentación.pps
+*.pps
 
 # Versions #
 AlexGracia_v1.0.jar

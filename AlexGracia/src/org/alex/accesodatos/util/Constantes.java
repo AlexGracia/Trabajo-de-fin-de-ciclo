@@ -2,6 +2,8 @@ package org.alex.accesodatos.util;
 
 import java.awt.Font;
 
+import javax.swing.border.Border;
+
 /**
  * Clase con variables globales.
  * 
@@ -12,6 +14,8 @@ public class Constantes {
 	public final static String[] rangos = { "user", "tecnic", "admin" };
 
 	// Componentes graficos
+	public static Border borderDefault;
+
 	public static Font FUENTE = new Font("Tahoma", Font.PLAIN, 16);
 
 	public static void setFuente(int size) {

@@ -1,6 +1,7 @@
 package org.alex.accesodatos.gui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.EventQueue;
@@ -24,6 +25,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
@@ -40,9 +42,9 @@ import org.alex.accesodatos.beans.tablas.TablaSiniestros;
 import org.alex.accesodatos.beans.tablas.TablaTalleres;
 import org.alex.accesodatos.beans.tablas.TablaVehiculos;
 import org.alex.accesodatos.gui.secundarias.JAcercaDe;
-import org.alex.accesodatos.gui.secundarias.JPreferencias;
 import org.alex.accesodatos.gui.secundarias.JConfirmacion;
 import org.alex.accesodatos.gui.secundarias.JOpcionInforme;
+import org.alex.accesodatos.gui.secundarias.JPreferencias;
 import org.alex.accesodatos.gui.tabs.TabClientes;
 import org.alex.accesodatos.gui.tabs.TabExtras;
 import org.alex.accesodatos.gui.tabs.TabPiezas;
@@ -60,8 +62,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.exception.GenericJDBCException;
 import org.hibernate.exception.JDBCConnectionException;
 import org.hibernate.exception.SQLGrammarException;
-
-import javax.swing.JSeparator;
 
 /**
  * Clase principal desde la que se maneja la ventana y se cargan los demas
@@ -113,7 +113,6 @@ public class Main extends JFrame {
 	private JToolBar toolBar;
 	private JButton btnEditar, btnBorrar, btnCancelarbusqueda, btnPdf;
 	private JSeparator separator;
-	private JMenuItem mntmImportar;
 
 	/**
 	 * Launch the application.
@@ -142,6 +141,7 @@ public class Main extends JFrame {
 	public Main() {
 		Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
 		interfaz();
+		Constantes.borderDefault = tfBusqueda.getBorder();
 		finalizandoCarga();
 	}
 
@@ -167,7 +167,13 @@ public class Main extends JFrame {
 								.getResource("/org/alex/accesodatos/iconos/IconoAplicacion.png")));
 		setSize(new Dimension(1020, 555));
 		Util.estiloPorDefecto(this);
-		setLocation((int) getLocation().getX(), 0);
+		// En caso de que la pantalla sea muy pequeña
+		Toolkit tool = Toolkit.getDefaultToolkit();
+		Dimension screenSize = tool.getScreenSize();
+		int altura = screenSize.height;
+		if (altura <= 600)
+			setLocation(getLocation().x, 0);
+
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
@@ -346,16 +352,9 @@ public class Main extends JFrame {
 		mnHerramientas.add(separator);
 
 		// Base de datos
-		JMenu mnBaseDeDatos = new JMenu("Base de datos");
-		mnHerramientas.add(mnBaseDeDatos);
-
-		JMenuItem mntmExportar = new JMenuItem("Exportar...");
-		mntmExportar.addActionListener(_exportarBD());
-		mnBaseDeDatos.add(mntmExportar);
-
-		mntmImportar = new JMenuItem("Importar...");
-		mntmImportar.addActionListener(_importarBD());
-		mnBaseDeDatos.add(mntmImportar);
+		JMenuItem mnExportarBD = new JMenuItem("Exportar...");
+		mnExportarBD.addActionListener(_exportarBD());
+		mnHerramientas.add(mnExportarBD);
 
 		// Ayuda
 		JMenu mnAyuda = new JMenu("?");
@@ -408,9 +407,12 @@ public class Main extends JFrame {
 			mnHerramientas.setEnabled(false);
 			noEsUsuario = false;
 		} else if (login.isTecnic()) {
-			toolBar.removeAll();
-			tablaClientes.setVisible(false);
+			for (Component c : toolBar.getComponents())
+				c.setEnabled(false);
 			tabbedPane.setEnabled(false);
+			for (Component c : tabClientes.getComponents())
+				c.setEnabled(false);
+			tablaClientes.setVisible(false);
 		}
 
 	}
@@ -830,23 +832,4 @@ public class Main extends JFrame {
 		};
 	}
 
-	/**
-	 * Importa la base de datos.
-	 * 
-	 * @return
-	 */
-	private ActionListener _importarBD() {
-		return new ActionListener() {
-			public void actionPerformed(ActionEvent ae) {
-				if (!Util.ficheroReal("c:/xampp/mysql/bin/mysql.exe"))
-					return;
-
-				// TODO
-				Util.setMensajeInformacion("No funciona.");
-
-				if (Util.openFile("database/import_database.bat"))
-					barraEstado.accionRealizada();
-			}
-		};
-	}
 }

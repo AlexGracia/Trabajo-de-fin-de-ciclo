@@ -1,6 +1,7 @@
 package org.alex.accesodatos.gui.secundarias;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTabbedPane;
+import javax.swing.border.LineBorder;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -18,6 +20,8 @@ import org.alex.accesodatos.hibernate.Users;
 import org.alex.accesodatos.util.Constantes;
 import org.alex.accesodatos.util.HibernateUtil;
 import org.alex.libs.Util;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 /**
  * JDialog encargado de configurar el programa.
@@ -31,8 +35,7 @@ public class JPreferencias extends DialogPropio {
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane tabbedPane_1;
 	private ComboPropio comboUsuario;
-	private JPasswordField passwordNew;
-	private JPasswordField passwordOld;
+	private JPasswordField passwordOld, passwordNew, passwordNew2;
 
 	/**
 	 * Create the dialog.
@@ -53,12 +56,22 @@ public class JPreferencias extends DialogPropio {
 		// User
 		JPanel panelUser = new JPanel();
 		tabbedPane_1.addTab("Usuario", panelUser);
-		panelUser.setLayout(new MigLayout("", "[][grow]", "[][][]"));
+		panelUser.setLayout(new MigLayout("", "[][grow]", "[][][][]"));
 
 		LabelPropio lblprpUsuario = new LabelPropio("Usuario:");
 		panelUser.add(lblprpUsuario, "cell 0 0");
 
+		// Inicializar componentes
+		passwordOld = new JPasswordField();
+		passwordNew = new JPasswordField();
+		passwordNew2 = new JPasswordField();
+
 		comboUsuario = new ComboPropio();
+		comboUsuario.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent ie) {
+				passwordNew2.setBorder(Constantes.borderDefault);
+			}
+		});
 		comboUsuario.addItem("tecnic");
 		comboUsuario.addItem("admin");
 		panelUser.add(comboUsuario, "cell 1 0,growx");
@@ -67,7 +80,6 @@ public class JPreferencias extends DialogPropio {
 				"Contrase\u00F1a vieja:");
 		panelUser.add(lblprpContraseaVieja, "cell 0 1");
 
-		passwordOld = new JPasswordField();
 		passwordOld.setFont(Constantes.FUENTE);
 		panelUser.add(passwordOld, "cell 1 1,growx");
 
@@ -75,9 +87,16 @@ public class JPreferencias extends DialogPropio {
 				"Contrase\u00F1a nueva:");
 		panelUser.add(lblprpContraseaNueva, "cell 0 2");
 
-		passwordNew = new JPasswordField();
 		passwordNew.setFont(Constantes.FUENTE);
 		panelUser.add(passwordNew, "cell 1 2,growx");
+
+		LabelPropio lblprpConfirmacinNuevaContrasea = new LabelPropio(
+				"Confirmar nueva contrase\u00F1a:");
+		panelUser.add(lblprpConfirmacinNuevaContrasea,
+				"cell 0 3,alignx trailing");
+
+		passwordNew2.setFont(Constantes.FUENTE);
+		panelUser.add(passwordNew2, "cell 1 3,growx");
 
 		// Tabs
 		JPanel panelTabs = new JPanel();
@@ -125,14 +144,26 @@ public class JPreferencias extends DialogPropio {
 				id);
 
 		// Actualizar el password
-		if (String.valueOf(passwordOld.getPassword())
-				.equals(user.getPassword())) {
+		String passOld = String.valueOf(passwordOld.getPassword());
+		String passNew = String.valueOf(passwordNew.getPassword());
+		String passNew2 = String.valueOf(passwordNew2.getPassword());
+
+		if (passOld.equals(user.getPassword())) {
+
+			if (!passNew.equals(passNew2)) {
+				Util.setMensajeInformacion("La contraseña nueva \nno supera la confirmación.");
+				passwordNew2.setText("");
+				passwordNew2.setBorder(new LineBorder(Color.RED, 2));
+				return;
+			}
+
+			passwordNew2.setBorder(Constantes.borderDefault);
 
 			JConfirmacion confi = new JConfirmacion("Cambiar pass");
 			if (!confi.isAceptar())
 				return;
 
-			user.setPassword(String.valueOf(passwordNew.getPassword()));
+			user.setPassword(passNew);
 			HibernateUtil.setData("actualizar", user);
 		} else
 			Util.setMensajeInformacion("La contraseña vieja no es correcta.");
