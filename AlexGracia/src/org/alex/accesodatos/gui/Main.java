@@ -189,10 +189,9 @@ public class Main extends JFrame {
 
 		// Toolbar
 		JButton btnGuardar = new JButton();
-		btnGuardar.setToolTipText("Aceptar");
+		btnGuardar.setToolTipText("Guardar");
 		btnGuardar.addActionListener(actionListener(0));
-		btnGuardar.setIcon(new ImageIcon(Main.class
-				.getResource("/org/alex/accesodatos/iconos/ok.png")));
+		btnGuardar.setIcon(new ImageIcon(Main.class.getResource("/org/alex/accesodatos/iconos/guardar.png")));
 		toolBar.add(btnGuardar);
 
 		JButton btnCancelar = new JButton();
