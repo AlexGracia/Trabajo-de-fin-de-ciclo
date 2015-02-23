@@ -30,7 +30,7 @@ public class JOpcionInforme extends DialogPropio {
 					dispose();
 			}
 		});
-		setTitle("Exportar informe");
+		setTitle("Informe");
 		setSize(new Dimension(300, 200));
 		setLocationRelativeTo(this);
 
@@ -48,8 +48,8 @@ public class JOpcionInforme extends DialogPropio {
 		setVisible(true);
 
 	}
-	
-	public int getOpcionSeleccionada(){
+
+	public int getOpcionSeleccionada() {
 		return comboPropio.getSelectedIndex();
 	}
 

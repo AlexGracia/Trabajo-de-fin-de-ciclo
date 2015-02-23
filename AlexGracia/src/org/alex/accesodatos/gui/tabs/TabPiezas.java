@@ -221,7 +221,7 @@ public class TabPiezas extends JPanel {
 				return;
 
 		new ReportUtil(parent, "report/piezas/report_piezas" + opcion
-				+ ".jasper", parametro).ExportToPDF();
+				+ ".jasper", parametro);
 
 	}
 

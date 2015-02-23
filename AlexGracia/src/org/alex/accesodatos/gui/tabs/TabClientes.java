@@ -249,7 +249,7 @@ public class TabClientes extends JPanel {
 				return;
 
 		new ReportUtil(parent, "report/clientes/report_clientes" + opcion
-				+ ".jasper", parametro).ExportToPDF();
+				+ ".jasper", parametro);
 
 	}
 

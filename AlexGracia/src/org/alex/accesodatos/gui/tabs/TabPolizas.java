@@ -254,7 +254,7 @@ public class TabPolizas extends JPanel {
 				return;
 
 		new ReportUtil(parent, "report/polizas/report_polizas" + opcion
-				+ ".jasper", parametro).ExportToPDF();
+				+ ".jasper", parametro);
 
 	}
 

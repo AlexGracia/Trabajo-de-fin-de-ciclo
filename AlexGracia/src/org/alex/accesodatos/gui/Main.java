@@ -111,7 +111,7 @@ public class Main extends JFrame {
 	private JTextField tfBusqueda;
 	private BarraEstado barraEstado;
 	private JToolBar toolBar;
-	private JButton btnEditar, btnBorrar, btnCancelarbusqueda, btnPdf;
+	private JButton btnEditar, btnBorrar, btnCancelarbusqueda, btnInforme;
 	private JSeparator separator;
 
 	/**
@@ -191,7 +191,8 @@ public class Main extends JFrame {
 		JButton btnGuardar = new JButton();
 		btnGuardar.setToolTipText("Guardar");
 		btnGuardar.addActionListener(actionListener(0));
-		btnGuardar.setIcon(new ImageIcon(Main.class.getResource("/org/alex/accesodatos/iconos/guardar.png")));
+		btnGuardar.setIcon(new ImageIcon(Main.class
+				.getResource("/org/alex/accesodatos/iconos/guardar.png")));
 		toolBar.add(btnGuardar);
 
 		JButton btnCancelar = new JButton();
@@ -215,12 +216,12 @@ public class Main extends JFrame {
 				.getResource("/org/alex/accesodatos/iconos/borrar.png")));
 		toolBar.add(btnBorrar);
 
-		btnPdf = new JButton();
-		btnPdf.setToolTipText("Exportar a PDF");
-		btnPdf.addActionListener(actionListener(4));
-		btnPdf.setIcon(new ImageIcon(Main.class
+		btnInforme = new JButton();
+		btnInforme.setToolTipText("Informe");
+		btnInforme.addActionListener(actionListener(4));
+		btnInforme.setIcon(new ImageIcon(Main.class
 				.getResource("/org/alex/accesodatos/iconos/pdf.png")));
-		toolBar.add(btnPdf);
+		toolBar.add(btnInforme);
 
 		JLabel lblBlank = new JLabel();
 		lblBlank.setMaximumSize(new Dimension(300, 0));
@@ -351,7 +352,7 @@ public class Main extends JFrame {
 		mnHerramientas.add(separator);
 
 		// Base de datos
-		JMenuItem mnExportarBD = new JMenuItem("Exportar...");
+		JMenuItem mnExportarBD = new JMenuItem("Exportar BD...");
 		mnExportarBD.addActionListener(_exportarBD());
 		mnHerramientas.add(mnExportarBD);
 
@@ -633,8 +634,7 @@ public class Main extends JFrame {
 
 		// Volumen de negocio
 		if (opcion == 3) {
-			new ReportUtil(this, "report/report_negocio3.jasper", null)
-					.ExportToPDF();
+			new ReportUtil(this, "report/report_negocio3.jasper", null);
 			barraEstado.accionRealizada();
 			return;
 		}
@@ -754,7 +754,7 @@ public class Main extends JFrame {
 	private void setEnable(boolean estado) {
 		btnEditar.setEnabled(estado);
 		btnBorrar.setEnabled(estado);
-		btnPdf.setEnabled(estado);
+		btnInforme.setEnabled(estado);
 		tfBusqueda.setEditable(estado);
 		btnCancelarbusqueda.setEnabled(estado);
 		tabbedPane.setEnabled(estado);

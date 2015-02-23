@@ -260,7 +260,7 @@ public class TabTalleres extends JPanel {
 				return;
 
 		new ReportUtil(parent, "report/talleres/report_talleres" + opcion
-				+ ".jasper", parametro).ExportToPDF();
+				+ ".jasper", parametro);
 
 	}
 

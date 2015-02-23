@@ -257,7 +257,7 @@ public class TabVehiculos extends JPanel {
 				return;
 
 		new ReportUtil(parent, "report/vehiculos/report_vehiculos" + opcion
-				+ ".jasper", parametro).ExportToPDF();
+				+ ".jasper", parametro);
 
 	}
 

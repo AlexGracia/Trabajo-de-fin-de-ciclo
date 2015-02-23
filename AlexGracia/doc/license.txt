@@ -5,7 +5,7 @@ IMPORTANT ALEXGRACIA LICENSE TERMS
 
 This is a program of end-cycle Degree in development of cross-platform applications, to manage a vehicle insurer.
 
-    Copyright (C) 2015 Alex Gracia.
+Copyright (C) 2015 Alex Gracia.
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
