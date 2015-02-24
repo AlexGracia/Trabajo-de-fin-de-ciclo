@@ -219,8 +219,7 @@ public class Main extends JFrame {
 		btnInforme = new JButton();
 		btnInforme.setToolTipText("Informe");
 		btnInforme.addActionListener(actionListener(4));
-		btnInforme.setIcon(new ImageIcon(Main.class
-				.getResource("/org/alex/accesodatos/iconos/pdf.png")));
+		btnInforme.setIcon(new ImageIcon(Main.class.getResource("/org/alex/accesodatos/iconos/informe.png")));
 		toolBar.add(btnInforme);
 
 		JLabel lblBlank = new JLabel();
