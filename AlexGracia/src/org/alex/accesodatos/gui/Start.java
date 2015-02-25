@@ -27,7 +27,7 @@ public class Start extends JFrame {
 	 */
 	public Start() {
 		setTitle("Cargando . . .");
-		setSize(new Dimension(250, 250));
+		setSize(new Dimension(300, 300));
 		setLocationRelativeTo(this);
 		setUndecorated(true);
 		setBackground(new Color(0, 0, 0, 0));
