@@ -262,8 +262,7 @@ public class Main extends JFrame {
 		btnCancelarbusqueda = new JButton();
 		btnCancelarbusqueda.setToolTipText("Cancelar b\u00FAsqueda");
 		btnCancelarbusqueda.addActionListener(actionListener(5));
-		btnCancelarbusqueda.setIcon(new ImageIcon(Main.class
-				.getResource("/org/alex/accesodatos/iconos/cancelar.png")));
+		btnCancelarbusqueda.setIcon(new ImageIcon(Main.class.getResource("/org/alex/accesodatos/iconos/cancelar_busqueda.png")));
 		toolBar.add(btnCancelarbusqueda);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);

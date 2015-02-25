@@ -91,21 +91,12 @@ public class JPreferencias extends DialogPropio {
 		panelUser.add(passwordNew, "cell 1 2,growx");
 
 		LabelPropio lblprpConfirmacinNuevaContrasea = new LabelPropio(
-				"Confirmar nueva contrase\u00F1a:");
+				"Confirmar contrase\u00F1a:");
 		panelUser.add(lblprpConfirmacinNuevaContrasea,
 				"cell 0 3,alignx trailing");
 
 		passwordNew2.setFont(Constantes.FUENTE);
 		panelUser.add(passwordNew2, "cell 1 3,growx");
-
-		// Tabs
-		JPanel panelTabs = new JPanel();
-		tabbedPane_1.addTab("Pestañas", panelTabs);
-		panelTabs.setLayout(new MigLayout("", "[]", "[]"));
-
-		LabelPropio lblprpelijaLasPestaufas = new LabelPropio(
-				"Elija las pesta\u00F1as que quiera conservar:");
-		panelTabs.add(lblprpelijaLasPestaufas, "cell 0 0");
 
 		setVisible(true);
 	}
@@ -113,18 +104,8 @@ public class JPreferencias extends DialogPropio {
 	private ActionListener _getActionListener(final JTabbedPane tabbedPane) {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				switch (tabbedPane_1.getSelectedIndex()) {
-				case 0:
-					_setUser();
-					break;
-				case 1:
-					Util.setMensajeInformacion("No funciona.");
-					_setTabs(tabbedPane);
-					dispose();
-					break;
-				default:
-				}
 
+				_setUser();
 			}
 		};
 	}
@@ -169,15 +150,5 @@ public class JPreferencias extends DialogPropio {
 			Util.setMensajeInformacion("La contraseña vieja no es correcta.");
 
 		dispose();
-	}
-
-	private void _setTabs(JTabbedPane tabbedPane) {
-		// TODO ocultar pestañas
-		tabbedPane.getComponentAt(0).setVisible(false);
-		// tabClientes.setVisible(false);
-		// tabbedPane.updateUI();
-		// tabbedPane.validate();
-		tabbedPane.revalidate();
-
 	}
 }
