@@ -240,7 +240,7 @@ public class TabPolizas extends JPanel {
 	 * @param parent
 	 * @param opcion
 	 */
-	public void mExportar(JFrame parent, int opcion) {
+	public void mInforme(JFrame parent, int opcion) {
 		HashMap<String, Object> parametro = new HashMap<String, Object>();
 
 		if (opcion == 2)

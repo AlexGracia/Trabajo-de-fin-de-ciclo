@@ -14,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
@@ -44,7 +46,7 @@ import org.alex.accesodatos.beans.tablas.TablaVehiculos;
 import org.alex.accesodatos.gui.secundarias.JAcercaDe;
 import org.alex.accesodatos.gui.secundarias.JConfirmacion;
 import org.alex.accesodatos.gui.secundarias.JOpcionInforme;
-import org.alex.accesodatos.gui.secundarias.JPreferencias;
+import org.alex.accesodatos.gui.secundarias.JConfiguracion;
 import org.alex.accesodatos.gui.tabs.TabClientes;
 import org.alex.accesodatos.gui.tabs.TabExtras;
 import org.alex.accesodatos.gui.tabs.TabPiezas;
@@ -219,7 +221,8 @@ public class Main extends JFrame {
 		btnInforme = new JButton();
 		btnInforme.setToolTipText("Informe");
 		btnInforme.addActionListener(actionListener(4));
-		btnInforme.setIcon(new ImageIcon(Main.class.getResource("/org/alex/accesodatos/iconos/informe.png")));
+		btnInforme.setIcon(new ImageIcon(Main.class
+				.getResource("/org/alex/accesodatos/iconos/informe.png")));
 		toolBar.add(btnInforme);
 
 		JLabel lblBlank = new JLabel();
@@ -262,7 +265,10 @@ public class Main extends JFrame {
 		btnCancelarbusqueda = new JButton();
 		btnCancelarbusqueda.setToolTipText("Cancelar b\u00FAsqueda");
 		btnCancelarbusqueda.addActionListener(actionListener(5));
-		btnCancelarbusqueda.setIcon(new ImageIcon(Main.class.getResource("/org/alex/accesodatos/iconos/cancelar_busqueda.png")));
+		btnCancelarbusqueda
+				.setIcon(new ImageIcon(
+						Main.class
+								.getResource("/org/alex/accesodatos/iconos/cancelar_busqueda.png")));
 		toolBar.add(btnCancelarbusqueda);
 
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -342,9 +348,9 @@ public class Main extends JFrame {
 		mnHerramientas = new JMenu("Herramientas");
 		menuBar.add(mnHerramientas);
 
-		JMenuItem mntmPreferencias = new JMenuItem("Preferencias");
-		mntmPreferencias.addActionListener(actionPreferencias());
-		mnHerramientas.add(mntmPreferencias);
+		JMenuItem mntmConfiguracion = new JMenuItem("Configuración");
+		mntmConfiguracion.addActionListener(actionPreferencias());
+		mnHerramientas.add(mntmConfiguracion);
 
 		separator = new JSeparator();
 		mnHerramientas.add(separator);
@@ -619,7 +625,7 @@ public class Main extends JFrame {
 		}
 	}
 
-	private void _exportar() {
+	private void _informe() {
 
 		JOpcionInforme dialogoOpcion = new JOpcionInforme();
 
@@ -639,28 +645,28 @@ public class Main extends JFrame {
 
 		switch (tabbedPane.getSelectedIndex()) {
 		case 0:
-			tabClientes.mExportar(this, opcion);
+			tabClientes.mInforme(this, opcion);
 			break;
 		case 1:
-			tabVehiculos.mExportar(this, opcion);
+			tabVehiculos.mInforme(this, opcion);
 			break;
 		case 2:
-			tabExtras.mExportar(this, opcion);
+			tabExtras.mInforme(this, opcion);
 			break;
 		case 3:
-			tabPiezas.mExportar(this, opcion);
+			tabPiezas.mInforme(this, opcion);
 			break;
 		case 4:
-			tabProveedores.mExportar(this, opcion);
+			tabProveedores.mInforme(this, opcion);
 			break;
 		case 5:
-			tabTalleres.mExportar(this, opcion);
+			tabTalleres.mInforme(this, opcion);
 			break;
 		case 6:
-			tabPolizas.mExportar(this, opcion);
+			tabPolizas.mInforme(this, opcion);
 			break;
 		case 7:
-			tabSiniestros.mExportar(this, opcion);
+			tabSiniestros.mInforme(this, opcion);
 			break;
 		default:
 		}
@@ -790,7 +796,7 @@ public class Main extends JFrame {
 					borrar();
 					break;
 				case 4:
-					_exportar();
+					_informe();
 					break;
 				case 5:
 					cancelarBusqueda();
@@ -804,10 +810,10 @@ public class Main extends JFrame {
 	private ActionListener actionPreferencias() {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				// TODO
-				JPreferencias obj = new JPreferencias(tabbedPane);
-				if (!obj.isAceptar())
+				if (!new JConfiguracion().isAceptar())
 					barraEstado.accionCancelada();
+				else
+					barraEstado.accionRealizada();
 			}
 		};
 	}
@@ -823,8 +829,22 @@ public class Main extends JFrame {
 				if (!Util.ficheroReal("c:/xampp/mysql/bin/mysqldump.exe"))
 					return;
 
-				if (Util.openFile("database/export_database.bat"))
+				if (Util.openFile("database/export_database.bat")) {
+					File backupBD = new File("database/SQL/full_database.sql");
+					String rutaBackup = backupBD.getAbsolutePath();
+
+					if (JOptionPane
+							.showConfirmDialog(
+									Main.this,
+									"La base de datos ha sido exportada, o se está exportando:\n"
+											+ rutaBackup
+											+ "\n¿Deseas abrirla?"
+											+ "\n\nEn caso de que aún se esté exportando, espere.",
+									"BD exportada", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION)
+						Util.openFile(rutaBackup);
+
 					barraEstado.accionRealizada();
+				}
 			}
 		};
 	}

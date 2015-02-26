@@ -18,12 +18,8 @@ public class Constantes {
 
 	public static Font FUENTE = new Font("Tahoma", Font.PLAIN, 16);
 
-	public static void setFuente(int size) {
-		FUENTE = new Font("Tahoma", Font.PLAIN, size);
-	}
-
 	public final static Font FUENTE_NEGRITA = new Font("Tahoma", Font.BOLD, 16);
-	public final static String TITULO_VENTANA = "AlexGracia - Aseguradora de vehículos.";
+	public final static String TITULO_VENTANA = "AlexGracia - Aseguradora de vehículos";
 
 	public final static String[] TEXTO_CLIENTES = { "Clientes", "Nombre *",
 			"Apellidos", "DNI *", "Teléfono", "F. Nacimiento", "F. Carnet",
