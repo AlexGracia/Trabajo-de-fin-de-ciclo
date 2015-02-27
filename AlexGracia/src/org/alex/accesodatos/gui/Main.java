@@ -821,7 +821,7 @@ public class Main extends JFrame {
 	/**
 	 * Exporta la base de datos.
 	 * 
-	 * @return
+	 * @return ActionListener
 	 */
 	private ActionListener _exportarBD() {
 		return new ActionListener() {
