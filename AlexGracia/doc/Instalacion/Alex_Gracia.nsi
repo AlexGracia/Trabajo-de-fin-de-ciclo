@@ -82,6 +82,16 @@ RequestExecutionLevel user
 !insertmacro MUI_LANGUAGE "Spanish"
 
 ;--------------------------------
+;FUNCIONES
+Function comprobarJavaYXampp
+	IfFileExists $PROGRAMFILES\Java +2 0
+	MessageBox MB_OK "Debe instalar Java (https://java.com/download)"
+
+	IfFileExists C:\xampp +2 0
+	MessageBox MB_OK "Debe instalar xampp (https://www.apachefriends.org/es/download.html)"
+FunctionEnd
+
+;--------------------------------
 ;SECCION DEL INSTALADOR
 
 ; Programa
@@ -92,6 +102,11 @@ SectionGroup /e "Programa" Sec1
 		SetOutPath $INSTDIR
 
 		File AlexGracia.jar
+		
+		File AlexGracia.ico
+
+		; Acceso directo
+		CreateShortCut "$DESKTOP\AlexGracia.lnk" "$INSTDIR\AlexGracia.jar" "" "$INSTDIR\AlexGracia.ico" 0 SW_SHOWNORMAL ALT|CONTROL|F8 "Ejecuta $INSTDIR\AlexGracia.jar"
 	SectionEnd
 
 	Section "database" Sec1DATABASE
@@ -141,6 +156,7 @@ Section "Desinstalador" SecUninstall
 
 	SectionIn 1 2 RO
 	WriteUninstaller "$INSTDIR\Desinstalador.exe"
+	Call comprobarJavaYXampp
 
 SectionEnd
 
@@ -197,6 +213,8 @@ Section Uninstall
 	; Raiz
 	RMDir /r $INSTDIR
 	; Añadiendo /r borra todo, no se aconseja su uso.
+	
+	Delete "$DESKTOP\*AlexGracia*.lnk"
 	
 	SetAutoClose true
 
