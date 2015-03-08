@@ -83,12 +83,22 @@ RequestExecutionLevel user
 
 ;--------------------------------
 ;FUNCIONES
-Function comprobarJavaYXampp
-	IfFileExists $PROGRAMFILES\Java +2 0
-	MessageBox MB_OK "Debe instalar Java (https://java.com/download)"
 
-	IfFileExists C:\xampp +2 0
-	MessageBox MB_OK "Debe instalar xampp (https://www.apachefriends.org/es/download.html)"
+Function .onGUIEnd ; se ejecuta al cerrarse el instalador
+
+	IfFileExists $PROGRAMFILES\Java +3 0
+	; El +3 salta a la instrucción 3, contando desde esta linea.
+	MessageBox MB_OK "Debe instalar Java (https://java.com/download)\$\nSe abrirá la página web.\
+	$\nSi tiene Java instalado en una ubicación distinta a '$PROGRAMFILES\Java', disculpe las molestias."
+	ExecShell "open" "https://java.com/download"
+	; ExecShell, en este caso abre el navegador por defecto con la URL https://java.com/download.
+
+	IfFileExists C:\xampp +3 0
+	MessageBox MB_OK "Debe instalar xampp (https://www.apachefriends.org/es/download.html)\
+	$\nSe abrirá la página web.\
+	$\nSi tiene xampp instalado en una ubicación distinta a 'C:\xampp', la opción 'Exportar BD' no funcionará."
+	ExecShell "open" "https://www.apachefriends.org/es/download.html"
+
 FunctionEnd
 
 ;--------------------------------
@@ -152,11 +162,10 @@ Section "Licencia" Sec3
 	File ${LICENCIA}
 SectionEnd
 
-Section "Desinstalador" SecUninstall
+; Desinstalador
+Section "" ; empty string makes it hidden
 
-	SectionIn 1 2 RO
 	WriteUninstaller "$INSTDIR\Desinstalador.exe"
-	Call comprobarJavaYXampp
 
 SectionEnd
 
@@ -197,8 +206,6 @@ SectionEnd
 	
 	; Licencia
 	!insertmacro MUI_DESCRIPTION_TEXT ${Sec3} "Licencia: contiene la licencia en formato txt."
-	
-	!insertmacro MUI_DESCRIPTION_TEXT ${SecUninstall} "Desinstalador: programa encargado de la desinstalación. Puede borrar archivos importantes si se modifica la carpeta de instalación."
 
 	; !insertmacro MUI_DESCRIPTION_TEXT ${SecJRE} "JRE: contiene el instalador de Java, versión ${JRE_VERSION}."
 	; !insertmacro MUI_DESCRIPTION_TEXT ${SecMYSQL} "MySQL: contiene el instalador de MySQL, versión ${MYSQL_VERSION}."
