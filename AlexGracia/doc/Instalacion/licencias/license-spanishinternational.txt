@@ -1,0 +1,638 @@
+﻿COPIA - Describe las condiciones en las que se distribuye AlexGracia.
+Una copia de la GPL de GNU se anexa a este archivo.
+
+IMPORTANTES CONDICIONES DE LA LICENCIA ALEXGRACIA
+
+Este es un programa de fin de ciclo y postgrado en el desarrollo de aplicaciones multiplataforma, para gestionar una aseguradora de vehículos.
+
+Copyright (C) 2015 Alex Gracia.
+
+Este programa es software libre: usted puede redistribuirlo y / o modificarlo bajo los términos de la Licencia Pública General GNU publicada por la Fundación para el Software Libre, ya sea la versión 3 de la Licencia, o (a su elección) cualquier versión posterior.
+
+Este programa se distribuye con la esperanza de que sea útil, pero SIN NINGUNA GARANTÍA; ni siquiera la garantía implícita de COMERCIALIZACIÓN o IDONEIDAD PARA UN PROPÓSITO PARTICULAR. Vea la Licencia Pública General GNU para más detalles.
+
+Debería haber recibido una copia de la Licencia Pública General de GNU junto con este programa. Si no es así, consulte <http://www.gnu.org/licenses/>.
+
+**************************************************************
+
+                    LICENCIA PÚBLICA GENERAL GNU
+                       Versión 3, 29 de junio 2007
+
+ Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
+ Se permite la copia y distribución de copias literales
+ de este documento de licencia, pero cambiándolo no está permitido.
+
+                            Preámbulo
+
+  La Licencia Pública General de GNU es una licencia libre, para
+software y otros tipos de obras.
+
+  Las licencias para la mayoría del software y otros trabajos prácticos están destinadas
+para quitarle su libertad de compartir y modificar esos trabajos. Por el contrario,
+la Licencia Pública General de GNU pretende garantizarle la libertad de
+compartir y modificar todas las versiones de un programa - para asegurarse de que sigue siendo libre
+software para todos sus usuarios. Nosotros, la Fundación para el Software Libre, usamos la
+Licencia Pública General GNU para la mayoría de nuestro software; también se aplica a
+cualquier trabajo realizado de esta forma por sus autores. Usted también puede aplicarla a
+sus programas también.
+
+  Cuando hablamos de software libre, estamos refiriéndonos a libertad, no
+precio. Nuestras Licencias Públicas Generales están diseñadas para asegurarnos de que usted
+tener la libertad de distribuir copias de software libre (y cobrar por
+si lo desea), que reciba el código fuente o que pueda conseguirlo si lo
+quiere, de que se puede cambiar el software o usar fragmentos de él en nuevos
+programas libres, y que usted sabe que puede hacer estas cosas.
+
+  Para proteger sus derechos, necesitamos evitar que otros le nieguen
+estos derechos o pedirle que renuncie a los derechos. Por lo tanto, usted tiene
+ciertas responsabilidades si distribuye copias del software, o si
+lo modifica: la obligación de respetar la libertad de los demás.
+
+  Por ejemplo, si distribuye copias de un programa de este tipo, ya sea
+gratuita oa cambio de una contraprestación, debe transmitir a los destinatarios de la misma
+derechos que usted recibió. Debe asegurarse de que ellos también reciben,
+o pueden conseguir el código fuente. Y debe mostrarles estas condiciones de forma que
+conocer sus derechos.
+
+  Los desarrolladores que usen la GPL GNU proteger sus derechos con dos pasos:
+(1) imponen derechos al software, y (2) le ofrecemos esta licencia
+que le da permiso legal para copiar, distribuir y / o modificarlo.
+
+  Para proteger a desarrolladores y autores, la GPL expone claramente
+que no hay ninguna garantía para este software libre. Por y de ambos usuarios
+aras autores, la GPL establece que las versiones modificadas serán marcados como
+cambiado, por lo que sus problemas no sea atribuido por error a
+autores de versiones anteriores.
+
+  Algunos dispositivos están diseñados para negar al usuario la instalación o ejecución
+versiones modificadas del software dentro de ellos, aunque el fabricante
+pueden hacerlo. Esto es completamente incompatible con el objetivo de
+la protección de la libertad de los usuarios para cambiar el software. La sistemática
+patrón de tal abuso se produce en el área de productos para las personas a
+utilizar, que es precisamente donde es más inaceptable. Por lo tanto,
+han diseñado esta versión de la GPL para prohibir la práctica de los
+productos. Si apareciesen problemas similares en otros ámbitos, que
+estar dispuesto a extender esta disposición a aquellos dominios en futuras versiones
+de la GPL, según sea necesario para proteger la libertad de los usuarios.
+
+  Por último, todo programa está constantemente amenazado por las patentes de software.
+Los Estados no deben permitir que las patentes restrinjan el desarrollo y uso de
+software en ordenadores de uso general, pero en los que sí, que queremos
+evitar el especial peligro que las patentes aplicadas a un programa libre puedan
+hacerlo propietario. Para evitar esto, la GPL asegura que
+las patentes no se pueden utilizar para hacer que el programa no libre.
+
+  Los términos y condiciones para la copia, distribución y
+modificar son los siguientes.
+
+                       TÉRMINOS Y CONDICIONES
+
+  0. Definiciones.
+
+  "Esta Licencia" se refiere a la versión 3 de la Licencia Pública General GNU.
+
+  "Derechos de autor" también significa las leyes del derecho de autor como que se aplican a otros tipos de
+obras, como las máscaras de semiconductores.
+
+  "El Programa" se refiere a cualquier trabajo con copyright al licenciado bajo este
+Licencia. Cada concesionario se dirige como "usted". "Licenciatarios" y
+"Destinatarios" pueden ser personas u organizaciones.
+
+  Para "modificar" un trabajo significa copiar o adaptar todo o parte de la obra
+de un modo que requiera permiso de copyright, que no sea la realización de una
+copia exacta. El trabajo resultante se denomina "versión modificada" de la
+trabajo anterior o trabajo "basado en" el trabajo anterior.
+
+  Un "trabajo amparado" puede ser tanto el Programa no modificado como un trabajo basado
+en el Programa.
+
+  Para "propagar" un trabajo significa hacer cualquier cosa con él que, sin
+permiso, que le haga directa o indirectamente responsable de
+de infracción en virtud del derecho de autor aplicable, excepto la ejecución en un
+computadora o la modificación de una copia privada. Difusión incluye la copia,
+distribución (con o sin modificaciones), poniendo a disposición de la
+pública, y en algunos países, otras actividades también.
+
+  "Distribuir" un trabajo implica cualquier tipo de difusión que permite a otra
+parte hacer o recibir copias. La mera interacción con un usuario a través
+una red de ordenadores, sin transferir copia, no está transmitiendo.
+
+  Una interfaz de usuario interactivas muestra "Avisos Legales Apropiados"
+en la medida en que incluye un cómodo y prominente visible
+característica que (1) muestra un anuncio de copyright, y (2)
+le dice al usuario que no hay garantía para el trabajo (excepto en la
+medida en que las garantías se proporcionan), que los licenciatarios pueden transmitir la
+trabajar bajo esta Licencia, y cómo ver una copia de esta licencia. Si
+la interfaz presenta una lista de opciones o comandos, tales como un
+menús, un elemento destacado en dicha lista cumple con este criterio.
+
+  1. Código Fuente.
+
+  El "código fuente" de un trabajo se entiende la forma preferida del trabajo
+para hacer modificaciones en él. "Código objeto" se entiende cualquier no-fuente
+forma de trabajo.
+
+  Una "Interfaz Estándar" se refiere a una interfaz que sea o bien un funcionario
+estándar definido por un organismo de normalización reconocido, o bien, en el caso de
+interfaces especificadas para un lenguaje de programación en particular, uno que
+es ampliamente utilizado entre los desarrolladores que trabajan en ese idioma.
+
+  Las "Bibliotecas de Sistema" de un trabajo ejecutable incluyen a cualquier elemento,
+que la obra en su conjunto, que (a) se incluye en la forma normal de
+un componente principal, pero que no es parte de que el Mayor
+Componentes, y (b) sólo sirve para permitir el uso de la obra con que
+Componentes principales, o para implementar un Interfaz Estándar para el cual un
+aplicación está disponible al público en forma de código fuente. La
+"Componente Principal", en este contexto, significa un importante componente esencial
+(Kernel, sistema de ventanas, y así sucesivamente) del sistema operativo específico
+(Si existe) en el cual funcione el ejecutable, o un compilador utilizado para
+producir el trabajo, o un intérprete del código objeto utilizado para ejecutarlo.
+
+  La "Fuente Correspondiente" de un trabajo en código objeto significa todo
+el código fuente necesario para generar, instalar, y (para un ejecutable
+trabajo) ejecutar el código objeto y modificar el trabajo, incluyendo scripts a
+controlar esas actividades. Sin embargo, no incluye el trabajo de
+Las bibliotecas del sistema o herramientas de propósito general o generalmente disponible gratis
+los programas que se utilizan sin modificaciones para realizar esas actividades, pero
+que no forman parte de la obra. Por ejemplo, la Fuente Correspondiente
+incluye los archivos de definición de interfaz asociados con archivos fuente
+el trabajo, y el código fuente de las bibliotecas compartidas y dinámica
+subprogramas vinculados que la obra se requiere por diseño,
+como por la comunicación de datos intrínseca o el flujo de control entre los
+subprogramas y otras partes de la obra.
+
+  La Fuente Correspondiente no incluye necesariamente aquello que los usuarios
+puede regenerar automáticamente de otras partes de la correspondencia
+Fuente.
+
+  La Fuente Correspondiente de un trabajo en código fuente es que
+mismo trabajo.
+
+  2. Permisos básicos.
+
+  Se otorgan todos los derechos garantizados por esta Licencia por el término de
+copyright del Programa, y ​​son irrevocables siempre que el declaró
+se cumplen las condiciones. Esta Licencia afirma explícitamente su ilimitada
+el permiso para ejecutar el Programa sin modificaciones. El resultado de la ejecución de una
+trabajo amparado está cubierto por esta licencia sólo si la salida, dada su
+contenido, constituya un trabajo amparado. Esta Licencia reconoce su
+derechos de uso razonable u otro equivalente, según lo dispuesto por la ley de derechos de autor.
+
+  Usted podrá realizar, ejecutar y difundir trabajos amparados que no lo hace
+transmitir, sin condición alguna, siempre y cuando la licencia de otro tipo restos
+en vigor. Usted podrá distribuir trabajos amparados a terceros con el único propósito
+de que ellos hagan modificaciones exclusivamente para usted, o le proporcionan
+ayuda para ejecutar esos trabajos, siempre que cumpla con
+los términos de esta Licencia distribuyendo todo el material para el que lo hace
+no controlar los derechos de autor. Aquellos que realicen o ejecuten por lo tanto las obras comprendidas
+para usted deben hacerlo exclusivamente en su nombre, bajo su dirección
+y el control, en condiciones que les prohíban realizar copias de
+su material con derechos de autor fuera de su relación con usted.
+
+  La distribución bajo otras circunstancias se permite únicamente bajo
+las condiciones indicadas a continuación. No está permitido sublicenciar; sección 10
+hace innecesario.
+
+  3. Protección de Derechos Legales Usuarios frente a Leyes contra la elusión.
+
+  Ningún trabajo amparado debe considerarse parte de un programa tecnológico
+medir bajo cualquier ley aplicable que cumpla las obligaciones que le impone el artículo
+11 del tratado de copyright WIPO adoptado el 20 de diciembre de 1996, o
+leyes similares que prohíben o restringen la burla de tales
+medidas.
+
+  Cuando distribuya un trabajo amparado, renuncia a cualquier poder legal para prohibir
+elusión de medidas tecnológicas en la medida en dicha elusión
+se efectúa mediante el ejercicio de los derechos bajo esta Licencia con respecto a
+la obra cubierta, y usted negará cualquier intención de limitar el uso o
+modificación de la obra en su objetivo de imponer, en contra de la obra de
+usuarios, sus derechos legales o de terceros para prohibir la burla de
+las medidas tecnológicas.
+
+  4. Distribución de copias literales.
+
+  Usted podrá distribuir copias literales del código fuente del Programa como usted
+recibirlo, en cualquier medio, siempre que y bien visible
+publicar apropiadamente en cada copia un anuncio de copyright;
+mantener intactos todos los avisos que establezcan que esta Licencia y cualquier
+término no-permisivo añadido y acorde con la sección 7 son aplicables al código;
+mantener intactos todos los avisos de ausencia de cualquier garantía; y dar todo
+los destinatarios una copia de esta Licencia junto con el Programa.
+
+  Puede cobrar cualquier importe o no cobrar por cada copia que distribuya,
+y podrá ofrecer soporte o protección de garantía mediante una tarifa.
+
+  5. Distribución de Versiones Modificadas de Código.
+
+  Usted podrá distribuir un trabajo basado en el Programa, o las modificaciones a
+producirlo a partir del Programa, en forma de código fuente bajo la
+términos del artículo 4, siempre que usted también cumpla las siguientes condiciones:
+
+    a) El trabajo debe incluir avisos destacados indicando que ha modificado
+    , y dando una fecha pertinente.
+
+    b) El trabajo debe incluir avisos destacados indicando que es
+    liberados bajo esta Licencia y cualquier condición añaden en la sección
+    7. Este requisito modifica el requisito de la sección 4 de
+    "Mantener intactos todos los avisos".
+
+    c) Debe obtener la licencia al trabajo completo, en su conjunto, en virtud del presente
+    Licencia a cualquier persona que esté en posesión de una copia. Este
+    Por lo tanto, Licencia se aplicará junto con cualquier sección aplicable 7
+    términos adicionales, a la totalidad de la obra, y todas sus partes,
+    independientemente de la forma en que se empaquetan. Esta licencia no da ninguna
+    permiso para licenciar la obra de cualquier otra manera, pero no es así
+    invalidar dicho permiso si usted ha recibido por separado.
+
+    d) Si el trabajo tiene interfaces de usuario interactivos, cada uno debe mostrar
+    Avisos legales apropiados; Sin embargo, si el programa tiene interactivo
+    interfaces que no muestran Avisos Legales Apropiados, su
+    el trabajo no tiene que hacer que lo hagan.
+
+  Una recopilación de un trabajo amparado con otro distinto e independiente
+obras, que no son por sus extensiones naturales del trabajo amparado,
+y que no se combinan con él, como para formar un programa más grande,
+en o sobre un volumen de un medio de almacenamiento o distribución, se denomina
+"Agregado" si la recopilación y su copyright no son
+utilizado para limitar el acceso o los derechos legales de los usuarios de la compilación
+más allá de lo que permita el trabajo individual. La inclusión de un trabajo amparado
+en un paquete no hace aplicable esta Licencia al otro
+partes del agregado.
+
+  6. Distribución Non-Source.
+
+  Usted podrá distribuir un trabajo amparado en forma de código objeto en los términos
+de las secciones 4 y 5, siempre que también distribuya las
+legible por máquina Fuente Correspondiente en los términos de esta Licencia,
+en una de las siguientes maneras:
+
+    a) Distribuir el código objeto en, o embebido en, un producto físico
+    (Incluyendo medios de distribución físicos), acompañado por el
+    Fuentes Correspondientes en un medio físico duradero
+    habitualmente utilizado para el intercambio de software.
+
+    b) Distribuir el código objeto en, o embebido en, un producto físico
+    (Incluyendo un medio de distribución físico), acompañada de una
+    oferta por escrito, válida durante al menos tres años y válida durante el
+    mientras usted ofrezca recambios o soporte para ese producto
+    modelo, para dar al poseedor del código objeto o bien (1) un
+    copia de las Fuentes Correspondientes a todo el software en el
+    producto que está cubierta por esta Licencia, en un físico duradero
+    medios normalmente utilizado para el intercambio de software, por un precio no
+    más que su coste razonable por distribuir físicamente
+    transporte de la fuente, o (2) acceso para copiar el
+    Fuente Correspondiente de un servidor de red sin coste alguno.
+
+    c) Distribuir copias individuales del código objeto junto con una copia de la
+    oferta por escrito para proporcionar la Fuente Correspondiente. Este
+    opción se permite sólo ocasionalmente y con fines no comerciales, y
+    sólo si usted recibió el código objeto junto con una oferta parecida, de acuerdo
+    con la subcláusula 6b.
+
+    d) Distribuir el código objeto ofreciendo acceso desde un designado
+    lugar (gratuitamente o por un cargo), y ofrecer un acceso equivalente a la
+    Fuente Correspondiente de la misma manera a través del mismo lugar sin
+    cargo adicional. No es necesario exigir a los destinatarios para copiar el
+    Fuente Correspondiente junto con el código objeto. Si el lugar de
+    copiar el código objeto es un servidor de red, la Fuente Correspondiente
+    puede estar en un servidor diferente (gestionado por usted o un tercero)
+    que ofrezca facilidades de copia equivalentes, siempre que mantenga
+    instrucciones claras junto al código objeto diciendo dónde encontrar la
+    Fuente Correspondiente. Independientemente de qué servidor aloja el
+    Fuente Correspondiente, usted seguirá obligado a asegurar que se trata de
+    disponible durante todo el tiempo que sea necesario para satisfacer estos requisitos.
+
+    e) Distribuir el código objeto mediante la transmisión punto a punto, siempre
+    que informe a otros donde el código objeto y el correspondiente
+    Fuente de los trabajos se están ofreciendo al público en general sin
+    cobrar bajo la subsección 6d.
+
+  Se excluye Una parte separable del código objeto, cuyo código fuente
+de las Fuentes Correspondientes como Biblioteca de Sistema, no necesita ser
+incluido en la transmisión de la obra de código objeto.
+
+  Un "Producto de Usuario" es tanto (1) un "producto de consumo", lo que significa que cualquier
+propiedad personal tangible que se utiliza normalmente para el personal, familiar,
+o domésticos, o (2) cualquier cosa diseñada o vendida para ser incorporada
+en una vivienda. Para determinar si un producto es un producto de consumo,
+los casos dudosos se resolverán en favor de la cobertura. Para una determinada
+producto recibido por un usuario particular ", utilizado normalmente" se refiere a una
+uso típico o corriente de ese tipo de producto, sin importar el estado
+del usuario particular o de la forma en que el usuario particular
+realmente utiliza, o pretenda o se espere utilizar el producto. Un producto
+es un producto de consumo independientemente de si el producto tiene sustancial
+usos comerciales, industriales o no de consumo, a menos que tales usos representen
+la única forma posible de utilizar el producto.
+
+  "Información de instalación" para un producto de usuario significa cualquiera de los métodos,
+procedimientos, llaves de autorización u otra información necesaria para la instalación
+y ejecutar versiones modificadas de un trabajo amparado en ese Producto de Usuario desde
+una versión modificada de las Fuentes Correspondientes. La información debe
+suficiente para asegurar que el funcionamiento continuado del objeto modificado
+código es en ningún caso impedir o interferir con el solo hecho de
+modificación se ha hecho.
+
+  Si usted distribuye un trabajo código objeto bajo esta sección en, o con, o
+específicamente para su uso en un Producto de Usuario y la distribución forma
+parte de una transacción en la que el derecho de posesión y uso de la
+Producto de Usuario se transfieren al destinatario a perpetuidad o por un
+plazo fijo (independientemente de cómo se caracteriza la transacción), la
+Fuentes Correspondientes distribuidas bajo esta sección debe ir acompañada
+por la Información de la instalación. Pero este requisito no se aplica
+si ni usted ni terceros tienen posibilidad de instalar
+modificado el código objeto en el producto de usuario (por ejemplo, la obra tiene
+ha instalado en la ROM).
+
+  El requisito de proporcionar Información de Instalación no incluye una
+requisito que continúe proporcionando servicios de apoyo, garantía, o actualizaciones
+de una obra que ha sido modificado o instalado por el destinatario, o para
+Producto de Usuario en el que ha sido modificado o instalado. El acceso a una
+red puede ser denegado cuando la propia modificación sustancial y
+afecta negativamente al funcionamiento de la red o viole las reglas y
+protocolos para la comunicación a través de la red.
+
+  Fuente Correspondiente transmitida, y la información de instalación proporcionado,
+de acuerdo con esta sección debe estar en un formato que sea públicamente
+documentado (y con una implementación disponible para el público en
+forma de código fuente), y no deben necesitar claves de acceso especiales para
+desembalaje, la lectura o copia.
+
+  7. Condiciones adicionales.
+
+  "Permisos Adicionales" son condicionantes que amplían los términos de esta
+Licencia permitiendo excepciones a una o más de sus condiciones.
+Los permisos adicionales que son aplicables al Programa completo deberán
+ser tratados como si estuviesen incluidos en esta Licencia, en la medida
+que son válidas bajo la ley aplicable. Si los permisos adicionales
+aplicará únicamente a una parte del Programa, esa parte se puede utilizar por separado
+virtud de dichos permisos, pero el Programa completo seguiría estando afectado por
+esta Licencia con independencia de los permisos adicionales.
+
+  Cuando distribuya una copia de un trabajo amparado, usted puede opcionalmente
+eliminar cualquier permiso adicional de esa copia, o de cualquier parte de
+ella. (Los permisos adicionales pueden ser escritos para requerir su propio
+eliminación en ciertos supuestos si usted modifica el trabajo.) Usted puede colocar
+permisos adicionales en material añadido por usted a un trabajo amparado,
+para el que tenga o pueda dar permisos de copyright correspondientes.
+
+  No obstante cualquier otra disposición de esta licencia, por el material que
+añadir a un trabajo amparado, usted puede (si está autorizado por los titulares de derechos de autor de
+ese material) añadir condiciones a esta Licencia con los términos:
+
+    a) Ausencia de garantía o limitación de responsabilidad diferente de la
+    términos de los artículos 15 y 16 de esta Licencia; o
+
+    b) Obligación de mantener determinados avisos legales razonables o
+    atribuciones de autoría en el material o en la legal apropiada
+    Avisos mostrados por los trabajos que lo contengan; o
+
+    c) Prohibir la tergiversación del origen de ese material, o
+    requerir que las versiones modificadas del material marcados en
+    formas razonables diferencias respecto a la versión original; o
+
+    d) Limitar el uso con fines publicitarios de los nombres de los licenciantes o
+    autores de los materiales; o
+
+    e) Negarse a ofrecer derechos afectados por leyes de registro para el uso de algunos
+    nombres comerciales, marcas registradas o marcas de servicio; o
+
+    f) Exigir indemnización de licenciantes y autores de ese
+    materialmente por cualquiera que distribuya el material (o versiones modificadas de
+    ella) con obligaciones contractuales de responsabilidad sobre el destinatario, por
+    cualquier responsabilidad que estas obligaciones contractuales impongan directamente sobre
+    los licenciantes y autores.
+
+  Todas las otras condiciones adicionales no-permisivas son consideradas "más
+restricciones "en el sentido del artículo 10. Si el programa tal como lo
+recibido, o cualquier parte de ella, contiene un aviso indicando que es
+regulado por la presente Licencia junto con un término que es una más
+restricción, usted podrá suprimir esa cláusula. Si un documento de licencia contiene
+una restricción adicional pero permite modificar la licencia o la distribución en virtud de este
+Licencia, usted podrá añadirla al material de un trabajo amparado por los términos
+de ese documento de licencia, siempre que la restricción adicional hace
+no sobrevivir como renovación de licencias o de transporte.
+
+  Si añade condiciones para un trabajo amparado, a tenor con esta sección,
+debe colocar, en los archivos de origen pertinentes, una declaración de la
+términos adicionales que se aplican a esos archivos, o un aviso indicando
+dónde encontrar los términos aplicables.
+
+  Las condiciones adicionales, permisivas o no permisivas, pueden indicarse en el
+forma de licencia por escrito separado, o figurar como excepciones;
+los requisitos anteriores se aplican en ambos sentidos.
+
+  8. Terminación.
+
+  Usted no puede distribuir o modificar un trabajo amparado salvo expresamente
+siempre bajo esta licencia. Cualquier intento diferente de distribución o
+modificación será considerado nulo, y dará por terminados automáticamente sus derechos bajo
+esta licencia (incluyendo cualquier patente conseguida según la tercera
+párrafo del artículo 11).
+
+  Sin embargo, si deja de violación de esta Licencia, entonces su
+licencia desde el poseedor del copyright correspondiente será restituida (a)
+provisionalmente, a menos que y hasta que el titular del derecho de autor de manera explícita y
+finalmente termina su licencia, y (b) de forma permanente, si los derechos de autor
+titular no le notificará de la violación por algún cauce
+antes de los 60 días después de la cesación.
+
+  Por otra parte, su licencia desde el poseedor en particular los derechos de autor es
+restituida permanentemente si el poseedor del copyright le notifica de la
+violación por algún cauce, esta es la primera vez que tiene
+recibido notificación de violación de esta Licencia (para cualquier trabajo) de ese
+titular de los derechos de autor, y que cura la violación antes de 30 días después
+su recibo de la notificación.
+
+  La cancelación de sus derechos en virtud de esta sección no termina el
+licencias de terceros que hayan recibido copias o derechos de usted bajo
+esta Licencia. Si se han terminado sus derechos y no de forma permanente
+reintegrados, usted no califica para recibir nuevas licencias para el mismo
+materiales en la sección 10.
+
+  9. Aceptación no obligatoria por tenencia de copias.
+
+  Usted no está obligado a aceptar esta licencia con el fin de recibir o
+ejecutar una copia del Programa. La distribución de un trabajo amparado
+surgida simplemente como consecuencia de la transmisión de igual a igual
+para recibir una copia tampoco requiere aceptación. Sin embargo,
+otra cosa que esta Licencia le concede permiso para propagar o
+modificar cualquier trabajo cubierto. Estas acciones infringen el copyright si lo hace
+no aceptar esta licencia. Por lo tanto, al modificar o distribuir un
+trabajo amparado, usted indica su aceptación de esta Licencia para poder hacerlo.
+
+  10. Herencia automática de licencia para destinatarios.
+
+  Cada vez que distribuya un trabajo amparado, el destinatario de forma automática
+recibe una licencia desde los poseedores originales, para ejecutar, modificar y
+distribuir ese trabajo, sujeto a esta licencia. Usted no es responsable
+para asegurar el cumplimiento por terceros de esta Licencia.
+
+  Una "transacción de entidad" es una transacción que transfiere el control de una
+organización, o sustancialmente todos los activos de una, o subdivide una
+organización u organizaciones que se fusionan. Si la propagación de una cubierta
+los resultados del trabajo de una transacción de entidad, cada parte en que
+transacción que reciba una copia de la obra, también recibe todas
+licencias para el trabajo que la parte interesada tuviese o pudiese
+dar en el párrafo anterior, además de un derecho de posesión de la
+Fuente Correspondiente de la obra de su predecesor en el interés, si
+el predecesor tiene o puede conseguir con un esfuerzo razonable.
+
+  Usted no puede imponer ninguna restricción más sobre el ejercicio de la
+derechos otorgados o concedidos en virtud de esta licencia. Por ejemplo, es posible que
+no imponer una cuota de licencia, derechos u otros cargos por el ejercicio de
+derechos otorgados bajo esta licencia, y usted no puede iniciar un litigio
+(Incluyendo demandas o contrademandas en pleitos) alegando que
+cualquier reclamación se infringen patentes por cambiar, usar, vender, ofrecer en
+venta o importar el Programa o cualquier parte del mismo.
+
+  11. patentes.
+
+  A "contribuyente" es un poseedor de copyright que autoriza el uso en virtud de este
+Licencia del Programa o un trabajo en el que se basa el Programa. La
+trabajo con esta licencia se denomina "versión en colaboración" con el colaborador.
+
+  "Las reivindicaciones de patentes esenciales" de un contribuyente son todos los reclamos de patentes
+propiedad o controlada por el contribuyente, si ya adquiridos o
+adelante adquirida, que hayan sido infringidas de alguna forma permitida
+por esta Licencia, de hacer, usar o vender la versión en colaboración,
+pero sin incluir demandas que sólo sean infracciones como
+consecuencia de modificaciones posteriores de la versión en colaboración. Para
+efectos de esta definición, "control" incluye el derecho de conceder
+sublicencias de patente de manera compatible con los requisitos de
+esta Licencia.
+
+  Cada colaborador le concede una licencia no exclusiva, mundial, libre de regalías
+licencia de patente en virtud de las reivindicaciones de patente de origen del colaborador, a
+hacer, usar, vender, ofrecer en venta, importación y otras formas ejecutar, modificar y
+propagar el contenido de la versión en colaboración.
+
+  En los siguientes tres párrafos, una "licencia de patente" es cualquier expreso
+acuerdo o compromiso, sin embargo denominados, no para hacer cumplir una patente
+(Como un permiso expreso para ejecutar una patente o acuerdos para no imponer
+demandar por infracción de patente). Para "subvención" una licencia de patente como a un
+tercero significa llegar a un acuerdo o compromiso que no imponga una tal
+patentar contra el partido.
+
+  Si usted distribuye un trabajo amparado, conociendo que en una licencia de patente,
+y la Fuente Correspondiente de la obra no está disponible para cualquier persona
+para copiar, de forma gratuita y en los términos de esta Licencia, a través de un
+servidor de red disponible públicamente o mediante cualquier otro medio,
+entonces debe o bien (1) las Fuentes Correspondientes a ser tan
+disponible, o (2) tratar de eliminar de la prestación del
+licencia de patente para este trabajo en particular, o (3) organizar, de manera
+consistente con los requisitos de esta Licencia, para extender la patente
+licencia para receptores aguas abajo. "Conocer que" significa que tienes
+conocimiento efectivo de que, para la licencia de patente, la distribución del
+trabajo amparado en un país, o el uso de su destinatario del trabajo cubierto
+en un país, infringiría una o más patentes existentes en ese
+país que tiene razones para creer que son válidos.
+
+  Si, en virtud de o en conexión con una sola transacción o
+arreglo, usted distribuye o distribuye con fines de distribución, un
+trabajo amparado, concediendo una licencia de patente a algunas de las partes
+la recepción de la obra cubierta que les autoriza a usar, distribuir, modificar
+o transmitir una copia específica del trabajo amparado, entonces la licencia de patente
+usted otorgue se extiende automáticamente a todos los destinatarios de la cubierta
+trabajar y trabajos basados ​​en él.
+
+  Una licencia de patente es "discriminatoria" si no incluye dentro de
+el alcance de su cobertura, prohíbe el ejercicio de, o es
+condicionado a la falta de ejercicio de uno o más de los derechos que son
+específicamente otorgada bajo esta licencia. Usted no puede transmitir un cubierto
+trabajar si usted es parte de un acuerdo con un tercero que es
+en el negocio de la distribución de software, bajo las cuales usted hace el pago
+al tercero sobre la base de la extensión de su actividad de transporte
+el trabajo, y en las que se otorgue, a cualquiera de los
+Las partes que recibirían el trabajo amparado, una discriminatorio
+licencia de patente (a) en relación con las copias del trabajo amparado
+distribuido por usted (o copias hechas de esas copias), o (b) directa
+para y en relación con los productos o compilaciones específicas que
+contener la obra cubierta, a menos que forme parte del acuerdo,
+o la que se concedió la patente, antes del 28 de marzo de 2007.
+
+  Nada en esta licencia se interpretará en el sentido de excluir o limitar
+ninguna licencia implícita o de otros medios de defensa de las infracciones que pueden
+de lo contrario estarán disponibles para usted bajo la ley de patentes aplicable.
+
+  12. No condicionamiento de la libertad de terceros.
+
+  Si se imponen condiciones (ya sea por orden judicial, acuerdo o
+de otro modo) que contradigan las condiciones de esta licencia, no lo hacen
+le exime de cumplir las condiciones de esta Licencia. Si usted no puede distribuir un
+trabajo cubierto de manera que se satisfagan simultáneamente sus obligaciones bajo este
+Licencia y cualquier otra obligación pertinente entonces, como consecuencia, puede
+no transmitir en absoluto. Por ejemplo, si usted está de acuerdo con los términos que te obligará
+para cobrar una regalía por mayor de transporte de aquellos a quienes usted transporta
+el Programa, la única forma de satisfacer ambos condicionantes y esta
+Licencia sería abstenerse completamente de distribuir el Programa.
+
+  13. Uso conjunto con la Licencia GNU Affero General Public License.
+
+  No obstante cualquier otra disposición de esta licencia, usted tiene
+permiso para enlazar o combinar cualquier trabajo amparado con una obra con licencia
+bajo la versión 3 de la Licencia Pública General Affero GNU en una sola
+trabajo conjunto, y transmitir el trabajo resultante. Los términos de esta
+Licencia continuará aplicando a la parte que es el trabajo amparado,
+pero los condicionantes especiales de la Licencia Pública General Affero GNU,
+el artículo 13, en relación con la interacción a través de una red se aplicará a la
+combinación como tal.
+
+  14. Versiones Revisadas de esta Licencia.
+
+  La Free Software Foundation puede publicar versiones revisadas y / o nuevas de
+la Licencia Pública General GNU de vez en cuando. Estas nuevas versiones
+serán similares en espíritu a la presente versión, pero pueden diferir en detalles para
+considerar nuevos problemas o preocupaciones.
+
+  Cada versión recibe un número de versión que la distingue. Si el
+Programa especifica que un cierto número de versión de la GNU General
+Licencia Pública "o cualquier versión posterior" se aplica a él, usted tiene la
+opción de seguir los términos y condiciones de dicha numerada
+versión o de cualquier versión posterior publicada por la Free Software
+Fundación. Si el Programa no especifica un número de versión de la
+GNU General Public License, usted puede elegir cualquier versión publicada
+por la Free Software Foundation.
+
+  Si el Programa especifica que un apoderado puede decidir qué futuro
+versiones de la Licencia Pública General GNU se pueden utilizar, que el proxy de
+declaración pública de aceptación de una versión le autoriza permanentemente
+para elegir esa versión para el Programa.
+
+  Las versiones posteriores de la licencia podrán darle adicional o diferente
+permisos. Sin embargo, no hay obligaciones adicionales se impondrán sanciones a toda
+autor o copyright titular como consecuencia de su elección que seguir un
+versión posterior.
+
+  15. Renuncia de garantía.
+
+  NO HAY GARANTÍA PARA EL PROGRAMA, EN LA MEDIDA EN QUE LO PERMITA LA
+LEY APLICABLE. EXCEPTO CUANDO SE INDIQUE POR ESCRITO DEL AUTOR
+TITULARES Y / U OTRAS PARTES PROPORCIONAN EL PROGRAMA "TAL CUAL" SIN GARANTÍA
+DE CUALQUIER TIPO, EXPRESA O IMPLÍCITAS, INCLUYENDO, PERO NO LIMITADO A,
+LAS GARANTÍAS DE COMERCIALIZACIÓN E IDONEIDAD PARA UN DETERMINADO
+FINALIDAD. EL RIESGO EN CUANTO A LA CALIDAD Y EL RENDIMIENTO DEL PROGRAMA
+ES CON USTED. SI EL PROGRAMA TIENE UN ERROR, USTED ASUME EL COSTO DE
+Cualquier servicio, reparación o corrección.
+
+  16. Limitación de responsabilidad.
+
+  EN NINGÚN CASO, A MENOS QUE LO EXIJA LA LEY APLICABLE O ACORDADO POR ESCRITO
+EL AUTOR O CUALQUIER OTRA PARTE QUE MODIFIQUE Y / O transmite
+EL PROGRAMA COMO SE PERMITE ARRIBA, SERÁ RESPONSABLE ANTE USTED POR DAÑOS, INCLUYENDO CUALQUIER
+GENERAL, ESPECIAL, ACCIDENTAL O CONSECUENTE QUE RESULTE DE LA
+USO O LA IMPOSIBILIDAD DE USO DEL PROGRAMA (INCLUYENDO PERO NO LIMITADO A LA PÉRDIDA DE
+Datos oa la generación incorrecta oa pérdidas sufridas por usted o por terceras
+PARTES O UN FALLO DEL PROGRAMA PARA OPERAR CON OTROS PROGRAMAS)
+Incluso si dicho tenedor u otra parte ha sido advertido de la posibilidad de
+TALES DAÑOS.
+
+  17. Interpretación de las cláusulas 15 y 16.
+
+  Si la ausencia de garantía y limitación de responsabilidad establecida
+anterior no se puede dar fuerza legal a nivel local de acuerdo a sus términos,
+la revisión de los tribunales se aplicará la ley local que más se aproxima
+una renuncia absoluta de toda responsabilidad civil en relación con la
+Programa, a menos que una garantía o compromiso de responsabilidad acompaña un
+copia del Programa a cambio de una tarifa.
+
+                     FIN DE LOS TÉRMINOS Y CONDICIONES

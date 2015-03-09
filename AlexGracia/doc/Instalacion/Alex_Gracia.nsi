@@ -1,3 +1,6 @@
+; En lugar de $INSTDIR, se puede usar un guión entre comillas.
+; Ejemplo: SetOutPath "-", en vez de SetOutPath $INSTDIR
+
 ;Variables globales
 !define NAME "AlexGracia"
 !define OUTFILE "AlexGracia_setup.exe"
@@ -5,21 +8,20 @@
 !define ICON "AlexGracia.ico"
 !define UNICON "AlexGracia_uninstall.ico"
 !define INSTDIRMANUALES "$INSTDIR\manuales"
-!define LICENCIA "license.txt"
 
 ; Definitions for Java 7.0
-!define JRE_VERSION "1.7.0_51-b13"
-!define JRE "jre-7u51-windows-i586.exe"
+; !define JRE_VERSION "1.7.0_51-b13"
+; !define JRE "jre-7u51-windows-i586.exe"
 ; !define JRE_URL "http://javadl.sun.com/webapps/download/AutoDL?BundleId=83383"
 
 ; Definitions for MySQL Installer 5.6.17
-!define MYSQL_VERSION "5.6.17"
-!define MYSQL "mysql-installer-community-5.6.17.0.msi"
+; !define MYSQL_VERSION "5.6.17"
+; !define MYSQL "mysql-installer-community-5.6.17.0.msi"
 ; !define MYSQL_URL "http://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.6.17.0.msi"
 
 SetCompressor /SOLID lzma
-InstType "Completa"
-InstType "Pequeña"
+InstType $(tipo1)
+InstType $(tipo2)
 
 ;Include Modern UI
 
@@ -49,6 +51,7 @@ VIAddVersionKey "FileDescription" ${NAME}
 VIAddVersionKey "FileVersion" "1.0.1"
 
 AutoCloseWindow true
+CRCCheck on
 
 ;REQUERIMIENTO DE PRIVILEGIOS DE APLICACION PARA WINDOWS
 RequestExecutionLevel user
@@ -68,7 +71,7 @@ RequestExecutionLevel user
 ;--------------------------------
 ;PAGINAS
 
-!insertmacro MUI_PAGE_LICENSE ${LICENCIA}
+!insertmacro MUI_PAGE_LICENSE $(license)
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
@@ -79,10 +82,32 @@ RequestExecutionLevel user
 ;--------------------------------
 ;LENGUAJES
 
-!insertmacro MUI_LANGUAGE "Spanish"
+!insertmacro MUI_LANGUAGE "English"
+!insertmacro MUI_LANGUAGE "SpanishInternational"
+!insertmacro MUI_LANGUAGE "French"
+
+; Traducciones manuales
+LangString tipo1 ${LANG_ENGLISH} "Full"
+LangString tipo1 ${LANG_SPANISHINTERNATIONAL} "Completa"
+LangString tipo1 ${LANG_FRENCH} "Complet"
+
+LangString tipo2 ${LANG_ENGLISH} "Minimal"
+LangString tipo2 ${LANG_SPANISHINTERNATIONAL} "Mínima"
+LangString tipo2 ${LANG_FRENCH} "Minimal"
+
+LicenseLangString license ${LANG_ENGLISH} "licencias\license.txt"
+LicenseLangString license ${LANG_SPANISHINTERNATIONAL} "licencias\license-spanishinternational.txt"
+LicenseLangString license ${LANG_FRENCH} "licencias\license-french.txt"
 
 ;--------------------------------
 ;FUNCIONES
+
+Function .onInit
+
+	;Language selection dialog
+	!insertmacro MUI_LANGDLL_DISPLAY
+	
+FunctionEnd
 
 Function .onGUIEnd ; se ejecuta al cerrarse el instalador
 
@@ -108,7 +133,7 @@ FunctionEnd
 SectionGroup /e "Programa" Sec1
 
 	Section "AlexGracia.jar" Sec1JAR
-		SectionIn 1
+		SectionIn 1 2
 		SetOutPath $INSTDIR
 
 		File AlexGracia.jar
@@ -138,7 +163,7 @@ SectionGroupEnd
 ; Manuales
 SectionGroup "Manuales" Sec2
 
-	Section "Manual de instalacion" Sec2INSTALACION
+	Section "Manual de instalación" Sec2INSTALACION
 		SectionIn 1
 		SetOutPath ${INSTDIRMANUALES}
 
@@ -154,18 +179,25 @@ SectionGroup "Manuales" Sec2
 
 SectionGroupEnd
 
-
 ; Licencia
-Section "Licencia" Sec3
-	SectionIn 1 2 RO
+Section ""
+
 	SetOutPath $INSTDIR
-	File ${LICENCIA}
+	IntCmp $LANGUAGE ${LANG_SPANISHINTERNATIONAL} 0 +3 +3
+		File /oname=license.txt licencias\license-spanishinternational.txt
+		Return
+	IntCmp $LANGUAGE ${LANG_FRENCH} 0 +3 +3
+		File /oname=license.txt licencias\license-french.txt
+		Return
+
+	File licencias\license.txt
+
 SectionEnd
 
 ; Desinstalador
 Section "" ; empty string makes it hidden
 
-	WriteUninstaller "$INSTDIR\Desinstalador.exe"
+	WriteUninstaller "$INSTDIR\AlexGracia_uninstall.exe"
 
 SectionEnd
 
@@ -200,12 +232,9 @@ SectionEnd
 	!insertmacro MUI_DESCRIPTION_TEXT ${Sec1REPORT} "report: contiene .jasper necesarios para la opción informe del programa."
 
 	; Manuales
-	!insertmacro MUI_DESCRIPTION_TEXT ${Sec2} "Manuales: contiene los manuales de instalacion y de usuario."
+	!insertmacro MUI_DESCRIPTION_TEXT ${Sec2} "Manuales: contiene los manuales de instalación y de usuario."
 	!insertmacro MUI_DESCRIPTION_TEXT ${Sec2INSTALACION} "Instalación: manual de instalación en formato pdf."
 	!insertmacro MUI_DESCRIPTION_TEXT ${Sec2USUARIO} "Usuario: manual de usuario en formato pdf."
-	
-	; Licencia
-	!insertmacro MUI_DESCRIPTION_TEXT ${Sec3} "Licencia: contiene la licencia en formato txt."
 
 	; !insertmacro MUI_DESCRIPTION_TEXT ${SecJRE} "JRE: contiene el instalador de Java, versión ${JRE_VERSION}."
 	; !insertmacro MUI_DESCRIPTION_TEXT ${SecMYSQL} "MySQL: contiene el instalador de MySQL, versión ${MYSQL_VERSION}."
@@ -220,9 +249,18 @@ Section Uninstall
 	; Raiz
 	RMDir /r $INSTDIR
 	; Añadiendo /r borra todo, no se aconseja su uso.
-	
+
 	Delete "$DESKTOP\*AlexGracia*.lnk"
-	
+
 	SetAutoClose true
 
 SectionEnd
+
+;--------------------------------
+;Uninstaller Functions
+
+Function un.onInit
+
+	!insertmacro MUI_UNGETLANGUAGE
+
+FunctionEnd

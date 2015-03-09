@@ -1,0 +1,638 @@
+﻿COPIE - Décrit les conditions dans lesquelles AlexGracia est distribué.
+Une copie de la licence GNU GPL est ajouté à ce fichier.
+
+TERMES IMPORTANTS DE LICENCE ALEXGRACIA
+
+Ce est un programme de diplôme de fin du cycle dans le développement d'applications multi-plateformes, de gérer un assureur automobile.
+
+Copyright (C) 2015 Alex Gracia.
+
+Ce logiciel est un logiciel libre: vous pouvez le redistribuer et / ou le modifier selon les termes de la Licence Publique Générale GNU telle que publiée par la Free Software Foundation, soit la version 3 de la Licence, ou (à votre choix) toute version ultérieure.
+
+Ce programme est distribué dans l'espoir qu'il sera utile, mais SANS AUCUNE GARANTIE; sans même la garantie implicite de COMMERCIALISATION ou D'ADAPTATION A UN USAGE PARTICULIER. Voir la Licence Publique Générale GNU pour plus de détails.
+
+Vous devriez avoir reçu une copie de la Licence Publique Générale GNU avec ce programme. Si non, voir <http://www.gnu.org/licenses/>.
+
+**************************************************************
+
+                    LICENCE PUBLIQUE GÉNÉRALE GNU
+                       Version 3, 29 Juin 2007
+
+ Droit d'auteur (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
+ Chacun est autorisé à copier et distribuer des copies conformes
+ de ce document de licence, mais aucune modification ne est pas autorisée.
+
+                            Préambule
+
+  La GNU General Public License est une licence copyleft gratuit pour
+logiciels et autres types d'œuvres.
+
+  Les licences de la plupart des logiciels et autres travaux pratiques sont conçus
+pour ôter votre liberté de partager et modifier ces travaux. En revanche,
+la Licence Publique Générale GNU est destinée à garantir votre liberté de
+partager et changer toutes les versions d'un programme - pour se assurer qu'il reste libre
+logiciel pour tous ses utilisateurs. Nous, la Free Software Foundation, utilisons le
+GNU General Public License pour la plupart de nos logiciels; elle se applique également à
+tout autre travail édité de cette façon par ses auteurs. Vous pouvez l'appliquer à
+vos programmes.
+
+  Quand nous parlons de logiciels libres, nous parlons de liberté, non
+prix. Nos licences publiques générales sont conçues pour vous assurer que vous
+avoir la liberté de distribuer des copies des logiciels libres (et de facturer
+si vous le souhaitez), que vous recevez le code source ou de pouvoir l'obtenir si vous
+vouloir, que vous pouvez modifier le logiciel ou en utiliser des éléments dans la nouvelle
+programmes gratuits, et que vous savez que vous pouvez faire ces choses.
+
+  Pour protéger vos droits, nous devons éviter d'autres vous restreignent
+ces droits ou vous demande d'y renoncer. Par conséquent, vous avez
+certaines responsabilités si vous distribuez des copies du logiciel, ou si
+vous le modifiez: les responsabilités de respecter la liberté des autres.
+
+  Par exemple, si vous distribuez des copies d'un tel programme, que ce soit
+gratuit ou contre une rémunération, vous devez transmettre aux destinataires l'mêmes
+libertés que vous avez reçues. Vous devez vous assurer que, eux aussi, reçoivent
+ou peuvent obtenir le code source. Et vous devez leur montrer ces conditions de sorte qu'ils
+connaître leurs droits.
+
+  Les développeurs qui utilisent la GPL GNU protègent vos droits en deux étapes:
+(1) affirmer le droit d'auteur sur le logiciel, et (2) vous offrir cette licence
+vous donnant l'autorisation légale de copier, distribuer et / ou le modifier.
+
+  Pour la protection des développeurs et auteurs, la GPL stipule clairement
+qu'il n'y a aucune garantie pour ce logiciel libre. Pour les deux utilisateurs et
+l'amour des auteurs, la GPL requière que les versions modifiées soient marquées comme
+changé, de sorte que leurs problèmes ne seront pas attribués de façon erronée à
+auteurs des versions précédentes.
+
+  Certains dispositifs sont conçus pour empêcher les utilisateurs d'accéder à installer ou exécuter
+versions modifiées du logiciel à l'intérieur eux, bien que le fabricant
+peuvent le faire. Ce est fondamentalement incompatible avec le but de
+protéger la liberté des utilisateurs de modifier le logiciel. La systématique
+de tels abus se produit dans le domaine des produits pour les personnes à
+utiliser, ce qui est précisément là où elle est le plus inacceptable. Par conséquent, nous
+ont conçu cette version de la GPL pour prohiber cette pratique pour ceux qui
+produits. Si de tels problèmes surviennent dans d'autres domaines, nous
+se tenir prêt à étendre cette restriction à ces domaines dans les futures versions
+de la GPL, au besoin de protéger la liberté des utilisateurs.
+
+  Finalement, chaque programme est constamment menacé par les brevets logiciels.
+États ne devraient pas autoriser les brevets de restreindre le développement et l'utilisation de
+logiciels sur les ordinateurs à usage général, mais dans ceux qui le font, nous souhaitons
+éviter le danger spécial que les brevets appliqués à un programme libre pourrait
+rendre effectivement propriétaire. Pour éviter cela, la GPL assure que
+brevets ne peuvent pas être utilisés pour rendre le programme non-libre.
+
+  Les termes et conditions précis concernant la copie, la distribution et
+modification sont les suivants.
+
+                       TERMES ET CONDITIONS
+
+  0. Définitions.
+
+  «Cette Licence» se réfère à la version 3 de la GNU General Public License.
+
+  «Copyright» signifie aussi les droits de copyright qui se appliquent à d'autres types de
+œuvres, comme les masques de semi-conducteurs.
+
+  "Le Programme" fait référence à toute œuvre protégeable licence en vertu du présent
+Licence. Chaque titulaire est désigné par «vous». «Licenciés» et les
+«Destinataires» peuvent être des individus ou des organisations.
+
+  «Modifier» un travail signifie une copie et adapter tout ou partie du travail
+dans une façon nécessitant une autorisation des droits d'auteur, autre que la réalisation d'un
+copie exacte. Le travail résultant est appelé une «version modifiée» du
+précédent travail, ou un travail «basé sur» le précédent travail.
+
+  Un «Travail Couvert» signifie soit le Programme non modifié soit un travail basé
+sur le Programme.
+
+  «Propager» un travail signifie faire quoi que ce soit avec lui qui, sans
+permission, vous rendrait directement ou indirectement responsable
+infraction en vertu du droit d'auteur applicable, exception de son exécution sur un
+ordinateur ou la modification d'une copie privée. Propagation inclue la copie,
+la distribution (avec ou sans modification), mise à disposition du
+publique, et dans certains pays d'autres activités ainsi.
+
+  «Acheminer» un travail signifie tout moyen de propagation qui permet à d'autres
+parties de réaliser ou recevoir des copies. Simple interaction d'un utilisateur à travers
+un réseau informatique, sans transfert d'une copie, ne est pas un acheminement.
+
+  Un utilisateur interactif interface affiche «Notices Légales Appropriées»
+dans la mesure où il comprend un moyen pratique et bien visible
+fonctionnalité qui (1) affiche une notice de copyright, et (2)
+indique à l'utilisateur qu'il n'y a aucune garantie pour le travail (sauf dans la
+si des garanties sont fournies), que les titulaires peuvent transmettre le
+travailler sous cette Licence, et comment voir une copie de cette Licence. Si
+l'interface présente une liste de commandes utilisateur ou d'options, comme un
+menu, un élément évident dans la liste répond à ce critère.
+
+  1. Source Code.
+
+  Le «code source» d'un travail signifie la forme préférée du travail
+pour y effectuer des modifications. Le «code objet» désigne toute non source
+forme de travail.
+
+  Une «Interface Standard» signifie une interface qui est soit un fonctionnaire
+standard défini par un organisme de normalisation reconnu ou, dans le cas de
+interfaces spécifiées pour un langage de programmation particulier, celui qui
+est largement utilisée parmi les développeurs travaillant dans ce langage.
+
+  Les «Bibliothèques Système» d'un travail exécutable incluent tout, autre
+que le travail dans son ensemble, que (a) est inclus dans la forme normale de
+paquetage d'un Composant Majeur mais ne fait pas partie de ce Major
+Composante, et (b) ne sert qu'à permettre l'utilisation du travail avec ce
+Composant Majeur ou à implémenter une Interface Standard pour laquelle une
+la mise en œuvre est à la disposition du public sous forme de code source. Un
+«Composant Majeur», dans ce contexte, signifie un composant majeur essentiel
+(Noyau, système de fenêtrage, etc.) du système d'exploitation spécifique
+(Le cas échéant) sur lequel les travail exécutable, ou un compilateur utilisé pour
+produire le travail, ou un interprète de code objet utilisé pour l'exécuter.
+
+  Le «Source Correspondant» d'un travail sous forme de code objet signifie tout
+le code source nécessaire pour générer, installer, et (pour un exécutable
+travaux) exécuter le code objet et modifier le travail, y compris les scripts à
+contrôler ces activités. Toutefois, il ne comprend pas le travail de
+Bibliothèques Système, ou des outils d'usage général ou généralement disponibles gratuitement
+programmes qui sont utilisés sans modification pour achever ces activités mais
+qui ne font pas partie de l'œuvre. Par exemple, le Source Correspondant
+comprend les fichiers de définition d'interfaces associés aux fichiers sources pour
+le travail et le code source des bibliothèques partagées et dynamiquement
+sous-routines liées que le travail est spécifiquement conçu pour exiger,
+par exemple par des communications de données ou contrôles de flux entre ceux
+sous-programmes et d'autres parties de l'ouvrage.
+
+  Le Source Correspondant n'a pas besoin d'inclure tout ce que les utilisateurs
+peut régénérer automatiquement à partir d'autres parties du correspondant
+Source.
+
+  Le Source Correspondant pour un travail sous forme de code source, ce est que
+même travail.
+
+  2. Permissions de base.
+
+  Tous droits accordés par cette Licence sont accordées pour la durée de
+le droit d'auteur sur le programme, et sont irrévocables pourvu que l'a déclaré
+conditions sont remplies. Cette Licence affirme explicitement votre illimitée
+l'autorisation d'exécuter le Programme non modifié. La sortie de l'exécution d'un
+Travail Couvert ne est couverte par cette Licence que si cette sortie, étant donné son
+contenu, constitue un Travail Couvert. Cette licence reconnaît votre
+droits d'utilisation équitable ou autre équivalent, tel que prévu par la loi du droit d'auteur.
+
+  Vous pouvez créer, exécuter et propager des Travaux Couverts que vous ne avez pas
+transmettre, sans conditions aussi longtemps que votre licence autrement restes
+en vigueur. Vous pouvez acheminer des Travaux Couverts à d'autres dans le seul but
+de leur faire réaliser des modifications exclusivement pour vous, ou vous fournir
+avec des installations pour exécuter ces travaux, à condition que vous respectiez
+les termes de cette licence dans acheminement de tout matériel que vous faites
+pas contrôler le droit d'auteur. Ceux qui, dès l'exécution ou les œuvres couvertes
+pour vous devez le faire exclusivement en votre nom, sous votre direction
+et de contrôle, sur les termes qui leur interdisent de faire des copies de
+vos droits d'auteur en dehors de leur relation avec vous.
+
+  L'acheminement dans toutes les autres circonstances est autorisée uniquement dans le cadre
+les conditions énoncées ci-dessous. Sous-licence ne est pas autorisé; l'article 10
+rend inutile.
+
+  3. Protection des droits légaux des utilisateurs envers les lois anti-contournement.
+
+  Aucun Travail Couvert ne doit être considérée comme faisant partie d'une technique efficace
+mesurer vertu de toute loi applicable remplissant les obligations prévues à l'article
+11 du traité de l'OMPI du droit d'auteur adoptée le 20 Décembre 1996, ou
+lois similaires qui prohibent ou restreignent le contournement de telles
+mesures.
+
+  Lorsque vous acheminez un Travail Couvert, vous renoncez à tout pouvoir légal d'interdire
+contournement des mesures techniques dans la mesure où un tel contournement
+est effectuée par l'exercice des droits en vertu de cette licence à l'égard de
+les travaux visés, et vous déclarez rejeter toute intention de limiter l'opération ou
+modification de l'œuvre en tant que moyens de renforcer, contre le travail de
+utilisateurs, vos droits légaux ou de tierces parties d'interdire le contournement des
+mesures technologiques.
+
+  4. Acheminement des copies.
+
+  Vous pouvez acheminer des copies conformes du code source du Programme tel que vous
+recevoir, sur tout support, à condition que vous apposiez
+publier appropriée sur chaque copie un copyright approprié;
+garder intactes toutes les notices établissant que cette Licence et toute
+termes non permissifs ajoutés en accord avec l'article 7 se appliquent à ce code;
+garder intacts tous les avis de l'absence de toute garantie; et donner à tous
+Destinataires une copie de cette Licence avec le Programme.
+
+  Vous pouvez charger ne importe quel prix ou pas de prix pour chaque copie que vous acheminez,
+et vous pouvez offrir un soutien ou une garantie de protection pour une taxe.
+
+  5. Acheminement des versions sources modifiées.
+
+  Vous pouvez acheminer un travail basé sur le Programme, ou les modifications à
+produire à partir du Programme, sous la forme de code source sous le
+termes de l'article 4, à condition que vous respectiez également les conditions suivantes:
+
+    a) Le travail doit comporter des notices évidentes établissant que vous avez modifié
+    , et donnant la date correspondante.
+
+    b) Le travail doit comporter des notices évidentes établissant qu'il est
+    publiés sous cette licence et les conditions ajoutées vertu de l'article
+    7. Cette obligation vient modifier l'exigence de l'article 4 à
+    «Garder intactes toutes les notices".
+
+    c) Vous devez licencier le travail entier, comme un tout, en vertu du présent
+    Licence à quiconque entre en possession d'une copie. Cette
+    Licence se appliquera en conséquence, avec une section applicable 7
+    conditions supplémentaires, à l'ensemble de l'œuvre, et toutes ses parties,
+    indépendamment de la façon dont ils sont emballés. Cette licence ne donne aucune
+    permission de licencier le travail d'une autre façon, mais ce ne est pas
+    invalider une telle permission si vous l'avez reçue séparément.
+
+    d) Si le travail a des interfaces utilisateurs interactives, chacune doit afficher
+    Avis juridiques appropriées; Toutefois, si le Programme a interactive
+    interfaces qui ne affichent pas les Notices Légales Appropriées, votre
+    travail n'a pas à faire à le faire.
+
+  Une compilation d'un Travail Couvert avec d'autres distincte et indépendante
+œuvres, qui ne sont pas par leur nature des extensions du Travail Couvert,
+et qui ne sont pas combinés avec lui de façon à former un plus grand programme,
+dans ou sur un volume d'un support de stockage ou de distribution, que l'on appelle un
+«Aggrégat» si la compilation et son auteur résultant ne sont pas
+utilisé pour limiter l'accès ou les droits légaux des utilisateurs de la compilation
+au-delà de ce que permettent les travaux individuels. L'inclusion d'un Travail Couvert
+dans un agrégat ne provoque pas cette Licence se applique à l'autre
+parties de l'agrégat.
+
+  6. Acheminement des formes non sources.
+
+  Vous pouvez acheminer un travail couvert sous forme de code objet aux termes
+des articles 4 et 5, à condition que vous transmettez aussi le
+lisible par machine Source Correspondant aux termes de la présente Licence,
+dans une de ces façons:
+
+    a) Acheminer le code objet sur, ou inclus dans, un produit physique
+    (Y compris un support de distribution physique), accompagné de la
+    Source Correspondant fixé sur un support physique durable
+    habituellement utilisé pour les échanges de logiciels.
+
+    b) Acheminer le code objet sur, ou inclus dans, un produit physique
+    (Y compris un support de distribution physique), accompagné d'un
+    proposition écrite, valable pendant au moins trois années et valide pour aussi
+    longtemps que vous fournissez des pièces de rechange ou un support client pour ce produit
+    modèle, pour donner à quiconque possède le code objet soit (1) un
+    copie du Source Correspondant à tout logiciel dans le
+    produit qui est couvert par cette Licence, sur un physique durable
+    support habituellement utilisé pour l'échange de logiciels, pour un prix non
+    plus que votre coût raisonnable de la réalisation physique
+    acheminement de la source, ou (2) l'accès à la copie
+    Source Correspondant depuis un serveur réseau sans frais.
+
+    c) Acheminer des copies individuelles du code objet avec une copie de la
+    offre écrite de fournir le Source Correspondant. Cette
+    alternative est permise seulement occasionellement et non commercialement, et
+    seulement si vous avez reçu le code objet avec une telle offre, en accord
+    au paragraphe 6b.
+
+    d) Acheminer le code objet en offrant un accès depuis un désigné
+    lieu (gratuit ou payant), et offrir un accès équivalent à la
+    Source Correspondant de la même façon via le même emplacement et sans
+    charge supplémentaire. Vous ne devez pas besoin Destinataires à copier le
+    Source Correspondant avec le code objet. Si le lieu de
+    copier le code objet est un serveur réseau, la Source Correspondante
+    peut être sur un serveur différent (opéré par vous ou par un tiers)
+    qui supporte des facilités équivalentes de copie, pourvu que vous mainteniez
+    directions claires à proximité du code objet indiquant où trouver la
+    Source Correspondant. Indépendamment de quel serveur héberge le
+    Source Correspondant, vous restez obligé de vous assurer qu'il est
+    disponible aussi longtemps que nécessaire pour satisfaire à ces exigences.
+
+    e) Acheminer le code objet en utilisant une transmission peer-to-peer, à condition
+    vous informiez les autres participants sur où le code objet et correspondants
+    Source de l'œuvre sont offertes au grand public sans
+    des accusations en vertu du paragraphe 6d.
+
+  Une portion séparable du code objet, dont le code source est exclu
+du Source Correspondant en tant que Bibliothèque Système, n'a pas besoin d'être
+inclus dans l'acheminement du travail de code objet.
+
+  Un «Produit Utilisateur» est soit (1) un «produit de consommation», ce qui signifie tout
+un bien meuble corporel qui est normalement utilisé à des fins personnelles, la famille,
+ou à des fins domestiques, ou (2) toute chose conçue ou vendue pour l'incorporation
+dans une habitation. Pour déterminer si un produit est un produit de consommation,
+les cas douteux doivent être résolues en faveur de la couverture. Pour un particulier
+produit reçu par un utilisateur particulier, «normalement utilisé» se réfère à un
+utilisation typique ou commun de cette catégorie de produits, indépendamment de l'état
+de l'utilisateur particulier ou de la façon dont l'utilisateur particulier
+utilise fait, ou attend ou devrait d'utiliser le produit. Un produit
+est un produit de consommation, peu importe si le produit a substantielle
+utilisations commerciales, industrielles ou non-consommation, sauf si ces utilisations représentent
+le seul mode significatif d'utilisation du produit.
+
+  «Informations d'Installation» d'un Produit Utilisateur signifient toutes les méthodes,
+procédures, clés d'autorisation ou autres informations requises pour installer
+et exécuter des versions modifiées d'un Travail Couvert dans ce Produit Utilisateur à partir
+une version modifiée de son Source Correspondant. L'information doit
+suffire à assurer que le fonctionnement continu de l'objet modifié
+code est en aucun cas empêché ou perturbé uniquement parce que
+modification a été effectuée.
+
+  Si vous acheminez un travail de code objet vertu du présent article, ou avec, ou
+spécifiquement pour une utilisation dans un Produit Utilisateur et l'acheminement se produit en tant
+partie d'une transaction dans laquelle le droit de possession et l'utilisation de la
+Produit Utilisateur est transféré au Destinataire définitivement ou pour un
+durée déterminée (indépendamment de la façon dont la transaction est caractérisée), le
+Source Correspondant acheminé selon cet article doit être accompagnée
+des Informations d'Installation. Mais cette exigence ne se applique pas
+si ni vous ni aucune tierce partie ne détient la possibilité d'installer
+modifiée code objet sur le Produit Utilisateur (par exemple, le travail a
+été installé en mémoire morte).
+
+  L'obligation de fournir les Informations d'Installation ne inclue pas un
+obligation de continuer à fournir des services de soutien, de garantie ou des mises à jour
+pour un travail qui a été modifié ou installé par le destinataire, ou pour
+le produit de l'utilisateur dans laquelle il a été modifié ou installé. L'accès à un
+réseau peut être rejeté quand la modification elle-même matériellement et
+affecte négativement le fonctionnement du réseau ou viole les règles et
+protocoles de communication à travers le réseau.
+
+  Source Correspondant acheminé et les Informations d'installation fourni,
+en accord avec cet article, doivent être dans un format qui est public
+documenté (avec une mise en oeuvre et la disposition du public en
+code source du formulaire) et ne doit nécessiter aucun mot de passe spécial ou clé pour
+déballage, la lecture ou la copie.
+
+  7. Conditions supplémentaires.
+
+  "Des autorisations supplémentaires» sont des termes qui complètent les termes de cette
+Licence en émettant des exceptions à l'une ou plusieurs de ses conditions.
+Les permissions additionnelles qui sont applicables au Programme entier doivent
+être traitées comme si elles étaient incluent dans cette Licence, dans la mesure
+qu'ils sont valides en vertu du droit applicable. Si des permissions additionnelles
+se appliquer à une partie seulement du Programme, cette partie peut être utilisée séparément
+en vertu de ces autorisations, mais le Programme tout entier reste gouverné par
+cette Licence sans regard aux permissions supplémentaires.
+
+  Lorsque vous acheminez une copie d'un Travail Couvert, vous pouvez à votre convenance
+ôter toute permission additionelle de cette copie, ou de toute partie de
+il. (Permissions additionnelles peuvent être rédigées à requérir leur propre
+suppression dans certains cas où vous modifiez le travail.) Vous pouvez placer
+permissions additionnelles sur le matériel acheminé, ajoutées par vous à un Travail Couvert,
+pour lequel vous avez ou pouvez donner la permission de copyright appropriée.
+
+  Nonobstant toute autre disposition de cette Licence, pour le matériel vous
+ajouter à un Travail Couvert, vous pouvez (si autorisé par les titulaires de droits d'auteur
+que le matériel) compléter les termes de cette Licence avec des termes:
+
+    a) qui rejettent la garantie ou limitent la responsabilité différemment de la
+    Conditions d'articles 15 et 16 de cette Licence; ou
+
+    b) qui requièrent la préservation de notices légales raisonnables spécifiées ou
+    les attributions d'auteur dans ce constituant ou dans le juridique approprié
+    Avis affichées par les travaux en contenant; ou
+
+    c) prohibent la représentation incorrecte de l'origine de ce matériel, ou
+    exiger que les versions modifiées d'un tel matériau être marqués
+    moyens raisonnables comme différentes de la version originale; ou
+
+    d) qui limitent l'usage à des fins publicitaires des noms des concédants de licence
+    auteurs de la matière; ou
+
+    e) qui refusent à accorder des droits selon le droit des marques pour l'utilisation de certains
+    noms commerciaux, marques commerciales ou des marques de service; ou
+
+    f) qui requièrent l'indemnisation des concédants de licences et auteurs du
+    matériau par quiconque achemine la matière (ou des versions modifiées de
+    ci) en assumant contractuellement la responsabilité envers le bénéficiaire, pour
+    toute responsabilité que ces engagements contractuels imposent directement sur
+    ces concédants de licence et des auteurs.
+
+  Tous les autres termes additionnels non permissifs sont considérés comme "plus
+restrictions "au sens de l'article 10. Si le Programme que vous
+reçu, ou une partie de celui-ci, contient une notice établissant qu'il est
+régi par la présente Licence en même temps qu'un terme qui est une autre
+restriction, vous pouvez ôter ce terme. Si un document de licence contient
+une restriction supplémentaire, mais le droit de redistribuer ou de transport en vertu du présent
+Licence, vous pouvez ajouter à un matériau de travail couverte régie par les termes
+de ce document de licence, pourvu que la restriction ne
+pas survivre telle cession de licence ou acheminement.
+
+  Si vous ajoutez des termes à un Travail Couvert en accord avec cet article, vous
+doit placer, dans les fichiers sources appropriés, une déclaration de la
+conditions supplémentaires qui se appliquent à ces fichiers, ou une notice indiquant
+où trouver les termes applicables.
+
+  Les termes additionnels, qu'ils soient permissifs ou non permissifs, peuvent être établis dans le
+forme d'une licence écrite séparément, ou établis comme des exceptions;
+les exigences ci-dessus se appliquent de toute façon.
+
+  8. Résiliation.
+
+  Vous ne pouvez ni propager ni modifier un Travail Couvert autrement que
+par cette Licence. Toute tentative de le propager ou
+modifier est nulle, et met automatiquement fin à vos droits en vertu de
+cette Licence (y compris toute licence de brevet accordée selon le troisième
+alinéa de l'article 11).
+
+  Toutefois, si vous cessez toute violation de cette Licence, alors votre
+licence depuis un titulaire de droit d'auteur est réinstaurée (a)
+provisoirement, à moins que et jusqu'à ce que le titulaire du droit d'auteur et explicitement
+termine finalement votre licence, et (b) de façon permanente si le droit d'auteur
+titulaire ne vous notifier de la violation par quelque moyen raisonnable
+avant 60 jours après la cessation.
+
+  De plus, votre licence depuis un titulaire particulier du droit d'auteur est
+réinstaurée de façon permanente si le titulaire du droit d'auteur vous avertit de la
+violation par quelque moyen raisonnable, ce est la première fois que vous avez
+reçu un avis de violation de cette Licence (pour un travail quelconque) de ce
+titulaire du droit d'auteur, et vous résolvez la violation dans les 30 jours après
+votre réception de l'avis.
+
+  Terminaison de vos droits en vertu du présent article ne met pas fin au
+licences des parties qui ont reçu des copies ou droits de votre part
+cette Licence. Si vos droits ont été terminés et non de façon permanente
+réintégré, vous n'êtes pas admissible à recevoir de nouvelles licences pour la même
+matériau vertu de l'article 10.
+
+  9. Acceptation non requise pour obtenir des copies.
+
+  Vous n'êtes pas obligé d'accepter cette licence afin de recevoir ou
+exécuter une copie du Programme. La propagation asservie d'un Travail Couvert
+se produit simplement en conséquence d'une transmission peer-to-peer
+pour recevoir une copie ne nécessite pas l'acceptation. Cependant,
+rien d'autre que cette Licence ne vous accorde la permission de propager ou
+modifier un quelconque Travail Couvert. Ces actions enfreignent le droit d'auteur si vous faites
+pas accepter cette Licence. Par conséquent, en modifiant ou propageant un
+Travail Couvert, vous indiquez votre acceptation de cette Licence pour le faire.
+
+  10. Cession automatique de Licence aux Destinataires et intermédiaires.
+
+  Chaque fois que vous acheminez un Travail Couvert, automatiquement le destinataire
+reçoit une licence depuis les concédants originaux, pour exécuter, modifier et
+propager ce travail, sous réserve de la présente Licence. Vous n'êtes pas responsable
+de faire respecter par des tierces parties avec cette Licence.
+
+  Une «transaction d'entité» désigne une transaction qui transfère le contrôle d'un
+organisation ou substantiellement tous ses actifs, ou la subdivision d'une
+organisation ou les organisations qui fusionnent. Si la propagation d'une couverte
+les résultats de travail à partir d'une transaction d'entité, chaque partie à cette
+transaction qui reçoit une copie du travail reçoit aussi les
+licences pour le travail de son prédécesseur intéressé à cette partie avait ou pourrait
+donner en vertu de l'alinéa précédent, plus un droit de possession du
+Source Correspondant du travail depuis le prédécesseur intéressé si
+prédécesseur en dispose ou peut l'obtenir par des efforts raisonnables.
+
+  Vous ne pouvez pas imposer de nouvelles restrictions à l'exercice de la
+droits accordés ou affirmés selon cette Licence. Par exemple, vous pouvez
+pas imposer un droit de licence, redevance, ou autre charge pour l'exercice des
+droits accordés en vertu de la présente Licence, et vous pouvez amorcer aucun litige judiciaire
+(Y compris une croix ou contre-réclamation dans un procès) alléguant que
+toute revendication de brevet est enfreinte par la réalisation, utiliser, vendre, offrir à la
+la vente ou l'importation du Programme ou une partie de celui-ci.
+
+  11. brevets.
+
+  Un «contributeur» est un titulaire de droit d'auteur qui autorise l'utilisation en vertu du présent
+Licence du Programme ou du travail sur lequel le Programme est basé. Le
+travailler ainsi soumis à licence est appelé la «version contributive» du cotisant.
+
+  «Revendications de brevet essentielles» sont toutes les revendications de brevets
+détenues ou contrôlées par le contributeur, qu'elles soient déjà acquis ou
+ci acquise, susceptible d'être transgressée par une certaine manière, permis
+par cette Licence, de fabriquer, d'utiliser ou de vendre sa version de contributeur,
+mais ne comprend pas les allégations qui seraient enfreintes de quelque manière
+conséquence de modification supplémentaire de la version contributive. Pour
+fins de cette définition, le «contrôle» comprend le droit d'accorder
+sous-licences de brevets d'une manière compatible avec les exigences de
+cette Licence.
+
+  Chaque contributeur vous accorde une licence non exclusive, mondiale, sans royalties-
+licence de brevet selon les revendications de brevet essentielles du cotisant, à
+fabriquer, utiliser, vendre, offrir en vente, importer et autrement exécuter, modifier et
+propager les contenus de sa version contributive.
+
+  Dans les trois paragraphes suivants, une «licence de brevet» est un express
+accord ou engagement, cependant libellés, de ne pas appliquer un brevet
+(Comme une autorisation expresse de pratiquer un brevet ou d'un engagement de ne pas
+intenter une action en contrefaçon de brevet). Pour «subvention» une telle licence de brevet pour un
+partie signifie conclure un tel accord ou engagement à ne pas appliquer une
+brevet à cette partie.
+
+  Si vous acheminez un Travail Couvert, dépendant en connaissance d'une licence de brevet,
+et le Source Correspondant du travail ne est pas disponible pour quiconque
+de copier, sans frais et suivant les termes de cette Licence, à travers un
+la disposition du public serveur de réseau ou d'autres moyens facilement accessibles,
+alors vous devez soit (1) rendre la Source Correspondante de l'être
+disponible, soit (2) prendre des dispositions pour vous priver de l'avantage de la
+licence de brevet pour ce travail particulier, ou (3) vous engager, d'une manière
+compatible avec les exigences de la présente Licence, à étendre le brevet
+licence pour les bénéficiaires en aval. «Dépendant en connaissance» signifie que vous avez
+effectivement connaissance que, selon la licence de brevet, votre acheminement du
+Travail Couvert dans un pays, ou l'utilisation de votre destinataire de l'œuvre couverte
+dans un pays, porterait atteinte à un ou plusieurs brevets identifiables dans ce
+pays que vous avez des raisons de penser qu'ils sont valides.
+
+  Si, conformément à ou en relation avec une seule transaction ou
+arrangement, vous acheminez, ou propagez en procurant un acheminement de, un
+Travail Couvert et accordez une licence de brevet à l'une des parties
+recevant le Travail Couvert autorisant à utiliser, diffuser, modifier
+ou acheminer une copie spécifique du Travail Couvert, alors la licence de brevet
+vous accordez automatiquement étendu à tous les destinataires de la couverte
+travailler et des travaux basés sur elle.
+
+  Une licence de brevet est «discriminatoire» si elle ne inclut pas dans
+la portée de sa couverture, interdit l'exercice de, ou est-
+conditionné sur le non-exercice d'un ou plus des droits qui sont
+spécifiquement accordé en vertu de la présente Licence. Vous ne pouvez pas transmettre un couvert
+travailler si vous êtes partie à une entente avec un tiers qui ne est
+dans l'entreprise de distribution de logiciels et à laquelle vous effectuez le paiement
+au tiers basée sur l'étendue de votre activité d'acheminement
+le travail, et en vertu de laquelle les tiers subventions du parti, à l'un des
+partie qui recevrait les travaux couverts de vous, un discriminatoire
+licence de brevet (a) en relation avec les copies du Travail Couvert
+acheminées par vous (ou les copies réalisées à partir de ces copies), ou (b) avant
+pour et en rapport avec des produits spécifiques ou compilations
+contenir les travaux visés, à moins que vous ayez conclu cet arrangement,
+ou que la licence de brevet a été délivré avant le 28 Mars de 2007.
+
+  Rien dans cette licence ne doit être interprétée comme excluant ou limitant
+toute licence implicite ou d'autres défenses pour contrefaçon qui pourraient
+autrement à votre disposition en vertu du droit des brevets applicable.
+
+  12. Non abandon de la liberté des autres.
+
+  Si les conditions vous sont imposées (que ce soit par ordonnance, accord amiable ou
+autrement) qui contredisent les conditions de cette licence, ils ne le font pas
+vous excusent pas des conditions de cette licence. Si vous ne pouvez pas transmettre un
+Travail Couvert de façon à satisfaire simultanément vos obligations en vertu du présent
+Licence et toutes autres obligations pertinentes, alors en conséquence vous pouvez
+pas du tout l'acheminer. Par exemple, si vous acceptez de termes qui vous obligent
+d'exiger une redevance pour de plus amples transport de ceux à qui vous acheminez
+le programme, le seul moyen que vous pourriez satisfaire ces deux conditions et ce
+Licence serait de vous abstenir entièrement d'acheminer le Programme.
+
+  13. Utilisation avec la licence GNU Affero General Public License.
+
+  Nonobstant toute autre disposition de la présente Licence, vous avez
+permission de lien ou de combiner un travail recouvert d'une œuvre sous licence
+sous la version 3 de la licence GNU Affero General Public License en un seul
+travail combiné, et d'acheminer le travail résultant. Les termes de cette
+Licence continueront à se appliquer à la partie qui est l'œuvre couverte,
+mais les exigences particulières de la licence GNU Affero General Public License,
+l'article 13, concernant l'interaction à travers un réseau se appliqueront à la
+combinaison en tant que tel.
+
+  14. Versions révisées de cette License.
+
+  La Free Software Foundation peut publier de nouvelles versions de révision et / ou
+la Licence Publique Générale GNU de temps à autre. Ces nouvelles versions seront
+similaires dans l'esprit à la présente version, mais peuvent différer dans le détail pour
+traiter de nouveaux problèmes ou préoccupations.
+
+  Chaque version reçoit un numéro de version distinctif. Si le
+Programme précise qu'une version numérotée de la GNU General
+Public License "ou toute version ultérieure» se applique à elle, vous avez la
+choix de suivre les termes et conditions de cette numérotée
+version ou de toute version ultérieure publiée par la Free Software
+Fondation. Si le Programme ne spécifie aucun numéro de version de la
+GNU General Public License, vous pouvez choisir ne importe quelle version publiée
+par la Free Software Foundation.
+
+  Si le Programme spécifie qu'un intermédiaire peut décider quelles avenir
+versions de la Licence Publique Générale GNU peuvent être utilisés, ce proxy de
+déclaration publique d'acceptation d'une version vous autorise
+à choisir cette version pour le Programme.
+
+  Versions ultérieures de la licence peuvent vous donner supplémentaires ou différents
+autorisations. Cependant, aucune des obligations supplémentaires sont appliquées à toute
+auteur ou copyright titulaire à la suite de votre choix de suivre une
+version ultérieure.
+
+  15. Exonération de garantie.
+
+  IL N'Y A AUCUNE GARANTIE POUR LE PROGRAMME, DANS LA MESURE AUTORISÉE PAR
+LOI APPLICABLE. SAUF INDICATION CONTRAIRE PAR ECRIT LE DROIT D'AUTEUR
+PORTEURS ET / OU LES AUTRES PARTIES FOURNISSENT LE PROGRAMME "TEL QUEL" SANS GARANTIE
+D'AUCUNE SORTE, explicite ou implicite, Y COMPRIS, MAIS SANS S'Y LIMITER,
+LES GARANTIES DE QUALITÉ MARCHANDE ET D'ADAPTATION À UN PARTICULIER
+BUT. LA TOTALITÉ DU RISQUE QUANT À LA QUALITÉ ET AUX PERFORMANCES DU PROGRAMME
+Est avec vous. SI LE PROGRAMME EST DÉFECTUEUX, VOUS ASSUMEZ LE COÛT DE
+TOUT ENTRETIEN, RÉPARATION OU CORRECTION.
+
+  16. Limitation de responsabilité.
+
+  EN AUCUN CAS, SAUF LORSQUE LA LOI APPLICABLE OU UNE CONVENTION ECRITE
+UN TITULAIRE DU DROIT D'AUTEUR, OU TOUT AUTRE PARTIE QUI MODIFIE ET ​​/ OU ACHEMINE
+LE PROGRAMME COMME PERMIS CI-DESSUS, NE SERA RESPONSABLE ENVERS VOUS POUR LES DOMMAGES, Y COMPRIS TOUTE
+GENERAL, SPÉCIAUX, ACCESSOIRES OU INDIRECTS DÉCOULANT DE LA
+UTILISATION OU L'INCAPACITE D'UTILISER LE PROGRAMME (Y COMPRIS MAIS SANS S'Y LIMITER, LA PERTE DE
+DONNEES OU L'INEXACTITUDE DES DONNÉES OU PERTES SUBIES PAR VOUS OU TROISIÈME
+PARTIES OU UNE PANNE DU PROGRAMME DE FONCTIONNER AVEC D'AUTRES PROGRAMMES),
+MÊME SI UN TEL TITULAIRE OU TOUTE AUTRE PARTIE A ÉTÉ AVERTI DE LA POSSIBILITÉ DE
+Tels dommages.
+
+  17. Interprétation des sections 15 et 16.
+
+  Si l'exclusion de garantie et la limitation de responsabilité prévue
+ci-dessus ne peut être donné effet localement selon leurs termes,
+les tribunaux de révision doit appliquer le droit local qui se rapproche le plus
+une levée absolue de toute responsabilité civile dans le cadre du
+Programme, à moins qu'une garantie ou assumation de responsabilité accompagne une
+copie du Programme en échange d'une redevance.
+
+                     FIN DES TERMES ET CONDITIONS
