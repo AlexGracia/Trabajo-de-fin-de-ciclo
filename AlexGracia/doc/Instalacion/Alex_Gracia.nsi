@@ -8,6 +8,10 @@
 !define ICON "AlexGracia.ico"
 !define UNICON "AlexGracia_uninstall.ico"
 !define INSTDIRMANUALES "$INSTDIR\manuales"
+!define URLJAVA "https://java.com/download"
+; !define URLXAMPP "https://www.apachefriends.org/es/download.html"
+!define URLXAMPP "http://sourceforge.net/projects/xampp/files/latest/download"
+!define INSTDIRDATABASE "$INSTDIR\database"
 
 ; Definitions for Java 7.0
 ; !define JRE_VERSION "1.7.0_51-b13"
@@ -104,6 +108,9 @@ LicenseLangString license ${LANG_FRENCH} "licencias\license-french.txt"
 
 Function .onInit
 
+	; Iniciar servicio mysql
+	Exec '"C:\xampp\mysql\bin\mysqld.exe"'
+
 	;Language selection dialog
 	!insertmacro MUI_LANGDLL_DISPLAY
 	
@@ -113,16 +120,17 @@ Function .onGUIEnd ; se ejecuta al cerrarse el instalador
 
 	IfFileExists $PROGRAMFILES\Java +3 0
 	; El +3 salta a la instrucción 3, contando desde esta linea.
-	MessageBox MB_OK "Debe instalar Java (https://java.com/download)\$\nSe abrirá la página web.\
+	MessageBox MB_OK "Debe instalar Java (${URLJAVA})\
+	$\nSe abrirá la página web.\
 	$\nSi tiene Java instalado en una ubicación distinta a '$PROGRAMFILES\Java', disculpe las molestias."
-	ExecShell "open" "https://java.com/download"
-	; ExecShell, en este caso abre el navegador por defecto con la URL https://java.com/download.
+	ExecShell "open" "${URLJAVA}"
+	; ExecShell, en este caso abre el navegador por defecto con la URL ${URLJAVA}.
 
 	IfFileExists C:\xampp +3 0
-	MessageBox MB_OK "Debe instalar xampp (https://www.apachefriends.org/es/download.html)\
+	MessageBox MB_OK "Debe instalar xampp (${URLXAMPP})\
 	$\nSe abrirá la página web.\
 	$\nSi tiene xampp instalado en una ubicación distinta a 'C:\xampp', la opción 'Exportar BD' no funcionará."
-	ExecShell "open" "https://www.apachefriends.org/es/download.html"
+	ExecShell "open" "${URLXAMPP}"
 
 FunctionEnd
 
@@ -149,6 +157,11 @@ SectionGroup /e "Programa" Sec1
 		SetOutPath $INSTDIR
 
 		File /r database
+
+		; Instalar database
+		ExecWait '"${INSTDIRDATABASE}\install_database.bat"'
+		; Parar servicio mysql
+		Exec '"C:\xampp\mysql_stop.bat"'
 	SectionEnd
 
 	Section "report" Sec1REPORT
@@ -245,8 +258,13 @@ SectionEnd
 ;SECCION DEL DESINSTALADOR
 
 Section Uninstall
-	;AÑADIR LOS FICHEROS A DESINSTALAR AQUI...
-	; Raiz
+
+	; Borrar database
+	ExecWait '"${INSTDIRDATABASE}\drop_database.bat"'
+	; Parar servicio mysql
+	Exec '"C:\xampp\mysql_stop.bat"'
+
+	; Carpeta raiz
 	RMDir /r $INSTDIR
 	; Añadiendo /r borra todo, no se aconseja su uso.
 
@@ -260,6 +278,9 @@ SectionEnd
 ;Uninstaller Functions
 
 Function un.onInit
+
+	; Iniciar servicio mysql
+	Exec '"C:\xampp\mysql\bin\mysqld.exe"'
 
 	!insertmacro MUI_UNGETLANGUAGE
 
