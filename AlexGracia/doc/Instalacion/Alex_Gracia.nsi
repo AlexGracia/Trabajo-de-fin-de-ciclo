@@ -259,6 +259,9 @@ SectionEnd
 
 Section Uninstall
 
+	; Cambiando el SetOutPath, el drop_database.bat funciona, pero no borra la 'carpeta raiz'
+	SetOutPath $INSTDIR
+
 	; Borrar database
 	ExecWait '"${INSTDIRDATABASE}\drop_database.bat"'
 	; Parar servicio mysql
