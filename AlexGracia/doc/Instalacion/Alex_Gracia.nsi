@@ -268,8 +268,9 @@ Section Uninstall
 	Exec '"C:\xampp\mysql_stop.bat"'
 
 	; Carpeta raiz
-	RMDir /r $INSTDIR
+	RMDir /r /REBOOTOK $INSTDIR
 	; Añadiendo /r borra todo, no se aconseja su uso.
+	; No se puede borrar la carpeta raiz por este código SetOutPath $INSTDIR, pero añadiendo /REBOOTOK la borra en el siguiente inicio de sesión del PC.
 
 	Delete "$DESKTOP\*AlexGracia*.lnk"
 
