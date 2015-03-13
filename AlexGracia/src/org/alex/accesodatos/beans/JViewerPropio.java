@@ -11,6 +11,7 @@ public class JViewerPropio extends JasperViewer {
 
 	public JViewerPropio(JasperPrint jasperPrint, boolean isExitOnClose) {
 		super(jasperPrint, isExitOnClose);
+		setExtendedState(JViewerPropio.MAXIMIZED_BOTH);
 
 		setIconImage(Toolkit
 				.getDefaultToolkit()
