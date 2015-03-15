@@ -1,0 +1,27 @@
+body {
+	background-color: #1F1F1F;
+	color: #CFCFCF;
+	border: 5px solid #FF4444;
+	margin: 0px;
+}
+
+h1 {
+	text-align: center;
+}
+
+a {
+	color: #CFCFCF;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #FDFF68;
+}
+
+li {
+	font-size: 30px;
+}
+
+#texto-naranja {
+	color: #FF9D46;
+}
