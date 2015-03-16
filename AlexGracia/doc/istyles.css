@@ -3,6 +3,7 @@ body {
 	color: #CFCFCF;
 	border: 5px solid #FF4444;
 	margin: 5px;
+	font-size: 2em;
 }
 
 h1 {
@@ -16,10 +17,6 @@ a {
 
 a:hover {
 	color: #FDFF68;
-}
-
-li {
-	font-size: 30px;
 }
 
 #texto-naranja {
