@@ -2,7 +2,7 @@ body {
 	background-color: #1F1F1F;
 	color: #CFCFCF;
 	border: 5px solid #FF4444;
-	margin: 0px;
+	margin: 5px;
 }
 
 h1 {
@@ -24,4 +24,10 @@ li {
 
 #texto-naranja {
 	color: #FF9D46;
+}
+
+video {
+	margin: 3% 0% 3% 6%;
+	width: 25%;
+	height: 25%;
 }
