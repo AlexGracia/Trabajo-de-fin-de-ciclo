@@ -15,8 +15,10 @@ public class Constantes {
 
 	// Componentes graficos
 	public static Border borderDefault;
+	
+	public static boolean esWindows = false;
 
-	public static Font FUENTE = new Font("Tahoma", Font.PLAIN, 16);
+	public final static Font FUENTE = new Font("Tahoma", Font.PLAIN, 16);
 
 	public final static Font FUENTE_NEGRITA = new Font("Tahoma", Font.BOLD, 16);
 	public final static String TITULO_VENTANA = "AlexGracia - Aseguradora de vehículos";

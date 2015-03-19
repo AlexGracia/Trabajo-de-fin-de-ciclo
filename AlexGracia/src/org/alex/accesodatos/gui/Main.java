@@ -86,7 +86,8 @@ public class Main extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private boolean primeraBusqueda = true, noEsUsuario = true;
+	private boolean primeraBusqueda = true, noEsUsuario = true,
+			intentarStartMySQL = true, intentarInstalarBD = true;
 	private String toolbarSearch = "";
 	private static Start start;
 
@@ -142,6 +143,8 @@ public class Main extends JFrame {
 	 */
 	public Main() {
 		Logger.getLogger("org.hibernate").setLevel(Level.SEVERE);
+		if ("Windows".equals(System.getProperty("os.name").substring(0, 7)))
+			Constantes.esWindows = true;
 		interfaz();
 		Constantes.borderDefault = tfBusqueda.getBorder();
 		finalizandoCarga();
@@ -352,13 +355,15 @@ public class Main extends JFrame {
 		mntmConfiguracion.addActionListener(actionPreferencias());
 		mnHerramientas.add(mntmConfiguracion);
 
-		separator = new JSeparator();
-		mnHerramientas.add(separator);
+		if (Constantes.esWindows) {
+			separator = new JSeparator();
+			mnHerramientas.add(separator);
 
-		// Base de datos
-		JMenuItem mnExportarBD = new JMenuItem("Exportar BD...");
-		mnExportarBD.addActionListener(_exportarBD());
-		mnHerramientas.add(mnExportarBD);
+			// Base de datos
+			JMenuItem mnExportarBD = new JMenuItem("Exportar BD...");
+			mnExportarBD.addActionListener(_exportarBD());
+			mnHerramientas.add(mnExportarBD);
+		}
 
 		// Ayuda
 		JMenu mnAyuda = new JMenu("?");
@@ -437,14 +442,49 @@ public class Main extends JFrame {
 			controlErrorConexion("User o password de MySQL no válidos.\n"
 					+ "Valores por defecto:\n" + "User: root\n"
 					+ "Password: \n"
-					+ "\nModifique si quiere el archivo 'hibernate.cfg',\n"
+					+ "\nModifique, si quiere, el archivo 'hibernate.cfg',\n"
 					+ "apartado 'connection.password'");
 		} catch (JDBCConnectionException ce) {
-			controlErrorConexion("Posibles causas:\n"
-					+ "1. Programa MySQL no instalado.\n"
-					+ "2. Servicio MySQL inoperativo.");
+			// TODO
+			// Hacer mysql_start.bat para que salga minimizado o no se vea
+
+			if (Constantes.esWindows) {
+				if (intentarStartMySQL) {
+					Util.openFile("C:/xampp/mysql_start.bat");
+					intentarStartMySQL = false;
+					try {
+						Thread.sleep(2000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					conectar();
+				} else
+					controlErrorConexion("Posibles causas:\n"
+							+ "1. Programa MySQL no instalado.\n"
+							+ "2. Servicio MySQL inoperativo.");
+
+			} else
+				controlErrorConexion("Posibles causas:\n"
+						+ "1. Programa MySQL no instalado.\n"
+						+ "2. Servicio MySQL inoperativo.");
+
 		} catch (SQLGrammarException sqe) {
-			controlErrorConexion("Base de datos, alex_gracia, no encontrada.");
+
+			if (Constantes.esWindows) {
+				if (intentarInstalarBD) {
+					Util.openFile("database/install_database.bat");
+					intentarInstalarBD = false;
+					try {
+						Thread.sleep(6000);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					conectar();
+				} else
+					controlErrorConexion("Base de datos, alex_gracia, no encontrada.");
+
+			} else
+				controlErrorConexion("Base de datos, alex_gracia, no encontrada.");
 
 		} catch (HibernateException he) {
 			controlErrorGrave("Error de la muerte, Hibernate.");
