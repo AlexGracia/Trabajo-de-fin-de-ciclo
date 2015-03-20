@@ -72,6 +72,11 @@ public class DialogPropio extends JDialog {
 
 	}
 
+	/**
+	 * Devuelve true si el usuario ha aceptado y false en caso contrario.
+	 * 
+	 * @return true o false
+	 */
 	public boolean isAceptar() {
 		return aceptar;
 	}

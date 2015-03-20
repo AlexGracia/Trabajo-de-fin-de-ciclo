@@ -30,6 +30,7 @@ public class ReportUtil {
 	// Variables
 	private String connectionUrl = "jdbc:mysql://localhost:3306/alex_gracia";
 	private String user = "root", pass;
+	private boolean intentarStartMySQL = true;
 
 	public ReportUtil(JFrame parent, String jasper,
 			HashMap<String, Object> parametro) {
@@ -60,9 +61,22 @@ public class ReportUtil {
 			parent.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 
 		} catch (CommunicationsException ce) {
-			Util.setMensajeError("Posibles causas:\n"
-					+ "1. Programa MySQL no instalado.\n"
-					+ "2. Servicio MySQL inoperativo.");
+			if (Constantes.esWindows) {
+				if (intentarStartMySQL) {
+					Util.openFile("C:/xampp/mysql/bin/mysqld.exe");
+					intentarStartMySQL = false;
+					Util._esperar(4000);
+					new ReportUtil(parent, jasper, parametro);
+				} else
+					Util.setMensajeError("Posibles causas:\n"
+							+ "1. Programa MySQL no instalado.\n"
+							+ "2. Servicio MySQL inoperativo.");
+
+			} else
+				Util.setMensajeError("Posibles causas:\n"
+						+ "1. Programa MySQL no instalado.\n"
+						+ "2. Servicio MySQL inoperativo.");
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			Util.setMensajeError("Exportando, más detalles:\n" + e.getMessage());

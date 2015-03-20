@@ -363,6 +363,11 @@ public class Main extends JFrame {
 			JMenuItem mnExportarBD = new JMenuItem("Exportar BD...");
 			mnExportarBD.addActionListener(_exportarBD());
 			mnHerramientas.add(mnExportarBD);
+
+			// Parar el servicio de MySQL
+			JMenuItem mntmPararMysql = new JMenuItem("Parar MySQL...");
+			mntmPararMysql.addActionListener(_pararMySQL());
+			mnHerramientas.add(mntmPararMysql);
 		}
 
 		// Ayuda
@@ -383,11 +388,8 @@ public class Main extends JFrame {
 	private void finalizandoCarga() {
 
 		if (!start.esLento())
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e1) {
-				e1.printStackTrace();
-			}
+			Util._esperar(2000);
+
 		start.setParar(true);
 
 		_amoldarPrograma();
@@ -416,9 +418,8 @@ public class Main extends JFrame {
 			mnHerramientas.setEnabled(false);
 			noEsUsuario = false;
 		} else if (login.isTecnic()) {
-			for (Component c : toolBar.getComponents())
-				c.setEnabled(false);
-			tabbedPane.setEnabled(false);
+			_deshabilitarComponentes();
+
 			for (Component c : tabClientes.getComponents())
 				c.setEnabled(false);
 			tablaClientes.setVisible(false);
@@ -445,18 +446,12 @@ public class Main extends JFrame {
 					+ "\nModifique, si quiere, el archivo 'hibernate.cfg',\n"
 					+ "apartado 'connection.password'");
 		} catch (JDBCConnectionException ce) {
-			// TODO
-			// Hacer mysql_start.bat para que salga minimizado o no se vea
 
 			if (Constantes.esWindows) {
 				if (intentarStartMySQL) {
-					Util.openFile("C:/xampp/mysql_start.bat");
+					Util.openFile("C:/xampp/mysql/bin/mysqld.exe");
 					intentarStartMySQL = false;
-					try {
-						Thread.sleep(2000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					Util._esperar(4000);
 					conectar();
 				} else
 					controlErrorConexion("Posibles causas:\n"
@@ -474,11 +469,7 @@ public class Main extends JFrame {
 				if (intentarInstalarBD) {
 					Util.openFile("database/install_database.bat");
 					intentarInstalarBD = false;
-					try {
-						Thread.sleep(6000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					Util._esperar(6000);
 					conectar();
 				} else
 					controlErrorConexion("Base de datos, alex_gracia, no encontrada.");
@@ -887,6 +878,39 @@ public class Main extends JFrame {
 				}
 			}
 		};
+	}
+
+	/**
+	 * Para el servicio de MySQL.
+	 * 
+	 * @return ActionListener
+	 */
+	private ActionListener _pararMySQL() {
+		return new ActionListener() {
+			public void actionPerformed(ActionEvent ae) {
+				if (!new JConfirmacion("Parar MySQL").isAceptar())
+					barraEstado.accionCancelada();
+
+				else {
+					if (Util.openFile("C:/xampp/mysql_stop.bat")) {
+						_deshabilitarComponentes();
+						mnHerramientas.setEnabled(false);
+						barraEstado.accionRealizada();
+					}
+				}
+
+			}
+		};
+	}
+
+	/**
+	 * Deshabilita toolBar y tabbedPane.
+	 */
+	private void _deshabilitarComponentes() {
+		for (Component c : toolBar.getComponents())
+			c.setEnabled(false);
+
+		tabbedPane.setEnabled(false);
 	}
 
 }
