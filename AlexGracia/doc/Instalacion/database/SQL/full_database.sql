@@ -42,7 +42,7 @@ CREATE TABLE `clientes` (
   `DIRECCION` varchar(200) DEFAULT 'desconocida',
   PRIMARY KEY (`ID_CLIENTES`),
   UNIQUE KEY `DNI` (`DNI`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -51,6 +51,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
+INSERT INTO `clientes` VALUES (2,NULL,'Alex','ElGrande','58571386T',987654321,'1980-11-01','2000-11-01','Calle de Abrazamozas, Zamora'),(3,NULL,'Alejandro','Magno','85744405Z',965000000,'1961-03-25','1990-09-12','Calle de la Amargura, Zamora'),(6,NULL,'Zzzz','cansado','11547513H',666666666,'1970-11-01','1985-11-08','Calle Buscarruidos, Zamora'),(7,NULL,'Miau','Felino','11617393R',111222333,'1960-11-23','1980-11-26','Calle Séptimo Miau, Málaga'),(8,NULL,'Steven','Seagal','28338532W',578674232,'1952-04-10','1970-11-19','Manos rápidas'),(9,NULL,'Bruce','Lee','73099177W',342342434,'1940-11-27','1960-11-30','Asesinado'),(10,NULL,'Jet','Li','73620019D',123123123,'1963-04-26','1981-11-17','Calle Alegría de la Huerta, Madrid');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +73,7 @@ CREATE TABLE `extras` (
   `DIMENSIONES` varchar(100) NOT NULL,
   `FABRICANTE` varchar(100) DEFAULT 'desconocido',
   PRIMARY KEY (`ID_EXTRAS`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,6 +82,7 @@ CREATE TABLE `extras` (
 
 LOCK TABLES `extras` WRITE;
 /*!40000 ALTER TABLE `extras` DISABLE KEYS */;
+INSERT INTO `extras` VALUES (1,'1985-09-27','Ferrari','Llanta','Terra_Grappler_35x1250r15','','Canadá','094*142*271','Fram'),(2,'1995-12-21','Audi','Faro','Faro_de_espejo','','Alemania','677*256*513','Hengst'),(3,'2014-12-04','','puerta','asd78','','','545*322*87',''),(4,'2013-01-23','','Prueba','Fecha','','','0','');
 /*!40000 ALTER TABLE `extras` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,7 +131,7 @@ CREATE TABLE `piezas` (
   `FECHA_SOLICITUD` date DEFAULT NULL,
   `MARCA` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`ID_PIEZAS`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,6 +140,7 @@ CREATE TABLE `piezas` (
 
 LOCK TABLES `piezas` WRITE;
 /*!40000 ALTER TABLE `piezas` DISABLE KEYS */;
+INSERT INTO `piezas` VALUES (1,NULL,'Luna','Sin descripción',8,166,'Australia','2000-08-24','Chrysler'),(2,NULL,'Asiento','',1,400,'UnitedKingdom','1991-02-21','Peugeot'),(3,NULL,'Prueba','',0,0,'Fecha','2011-01-19','');
 /*!40000 ALTER TABLE `piezas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -219,7 +222,7 @@ CREATE TABLE `polizas` (
   KEY `ID_VEHICULO` (`ID_VEHICULO`),
   CONSTRAINT `polizas_ibfk_1` FOREIGN KEY (`ID_CLIENTE`) REFERENCES `clientes` (`ID_CLIENTES`),
   CONSTRAINT `polizas_ibfk_2` FOREIGN KEY (`ID_VEHICULO`) REFERENCES `vehiculos` (`ID_VEHICULOS`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,6 +231,7 @@ CREATE TABLE `polizas` (
 
 LOCK TABLES `polizas` WRITE;
 /*!40000 ALTER TABLE `polizas` DISABLE KEYS */;
+INSERT INTO `polizas` VALUES (1,NULL,'A_todo_riesgo',857,'Suspension','2009-10-29',4,'1978-09-23','2008-08-28',7,2),(2,NULL,'A_terceros',458,'Alta','1996-06-07',2,'1976-10-14','1997-10-25',3,1),(3,NULL,'A_todo_riesgo',0,'','2015-01-31',0,'2015-01-31','2015-01-31',2,3);
 /*!40000 ALTER TABLE `polizas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -250,7 +254,7 @@ CREATE TABLE `proveedores` (
   `DNI` varchar(9) NOT NULL,
   PRIMARY KEY (`ID_PROVEEDORES`),
   UNIQUE KEY `DNI` (`DNI`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -259,6 +263,7 @@ CREATE TABLE `proveedores` (
 
 LOCK TABLES `proveedores` WRITE;
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
+INSERT INTO `proveedores` VALUES (1,'Ramón',976543872,'ramon@risus.es','1972-03-30','3690 Aliquet, RD.','Con_plazos','risus','61291058C'),(2,'Paco',905678931,'paco@tellus.es','1981-05-13','PO Box 827, 2595 Vel Ave','Sin_plazos','tellus','62777404M');
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,7 +291,7 @@ CREATE TABLE `siniestros` (
   KEY `ID_TALLER` (`ID_TALLER`),
   CONSTRAINT `siniestros_ibfk_1` FOREIGN KEY (`ID_CLIENTE`) REFERENCES `clientes` (`ID_CLIENTES`),
   CONSTRAINT `siniestros_ibfk_2` FOREIGN KEY (`ID_TALLER`) REFERENCES `talleres` (`ID_TALLERES`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,6 +300,7 @@ CREATE TABLE `siniestros` (
 
 LOCK TABLES `siniestros` WRITE;
 /*!40000 ALTER TABLE `siniestros` DISABLE KEYS */;
+INSERT INTO `siniestros` VALUES (1,'Sin datos',3425,'Sin datos','2014-12-04','Sin datos','2009-09-10 00:00:00',4,8,2,2),(2,'',4564,'','2000-12-06','','2000-04-06 00:00:00',3,3,1,4);
 /*!40000 ALTER TABLE `siniestros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -317,7 +323,7 @@ CREATE TABLE `talleres` (
   `CANTIDAD_REPARACIONES` int(11) DEFAULT '0',
   PRIMARY KEY (`ID_TALLERES`),
   UNIQUE KEY `CIF_EMPRESA` (`CIF_EMPRESA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -326,6 +332,7 @@ CREATE TABLE `talleres` (
 
 LOCK TABLES `talleres` WRITE;
 /*!40000 ALTER TABLE `talleres` DISABLE KEYS */;
+INSERT INTO `talleres` VALUES (1,'sollicitudin','144-1393 Mauris Carretera',943234567,'2000-03-07','Pepe','I62343095',7,35025),(2,'semper','504-7450 Erat RD',975867942,'2015-01-01','David','S1230570T',50,100531);
 /*!40000 ALTER TABLE `talleres` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -376,7 +383,7 @@ CREATE TABLE `vehiculos` (
   `KILOMETROS` int(11) DEFAULT '0',
   PRIMARY KEY (`ID_VEHICULOS`),
   UNIQUE KEY `MATRICULA` (`MATRICULA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -385,6 +392,7 @@ CREATE TABLE `vehiculos` (
 
 LOCK TABLES `vehiculos` WRITE;
 /*!40000 ALTER TABLE `vehiculos` DISABLE KEYS */;
+INSERT INTO `vehiculos` VALUES (1,NULL,'sad12398','renault','clio',1000,'2000-08-16','Mate',3,25000),(2,NULL,'dfe4356','renault','megane',2005,'1990-08-23','Metalizado',5,150000),(3,NULL,'iure838','kia','río',1300,'2008-07-09','Mate',5,16000);
 /*!40000 ALTER TABLE `vehiculos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -397,4 +405,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-03-24 16:03:17
+-- Dump completed on 2015-02-26 20:18:32
