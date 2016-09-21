@@ -12,5 +12,4 @@ Java, (<a href="http://java.com/download/">download</a>).
 <br>Xampp, (<a href="https://www.apachefriends.org/download.html">download</a>).
 </blockquote>
 
-<br>API, (<a href="http://www.googledrive.com/host/0B2mGGP_c75PkfnBLNDZFYl9jRUw1d09jWVk5RVV1WFVjclN6V3hUYnBkUENJRnMtRTVhaEE">view</a>).
 <br>Web, (<a href="http://alexgracia.github.io/Trabajo-de-fin-de-ciclo/">view</a>).
